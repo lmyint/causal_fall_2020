@@ -1,0 +1,9 @@
+# Schedule {-}
+
+The schedule below is a tentative outline of our plans for the module. If we need more time for digestion, there is flexibility in our plans to allow for that.
+
+Before each class period, please watch the indicated videos, and complete the associated Moodle checkpoint. 
+
+```{r echo=FALSE}
+htmltools::includeHTML("schedule_table.html")
+```
