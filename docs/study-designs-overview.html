@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>References | STAT 451: Causal Inference</title>
+  <title>Topic 3 Study Designs Overview | STAT 451: Causal Inference</title>
   <meta name="description" content="This is the class website for Causal Inference at Macalester College." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="References | STAT 451: Causal Inference" />
+  <meta property="og:title" content="Topic 3 Study Designs Overview | STAT 451: Causal Inference" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="lmyint/causal_fall_2020" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="References | STAT 451: Causal Inference" />
+  <meta name="twitter:title" content="Topic 3 Study Designs Overview | STAT 451: Causal Inference" />
   
   <meta name="twitter:description" content="This is the class website for Causal Inference at Macalester College." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="schedule.html"/>
+<link rel="prev" href="exchangeability.html"/>
+<link rel="next" href="homework-1.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -169,40 +169,131 @@ code > span.in { color: #0066ff; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered">
-<h1>References</h1>
-<div id="references-for-review" class="section level2 unnumbered">
-<h2>References for review</h2>
+<div id="study-designs-overview" class="section level1">
+<h1><span class="header-section-number">Topic 3</span> Study Designs Overview</h1>
+<div id="pre-class-work" class="section level2 unnumbered">
+<h2>Pre-class work</h2>
+<p>Videos/slides</p>
 <ul>
-<li><a href="https://bcheggeseth.github.io/Stat155Notes/">STAT 155 Notes</a>: An online set of notes for STAT 155 written by the Macalester statistics faculty.</li>
-<li><a href="https://youtu.be/acofPsJDq5Y">Probability Essentials</a>: A YouTube video outlining some key ideas from probability that we will use in this course.</li>
+<li>Study Designs in Causal Inference: <a href="https://youtu.be/vFnA9nLTmP0">[video]</a>, <a href="https://drive.google.com/file/d/1MkvNy4aWZ9ueyNUVLiHWbrRbQ9xyFnTK/view?usp=sharing">[slides]</a></li>
 </ul>
+<p>Checkpoint questions: <a href="https://moodle.macalester.edu/mod/quiz/view.php?id=24228">Link to Moodle checkpoint</a></p>
+<ol class="example" style="list-style-type: decimal">
+<li>We are analyzing survey data collected by the Minnesota Department of Health to understand the effect of vaping during adolescence on adulthood respiratory problems. What study design best describes this?
+<ol style="list-style-type: lower-alpha">
+<li>Randomized experiment</li>
+<li>Instrumental variables design</li>
+<li>Regression discontinuity</li>
+<li>Interrupted time series</li>
+<li>General observational study</li>
+</ol></li>
+<li>A state program only has the budget to fund a social services program in the 10 poorest counties in the state. We want to study the effect of this program on county-level social and economic indicators. What study design best describes this?
+<ol style="list-style-type: lower-alpha">
+<li>Randomized experiment</li>
+<li>Instrumental variables design</li>
+<li>Regression discontinuity</li>
+<li>Interrupted time series</li>
+<li>General observational study</li>
+</ol></li>
+<li>A hospital randomly puts up flyers throughout public hallways reminding people to get their flu shot. We want to study the effect of actually taking this year's flu shot on risk of getting the flu. What study design best describes this?
+<ol style="list-style-type: lower-alpha">
+<li>Randomized experiment</li>
+<li>Instrumental variables design</li>
+<li>Regression discontinuity</li>
+<li>Interrupted time series</li>
+<li>General observational study</li>
+</ol></li>
+<li>In at most two sentences, describe a general strategy that quasi-experimental studies use to try to achieve conditional exchangeability.</li>
+</ol>
+<p><br><br><br><br></p>
 </div>
-<div id="required-references" class="section level2 unnumbered">
-<h2>Required references</h2>
+<div id="learning-goals" class="section level2 unnumbered">
+<h2>Learning Goals</h2>
 <ul>
-<li>Causal Inference in Statistics: A Primer, by Judea Pearl, Madelyn Glymour, and Nicholas P. Jewell. PDF freely available <a href="http://bayes.cs.ucla.edu/PRIMER/">online</a>. (Referred to as &quot;PRIMER&quot;.)</li>
-<li>Causal Inference: What If, by Miguel A. Hernán and James M. Robins. PDF freely available <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">online</a>. (Referred to as &quot;WHATIF&quot;.)</li>
+<li>Explain how randomized experiments relate to exchangeability.</li>
+<li>Explain how quasi-experimental and general observational studies relate to exchangeability.</li>
+<li>Compare the strengths and weaknesses of different study designs for answering a research question.</li>
 </ul>
+<p><br><br><br><br></p>
 </div>
-<div id="further-exploration" class="section level2 unnumbered">
-<h2>Further exploration</h2>
-<ul>
-<li>The Book of Why: The New Science of Cause and Effect, by Judea Pearl and Dana Mackenzie (<a href="https://www.amazon.com/Book-Why-Science-Cause-Effect/dp/046509760X">Amazon</a>)</li>
-<li>Causality: Models, Reasoning, and Inference, by Judea Pearl (available as an <a href="http://linker2.worldcat.org/?jHome=https%3A%2F%2Fgo.openathens.net%2Fredirector%2Fmacalester.edu%3Furl%3Dhttps%3A%2F%2Fdoi.org%2F10.1017%2FCBO9780511803161&amp;linktype=best">eBook</a> through Macalester's library)</li>
-<li>edX course: <a href="https://www.edx.org/course/causal-diagrams-draw-your-assumptions-before-your">Causal Diagrams: Draw Your Assumptions Before Your Conclusions</a></li>
-<li>Udemy course: <a href="https://www.udemy.com/course/causal-data-science/">Causal Data Science with Directed Acyclic Graphs</a></li>
-</ul>
+<div id="exercises" class="section level2 unnumbered">
+<h2>Exercises</h2>
+<div id="exercise-1" class="section level3 unnumbered">
+<h3>Exercise 1</h3>
+<p>In a randomized experiment, participants are randomly assigned to receive either a new medication (<span class="math inline">\(A = 1\)</span>) or the standard medication (<span class="math inline">\(A = 0\)</span>) for cholesterol control. (Randomization is performed overall for all participants - not within subgroups.) The average cholesterol level in the new medication group is 130 mg/dL, and the average cholesterol level in the standard medication group is 140 mg/dL.</p>
+<p>What can be said about the potential outcome table below? What would be an estimate of the average causal effect <span class="math inline">\(E[Y^{a=1}-Y^{a=0}]\)</span>?</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(n\)</span></th>
+<th align="center"><span class="math inline">\(Z\)</span></th>
+<th align="center"><span class="math inline">\(A\)</span></th>
+<th align="center"><span class="math inline">\(Y^{a=1}\)</span></th>
+<th align="center"><span class="math inline">\(Y^{a=0}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">10</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">40</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">10</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">50</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p><br><br></p>
+</div>
+<div id="exercise-2" class="section level3 unnumbered">
+<h3>Exercise 2</h3>
+<p>A common use of regression discontinuity designs in policy research occurs when funding for a program is limited, and areas are ranked by need to determine whether they will receive the benefits of the program. Only areas with the greatest need receive program benefits.</p>
+<p>Explain how this type of design is attempting to create exchangeability. Do you think that this design is effective in that goal? Explain.</p>
+<p><br><br></p>
+</div>
+<div id="exercise-3" class="section level3 unnumbered">
+<h3>Exercise 3</h3>
+<p>Consider the use of an advertisement to promote a health product. The ultimate goal is to understand the causal effect of the product on an outcome. How might advertisements be released to capitalize on an instrumental variables design?</p>
+<p>Explain how this type of design is attempting to create exchangeability. Do you think that this design is effective in that goal? Explain.</p>
+<p><br><br></p>
+</div>
+<div id="exercise-4" class="section level3 unnumbered">
+<h3>Exercise 4</h3>
+<p>Of the three quasi-experimental study designs we've discussed (regression discontinuity, instrumental variables, and interrupted time series), which do you think is most effective in reaching exchangeability? Which do you think is least effective? Explain your thoughts.</p>
 
 </div>
 </div>
+</div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="schedule.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="exchangeability.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="homework-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

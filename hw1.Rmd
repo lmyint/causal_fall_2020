@@ -1,0 +1,85 @@
+```{r hw1_setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, eval=FALSE)
+```
+
+# (PART) Homework {-}
+
+# Homework 1 {-}
+
+<center>
+**Due Sunday, September 6 at midnight CST on [Moodle](https://moodle.macalester.edu/mod/assign/view.php?id=24285)**
+
+**Please turn in a single document containing your responses.**
+</center>
+
+## Exercise 1 {-}
+
+Consider the 4 scenarios below. For all scenarios, $A$ represents a binary treatment, and $Y$ represents the *observed* outcome (quantitative).
+
+1. Marginal exchangeability, independence of $Y$ and $A$
+2. Marginal exchangeability, dependence of $Y$ and $A$
+3. Lack of marginal exchangeability, independence of $Y$ and $A$
+4. Lack of marginal exchangeability, dependence of $Y$ and $A$
+
+<br>
+
+a. Draw pictures that illustrate the following 4 scenarios. Annotate the pictures sufficiently enough to clearly show the properties indicated in the scenarios.
+
+b. Based on your illustrations, provide clarification to a colleague who asks you the following: "If marginal exchangeability holds, then treatment and outcome are independent right? So doesn't that always mean that there will never be a causal effect? Because a causal effect means that outcome depends on treatment?"
+
+
+<br><br>
+
+
+## Exercise 2 {-}
+
+When, if ever, is a direct comparison of the observed outcomes in the treated and untreated a good estimate of an average causal effect? Fully explain your answer.
+
+
+<br><br>
+
+
+## Exercise 3 {-}
+
+The table below shows data on a binary outcome $A$, a binary covariate $Z$, and a quantitative outcome $Y$.
+
+ $Z$   $A$   $Y$
+----- ----- -----
+  A     1    40
+  A     1    40
+  A     1    40
+  A     1    40
+  B     1    20
+  B     1    20
+  A     0    30
+  A     0    30
+  B     0    10
+  B     0    10
+  B     0    10
+  B     0    10
+
+a. Assuming that the treatment groups are exchangeable conditional on $Z$, estimate the average causal effect $E[Y^{a=1}-Y^{a=0}]$.
+
+b. Suppose that the treatment groups are still exchangeable conditional on $Z$. Are they marginally exchangeable? Show and explain your work.
+
+
+<br><br>
+
+
+## Exercise 4 {-}
+
+To what extent do you agree with the following statement? "Instrumental variables, regression discontinuity, and interrupted time series designs are essentially randomized experiments."
+
+To fully explain any points of agreement and/or disagreement, your response should discuss exchangeability and communicate how the mentioned designs work.
+
+
+<br><br>
+
+
+## Exercise 5 {-}
+
+a. Suppose that you are designing a general observational study to study the effect of weekly practice of yoga on stress levels. What variables would you like to collect to achieve conditional exchangeability? Explain how these variables could contribute to a lack of exchangeability.
+
+b. Which quasi-experimental design (of the 3 that we've discussed) do you think would be most practical/feasible to use to study the effect of yoga practice on stress? Justify your answer.
+
+c. Which quasi-experimental design do you think is most ideal for this study in terms of achieving exchangeability? Justify your answer.

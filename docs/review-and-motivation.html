@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>References | STAT 451: Causal Inference</title>
+  <title>Topic 1 Review and Motivation | STAT 451: Causal Inference</title>
   <meta name="description" content="This is the class website for Causal Inference at Macalester College." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="References | STAT 451: Causal Inference" />
+  <meta property="og:title" content="Topic 1 Review and Motivation | STAT 451: Causal Inference" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="lmyint/causal_fall_2020" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="References | STAT 451: Causal Inference" />
+  <meta name="twitter:title" content="Topic 1 Review and Motivation | STAT 451: Causal Inference" />
   
   <meta name="twitter:description" content="This is the class website for Causal Inference at Macalester College." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="schedule.html"/>
+<link rel="prev" href="schedule.html"/>
+<link rel="next" href="exchangeability.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -169,31 +169,92 @@ code > span.in { color: #0066ff; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered">
-<h1>References</h1>
-<div id="references-for-review" class="section level2 unnumbered">
-<h2>References for review</h2>
+<div id="review-and-motivation" class="section level1">
+<h1><span class="header-section-number">Topic 1</span> Review and Motivation</h1>
+<div id="learning-goals" class="section level2 unnumbered">
+<h2>Learning Goals</h2>
 <ul>
-<li><a href="https://bcheggeseth.github.io/Stat155Notes/">STAT 155 Notes</a>: An online set of notes for STAT 155 written by the Macalester statistics faculty.</li>
-<li><a href="https://youtu.be/acofPsJDq5Y">Probability Essentials</a>: A YouTube video outlining some key ideas from probability that we will use in this course.</li>
+<li>Identify when linear regression and when logistic regression would be appropriate</li>
+<li>Interpret coefficients from linear and logistic regression models with and without interaction</li>
+<li>Describe the 2 conditions/characteristics of a confounder</li>
+<li>Use a causal diagram (a graph) to depict the structure of relationships underlying confounding</li>
+<li>Explain how regression models provide a way to &quot;adjust for&quot; confounders</li>
+<li>Using the 2 characteristics of a confounder, explain <strong><em>how</em></strong> an &quot;unadjusted&quot; relationship is misleading</li>
 </ul>
+<p><br><br><br><br></p>
 </div>
-<div id="required-references" class="section level2 unnumbered">
-<h2>Required references</h2>
+<div id="exercises" class="section level2 unnumbered">
+<h2>Exercises</h2>
+<p><strong>You can download a template RMarkdown file to start from <a href="template_rmds/01-intro.Rmd">here</a>.</strong></p>
+<p>We will look at (simulated) data from a study that looked at the effectiveness of chemotherapy for treating colon cancer. Chemotherapy is effectively a poison that kills cells in the body that are rapidly proliferating: these cells include the cancer cells (often in a mass called a tumor) but also cells in bone marrow involved in sustaining the immune system.</p>
+<p>In this study, researchers measured the following variables:</p>
 <ul>
-<li>Causal Inference in Statistics: A Primer, by Judea Pearl, Madelyn Glymour, and Nicholas P. Jewell. PDF freely available <a href="http://bayes.cs.ucla.edu/PRIMER/">online</a>. (Referred to as &quot;PRIMER&quot;.)</li>
-<li>Causal Inference: What If, by Miguel A. Hernán and James M. Robins. PDF freely available <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">online</a>. (Referred to as &quot;WHATIF&quot;.)</li>
+<li><code>pre_tumor_size</code>: Tumor size at the start of the study (<code>Small</code> or <code>Large</code>).</li>
+<li><code>treated</code>: <code>ChemoYes</code> if the patient received chemotherapy or <code>ChemoNo</code> if not.</li>
+<li><code>post_tumor_size</code>: Tumor size 3 months after the start of the study (<code>Small</code> or <code>Large</code>).</li>
+<li><code>recovery</code>: <code>Yes</code> if the patient fully recovered from their cancer after 1 year. <code>No</code> otherwise.</li>
 </ul>
+<p>You can read in the data as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">chemo_study_data &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&quot;https://www.dropbox.com/s/vl06j75a8afw8ct/chemo_study.csv?dl=1&quot;</span>)</code></pre></div>
+<p><br></p>
+<div id="exercise-1-plots-and-confounders" class="section level3 unnumbered">
+<h3>Exercise 1: Plots and confounders</h3>
+<p>The first step in any data analysis is to visualize your data. Let's refamiliarize ourselves with the <code>ggplot2</code> package in R. It may be helpful to have <a href="https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf">this ggplot2 cheat sheet</a> open. Make sure to load the <code>ggplot2</code> package by including <code>library(ggplot2)</code> at the top of your RMarkdown document.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Get a feel for the data by visualizing the distributions of all 4 variables individually (4 plots total). Your code should look something like below.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(chemo_study_data, <span class="kw">aes</span>(<span class="dt">x =</span> pre_tumor_size)) <span class="op">+</span><span class="st"> </span>???</code></pre></div>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Is pre-treatment tumor size predictive of whether or not a patient received chemotherapy? Make a plot to assess this, and briefly state what conclusions can be drawn from the plot. (Hint: it will be helpful to look at the second page of the cheat sheet in the section labeled &quot;Position Adjustments&quot;.)</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(chemo_study_data, <span class="kw">aes</span>(<span class="dt">x =</span> pre_tumor_size, <span class="dt">fill =</span> treated)) <span class="op">+</span><span class="st"> </span>???</code></pre></div>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Is pre-treatment tumor size predictive of whether or not a patient recovered? Make a plot, and briefly state your conclusions.</li>
+<li>A variable is a <strong>confounder</strong> if it is a common cause of both the treatment and outcome. This is shown in the diagram below. Given your results from parts b and c, could pre-treatment tumor size be a confounder of the relationship between chemotherapy treatment and recovery?</li>
+<li>Could <em>post</em>-treatment tumor size be a confounder of the relationship between chemotherapy treatment and recovery? Support your answer with plots and an explanation.</li>
+</ol>
+<p>Note: the causal relationships of interest so far can be depicted in a <strong>causal diagram</strong>, shown below. An arrow between two variables indicates that one is a cause of the other (an arrow points from a cause to its effect).</p>
+<p><img src="causal_manual_files/figure-html/01-fig-dag-chemo-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><br><br></p>
 </div>
-<div id="further-exploration" class="section level2 unnumbered">
-<h2>Further exploration</h2>
-<ul>
-<li>The Book of Why: The New Science of Cause and Effect, by Judea Pearl and Dana Mackenzie (<a href="https://www.amazon.com/Book-Why-Science-Cause-Effect/dp/046509760X">Amazon</a>)</li>
-<li>Causality: Models, Reasoning, and Inference, by Judea Pearl (available as an <a href="http://linker2.worldcat.org/?jHome=https%3A%2F%2Fgo.openathens.net%2Fredirector%2Fmacalester.edu%3Furl%3Dhttps%3A%2F%2Fdoi.org%2F10.1017%2FCBO9780511803161&amp;linktype=best">eBook</a> through Macalester's library)</li>
-<li>edX course: <a href="https://www.edx.org/course/causal-diagrams-draw-your-assumptions-before-your">Causal Diagrams: Draw Your Assumptions Before Your Conclusions</a></li>
-<li>Udemy course: <a href="https://www.udemy.com/course/causal-data-science/">Causal Data Science with Directed Acyclic Graphs</a></li>
-</ul>
+<div id="exercise-2-implications-of-confounding" class="section level3 unnumbered">
+<h3>Exercise 2: Implications of confounding</h3>
+<ol style="list-style-type: lower-alpha">
+<li>What is the relationship between confounders and the saying &quot;Correlation does not imply causation&quot;?</li>
+<li>Explain how regression models can be used to remove the influence of confounding variables.</li>
+<li>Suppose that chemotherapy generally works to promote recovery. Suppose also that sicker patients tend to receive chemotherapy, and healthier patients tend to not receive chemotherapy. What do you expect</li>
+</ol>
+<p><br><br></p>
+</div>
+<div id="exercise-3-logistic-regression-models" class="section level3 unnumbered">
+<h3>Exercise 3: Logistic regression models</h3>
+<p>We can model recovery using a <strong>logistic regression model</strong> (used when the outcome variable is binary). In R, we can fit a logistic regression model using code like the following:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Fit the model and store it in the &quot;mod&quot; object</span>
+mod &lt;-<span class="st"> </span><span class="kw">glm</span>(outcome_variable <span class="op">~</span><span class="st"> </span>predictor_variable1<span class="op">+</span>predictor_variable2,
+    <span class="dt">family =</span> <span class="st">&quot;binomial&quot;</span>, <span class="dt">data =</span> your_data)
 
+<span class="co"># Display model output</span>
+<span class="kw">summary</span>(mod)
+
+<span class="co"># Obtain confidence intervals (CIs) for model coefficients</span>
+<span class="co"># (95% CIs by default)</span>
+<span class="kw">confint</span>(mod)</code></pre></div>
+<ol style="list-style-type: lower-alpha">
+<li>Fit a logistic regression model with only treatment as a predictor. Interpret the treatment coefficient. Is the sign of the coefficient what you expected? Why is this model misleading?</li>
+<li>Fit a logistic regression model that adjusts for pre-treatment tumor size. Interpret the treatment coefficient. Is the sign of the coefficient what you expected? Also report the 95% confidence interval for the treatment coefficient and what information you learn from it.</li>
+<li>Fit a logistic regression model that adjusts for pre- and post-treatment tumor size. Interpret the treatment coefficient. Is the sign of the coefficient what you expected?</li>
+</ol>
+<p>(Side note: <a href="https://medium.com/@EpiEllie/having-confidence-in-confidence-intervals-8f881712d837">This article</a> by Eleanor Murray has a great explanation of the most common misinterpretation of confidence intervals.)</p>
+<p><br><br></p>
+</div>
+<div id="exercise-4-warming-up-to-causal-ideas" class="section level3 unnumbered">
+<h3>Exercise 4: Warming up to causal ideas</h3>
+<ol style="list-style-type: lower-alpha">
+<li>Consider the statement: &quot;The causal effect of chemotherapy on recovery rates (as compared to no chemotherapy) is a change (difference) of 10%.&quot; What do you think &quot;causal effect&quot; means? What would you like it to mean?</li>
+<li>Which model do you think best estimates the causal effect of chemotherapy on recovery rates? Explain.</li>
+</ol>
+
+</div>
 </div>
 </div>
             </section>
@@ -201,8 +262,8 @@ code > span.in { color: #0066ff; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="schedule.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="schedule.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="exchangeability.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
