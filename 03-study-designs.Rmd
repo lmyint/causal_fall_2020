@@ -48,20 +48,24 @@ Checkpoint questions: [Link to Moodle checkpoint](https://moodle.macalester.edu/
 
 <br><br><br><br>
 
+<!-- Warm up:
+    Randomized experiments guarantee marginal exchangeability. TRUE or FALSE?
+ -->
+
 
 ## Exercises {-}
 
 ### Exercise 1 {-}
 
-In a randomized experiment, participants are randomly assigned to receive either a new medication ($A = 1$) or the standard medication ($A = 0$) for cholesterol control. (Randomization is performed overall for all participants - not within subgroups.) The average cholesterol level in the new medication group is 130 mg/dL, and the average cholesterol level in the standard medication group is 140 mg/dL.
+In a randomized experiment, participants are randomly assigned to receive either a new medication ($A = 1$) or the standard medication ($A = 0$) for cholesterol control. (Randomization is performed overall for all participants - not within subgroups.) The average cholesterol level in the new medication group is 130 mg/dL, and the average cholesterol level in the standard medication group is 140 mg/dL. Information on individuals' family history of heart disease is also collected ($Z = 1$ for a family history and $Z = 0$ for no family history).
 
-What can be said about the potential outcome table below? What would be an estimate of the average causal effect $E[Y^{a=1}-Y^{a=0}]$?
+What can be said about the potential outcome data in the table below? What would be an estimate of the average causal effect $E[Y^{a=1}-Y^{a=0}]$?
 
  $n$   $Z$   $A$   $Y^{a=1}$   $Y^{a=0}$
 ----- ----- ----- ----------- ------------
- 10     1     1
- 40     1     0
- 10     0     1
+ 50     1     1
+ 50     1     0
+ 50     0     1
  50     0     0
 
 

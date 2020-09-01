@@ -52,6 +52,10 @@ Checkpoint questions: [Link to Moodle checkpoint](https://moodle.macalester.edu/
 
 <br><br><br><br>
 
+<!-- Warm up:
+    If you could pick one word as a synonym for exchangeability, what would it be?
+ -->
+
 
 ## Exercises {-}
 
@@ -61,19 +65,7 @@ Suppose that we are trying to understand the causal effect of a personal finance
 
 a. Do you think that a comparison of percent savings in the course takers and non-takers would be a valid estimate of the average causal effect? Explain your viewpoint using the concepts of potential outcomes and exchangeability.
 
-b. One important factor to consider is the number of children that an individual has. Explain how this factor could contribute to a lack of exchangeability in the outcomes of the course takers and non-takers. As part of your explanation, complete the following figure showing the distributions of potential outcomes in different settings. State any assumptions that you make.
-
-```{r 02-ex1, echo=FALSE, eval=TRUE, fig.width=15}
-par(mfrow = c(1,3))
-plot(1, type = "n", bty = "l", xaxt = "n", yaxt = "n", xlab = "% savings", ylab = "Density", main = "Users & non-users together", cex.lab = 1.5)
-legend("topright", bty = "n", legend = c(expression(Y^{a==1}),expression(Y^{a==0})), lty = c("solid", "dashed"), cex = 1.5)
-
-plot(1, type = "n", bty = "l", xaxt = "n", yaxt = "n", xlab = "% savings", ylab = "Density", main = expression(Y^{a==1}), cex.lab = 1.5, cex.main = 1.6)
-legend("topright", bty = "n", legend = c("Users (A=1)", "Non-users (A=0)"), lty = c("solid", "dashed"), cex = 1.3)
-
-plot(1, type = "n", bty = "l", xaxt = "n", yaxt = "n", xlab = "% savings", ylab = "Density", main = expression(Y^{a==0}), cex.lab = 1.5, cex.main = 1.6)
-legend("topright", bty = "n", legend = c("Users (A=1)", "Non-users (A=0)"), lty = c("solid", "dashed"), cex = 1.3)
-```
+b. One important factor to consider is the number of children that an individual has. Explain how this factor could contribute to a lack of exchangeability in the outcomes of the course takers and non-takers. As part of your explanation, discuss how observed outcomes compare to the missing potential outcomes. State any assumptions you make about the relationships between different factors.
 
 c. Do you think conditional exchangeability holds conditional on number of children?    
     - If yes, why?
@@ -87,15 +79,15 @@ c. Do you think conditional exchangeability holds conditional on number of child
 
 We have the data below on number of children ($Z$), treatment (course takers: $A = 1$. course non-takers: $A = 0$), and the percent savings outcome ($Y^a$) categorized as either high (H) or low (L).
 
-Assuming that the course takers and non-takers are exchangeable conditional on number of children, fill in data on the missing potential outcomes. 
+Assuming that the course takers and non-takers are exchangeable conditional on number of children, estimate the average causal effect $P(Y^{a=1} = \mathrm{high}) - P(Y^{a=0} = \mathrm{high})$.
 
  $n$   $Z$   $A$   $Y^{a=1}$   $Y^{a=0}$
 ----- ----- ----- ----------- ------------
  10     2     1     7 H, 3 L        ?
- 30     2     0         ?      18 H, 12 L
  10     1     1     6 H, 4 L        ?
- 40     1     0         ?      20 H, 20 L
  10     0     1     5 H, 5 L        ?
+ 30     2     0         ?      18 H, 12 L
+ 40     1     0         ?      20 H, 20 L
  50     0     0         ?      20 H, 30 L
 
 
@@ -116,6 +108,6 @@ Is it possible for marginal exchangeability to hold but for $Y$ and $A$ to be de
 
 Assuming that we have exchangeability of the course takers and non-takers conditional on number of children ($Z$) and use of public transportation ($W$), how might a regression model be used to estimate the average causal effect of the personal finance course?
 
-<!-- Maybe remove this one and replace with: Show that marginal exchangeability doesn't hold but conditional exchangeability does. -->
+
 
 

@@ -65,15 +65,19 @@ arrows(x0 = c(3,3), y0 = c(4,4)-0.2, x1 = c(1,5), y1 = c(1,1)+0.2, angle = 25, l
 arrows(x0 = 1.7, y0 = 1, x1 = 4.5, y1 = 1, angle = 25, lwd = 4)
 ```
 
+
 <br><br>
+
 
 ### Exercise 2: Implications of confounding {-}
 
 a. What is the relationship between confounders and the saying "Correlation does not imply causation"?
 b. Explain how regression models can be used to remove the influence of confounding variables.
-c. Suppose that chemotherapy generally works to promote recovery. Suppose also that sicker patients tend to receive chemotherapy, and healthier patients tend to not receive chemotherapy. What do you expect 
+c. Suppose that chemotherapy generally works to promote recovery. Suppose also that sicker patients tend to receive chemotherapy, and healthier patients tend to not receive chemotherapy. What would you expect if you directly compared recovery rates in the chemotherapy and standard of care patients (no adjustments for other variables)? What would you expect if you held appropriate confounders constant?
+
 
 <br><br>
+
 
 ### Exercise 3: Logistic regression models {-}
 
@@ -93,12 +97,12 @@ confint(mod)
 ```
 
 a. Fit a logistic regression model with only treatment as a predictor. Interpret the treatment coefficient. Is the sign of the coefficient what you expected? Why is this model misleading?
-b. Fit a logistic regression model that adjusts for pre-treatment tumor size. Interpret the treatment coefficient. Is the sign of the coefficient what you expected? Also report the 95% confidence interval for the treatment coefficient and what information you learn from it.
-c. Fit a logistic regression model that adjusts for pre- and post-treatment tumor size. Interpret the treatment coefficient. Is the sign of the coefficient what you expected?
+b. Fit a logistic regression model that adjusts for pre-treatment tumor size. Interpret the treatment coefficient. Is the sign of the coefficient what you expected? Also report the 95% confidence interval for the treatment coefficient and what information you learn from it. (Side note: [This article](https://medium.com/@EpiEllie/having-confidence-in-confidence-intervals-8f881712d837) by Eleanor Murray has a great explanation of the most common misinterpretation of confidence intervals.)
+c. Fit a logistic regression model that adjusts for pre- **and** post-treatment tumor size. Interpret the treatment coefficient. Is the sign of the coefficient what you expected?
 
-(Side note: [This article](https://medium.com/@EpiEllie/having-confidence-in-confidence-intervals-8f881712d837) by Eleanor Murray has a great explanation of the most common misinterpretation of confidence intervals.)
 
 <br><br>
+
 
 ### Exercise 4: Warming up to causal ideas {-}
 

@@ -215,13 +215,16 @@ code > span.in { color: #0066ff; font-weight: bold; font-style: italic; } /* Inf
 <li>Compare the strengths and weaknesses of different study designs for answering a research question.</li>
 </ul>
 <p><br><br><br><br></p>
+<!-- Warm up:
+    Randomized experiments guarantee marginal exchangeability. TRUE or FALSE?
+ -->
 </div>
 <div id="exercises" class="section level2 unnumbered">
 <h2>Exercises</h2>
 <div id="exercise-1" class="section level3 unnumbered">
 <h3>Exercise 1</h3>
-<p>In a randomized experiment, participants are randomly assigned to receive either a new medication (<span class="math inline">\(A = 1\)</span>) or the standard medication (<span class="math inline">\(A = 0\)</span>) for cholesterol control. (Randomization is performed overall for all participants - not within subgroups.) The average cholesterol level in the new medication group is 130 mg/dL, and the average cholesterol level in the standard medication group is 140 mg/dL.</p>
-<p>What can be said about the potential outcome table below? What would be an estimate of the average causal effect <span class="math inline">\(E[Y^{a=1}-Y^{a=0}]\)</span>?</p>
+<p>In a randomized experiment, participants are randomly assigned to receive either a new medication (<span class="math inline">\(A = 1\)</span>) or the standard medication (<span class="math inline">\(A = 0\)</span>) for cholesterol control. (Randomization is performed overall for all participants - not within subgroups.) The average cholesterol level in the new medication group is 130 mg/dL, and the average cholesterol level in the standard medication group is 140 mg/dL. Information on individuals' family history of heart disease is also collected (<span class="math inline">\(Z = 1\)</span> for a family history and <span class="math inline">\(Z = 0\)</span> for no family history).</p>
+<p>What can be said about the potential outcome data in the table below? What would be an estimate of the average causal effect <span class="math inline">\(E[Y^{a=1}-Y^{a=0}]\)</span>?</p>
 <table>
 <thead>
 <tr class="header">
@@ -234,21 +237,21 @@ code > span.in { color: #0066ff; font-weight: bold; font-style: italic; } /* Inf
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center">10</td>
+<td align="center">50</td>
 <td align="center">1</td>
 <td align="center">1</td>
 <td align="center"></td>
 <td align="center"></td>
 </tr>
 <tr class="even">
-<td align="center">40</td>
+<td align="center">50</td>
 <td align="center">1</td>
 <td align="center">0</td>
 <td align="center"></td>
 <td align="center"></td>
 </tr>
 <tr class="odd">
-<td align="center">10</td>
+<td align="center">50</td>
 <td align="center">0</td>
 <td align="center">1</td>
 <td align="center"></td>
