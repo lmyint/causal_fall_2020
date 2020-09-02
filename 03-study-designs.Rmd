@@ -55,6 +55,10 @@ Checkpoint questions: [Link to Moodle checkpoint](https://moodle.macalester.edu/
 
 ## Exercises {-}
 
+```{block2, type="solutions"}
+**Solutions to these exercises are available [on Moodle](https://moodle.macalester.edu/mod/folder/view.php?id=24168).**
+```
+
 ### Exercise 1 {-}
 
 In a randomized experiment, participants are randomly assigned to receive either a new medication ($A = 1$) or the standard medication ($A = 0$) for cholesterol control. (Randomization is performed overall for all participants - not within subgroups.) The average cholesterol level in the new medication group is 130 mg/dL, and the average cholesterol level in the standard medication group is 140 mg/dL. Information on individuals' family history of heart disease is also collected ($Z = 1$ for a family history and $Z = 0$ for no family history).

@@ -59,6 +59,10 @@ Checkpoint questions: [Link to Moodle checkpoint](https://moodle.macalester.edu/
 
 ## Exercises {-}
 
+```{block2, type="solutions"}
+**Solutions to these exercises are available [on Moodle](https://moodle.macalester.edu/mod/folder/view.php?id=24167).**
+```
+
 ### Exercise 1 {-}
 
 Suppose that we are trying to understand the causal effect of a personal finance course on the percent of earnings left in savings each month (abbreviated as "percent savings"). For the 500 people who took the course, we are able to collect data on percent savings and various other factors. We are also able to collect the same information from 500 people who did not take the course.
