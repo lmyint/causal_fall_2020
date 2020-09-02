@@ -23,7 +23,7 @@ Consider the 4 scenarios below. For all scenarios, $A$ represents a binary treat
 
 <br>
 
-a. Draw pictures that illustrate the following 4 scenarios. Annotate the pictures sufficiently enough to clearly show the properties indicated in the scenarios.
+a. Draw plots that illustrate the following 4 scenarios. Annotate the plots sufficiently enough to clearly show the properties indicated in the scenarios.
 
 b. Based on your illustrations, provide clarification to a colleague who asks you the following: "If marginal exchangeability holds, then treatment and outcome are independent right? So doesn't that always mean that there will never be a causal effect? Because a causal effect means that outcome depends on treatment?"
 
@@ -33,7 +33,7 @@ b. Based on your illustrations, provide clarification to a colleague who asks yo
 
 ## Exercise 2 {-}
 
-When, if ever, is a direct comparison of the observed outcomes in the treated and untreated a good estimate of an average causal effect? Fully explain your answer.
+When, if ever, is a direct comparison of the observed outcomes in the treated and untreated a good estimate of an average causal effect? Explain your answer with relevant discussion of exchangeability and study designs.
 
 
 <br><br>

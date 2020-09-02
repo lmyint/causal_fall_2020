@@ -15,8 +15,15 @@ knitr::opts_chunk$set(echo=TRUE, eval=FALSE)
 - Explain how regression models provide a way to "adjust for" confounders
 - Using the 2 characteristics of a confounder, explain ***how*** an "unadjusted" relationship is misleading
 
+<br><br>
+
+## Slides {-}
+
+Slides from today are available [here](https://drive.google.com/file/d/15IPbRxW5dj1wI3_yeCz6LHCKo5ZMKWbo/view?usp=sharing).
+
 
 <br><br><br><br>
+
 
 ## Exercises {-}
 
