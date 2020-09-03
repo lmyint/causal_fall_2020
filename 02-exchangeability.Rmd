@@ -45,22 +45,31 @@ Checkpoint questions: [Link to Moodle checkpoint](https://moodle.macalester.edu/
 ## Learning Goals {-}
 
 - Define an **average causal effect** in terms of potential outcomes
-- Apply the concepts of marginal and conditional exchangeability to answer questions about (hypothetical) data on potential outcomes.
-- Give examples of when marginal and conditional exchangeability would and would not hold in various data contexts.
-- Explain why a direct comparison of the outcomes in the treated and untreated is misleading as an estimate of a causal effect.
+- EXCH1: Apply the concepts of marginal and conditional exchangeability to answer questions about (hypothetical) data on potential outcomes.
+- EXCH2: Give examples of when marginal and conditional exchangeability would and would not hold in various data contexts.
+- EXCH3: Explain why a direct comparison of the outcomes in the treated and untreated is misleading as an estimate of a causal effect.
 
+<center>
+<img src="images/course_flow1.svg" width="60%" height="60%">
+</center>
 
 <br><br><br><br>
-
-<!-- Warm up:
-    If you could pick one word as a synonym for exchangeability, what would it be?
- -->
 
 
 ## Exercises {-}
 
 ```{block2, type="solutions"}
 **Solutions to these exercises are available [on Moodle](https://moodle.macalester.edu/mod/folder/view.php?id=24167).**
+```
+
+```{block2, type="warmup"}
+**Navigate to [PollEverywhere](https://www.pollev.com/lesliemyint417) for some warm-up exercises.**
+```
+
+<br>
+
+```{block2, type="community"}
+If you attended, how was First Thursday for you? Otherwise, what's a Mac tradition that you miss?
 ```
 
 ### Exercise 1 {-}
@@ -113,5 +122,9 @@ Is it possible for marginal exchangeability to hold but for $Y$ and $A$ to be de
 Assuming that we have exchangeability of the course takers and non-takers conditional on number of children ($Z$) and use of public transportation ($W$), how might a regression model be used to estimate the average causal effect of the personal finance course?
 
 
+<br><br>
 
 
+```{block2, type="exittix"}
+**Take a few minutes to reflect on today's ideas by filling out an [exit ticket](https://docs.google.com/forms/d/e/1FAIpQLScHlTYLjpItT3XjktsBtJl--CqQ86WnoQS_tWmj8KHoSEzgig/viewform?usp=sf_link).**
+```

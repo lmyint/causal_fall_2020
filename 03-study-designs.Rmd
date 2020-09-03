@@ -41,9 +41,9 @@ Checkpoint questions: [Link to Moodle checkpoint](https://moodle.macalester.edu/
 
 ## Learning Goals {-}
 
-- Explain how randomized experiments relate to exchangeability.
-- Explain how quasi-experimental and general observational studies relate to exchangeability.
-- Compare the strengths and weaknesses of different study designs for answering a research question.
+- DESI1: Explain how randomized experiments relate to exchangeability.
+- DESI2: Explain how quasi-experimental and general observational studies relate to exchangeability.
+- DESI3: Compare the strengths and weaknesses of different study designs for answering a research question.
 
 
 <br><br><br><br>
