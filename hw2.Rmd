@@ -1,0 +1,11 @@
+```{r hw2_setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, eval=FALSE)
+```
+
+# Homework 2 {-}
+
+<center>
+**Due Sunday, September 13 at midnight CST on [Moodle](https://moodle.macalester.edu/mod/assign/view.php?id=27999)**
+
+**Please turn in a single document containing your responses.**
+</center>

@@ -73,7 +73,7 @@ div.exittix {
     border-color: black;
     border-style: solid;
     border-width: 1px;
-    font-size: 15spx;
+    font-size: 14px;
     overflow: hidden;
     padding: 10px 5px;
     word-break: normal;
@@ -82,7 +82,7 @@ div.exittix {
     border-color: black;
     border-style: solid;
     border-width: 1px;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: normal;
     overflow: hidden;
     padding: 10px 5px;

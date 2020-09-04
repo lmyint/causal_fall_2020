@@ -1,6 +1,6 @@
 book_filename: "causal_manual"
 output_dir: docs
-rmd_files: ["index.Rmd", "references.Rmd", "schedule.Rmd", "01-motivation-review.Rmd", "02-exchangeability.Rmd", "03-study-designs.Rmd", "hw1.Rmd"]
+rmd_files: ["index.Rmd", "references.Rmd", "schedule.Rmd", "01-motivation-review.Rmd", "02-exchangeability.Rmd", "03-study-designs.Rmd", "hw1.Rmd", "hw2.Rmd"]
 language:
   ui:
     chapter_name: "Topic "

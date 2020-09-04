@@ -46,6 +46,11 @@ Checkpoint questions: [Link to Moodle checkpoint](https://moodle.macalester.edu/
 - DESI3: Compare the strengths and weaknesses of different study designs for answering a research question.
 
 
+<center>
+<img src="images/course_flow2.svg" width="60%" height="60%">
+</center>
+
+
 <br><br><br><br>
 
 <!-- Warm up:
@@ -57,6 +62,16 @@ Checkpoint questions: [Link to Moodle checkpoint](https://moodle.macalester.edu/
 
 ```{block2, type="solutions"}
 **Solutions to these exercises are available [on Moodle](https://moodle.macalester.edu/mod/folder/view.php?id=24168).**
+```
+
+```{block2, type="warmup"}
+**Navigate to [PollEverywhere](https://www.pollev.com/lesliemyint417) for some warm-up exercises.**
+```
+
+<br>
+
+```{block2, type="community"}
+What's one thing you're looking forward to this long weekend?
 ```
 
 ### Exercise 1 {-}
@@ -99,3 +114,11 @@ Explain how this type of design is attempting to create exchangeability. Do you 
 ### Exercise 4 {-}
 
 Of the three quasi-experimental study designs we've discussed (regression discontinuity, instrumental variables, and interrupted time series), which do you think is most effective in reaching exchangeability? Which do you think is least effective? Explain your thoughts.
+
+
+<br><br>
+
+
+```{block2, type="exittix"}
+**Take a few minutes to reflect on today's ideas by filling out an [exit ticket](https://docs.google.com/forms/d/e/1FAIpQLScHlTYLjpItT3XjktsBtJl--CqQ86WnoQS_tWmj8KHoSEzgig/viewform?usp=sf_link).**
+```

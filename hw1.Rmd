@@ -23,7 +23,7 @@ Consider the 4 scenarios below. For all scenarios, $A$ represents a binary treat
 
 <br>
 
-a. Draw plots that illustrate the following 4 scenarios. Annotate the plots sufficiently enough to clearly show the properties indicated in the scenarios.
+a. Draw plots that illustrate the following 4 scenarios. Annotate the plots sufficiently enough to clearly show the properties indicated in the scenarios. Alternatively, you can create numerical examples. Clearly show how the numerical examples show the properties in the scenarios.
 
 b. Based on your illustrations, provide clarification to a colleague who asks you the following: "If marginal exchangeability holds, then treatment and outcome are independent right? So doesn't that always mean that there will never be a causal effect? Because a causal effect means that outcome depends on treatment?"
 

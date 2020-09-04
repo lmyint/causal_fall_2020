@@ -1,14 +1,22 @@
 # References {-}
 
-## References for review {-}
-
-- [STAT 155 Notes](https://bcheggeseth.github.io/Stat155Notes/): An online set of notes for STAT 155 written by the Macalester statistics faculty.
-- [Probability Essentials](https://youtu.be/acofPsJDq5Y): A YouTube video outlining some key ideas from probability that we will use in this course.
-
 ## Required references {-}
 
 - Causal Inference in Statistics: A Primer, by Judea Pearl, Madelyn Glymour, and Nicholas P. Jewell. PDF freely available [online](http://bayes.cs.ucla.edu/PRIMER/). (Referred to as "PRIMER".)
 - Causal Inference: What If, by Miguel A. Hernán and James M. Robins. PDF freely available [online](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/). (Referred to as "WHATIF".)
+
+
+<br>
+
+
+## References for review {-}
+
+- [STAT 155 Notes](https://bcheggeseth.github.io/Stat155Notes/): An online set of notes for STAT 155 written by the Macalester statistics faculty.
+- [Probability Essentials](https://youtu.be/acofPsJDq5Y): A YouTube video outlining some key ideas from probability that we will use in this course.
+- [This article](https://medium.com/@EpiEllie/having-confidence-in-confidence-intervals-8f881712d837) by Eleanor Murray has a great explanation of the most common misinterpretation of confidence intervals.
+
+<br>
+
 
 ## Further exploration {-}
 
