@@ -150,7 +150,18 @@ code > span.in { color: #0066ff; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="exchangeability.html"><a href="exchangeability.html#exercise-4"><i class="fa fa-check"></i>Exercise 4</a></li>
 <li class="chapter" data-level="" data-path="homework-1.html"><a href="homework-1.html#exercise-5"><i class="fa fa-check"></i>Exercise 5</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="homework-2.html"><a href="homework-2.html"><i class="fa fa-check"></i>Homework 2</a></li>
+<li class="chapter" data-level="" data-path="homework-2.html"><a href="homework-2.html"><i class="fa fa-check"></i>Homework 2</a><ul>
+<li class="chapter" data-level="" data-path="homework-2.html"><a href="homework-2.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="exchangeability.html"><a href="exchangeability.html#exercise-1"><i class="fa fa-check"></i>Exercise 1</a></li>
+<li class="chapter" data-level="" data-path="exchangeability.html"><a href="exchangeability.html#exercise-2"><i class="fa fa-check"></i>Exercise 2</a></li>
+<li class="chapter" data-level="" data-path="exchangeability.html"><a href="exchangeability.html#exercise-3"><i class="fa fa-check"></i>Exercise 3</a></li>
+<li class="chapter" data-level="" data-path="exchangeability.html"><a href="exchangeability.html#exercise-4"><i class="fa fa-check"></i>Exercise 4</a></li>
+<li class="chapter" data-level="" data-path="homework-1.html"><a href="homework-1.html#exercise-5"><i class="fa fa-check"></i>Exercise 5</a></li>
+<li class="chapter" data-level="" data-path="homework-2.html"><a href="homework-2.html#exercise-6"><i class="fa fa-check"></i>Exercise 6</a></li>
+<li class="chapter" data-level="" data-path="homework-2.html"><a href="homework-2.html#exercise-7"><i class="fa fa-check"></i>Exercise 7</a></li>
+<li class="chapter" data-level="" data-path="homework-2.html"><a href="homework-2.html#exercise-8"><i class="fa fa-check"></i>Exercise 8</a></li>
+<li class="chapter" data-level="" data-path="homework-2.html"><a href="homework-2.html#exercise-9"><i class="fa fa-check"></i>Exercise 9</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
 
@@ -175,9 +186,121 @@ code > span.in { color: #0066ff; font-weight: bold; font-style: italic; } /* Inf
 <h1>Homework 2</h1>
 <center>
 <p><strong>Due Sunday, September 13 at midnight CST on <a href="https://moodle.macalester.edu/mod/assign/view.php?id=27999">Moodle</a></strong></p>
-<strong>Please turn in a single document containing your responses.</strong>
+<p><strong>Please turn in a single knitted PDF document containing your responses.</strong></p>
+(If you have LaTeX installed, you can knit directly to PDF. Otherwise, you can knit to HTML and &quot;Print&quot; the page to save it as a PDF.)
 </center>
+<div id="introduction" class="section level2 unnumbered">
+<h2>Introduction</h2>
+<p>The context of the exercises in this assignment comes from the study <em>A Population-Based Study on Nighttime Road Traffic Noise and Insomnia</em> published in the journal <em>Sleep</em> in 2017.</p>
+<p>The article is freely available <a href="http://academic.oup.com/sleep/article/40/2/zsw055/2662183">here</a>. You will need to read parts of this article for this assignment.</p>
+</div>
+<div id="exercise-1" class="section level2 unnumbered">
+<h2>Exercise 1</h2>
+<p>In judging the strength of evidence in research studies, it is important to critically evaluate the quality of data that the authors used.</p>
+<p>Read the <em>Noise Exposure Assessment</em> section of the paper. Briefly explain 2 concerns that you have about how the authors determined noise levels.</p>
+<p><br></p>
+</div>
+<div id="exercise-2" class="section level2 unnumbered">
+<h2>Exercise 2</h2>
+<p>Figure 1 shows (a simplified version of) the causal graph the authors used in their work. Write down the joint distribution of the data using the Causal Markov Assumption. Use the variable abbreviations below:</p>
+<ul>
+<li>D: Demography</li>
+<li>CD: Chronic diseases</li>
+<li>L: Lifestyle</li>
+<li>SES: Socioeconomic status</li>
+<li>NS: Noise sensitivity</li>
+<li>NA: Noise annoyance</li>
+<li>A: Road traffic noise</li>
+<li>Y: Sleep disturbances</li>
+</ul>
+<p><br></p>
+</div>
+<div id="exercise-3" class="section level2 unnumbered">
+<h2>Exercise 3</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p>In Figure 1, which parts of the graph generate causal effects of the treatment (road traffic noise) on the outcome (sleep disturbances)? State these explicitly.</p></li>
+<li><p>Are the observed outcomes across treatment levels a good representation of the missing potential outcomes? Which parts of the graph are relevant to look at to answer that question? (Describe this in general terms rather than stating all of them.) <strong>How</strong> do these parts of the graph create misleading associations? Explain in terms of relevant graph building block structures and exchangeability.</p></li>
+</ol>
+<p><br></p>
+</div>
+<div id="exercise-4" class="section level2 unnumbered">
+<h2>Exercise 4</h2>
+<p>Consider a modified version of the Figure 1 graph shown below.</p>
+<p><img src="causal_manual_files/figure-html/hw2_ex4-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>How can you identify a set of variables <span class="math inline">\(Z\)</span> that will result in conditional exchangeability of the treatment groups? Briefly explain how your proposed process achieves this.</p>
+<p>Identify one possible set <span class="math inline">\(Z\)</span>. Show your work.</p>
+<p><br></p>
+</div>
+<div id="exercise-5" class="section level2 unnumbered">
+<h2>Exercise 5</h2>
+<p>Here, you'll check if the set <span class="math inline">\(Z\)</span> you identified in Exercise 4 works.</p>
+<p>Simulate data from a causal graph that has the same structure as the graph in Exercise 4. All variables should be quantitative except for the outcome <span class="math inline">\(Y\)</span>, which should be binary. Display output from an appropriate check.</p>
+<p><br></p>
+</div>
+<div id="exercise-6" class="section level2 unnumbered">
+<h2>Exercise 6</h2>
+<p>Continuing from the causal graph in Exercise 4, suppose that the household income and physical activity variables were unmeasured.</p>
+<p>Use two different strategies to try to regain conditional exchangeability (at least approximately).</p>
+<p><br></p>
+</div>
+<div id="exercise-7" class="section level2 unnumbered">
+<h2>Exercise 7</h2>
+<p>What would the causal graph from Exercise 4 look like if this study had been a randomized experiment? You can draw the graph or explain how it would look different. Using this graph, make a connection between relevant graph concepts and marginal exchangeability.</p>
+<p><br></p>
+</div>
+<div id="exercise-8" class="section level2 unnumbered">
+<h2>Exercise 8</h2>
+<p>Pick one quasi-experimental study design and explain in a few sentences how it could be applied in the setting of this sleep study.</p>
+<p><br></p>
+</div>
+<div id="exercise-9" class="section level2 unnumbered">
+<h2>Exercise 9</h2>
+<p>(This exercise is not related to the sleep study.)</p>
+<p>Suppose that the treatment (<span class="math inline">\(A\)</span>) groups are exchangeable conditional on <span class="math inline">\(Z\)</span>. Given the table of information below, compute the following average causal effects:</p>
+<ul>
+<li>Overall ACE: <span class="math inline">\(E[Y^{a=1} - Y^{a=0}]\)</span></li>
+<li>ACE within <span class="math inline">\(Z = A\)</span>: <span class="math inline">\(E[Y^{a=1} - Y^{a=0} \mid Z = A]\)</span></li>
+<li>ACE within <span class="math inline">\(Z = B\)</span>: <span class="math inline">\(E[Y^{a=1} - Y^{a=0} \mid Z = B]\)</span></li>
+</ul>
+<p>(<span class="math inline">\(Z\)</span> and <span class="math inline">\(A\)</span> are binary, and <span class="math inline">\(Y\)</span> is quantitative. <span class="math inline">\(n\)</span> indicates the sample size for the 4 groups.)</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(n\)</span></th>
+<th align="center"><span class="math inline">\(Z\)</span></th>
+<th align="center"><span class="math inline">\(A\)</span></th>
+<th align="center"><span class="math inline">\(E[Y\mid A, Z]\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">80</td>
+<td align="center">A</td>
+<td align="center">1</td>
+<td align="center">40</td>
+</tr>
+<tr class="even">
+<td align="center">20</td>
+<td align="center">A</td>
+<td align="center">0</td>
+<td align="center">20</td>
+</tr>
+<tr class="odd">
+<td align="center">20</td>
+<td align="center">B</td>
+<td align="center">1</td>
+<td align="center">30</td>
+</tr>
+<tr class="even">
+<td align="center">80</td>
+<td align="center">B</td>
+<td align="center">0</td>
+<td align="center">20</td>
+</tr>
+</tbody>
+</table>
 
+</div>
 </div>
             </section>
 

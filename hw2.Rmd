@@ -7,5 +7,125 @@ knitr::opts_chunk$set(echo=TRUE, eval=FALSE)
 <center>
 **Due Sunday, September 13 at midnight CST on [Moodle](https://moodle.macalester.edu/mod/assign/view.php?id=27999)**
 
-**Please turn in a single document containing your responses.**
+**Please turn in a single knitted PDF document containing your responses.**
+
+(If you have LaTeX installed, you can knit directly to PDF. Otherwise, you can knit to HTML and "Print" the page to save it as a PDF.)
 </center>
+
+## Introduction {-}
+
+The context of the exercises in this assignment comes from the study *A Population-Based Study on Nighttime Road Traffic Noise and Insomnia* published in the journal *Sleep* in 2017.
+
+The article is freely available [here](http://academic.oup.com/sleep/article/40/2/zsw055/2662183). You will need to read parts of this article for this assignment.
+
+## Exercise 1 {-}
+
+In judging the strength of evidence in research studies, it is important to critically evaluate the quality of data that the authors used.
+
+Read the *Noise Exposure Assessment* section of the paper. Briefly explain 2 concerns that you have about how the authors determined noise levels.
+
+<br>
+
+## Exercise 2 {-}
+
+Figure 1 shows (a simplified version of) the causal graph the authors used in their work. Write down the joint distribution of the data using the Causal Markov Assumption. Use the variable abbreviations below:
+
+- D: Demography
+- CD: Chronic diseases
+- L: Lifestyle
+- SES: Socioeconomic status
+- NS: Noise sensitivity
+- NA: Noise annoyance
+- A: Road traffic noise
+- Y: Sleep disturbances
+
+<br>
+
+## Exercise 3 {-}
+
+a. In Figure 1, which parts of the graph generate causal effects of the treatment (road traffic noise) on the outcome (sleep disturbances)? State these explicitly.
+
+b. Are the observed outcomes across treatment levels a good representation of the missing potential outcomes? Which parts of the graph are relevant to look at to answer that question? (Describe this in general terms rather than stating all of them.) **How** do these parts of the graph create misleading associations? Explain in terms of relevant graph building block structures and exchangeability.
+
+<br>
+
+## Exercise 4 {-}
+
+Consider a modified version of the Figure 1 graph shown below.
+
+```{r hw2_ex4, echo=FALSE, eval=TRUE, fig.align="center"}
+library(dagitty)
+dag <- dagitty("dag {
+bb=\"0,0,1,1\"
+\"Household income\" [pos=\"0.295,0.238\"]
+\"Noise annoyance\" [pos=\"0.413,0.521\"]
+\"Noise sensitivity\" [pos=\"0.372,0.394\"]
+\"Physical activity\" [pos=\"0.556,0.364\"]
+\"Road traffic noise\" [exposure,pos=\"0.179,0.595\"]
+\"Sleep disturbances\" [outcome,pos=\"0.760,0.589\"]
+\"Household income\" -> \"Physical activity\"
+\"Household income\" -> \"Road traffic noise\"
+\"Noise annoyance\" -> \"Sleep disturbances\"
+\"Noise sensitivity\" -> \"Noise annoyance\"
+\"Noise sensitivity\" -> \"Sleep disturbances\"
+\"Physical activity\" -> \"Sleep disturbances\"
+\"Road traffic noise\" -> \"Noise annoyance\"
+\"Road traffic noise\" -> \"Sleep disturbances\"
+}
+")
+
+plot(dag)
+```
+
+How can you identify a set of variables $Z$ that will result in conditional exchangeability of the treatment groups? Briefly explain how your proposed process achieves this.
+
+Identify one possible set $Z$. Show your work.
+
+<br>
+
+## Exercise 5 {-}
+
+Here, you'll check if the set $Z$ you identified in Exercise 4 works.
+
+Simulate data from a causal graph that has the same structure as the graph in Exercise 4. All variables should be quantitative except for the outcome $Y$, which should be binary. Display output from an appropriate check.
+
+<br>
+
+## Exercise 6 {-}
+
+Continuing from the causal graph in Exercise 4, suppose that the household income and physical activity variables were unmeasured.
+
+Use two different strategies to try to regain conditional exchangeability (at least approximately).
+
+<br>
+
+## Exercise 7 {-}
+
+What would the causal graph from Exercise 4 look like if this study had been a randomized experiment? You can draw the graph or explain how it would look different. Using this graph, make a connection between relevant graph concepts and marginal exchangeability.
+
+<br>
+
+## Exercise 8 {-}
+
+Pick one quasi-experimental study design and explain in a few sentences how it could be applied in the setting of this sleep study.
+
+<br>
+
+## Exercise 9 {-}
+
+(This exercise is not related to the sleep study.)
+
+Suppose that the treatment ($A$) groups are exchangeable conditional on $Z$. Given the table of information below, compute the following average causal effects:
+
+- Overall ACE: $E[Y^{a=1} - Y^{a=0}]$
+- ACE within $Z = A$: $E[Y^{a=1} - Y^{a=0} \mid Z = A]$
+- ACE within $Z = B$: $E[Y^{a=1} - Y^{a=0} \mid Z = B]$
+
+($Z$ and $A$ are binary, and $Y$ is quantitative. $n$ indicates the sample size for the 4 groups.)
+
+ $n$   $Z$   $A$   $E[Y\mid A, Z]$
+----- ----- ----- -----------------
+  80    A     1         40
+  20    A     0         20
+  20    B     1         30
+  80    B     0         20

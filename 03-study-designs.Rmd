@@ -53,10 +53,6 @@ Checkpoint questions: [Link to Moodle checkpoint](https://moodle.macalester.edu/
 
 <br><br><br><br>
 
-<!-- Warm up:
-    Randomized experiments guarantee marginal exchangeability. TRUE or FALSE?
- -->
-
 
 ## Exercises {-}
 
