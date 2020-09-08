@@ -41,6 +41,10 @@ Checkpoint questions: [Link to Moodle checkpoint](https://moodle.macalester.edu/
 - Formulate use cases of simulation to understand causal inference concepts
 
 
+<center>
+<img src="images/course_flow3.svg" width="60%" height="60%">
+</center>
+
 <br><br><br><br>
 
 
