@@ -9,7 +9,7 @@ knitr::opts_chunk$set(echo=TRUE, eval=FALSE)
 
 **Please turn in a single knitted PDF document containing your responses.**
 
-(If you have LaTeX installed, you can knit directly to PDF. Otherwise, you can knit to HTML and "Print" the page to save it as a PDF.)
+(If you have LaTeX installed, you can knit directly to PDF (preferred method). Otherwise, you can knit to HTML and "Print" the page to save it as a PDF.)
 </center>
 
 ## Introduction {-}
@@ -22,7 +22,7 @@ The article is freely available [here](http://academic.oup.com/sleep/article/40/
 
 In judging the strength of evidence in research studies, it is important to critically evaluate the quality of data that the authors used.
 
-Read the *Noise Exposure Assessment* section of the paper. Briefly explain 2 concerns that you have about how the authors determined noise levels.
+Read the *Noise Exposure Assessment* section of the paper. Briefly explain 2 concerns that you have about how the authors determined noise levels. (4 sentences max.)
 
 <br>
 
@@ -43,9 +43,9 @@ Figure 1 shows (a simplified version of) the causal graph the authors used in th
 
 ## Exercise 3 {-}
 
-a. In Figure 1, which parts of the graph generate causal effects of the treatment (road traffic noise) on the outcome (sleep disturbances)? State these explicitly.
+a. In Figure 1, which parts of the graph generate causal effects of the treatment (road traffic noise) on the outcome (sleep disturbances)? State these explicitly. (No explanation required.)
 
-b. Are the observed outcomes across treatment levels a good representation of the missing potential outcomes? Which parts of the graph are relevant to look at to answer that question? (Describe this in general terms rather than stating all of them.) **How** do these parts of the graph create misleading associations? Explain in terms of relevant graph building block structures and exchangeability.
+b. Are the observed outcomes across treatment levels a good representation of the missing potential outcomes? Which parts of the graph are relevant to look at to answer that question? (Describe this in general terms rather than stating all of them.) **How** do these parts of the graph create misleading associations? Explain in terms of relevant graph building block structures and exchangeability. (4 sentences max.)
 
 <br>
 
@@ -77,7 +77,7 @@ bb=\"0,0,1,1\"
 plot(dag)
 ```
 
-How can you identify a set of variables $Z$ that will result in conditional exchangeability of the treatment groups? Briefly explain how your proposed process achieves this.
+How can you identify a set of variables $Z$ that will result in conditional exchangeability of the treatment groups? Briefly explain how your proposed process achieves this. (4 sentences max.)
 
 Identify one possible set $Z$. Show your work.
 
@@ -95,19 +95,19 @@ Simulate data from a causal graph that has the same structure as the graph in Ex
 
 Continuing from the causal graph in Exercise 4, suppose that the household income and physical activity variables were unmeasured.
 
-Use two different strategies to try to regain conditional exchangeability (at least approximately).
+Use two different strategies to try to regain conditional exchangeability (at least approximately). (4 sentences max.)
 
 <br>
 
 ## Exercise 7 {-}
 
-What would the causal graph from Exercise 4 look like if this study had been a randomized experiment? You can draw the graph or explain how it would look different. Using this graph, make a connection between relevant graph concepts and marginal exchangeability.
+What would the causal graph from Exercise 4 look like if this study had been a randomized experiment? You can draw the graph or explain how it would look different. Using this graph, make a connection between relevant graph concepts and marginal exchangeability. (4 sentences max.)
 
 <br>
 
 ## Exercise 8 {-}
 
-Pick one quasi-experimental study design and explain in a few sentences how it could be applied in the setting of this sleep study.
+Pick one quasi-experimental study design and explain in a few sentences how it could be applied in the setting of this sleep study. (4 sentences max.)
 
 <br>
 
@@ -115,7 +115,7 @@ Pick one quasi-experimental study design and explain in a few sentences how it c
 
 (This exercise is not related to the sleep study.)
 
-Suppose that the treatment ($A$) groups are exchangeable conditional on $Z$. Given the table of information below, compute the following average causal effects:
+Suppose that the treatment ($A$) groups are exchangeable conditional on $Z$. Given the table of information below, compute the following average causal effects (showing your work):
 
 - Overall ACE: $E[Y^{a=1} - Y^{a=0}]$
 - ACE within $Z = A$: $E[Y^{a=1} - Y^{a=0} \mid Z = A]$
