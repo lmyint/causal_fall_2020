@@ -1,34 +1,29 @@
-```{r hw2_setup, include=FALSE}
-knitr::opts_chunk$set(echo=TRUE, eval=FALSE)
-```
+---
+title: "Homework 2"
+author: "Your Name"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
 
-# Homework 2 {-}
+<!-- Save this template as hw2_LastName_FirstName.Rmd -->
 
-<center>
-**Due Sunday, September 13 at midnight CST on [Moodle](https://moodle.macalester.edu/mod/assign/view.php?id=27999)**
-
-**Please turn in a single knitted PDF document containing your responses.**
-
-(If you have LaTeX installed, you can knit directly to PDF (preferred method). Otherwise, you can knit to HTML and "Print" the page to save it as a PDF.)
-
-**A template that you can work from is available [here](template_rmds/hw2.Rmd). Please save this file as `hw2_LastName_FirstName.Rmd`.**
-</center>
-
-## Introduction {-}
-
-The context of the exercises in this assignment comes from the study *A Population-Based Study on Nighttime Road Traffic Noise and Insomnia* published in the journal *Sleep* in 2017.
-
-The article is freely available [here](http://academic.oup.com/sleep/article/40/2/zsw055/2662183). You will need to read parts of this article for this assignment.
-
-## Exercise 1 {-}
+# Exercise 1
 
 In judging the strength of evidence in research studies, it is important to critically evaluate the quality of data that the authors used.
 
 Read the *Noise Exposure Assessment* section of the paper. Briefly explain 2 concerns that you have about how the authors determined noise levels. (4 sentences max.)
 
-<br>
+> **Response:** 
 
-## Exercise 2 {-}
+
+
+<br><br>
+
+
+
+# Exercise 2
 
 Figure 1 shows (a simplified version of) the causal graph the authors used in their work. Write down the joint distribution of the data using the Causal Markov Assumption. Use the variable abbreviations below:
 
@@ -41,17 +36,35 @@ Figure 1 shows (a simplified version of) the causal graph the authors used in th
 - A: Road traffic noise
 - Y: Sleep disturbances
 
-<br>
+> **Response:** 
 
-## Exercise 3 {-}
 
-a. In Figure 1, which parts of the graph generate causal effects of the treatment (road traffic noise) on the outcome (sleep disturbances)? State these explicitly. (No explanation required.)
 
-b. Are the observed outcomes across treatment levels a good representation of the missing potential outcomes? Which parts of the graph are relevant to look at to answer that question? (Describe this in general terms rather than stating all of them.) **How** do these parts of the graph create misleading associations? Explain in terms of relevant graph building block structures and exchangeability. (4 sentences max.)
+<br><br>
 
-<br>
 
-## Exercise 4 {-}
+
+# Exercise 3
+
+## Part a
+
+In Figure 1, which parts of the graph generate causal effects of the treatment (road traffic noise) on the outcome (sleep disturbances)? State these explicitly. (No explanation required.)
+
+> **Response:** 
+
+## Part b
+
+Are the observed outcomes across treatment levels a good representation of the missing potential outcomes? Which parts of the graph are relevant to look at to answer that question? (Describe this in general terms rather than stating all of them.) **How** do these parts of the graph create misleading associations? Explain in terms of relevant graph building block structures and exchangeability. (4 sentences max.)
+
+> **Response:** 
+
+
+
+<br><br>
+
+
+
+# Exercise 4
 
 Consider a modified version of the Figure 1 graph shown below.
 
@@ -83,37 +96,67 @@ How can you identify a set of variables $Z$ that will result in conditional exch
 
 Identify one possible set $Z$. Show your work.
 
-<br>
+> **Response:** 
 
-## Exercise 5 {-}
+
+
+<br><br>
+
+
+
+# Exercise 5
 
 Here, you'll check if the set $Z$ you identified in Exercise 4 works.
 
 Simulate data from a causal graph that has the same structure as the graph in Exercise 4. All variables should be quantitative except for the outcome $Y$, which should be binary. Display output from an appropriate check.
 
-<br>
+> **Response:** 
 
-## Exercise 6 {-}
+
+
+<br><br>
+
+
+
+# Exercise 6
 
 Continuing from the causal graph in Exercise 4, suppose that the household income and physical activity variables were unmeasured.
 
 Use two different strategies to try to regain conditional exchangeability (at least approximately). (4 sentences max.)
 
-<br>
+> **Response:** 
 
-## Exercise 7 {-}
+
+
+<br><br>
+
+
+
+# Exercise 7
 
 What would the causal graph from Exercise 4 look like if this study had been a randomized experiment? You can draw the graph or explain how it would look different. Using this graph, make a connection between relevant graph concepts and marginal exchangeability. (4 sentences max.)
 
-<br>
+> **Response:** 
 
-## Exercise 8 {-}
+
+
+<br><br>
+
+
+
+# Exercise 8
 
 Pick one quasi-experimental study design and explain in a few sentences how it could be applied in the setting of this sleep study. (4 sentences max.)
 
-<br>
+> **Response:** 
 
-## Exercise 9 {-}
+
+
+<br><br>
+
+
+
+# Exercise 9
 
 (This exercise is not related to the sleep study.)
 
@@ -131,3 +174,9 @@ Suppose that the treatment ($A$) groups are exchangeable conditional on $Z$. Giv
   20    A     0         20
   20    B     1         30
   80    B     0         20
+
+> **Response:** 
+
+
+
+
