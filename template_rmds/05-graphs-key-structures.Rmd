@@ -45,7 +45,7 @@ Use appropriate check(s) to verify the conditional relation in this structure.
 
 # Exercise 3
 
-Simulate a collider `X -> Y <- Z` where `Y` also has a child `A` (`Y -> A`). Let `X` and `A` be quantitative, and let `Y` and `Z` be binary.
+Simulate a collider `X -> Y <- Z` where `Y` also has a child `A` (`Y -> A`). Let all 4 variables be binary.
 
 Use appropriate check(s) to verify the marginal and conditional relations between `X` and `Z` in this structure.
 

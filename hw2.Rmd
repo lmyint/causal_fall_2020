@@ -20,6 +20,25 @@ The context of the exercises in this assignment comes from the study *A Populati
 
 The article is freely available [here](http://academic.oup.com/sleep/article/40/2/zsw055/2662183). You will need to read parts of this article for this assignment.
 
+<br>
+
+The following learning objectives are covered in this assignment:
+
+- **`EXCH1`:** Apply the concepts of marginal and conditional exchangeability to answer questions about (hypothetical) data on potential outcomes.
+- **`EXCH2`:** Give examples of when marginal and conditional exchangeability would and would not hold in various data contexts.
+- **`EXCH3`:** Explain why a direct comparison of the outcomes in the treated and untreated is misleading as an estimate of a causal effect.
+- **`DESI1`:** Explain how randomized experiments relate to exchangeability.
+- **`DESI2`:** Explain how quasi-experimental and general observational studies relate to exchangeability.
+- **`DESI3`:** Compare the strengths and weaknesses of different study designs for answering a research question.
+- **`PGRA1`:** Apply the Causal Markov assumption to express the joint distribution of data.
+- **`CNCP1`:** Explain how causal and noncausal paths relate to exchangeability and causal effects.
+- **`DSEP1`:** Apply d-separation to block noncausal paths in causal DAGs with and without unobserved variables.
+- **`DSEP2`:** Apply strategies to deal with exchangeability problems caused by unobserved variables.
+- **`DSEP3`:** Simulate data from a causal DAG under linear and logistic regression SEMs to check d-separation properties through regression modeling and visualization.
+- **`DSEP4`:** Explain how d-separation relates to conditional exchangeability.
+
+<br>
+
 ## Exercise 1 {-}
 
 In judging the strength of evidence in research studies, it is important to critically evaluate the quality of data that the authors used.
