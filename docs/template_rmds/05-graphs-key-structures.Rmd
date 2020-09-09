@@ -1,0 +1,80 @@
+---
+title: "Key Structures in Causal Graphs"
+author: "Your Name"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+In these exercises, you'll be practicing simulating data from structural equation models and verifying marginal and conditional (in)dependence properties in DAG structures.
+
+- Always use a regression model as a check.
+- If the situation readily corresponds to a plot, also make a plot as a check.
+
+**Coding note:** When you simulate binary variables and store them in a dataset, it is useful to store them explicitly as categorical as below. (This is most helpful for plotting.)
+
+```{r}
+# X is binary. Y and Z are quantitative.
+sim_data <- data.frame(X = factor(X), Y, Z)
+```
+
+
+<br>
+
+
+# Exercise 1
+
+Simulate a chain `X -> Y -> Z` where all three variables are quantitative.
+
+Use appropriate check(s) to verify the conditional relation in this structure.
+
+
+<br><br>
+
+
+# Exercise 2
+
+Simulate a fork `X <- Y -> Z` where `X` and `Z` are quantitative, and `Y` is binary.
+
+Use appropriate check(s) to verify the conditional relation in this structure.
+
+
+<br><br>
+
+
+# Exercise 3
+
+Simulate a collider `X -> Y <- Z` where `Y` also has a child `A` (`Y -> A`). Let `X` and `A` be quantitative, and let `Y` and `Z` be binary.
+
+Use appropriate check(s) to verify the marginal and conditional relations in this structure.
+
+
+<br><br>
+
+
+# Exercise 4
+
+Can we extend building block thinking to longer, more complex structures? Let's investigate here (conceptually, no simulation).
+
+## Part a
+
+Consider the longer structure `A <- B <- C -> D`. What do you expect about marginal/conditional (in)dependence of `A` and `D`? Explain.
+
+## Part b
+
+Consider the longer structure `A -> B <- C <- D -> E`. What do you expect about marginal/conditional (in)dependence of `A` and `E`? Explain.
+
+
+<br><br>
+
+
+# Exercise 5
+
+Discuss this Tweet (https://twitter.com/Lizstuartdc/status/1302604052753244161) with your group.
+
+- What does Liz Stuart mean by a "stark effect"? What might the trends look like if the effect weren't so stark?
+- What is the treatment? What evidence does this analysis provide? Is it strong evidence? Do you have any concerns?
+
+
+

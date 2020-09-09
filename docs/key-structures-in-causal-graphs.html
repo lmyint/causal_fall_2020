@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Topic 4 Causal Graphs as Statistical Models | STAT 451: Causal Inference</title>
+  <title>Topic 5 Key Structures in Causal Graphs | STAT 451: Causal Inference</title>
   <meta name="description" content="This is the class website for Causal Inference at Macalester College." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Topic 4 Causal Graphs as Statistical Models | STAT 451: Causal Inference" />
+  <meta property="og:title" content="Topic 5 Key Structures in Causal Graphs | STAT 451: Causal Inference" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="lmyint/causal_fall_2020" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Topic 4 Causal Graphs as Statistical Models | STAT 451: Causal Inference" />
+  <meta name="twitter:title" content="Topic 5 Key Structures in Causal Graphs | STAT 451: Causal Inference" />
   
   <meta name="twitter:description" content="This is the class website for Causal Inference at Macalester College." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="study-designs-overview.html"/>
-<link rel="next" href="key-structures-in-causal-graphs.html"/>
+<link rel="prev" href="causal-graphs-as-statistical-models.html"/>
+<link rel="next" href="homework-1.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -208,187 +208,104 @@ code > span.in { color: #0066ff; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="causal-graphs-as-statistical-models" class="section level1">
-<h1><span class="header-section-number">Topic 4</span> Causal Graphs as Statistical Models</h1>
+<div id="key-structures-in-causal-graphs" class="section level1">
+<h1><span class="header-section-number">Topic 5</span> Key Structures in Causal Graphs</h1>
 <div id="pre-class-work" class="section level2 unnumbered">
 <h2>Pre-class work</h2>
 <p>Videos/slides</p>
 <ul>
-<li>Introduction to Causal Graphs: <a href="https://youtu.be/vU7Vg6yaqmo">[video]</a>, <a href="https://drive.google.com/file/d/1RowV6uLm2HH3oxZnt6XuiMla-8ZvwWug/view?usp=sharing">[slides]</a></li>
-<li>Causal Graphs as Statistical Models: <a href="https://youtu.be/GlgQLt6TTZo">[video]</a>, <a href="https://drive.google.com/file/d/1BfJwctdZcuRm0wCOkrSxfHzZmSf7V4Bc/view?usp=sharing">[slides]</a></li>
+<li>Key Structures in Causal Graphs: <a href="https://youtu.be/UA0vyBnzi9U">[video]</a>, <a href="https://drive.google.com/file/d/1aMWXmbqouuf_IdU9CeY2BfncihyY1AwS/view?usp=sharing">[slides]</a></li>
 </ul>
-<p>Checkpoint questions: <a href="https://moodle.macalester.edu/mod/quiz/view.php?id=24237">Link to Moodle checkpoint</a></p>
+<p>Checkpoint questions: <a href="https://moodle.macalester.edu/mod/quiz/view.php?id=27981">Link to Moodle checkpoint</a></p>
 <ol class="example" style="list-style-type: decimal">
-<li>Which of the following graph properties characterize causal graphs?
+<li>Suppose that the variables A, B, and C in a causal graph are connected as such: A -- B -- C without knowledge of the arrow directions. If we only know that A and C are marginally dependent, which of the following structures are possible?
 <ol style="list-style-type: lower-alpha">
-<li>cyclic</li>
-<li>acyclic</li>
-<li>directed</li>
-<li>undirected</li>
-<li>complete</li>
+<li>A --&gt; B --&gt; C</li>
+<li>A &lt;-- B &lt;-- C</li>
+<li>A &lt;-- B --&gt; C</li>
+<li>A --&gt; B &lt;-- C</li>
 </ol></li>
-<li>For a directed graph with a node X: the parents of X are a subset of the ancestors of X.
+<li>If we know that A and C are conditionally dependent given B, which of the following structures are possible?
 <ol style="list-style-type: lower-alpha">
-<li>TRUE</li>
-<li>FALSE</li>
+<li>A --&gt; B --&gt; C</li>
+<li>A &lt;-- B &lt;-- C</li>
+<li>A &lt;-- B --&gt; C</li>
+<li>A --&gt; B &lt;-- C</li>
 </ol></li>
-<li><p>Apply the product decomposition rule using the Causal Markov assumption to express the joint distribution of variables in this graph: X --&gt; Y --&gt; Z</p></li>
-<li><p>Apply the product decomposition rule using the Causal Markov assumption to express the joint distribution of variables in this graph: Y &lt;-- X --&gt; Z</p></li>
+<li>If we know that A and C are marginally dependent and that A and C are conditionally independent given B, which of the following structures are possible?
+<ol style="list-style-type: lower-alpha">
+<li>A --&gt; B --&gt; C</li>
+<li>A &lt;-- B &lt;-- C</li>
+<li>A &lt;-- B --&gt; C</li>
+<li>A --&gt; B &lt;-- C</li>
+</ol></li>
+<li>How do chains, forks, and colliders relate to the concepts of exchangeability and causal effects? Explain in a few sentences.</li>
 </ol>
 <p><br><br><br><br></p>
 </div>
 <div id="learning-goals" class="section level2 unnumbered">
 <h2>Learning Goals</h2>
 <ul>
-<li>PGRA1: Apply the Causal Markov assumption to express the joint distribution of data.</li>
-<li>Simulate data from causal graphs under linear and logistic regression structural equation models.</li>
-<li>Formulate use cases of simulation to understand causal inference concepts</li>
+<li>DSEP3: Simulate data from causal graphs under linear and logistic regression structural equation models to check d-separation properties through regression modeling and visualization.</li>
 </ul>
 <center>
 <img src="images/course_flow3.svg" width="60%" height="60%">
 </center>
 <p><br><br><br><br></p>
 </div>
-<div id="simulating-data-in-r" class="section level2 unnumbered">
-<h2>Simulating data in R</h2>
-<p><strong>You can download a template RMarkdown file to start from <a href="template_rmds/04-graphs-models.Rmd">here</a>.</strong></p>
-<div id="why-simulate" class="section level3 unnumbered">
-<h3>Why simulate?</h3>
-<p>Simulation is a very powerful tool for understanding statistical ideas. We can simulate (generate) data where we know the true underlying distribution, and we can then see how statistical methods perform on this data. For example:</p>
-<ul>
-<li>Do 95% confidence intervals really contain the true population value in 95% of samples? When is this not true?</li>
-<li>Does regression work to estimate causal effects when we have conditional exchangeability?</li>
-</ul>
-<p><br></p>
-</div>
-<div id="simulation-functions-in-r" class="section level3 unnumbered">
-<h3>Simulation functions in R</h3>
-<p>R has functions to work with several probability distributions. For example, the following 4 functions work with the normal distribution:</p>
-<ul>
-<li><code>rnorm()</code>: Generate a <strong>r</strong>andom number from a normal distribution</li>
-<li><code>pnorm()</code>: Tail <strong>p</strong>robability from a normal distribution</li>
-<li><code>dnorm()</code>: Get <strong>d</strong>ensity value from a normal distribution</li>
-<li><code>qnorm()</code>: Get a <strong>q</strong>uantile from a normal distribution</li>
-</ul>
-<p>There are <code>r</code>, <code>p</code>, <code>d</code>, and <code>q</code> functions for other distributions too (e.g., <code>runif()</code>, <code>rbinom()</code>.) We'll primarily use <code>r</code> functions to generate random numbers.</p>
-<p><strong><code>rbinom()</code></strong>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 4 different people each flip a fair coin once</span>
-<span class="kw">rbinom</span>(<span class="dv">4</span>, <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">prob =</span> <span class="fl">0.5</span>)
-
-<span class="co"># 4 different people flip unfair coins</span>
-<span class="co"># First 2 flip a coin with P(Heads) = 0.9</span>
-<span class="co"># Second 2 flip a coin with P(Heads) = 0.2</span>
-<span class="kw">rbinom</span>(<span class="dv">4</span>, <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">prob =</span> <span class="kw">c</span>(<span class="fl">0.9</span>, <span class="fl">0.9</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>))
-
-<span class="co"># Write a command with rbinom() so that the result will definitively be 1,0,1</span></code></pre></div>
-<p><strong><code>rnorm()</code></strong>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 5 numbers from a normal distribution with mean 10 and SD 2</span>
-<span class="kw">rnorm</span>(<span class="dv">5</span>, <span class="dt">mean =</span> <span class="dv">10</span>, <span class="dt">sd =</span> <span class="dv">2</span>)
-
-<span class="co"># 3 numbers from 3 different normal distributions</span>
-<span class="co"># Means = 10, 100, 1000. SD = 1</span>
-<span class="kw">rnorm</span>(<span class="dv">3</span>, <span class="dt">mean =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>), <span class="dt">sd =</span> <span class="dv">1</span>)
-
-<span class="co"># Write a command with rnorm() so that the result will definitively be 10,20</span></code></pre></div>
-<p><br></p>
-</div>
-<div id="simulating-data-from-graphssems" class="section level3 unnumbered">
-<h3>Simulating data from graphs+SEMs</h3>
-<p>In this course, we'll simulate data that come from graphs and their corresponding structural equation models. We'll step through how to simulate data that come from this causal graph.</p>
-<p><img src="causal_manual_files/figure-html/04_dag_example-1.png" width="576" style="display: block; margin: auto;" /></p>
-<p><strong>Question:</strong> Using the Causal Markov Assumption, how can we express the joint distribution of this data?</p>
-<p><br></p>
-<p>Consider the structural equation model (SEM) below that is associated with our causal graph:</p>
-<p><span class="math display">\[
-\begin{align*}
-Z &amp;\sim N(\mu_Z = 40, \sigma_Z = 5) \\
-A &amp;\sim \mathrm{Binomial}(n = 1, p_A) \\
-p_A: &amp;\log\left(\frac{p_A}{1-p_A}\right) = -1 + 0.05Z \\
-Y &amp;\sim N(\mu_Y, \sigma_Y = 1) \\
-\mu_Y &amp;= 30 + 5A + 2Z
-\end{align*}
-\]</span></p>
-<ul>
-<li><span class="math inline">\(Z\)</span> is an exogenous variable that follows a normal distribution with mean 40 and standard deviation 5.</li>
-<li><span class="math inline">\(A\)</span> is binary (binomial/Bernoulli) with probability of success <span class="math inline">\(p_A\)</span>
-<ul>
-<li><span class="math inline">\(p_A\)</span> depends on <span class="math inline">\(Z\)</span> via a logistic regression model.</li>
-</ul></li>
-<li><span class="math inline">\(Y\)</span> is quantitative and follows a normal distribution.
-<ul>
-<li>The mean <span class="math inline">\(\mu_Y\)</span> depends on <span class="math inline">\(A\)</span> and <span class="math inline">\(Z\)</span> via a linear regression model.</li>
-</ul></li>
-</ul>
-<p><br></p>
-<p>Complete the code below to simulate data that follow this structural equation model.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Sample size</span>
-n &lt;-<span class="st"> </span><span class="dv">10000</span>
-
-<span class="co"># Simulate the Z variable</span>
-Z &lt;-<span class="st"> </span><span class="kw">rnorm</span>(?)
-
-<span class="co"># Simulate the A variable</span>
-log_odds_A &lt;-<span class="st"> </span><span class="op">-</span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="fl">0.05</span><span class="op">*</span>Z
-odds_A &lt;-<span class="st"> </span><span class="kw">exp</span>(log_odds_A)
-p_A &lt;-<span class="st"> </span>odds_A<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>odds_A)
-A &lt;-<span class="st"> </span><span class="kw">rbinom</span>(?)
-
-<span class="co"># Simulate the Y variable</span>
-mean_Y &lt;-<span class="st"> </span><span class="dv">30</span> <span class="op">+</span><span class="st"> </span>?
-Y &lt;-<span class="st"> </span>?
-
-<span class="co"># Store all simulated variables in a dataset called sim_data</span>
-sim_data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(Z, A, Y)</code></pre></div>
-<p><br></p>
-</div>
-<div id="reproducibility" class="section level3 unnumbered">
-<h3>Reproducibility</h3>
-<p>At the top of code chunks where you perform simulation, use the <code>set.seed()</code> function to ensure that when you rerun the code, you get the same results:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">451</span>)
-<span class="co"># Your simulation code</span></code></pre></div>
-<p><br><br><br><br></p>
-</div>
-</div>
 <div id="exercises" class="section level2 unnumbered">
 <h2>Exercises</h2>
 
 <div class="solutions">
-<strong>Solutions to these exercises are available <a href="https://moodle.macalester.edu/mod/folder/view.php?id=28899">on Moodle</a>.</strong>
+<strong>Solutions to these exercises are available <a href="https://moodle.macalester.edu/mod/folder/view.php?id=28902">on Moodle</a>.</strong>
 </div>
 
+
+<div class="warmup">
+<strong>Navigate to <a href="https://www.pollev.com/lesliemyint417">PollEverywhere</a> for some warm-up exercises.</strong>
+</div>
+
+<p><br><br></p>
+<p><strong>You can download a template RMarkdown file to start from <a href="template_rmds/05-graphs-key-structures.Rmd">here</a>.</strong></p>
+<p>In these exercises, you'll be practicing simulating data from structural equation models and verifying marginal and conditional (in)dependence properties in DAG structures.</p>
+<ul>
+<li>Always use a regression model as a check.</li>
+<li>If the situation readily corresponds to a plot, also make a plot as a check.</li>
+</ul>
+<p><strong>Coding note:</strong> When you simulate binary variables and store them in a dataset, it is useful to store them explicitly as categorical as below. (This is most helpful for plotting.)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># X is binary. Y and Z are quantitative.</span>
+sim_data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">X =</span> <span class="kw">factor</span>(X), Y, Z)</code></pre></div>
 <p><br></p>
-
-<div class="community">
-What's something that you enjoyed this long weekend?
-</div>
-
 <div id="exercise-1" class="section level3 unnumbered">
 <h3>Exercise 1</h3>
+<p>Simulate a chain <code>X -&gt; Y -&gt; Z</code> where all three variables are quantitative.</p>
+<p>Use appropriate check(s) to verify the conditional relation in this structure.</p>
+<p><br><br></p>
+</div>
+<div id="exercise-2" class="section level3 unnumbered">
+<h3>Exercise 2</h3>
+<p>Simulate a fork <code>X &lt;- Y -&gt; Z</code> where <code>X</code> and <code>Z</code> are quantitative, and <code>Y</code> is binary.</p>
+<p>Use appropriate check(s) to verify the conditional relation in this structure.</p>
+<p><br><br></p>
+</div>
+<div id="exercise-3" class="section level3 unnumbered">
+<h3>Exercise 3</h3>
+<p>Simulate a collider <code>X -&gt; Y &lt;- Z</code> where <code>Y</code> also has a child <code>A</code> (<code>Y -&gt; A</code>). Let <code>X</code> and <code>A</code> be quantitative, and let <code>Y</code> and <code>Z</code> be binary.</p>
+<p>Use appropriate check(s) to verify the marginal and conditional relations in this structure.</p>
+<p><br><br></p>
+</div>
+<div id="exercise-4" class="section level3 unnumbered">
+<h3>Exercise 4</h3>
+<p>Can we extend building block thinking to longer, more complex structures? Let's investigate here (conceptually, no simulation).</p>
 <ol style="list-style-type: lower-alpha">
-<li><p>Write the joint distribution of the data from the causal graph below using the Causal Markov Assumption. Then simulate data from the graph. You are free to choose your own structural equation model, but let <span class="math inline">\(Z\)</span>, <span class="math inline">\(W\)</span>, and <span class="math inline">\(Y\)</span> be quantitative. Let <span class="math inline">\(A\)</span> be binary. Use a sample size of 10,000 for your simulation.</p>
-<p><img src="causal_manual_files/figure-html/04_ex1-1.png" width="672" style="display: block; margin: auto;" /></p></li>
-<li><p>Based on the structural equation model you chose, what would you guess is the average causal effect of <span class="math inline">\(A\)</span> on <span class="math inline">\(Y\)</span>?</p></li>
-<li><p>Let's consider <em>simulating interventions</em> using your SEM. If you were to force all study units to receive a certain value of treatment (either 0 or 1), how do you think the causal graph would change?</p></li>
-<li><p>Modify your simulation to reflect your thoughts from part c. Incorporate the code below into your simulation.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Scenario 1: Force all to be treated</span>
-A_force_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>, n) <span class="co"># Repeat the number 1 n times</span>
-<span class="co"># Scenario 2: Force all to be treated</span>
-A_force_<span class="dv">0</span> &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, n) <span class="co"># Repeat the number 0 n times</span>
-
-<span class="co"># The treated potential outcome Y^{a=1}</span>
-Y1 &lt;-<span class="st"> </span>? <span class="co"># something with A_force_1</span>
-<span class="co"># The untreated potential outcome Y^{a=0}</span>
-Y0 &lt;-<span class="st"> </span>? <span class="co"># something with A_force_0</span>
-
-<span class="co"># Estimate the average causal effect</span>
-<span class="kw">mean</span>(?)</code></pre></div></li>
-<li><p>Was your intuition from part b close to the ACE that you estimated in the simulation?</p></li>
+<li><p>Consider the longer structure <code>A &lt;- B &lt;- C -&gt; D</code>. What do you expect about marginal/conditional (in)dependence of <code>A</code> and <code>D</code>? Explain.</p></li>
+<li><p>Consider the longer structure <code>A -&gt; B &lt;- C &lt;- D -&gt; E</code>. What do you expect about marginal/conditional (in)dependence of <code>A</code> and <code>E</code>? Explain.</p></li>
 </ol>
 <p><br><br></p>
 </div>
-<div id="interrupted-times-series-in-the-news" class="section level3 unnumbered">
-<h3>Interrupted times series in the news</h3>
-<p>If you have time, discuss the Tweet below with your group.</p>
+<div id="exercise-5" class="section level3 unnumbered">
+<h3>Exercise 5</h3>
+<p>Discuss the Tweet below with your group.</p>
 <ul>
 <li>What does Liz Stuart mean by a &quot;stark effect&quot;? What might the trends look like if the effect weren't so stark?</li>
 <li>What is the treatment? What evidence does this analysis provide? Is it strong evidence? Do you have any concerns?</li>
@@ -412,13 +329,16 @@ Wow this is a pretty compelling comparative interrupted time series graph. Don't
 </div>
 </div>
 </div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="study-designs-overview.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="key-structures-in-causal-graphs.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="causal-graphs-as-statistical-models.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="homework-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
