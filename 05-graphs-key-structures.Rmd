@@ -1,0 +1,129 @@
+```{r 05_setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, eval=FALSE, fig.align="center")
+```
+
+# Key Structures in Causal Graphs
+
+## Pre-class work {-}
+
+Videos/slides
+
+- Key Structures in Causal Graphs: [[video]](https://youtu.be/UA0vyBnzi9U), [[slides]](https://drive.google.com/file/d/1aMWXmbqouuf_IdU9CeY2BfncihyY1AwS/view?usp=sharing)
+
+Checkpoint questions: [Link to Moodle checkpoint](https://moodle.macalester.edu/mod/quiz/view.php?id=27981)
+
+@. Suppose that the variables A, B, and C in a causal graph are connected as such: A -- B -- C without knowledge of the arrow directions. If we only know that A and C are marginally dependent, which of the following structures are possible?
+    a. A --> B --> C
+    b. A <-- B <-- C
+    c. A <-- B --> C
+    d. A --> B <-- C
+
+@. If we know that A and C are conditionally dependent given B, which of the following structures are possible?
+    a. A --> B --> C
+    b. A <-- B <-- C
+    c. A <-- B --> C
+    d. A --> B <-- C
+
+@. If we know that A and C are marginally dependent and that A and C are conditionally independent given B, which of the following structures are possible?
+    a. A --> B --> C
+    b. A <-- B <-- C
+    c. A <-- B --> C
+    d. A --> B <-- C
+
+@. How do chains, forks, and colliders relate to the concepts of exchangeability and causal effects? Explain in a few sentences.
+
+
+<br><br><br><br>
+
+
+## Learning Goals {-}
+
+- DSEP3: Simulate data from causal graphs under linear and logistic regression structural equation models to check d-separation properties through regression modeling and visualization.
+
+<center>
+<img src="images/course_flow3.svg" width="60%" height="60%">
+</center>
+
+<br><br><br><br>
+
+
+## Exercises {-}
+
+```{block2, type="solutions"}
+**Solutions to these exercises are available [on Moodle](https://moodle.macalester.edu/mod/folder/view.php?id=28902).**
+```
+
+```{block2, type="warmup"}
+**Navigate to [PollEverywhere](https://www.pollev.com/lesliemyint417) for some warm-up exercises.**
+```
+
+<br><br>
+
+**You can download a template RMarkdown file to start from [here](template_rmds/05-graphs-key-structures.Rmd).**
+
+In these exercises, you'll be practicing simulating data from structural equation models and verifying marginal and conditional (in)dependence properties in DAG structures.
+
+- Always use a regression model as a check.
+- If the situation readily corresponds to a plot, also make a plot as a check.
+
+**Coding note:** When you simulate binary variables and store them in a dataset, it is useful to store them explicitly as categorical as below. (This is most helpful for plotting.)
+
+```{r}
+# X is binary. Y and Z are quantitative.
+sim_data <- data.frame(X = factor(X), Y, Z)
+```
+
+<br>
+
+### Exercise 1 {-}
+
+Simulate a chain `X -> Y -> Z` where all three variables are quantitative. (Use a sample size of 10,000 and a significance level of 0.05 throughout these exercises.)
+
+Use appropriate check(s) to verify the conditional relation in this structure.
+
+<br><br>
+
+### Exercise 2 {-}
+
+Simulate a fork `X <- Y -> Z` where `X` and `Z` are quantitative, and `Y` is binary.
+
+Use appropriate check(s) to verify the conditional relation in this structure.
+
+<br><br>
+
+### Exercise 3 {-}
+
+Simulate a collider `X -> Y <- Z` where `Y` also has a child `A` (`Y -> A`). Let `X` and `A` be quantitative, and let `Y` and `Z` be binary.
+
+Use appropriate check(s) to verify the marginal and conditional relations in this structure.
+
+<br><br>
+
+### Exercise 4 {-}
+
+Can we extend building block thinking to longer, more complex structures? Let's investigate here (conceptually, no simulation).
+
+a. Consider the longer structure `A <- B <- C -> D`. What do you expect about marginal/conditional (in)dependence of `A` and `D`? Explain.
+
+b. Consider the longer structure `A -> B <- C <- D -> E`. What do you expect about marginal/conditional (in)dependence of `A` and `E`? Explain.
+
+<br><br>
+
+### Exercise 5 {-}
+
+Discuss the Tweet below with your group.
+
+- What does Liz Stuart mean by a "stark effect"? What might the trends look like if the effect weren't so stark?
+- What is the treatment? What evidence does this analysis provide? Is it strong evidence? Do you have any concerns?
+
+<center>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Wow this is a pretty compelling comparative interrupted time series graph. Don&#39;t usually see such a stark effect. <a href="https://t.co/VCPLwUrXby">https://t.co/VCPLwUrXby</a></p>&mdash; Elizabeth Stuart (@Lizstuartdc) <a href="https://twitter.com/Lizstuartdc/status/1302604052753244161?ref_src=twsrc%5Etfw">September 6, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</center>
+
+
+<br><br>
+
+
+```{block2, type="exittix"}
+**Take a few minutes to reflect on today's ideas by filling out an [exit ticket](https://docs.google.com/forms/d/e/1FAIpQLScHlTYLjpItT3XjktsBtJl--CqQ86WnoQS_tWmj8KHoSEzgig/viewform?usp=sf_link).**
+```
