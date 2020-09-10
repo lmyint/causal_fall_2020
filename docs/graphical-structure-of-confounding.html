@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>References | STAT 451: Causal Inference</title>
+  <title>Topic 6 Graphical Structure of Confounding | STAT 451: Causal Inference</title>
   <meta name="description" content="This is the class website for Causal Inference at Macalester College." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="References | STAT 451: Causal Inference" />
+  <meta property="og:title" content="Topic 6 Graphical Structure of Confounding | STAT 451: Causal Inference" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="lmyint/causal_fall_2020" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="References | STAT 451: Causal Inference" />
+  <meta name="twitter:title" content="Topic 6 Graphical Structure of Confounding | STAT 451: Causal Inference" />
   
   <meta name="twitter:description" content="This is the class website for Causal Inference at Macalester College." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="schedule.html"/>
+<link rel="prev" href="key-structures-in-causal-graphs.html"/>
+<link rel="next" href="homework-1.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -219,43 +219,213 @@ code > span.in { color: #0066ff; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered">
-<h1>References</h1>
-<div id="required-references" class="section level2 unnumbered">
-<h2>Required references</h2>
+<div id="graphical-structure-of-confounding" class="section level1">
+<h1><span class="header-section-number">Topic 6</span> Graphical Structure of Confounding</h1>
+<div id="pre-class-work" class="section level2 unnumbered">
+<h2>Pre-class work</h2>
+<p>Videos/slides</p>
 <ul>
-<li>Causal Inference in Statistics: A Primer, by Judea Pearl, Madelyn Glymour, and Nicholas P. Jewell. PDF freely available <a href="http://bayes.cs.ucla.edu/PRIMER/">online</a>. (Referred to as &quot;PRIMER&quot;.)</li>
-<li>Causal Inference: What If, by Miguel A. Hernán and James M. Robins. PDF freely available <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">online</a>. (Referred to as &quot;WHATIF&quot;.)</li>
+<li>Causal and Noncausal Paths: <a href="https://youtu.be/ShZP9SR2fbs">[video]</a>, <a href="https://drive.google.com/file/d/122mVJhksLwrEdX_Ofc-y0eheTA7urqhc/view?usp=sharing">[slides]</a></li>
+<li>D-separation: <a href="https://youtu.be/eYtSHAlbWYw">[video]</a>, <a href="https://drive.google.com/file/d/1PDUrY56lcDvjUza-Zf4xEpYVQkCJ2IAs/view?usp=sharing">[slides]</a></li>
 </ul>
-<p><br></p>
+<p>Checkpoint questions: <a href="https://moodle.macalester.edu/mod/quiz/view.php?id=28001">Link to Moodle checkpoint</a></p>
+<ol class="example" style="list-style-type: decimal">
+<li><p>What is the relationship between d-separation and conditional exchangeability? Explain in a few sentences.</p></li>
+<li>Consider the causal graph below with treatment A, outcome Y, and other variables. Which of the following are causal paths?
+<ol style="list-style-type: lower-alpha">
+<li>A &lt;-- C --&gt; Y</li>
+<li>A --&gt; Y</li>
+<li>A --&gt; M --&gt; Y</li>
+<li>A &lt;-- U --&gt; S &lt;-- Y</li>
+</ol></li>
+</ol>
+<p><img src="causal_manual_files/figure-html/06_pre_class-1.png" width="672" style="display: block; margin: auto;" /></p>
+<ol start="3" class="example" style="list-style-type: decimal">
+<li>Which of the following are noncausal paths?
+<ol style="list-style-type: lower-alpha">
+<li>A &lt;-- C --&gt; Y</li>
+<li>A --&gt; Y</li>
+<li>A --&gt; M --&gt; Y</li>
+<li>A &lt;-- U --&gt; S &lt;-- Y</li>
+</ol></li>
+<li>Which of the following conditioning sets Z would work to leave causal paths open and block the noncausal paths?
+<ol style="list-style-type: lower-alpha">
+<li><span class="math inline">\(Z = \{C, M, U, S\}\)</span></li>
+<li><span class="math inline">\(Z = \{\}\)</span> (the empty set (no variables))</li>
+<li><span class="math inline">\(Z = \{C\}\)</span></li>
+<li><span class="math inline">\(Z = \{C, M, U\}\)</span></li>
+<li><span class="math inline">\(Z = \{C, U\}\)</span></li>
+<li><span class="math inline">\(Z = \{C, S\}\)</span></li>
+</ol></li>
+</ol>
+<p><br><br><br><br></p>
 </div>
-<div id="references-for-review" class="section level2 unnumbered">
-<h2>References for review</h2>
+<div id="learning-goals" class="section level2 unnumbered">
+<h2>Learning Goals</h2>
 <ul>
-<li><a href="https://bcheggeseth.github.io/Stat155Notes/">STAT 155 Notes</a>: An online set of notes for STAT 155 written by the Macalester statistics faculty.</li>
-<li><a href="https://youtu.be/acofPsJDq5Y">Probability Essentials</a>: A YouTube video outlining some key ideas from probability that we will use in this course.</li>
-<li><a href="https://medium.com/@EpiEllie/having-confidence-in-confidence-intervals-8f881712d837">This article</a> by Eleanor Murray has a great explanation of the most common misinterpretation of confidence intervals.</li>
+<li>CNCP1: Explain how causal and noncausal paths relate to exchangeability and causal effects.</li>
+<li>DSEP1: Apply d-separation to block noncausal paths in causal DAGs with and without unobserved variables.</li>
+<li>DSEP2: Apply strategies to deal with exchangeability problems caused by unobserved variables.</li>
+<li>DSEP3: Simulate data from a causal DAG under linear and logistic regression SEMs to check d-separation properties through regression modeling and visualization.</li>
+<li>DSEP4: Explain how d-separation relates to conditional exchangeability.</li>
 </ul>
-<p><br></p>
+<p><br><br><br><br></p>
 </div>
-<div id="further-exploration" class="section level2 unnumbered">
-<h2>Further exploration</h2>
+<div id="exercises" class="section level2 unnumbered">
+<h2>Exercises</h2>
+
+<div class="solutions">
+<strong>Solutions to these exercises are available <a href="https://moodle.macalester.edu/mod/folder/view.php?id=28903">on Moodle</a>.</strong>
+</div>
+
+
+<div class="warmup">
+<strong>Navigate to <a href="https://www.pollev.com/lesliemyint417">PollEverywhere</a> for some warm-up exercises.</strong>
+</div>
+
+<p><br></p>
+<div id="exercise-1" class="section level3 unnumbered">
+<h3>Exercise 1</h3>
+<p>Let's draw connections between the graph ideas that we have built up and the core assumption of causal inference: (conditional) exchangeability.</p>
+<p>Write a few sentences describing the relationship between the following ideas:</p>
 <ul>
-<li>The Book of Why: The New Science of Cause and Effect, by Judea Pearl and Dana Mackenzie (<a href="https://www.amazon.com/Book-Why-Science-Cause-Effect/dp/046509760X">Amazon</a>)</li>
-<li>Causality: Models, Reasoning, and Inference, by Judea Pearl (available as an <a href="http://linker2.worldcat.org/?jHome=https%3A%2F%2Fgo.openathens.net%2Fredirector%2Fmacalester.edu%3Furl%3Dhttps%3A%2F%2Fdoi.org%2F10.1017%2FCBO9780511803161&amp;linktype=best">eBook</a> through Macalester's library)</li>
-<li>edX course: <a href="https://www.edx.org/course/causal-diagrams-draw-your-assumptions-before-your">Causal Diagrams: Draw Your Assumptions Before Your Conclusions</a></li>
-<li>Udemy course: <a href="https://www.udemy.com/course/causal-data-science/">Causal Data Science with Directed Acyclic Graphs</a></li>
+<li>Causal Markov Assumption/product decomposition</li>
+<li>Graph building block structures: forks, chains, colliders</li>
+<li>Causal and noncausal paths</li>
+<li>(Conditional) exchangeability</li>
 </ul>
+<p><br><br></p>
+</div>
+<div id="exercise-2" class="section level3 unnumbered">
+<h3>Exercise 2</h3>
+<p>For each of the causal graphs below, identify the set of variables needed to achieve conditional exchangeability of the treatment groups <span class="math inline">\(A\)</span> for outcome <span class="math inline">\(Y\)</span> (if possible). Any <span class="math inline">\(U\)</span> variables displayed in the graphs are unobserved/unmeasured. Show your work.</p>
+<p><img src="causal_manual_files/figure-html/06_ex2-1.png" width="1056" style="display: block; margin: auto;" /><img src="causal_manual_files/figure-html/06_ex2-2.png" width="1056" style="display: block; margin: auto;" /></p>
+<p><br><br></p>
+</div>
+<div id="exercise-3" class="section level3 unnumbered">
+<h3>Exercise 3</h3>
+<p>Unmeasured variables are important to think about when constructing causal graphs from expert knowledge. Often times, things like personality traits and social factors (e.g., living situations, communities interacted with).</p>
+<p>Suppose that in the graphs below, the <span class="math inline">\(U\)</span> variables represents social factors, <span class="math inline">\(A\)</span> represents use of a social service, and <span class="math inline">\(Y\)</span> represents some measure of financial independence.</p>
+<p><img src="causal_manual_files/figure-html/06_ex3-1.png" width="1056" style="display: block; margin: auto;" /></p>
+<p>In this context, describe what <span class="math inline">\(L\)</span> might be in each graph and what these graphs illustrate about a general strategy for dealing with exchangeability problems caused by unmeasured variables.</p>
+<p><br><br></p>
+</div>
+<div id="exercise-4" class="section level3 unnumbered">
+<h3>Exercise 4</h3>
+<p>Another way to deal with unmeasured variables is by trying to obtain measurable <strong>proxies</strong> for them. (Sometimes proxies are also called <strong>surrogates</strong>.) Broadly speaking, a proxy/surrogate is a variable that is a good indicator for another.</p>
+<p>The simulation below investigates the use of proxies for achieving conditional exchangeability. Summarize the main findings from these results.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
+
+<span class="kw">set.seed</span>(<span class="dv">451</span>)
+n &lt;-<span class="st"> </span><span class="dv">10000</span>
+C &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dt">mean =</span> <span class="dv">10</span>, <span class="dt">sd =</span> <span class="dv">2</span>)
+A &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dt">mean =</span> C, <span class="dt">sd =</span> <span class="dv">2</span>)
+Y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dt">mean =</span> C<span class="op">+</span>A, <span class="dt">sd =</span> <span class="dv">2</span>)
+
+<span class="co"># Proxies (two of them: P1 and P2)</span>
+P1 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dt">mean =</span> C, <span class="dt">sd =</span> <span class="dv">1</span>)
+P2 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dt">mean =</span> C, <span class="dt">sd =</span> <span class="fl">0.1</span>)
+
+sim_data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(C, A, Y, P1, P2)
+
+<span class="kw">lm</span>(Y <span class="op">~</span><span class="st"> </span>A<span class="op">+</span>C, <span class="dt">data =</span> sim_data) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summary</span>()</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Y ~ A + C, data = sim_data)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -7.6410 -1.3500  0.0133  1.3511  7.6709 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  0.05079    0.10278   0.494    0.621    
+## A            1.00020    0.01004  99.643   &lt;2e-16 ***
+## C            0.99951    0.01422  70.269   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.006 on 9997 degrees of freedom
+## Multiple R-squared:  0.8325, Adjusted R-squared:  0.8324 
+## F-statistic: 2.484e+04 on 2 and 9997 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lm</span>(Y <span class="op">~</span><span class="st"> </span>A<span class="op">+</span>P1, <span class="dt">data =</span> sim_data) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summary</span>()</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Y ~ A + P1, data = sim_data)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -7.8180 -1.4517  0.0363  1.4611  9.0563 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 1.732811   0.101292   17.11   &lt;2e-16 ***
+## A           1.164455   0.009892  117.71   &lt;2e-16 ***
+## P1          0.668516   0.012527   53.37   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.163 on 9997 degrees of freedom
+## Multiple R-squared:  0.8052, Adjusted R-squared:  0.8052 
+## F-statistic: 2.066e+04 on 2 and 9997 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lm</span>(Y <span class="op">~</span><span class="st"> </span>A<span class="op">+</span>P2, <span class="dt">data =</span> sim_data) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summary</span>()</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Y ~ A + P2, data = sim_data)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -7.4902 -1.3604  0.0146  1.3524  7.5656 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  0.06553    0.10271   0.638    0.523    
+## A            1.00173    0.01003  99.873   &lt;2e-16 ***
+## P2           0.99653    0.01420  70.189   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.006 on 9997 degrees of freedom
+## Multiple R-squared:  0.8323, Adjusted R-squared:  0.8323 
+## F-statistic: 2.481e+04 on 2 and 9997 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p><br><br></p>
+</div>
+<div id="exercise-5" class="section level3 unnumbered">
+<h3>Exercise 5</h3>
+<p>Historically, people have tried to create definitions for confounders by listing criteria that purely rely on associations. For example:</p>
+<blockquote>
+<p>A confounder must:<br />
+1. Be associated with treatment and outcome<br />
+2. Not be a cause of treatment</p>
+</blockquote>
+<p>Using the causal graph below, explain why this is not a good definition for a confounder.</p>
+<p><img src="causal_manual_files/figure-html/06_ex5-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><br><br></p>
+
+<div class="community">
+How are things going? What's on your mind?
+</div>
+
+<p><br><br></p>
+
+<div class="exittix">
+<strong>Take a few minutes to reflect on today's ideas by filling out an <a href="https://docs.google.com/forms/d/e/1FAIpQLScHlTYLjpItT3XjktsBtJl--CqQ86WnoQS_tWmj8KHoSEzgig/viewform?usp=sf_link">exit ticket</a>.</strong>
+</div>
+
 
 </div>
 </div>
+</div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="schedule.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="key-structures-in-causal-graphs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="homework-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

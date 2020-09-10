@@ -1,0 +1,253 @@
+```{r 06_setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, eval=FALSE, fig.align="center")
+```
+
+# Graphical Structure of Confounding
+
+## Pre-class work {-}
+
+Videos/slides
+
+- Causal and Noncausal Paths: [[video]](https://youtu.be/ShZP9SR2fbs), [[slides]](https://drive.google.com/file/d/122mVJhksLwrEdX_Ofc-y0eheTA7urqhc/view?usp=sharing)
+- D-separation: [[video]](https://youtu.be/eYtSHAlbWYw), [[slides]](https://drive.google.com/file/d/1PDUrY56lcDvjUza-Zf4xEpYVQkCJ2IAs/view?usp=sharing)
+
+Checkpoint questions: [Link to Moodle checkpoint](https://moodle.macalester.edu/mod/quiz/view.php?id=28001)
+
+@. What is the relationship between d-separation and conditional exchangeability? Explain in a few sentences.
+
+@. Consider the causal graph below with treatment A, outcome Y, and other variables. Which of the following are causal paths?
+    a. A <-- C --> Y
+    b. A --> Y
+    c. A --> M --> Y
+    d. A <-- U --> S <-- Y
+
+```{r 06_pre_class, echo=FALSE, eval=TRUE, message=FALSE, fig.height=3.5, fig.align="center"}
+library(dagitty)
+dag <- dagitty("dag {
+bb=\"0,0,1,1\"
+A [exposure,pos=\"0.250,0.400\"]
+C [pos=\"0.500,0.228\"]
+M [pos=\"0.500,0.450\"]
+S [pos=\"0.474,0.582\"]
+U [pos=\"0.310,0.573\"]
+Y [outcome,pos=\"0.750,0.400\"]
+A -> M
+A -> Y
+C -> A
+C -> Y
+M -> Y
+U -> A
+U -> S
+Y -> S
+}
+")
+plot(dag)
+```
+
+@. Which of the following are noncausal paths?
+    a. A <-- C --> Y
+    b. A --> Y
+    c. A --> M --> Y
+    d. A <-- U --> S <-- Y
+
+@. Which of the following conditioning sets Z would work to leave causal paths open and block the noncausal paths?
+    a. $Z = \{C, M, U, S\}$
+    b. $Z = \{\}$ (the empty set (no variables))
+    c. $Z = \{C\}$
+    d. $Z = \{C, M, U\}$
+    e. $Z = \{C, U\}$
+    f. $Z = \{C, S\}$
+
+
+<br><br><br><br>
+
+
+## Learning Goals {-}
+
+- CNCP1: Explain how causal and noncausal paths relate to exchangeability and causal effects.
+- DSEP1: Apply d-separation to block noncausal paths in causal DAGs with and without unobserved variables.
+- DSEP2: Apply strategies to deal with exchangeability problems caused by unobserved variables.
+- DSEP3: Simulate data from a causal DAG under linear and logistic regression SEMs to check d-separation properties through regression modeling and visualization.
+- DSEP4: Explain how d-separation relates to conditional exchangeability.
+
+
+<br><br><br><br>
+
+
+## Exercises {-}
+
+```{block2, type="solutions"}
+**Solutions to these exercises are available [on Moodle](https://moodle.macalester.edu/mod/folder/view.php?id=28903).**
+```
+
+```{block2, type="warmup"}
+**Navigate to [PollEverywhere](https://www.pollev.com/lesliemyint417) for some warm-up exercises.**
+```
+
+<br>
+
+
+### Exercise 1 {-}
+
+Let's draw connections between the graph ideas that we have built up and the core assumption of causal inference: (conditional) exchangeability.
+
+Write a few sentences describing the relationship between the following ideas:
+
+- Causal Markov Assumption/product decomposition
+- Graph building block structures: forks, chains, colliders
+- Causal and noncausal paths
+- (Conditional) exchangeability
+
+
+<br><br>
+
+
+### Exercise 2 {-}
+
+For each of the causal graphs below, identify the set of variables needed to achieve conditional exchangeability of the treatment groups $A$ for outcome $Y$ (if possible). Any $U$ variables displayed in the graphs are unobserved/unmeasured. Show your work.
+
+```{r 06_ex2, echo=FALSE, eval=TRUE, fig.width=11, fig.height=4, fig.align="center"}
+library(dagitty)
+dag1 <- dagitty("dag {
+bb=\"0,0,1,1\"
+A [exposure,pos=\"0.252,0.350\"]
+L [pos=\"0.185,0.268\"]
+U [latent,pos=\"0.124,0.176\"]
+Y [outcome,pos=\"0.498,0.350\"]
+A -> Y
+L -> A
+U -> L
+U -> Y
+}
+")
+dag2 <- dagitty("dag {
+bb=\"0,0,1,1\"
+A [exposure,pos=\"0.252,0.350\"]
+L [pos=\"0.299,0.254\"]
+M [pos=\"0.373,0.350\"]
+U [latent,pos=\"0.124,0.176\"]
+Y [outcome,pos=\"0.498,0.350\"]
+A -> M
+L -> Y
+M -> Y
+U -> A
+U -> L
+}
+")
+dag3 <- dagitty("dag {
+bb=\"0,0,1,1\"
+A [exposure,pos=\"0.252,0.350\"]
+L [pos=\"0.373,0.245\"]
+M1 [pos=\"0.373,0.350\"]
+M2 [pos=\"0.373,0.445\"]
+U1 [latent,pos=\"0.252,0.141\"]
+U2 [latent,pos=\"0.495,0.146\"]
+Y [outcome,pos=\"0.495,0.350\"]
+A -> M1
+A -> M2
+M1 -> Y
+M2 -> Y
+U1 -> A
+U1 -> L
+U2 -> L
+U2 -> Y
+}
+")
+dag4 <- dagitty("dag {
+bb=\"0,0,1,1\"
+A [exposure,pos=\"0.400,0.350\"]
+L [pos=\"0.200,0.350\"]
+U1 [latent,pos=\"0.100,0.200\"]
+U2 [latent,pos=\"0.100,0.500\"]
+Y [outcome,pos=\"0.600,0.350\"]
+A -> Y
+L -> A
+U1 -> L
+U1 -> Y
+U2 -> A
+U2 -> L
+}
+")
+
+par(mfrow = c(1,2))
+plot(dag1)
+plot(dag2)
+plot(dag3)
+plot(dag4)
+```
+
+<br><br>
+
+### Exercise 3 {-}
+
+Unmeasured variables are important to think about when constructing causal graphs from expert knowledge. Often times, things like personality traits and social factors (e.g., living situations, communities interacted with).
+
+Suppose that in the graphs below, the $U$ variables represents social factors, $A$ represents use of a social service, and $Y$ represents some measure of financial independence.
+
+```{r 06_ex3, echo=FALSE, eval=TRUE, fig.width=11, fig.height=4, fig.align="center"}
+par(mfrow = c(1,2))
+plot(dag1)
+plot(dag2)
+```
+
+In this context, describe what $L$ might be in each graph and what these graphs illustrate about a general strategy for dealing with exchangeability problems caused by unmeasured variables.
+
+<br><br>
+
+### Exercise 4 {-}
+
+Another way to deal with unmeasured variables is by trying to obtain measurable **proxies** for them. (Sometimes proxies are also called **surrogates**.) Broadly speaking, a proxy/surrogate is a variable that is a good indicator for another.
+
+The simulation below investigates the use of proxies for achieving conditional exchangeability. Summarize the main findings from these results.
+
+```{r eval=TRUE, message=FALSE}
+library(dplyr)
+
+set.seed(451)
+n <- 10000
+C <- rnorm(n, mean = 10, sd = 2)
+A <- rnorm(n, mean = C, sd = 2)
+Y <- rnorm(n, mean = C+A, sd = 2)
+
+# Proxies (two of them: P1 and P2)
+P1 <- rnorm(n, mean = C, sd = 1)
+P2 <- rnorm(n, mean = C, sd = 0.1)
+
+sim_data <- data.frame(C, A, Y, P1, P2)
+
+lm(Y ~ A+C, data = sim_data) %>% summary()
+lm(Y ~ A+P1, data = sim_data) %>% summary()
+lm(Y ~ A+P2, data = sim_data) %>% summary()
+```
+
+
+<br><br>
+
+
+### Exercise 5 {-}
+
+Historically, people have tried to create definitions for confounders by listing criteria that purely rely on associations. For example:
+
+> A confounder must:    
+> 1. Be associated with treatment and outcome    
+> 2. Not be a cause of treatment
+
+Using the causal graph below, explain why this is not a good definition for a confounder.
+
+```{r 06_ex5, echo=FALSE, eval=TRUE, fig.width=6, fig.height=4, fig.align="center"}
+plot(dag3)
+```
+
+
+<br><br>
+
+```{block2, type="community"}
+How are things going? What's on your mind?
+```
+
+<br><br>
+
+
+```{block2, type="exittix"}
+**Take a few minutes to reflect on today's ideas by filling out an [exit ticket](https://docs.google.com/forms/d/e/1FAIpQLScHlTYLjpItT3XjktsBtJl--CqQ86WnoQS_tWmj8KHoSEzgig/viewform?usp=sf_link).**
+```
