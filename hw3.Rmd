@@ -1,0 +1,21 @@
+```{r hw3_setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, eval=FALSE)
+```
+
+# Homework 3 {-}
+
+<center>
+**Due Sunday, September 20 at midnight CST on [Moodle](https://moodle.macalester.edu/mod/assign/view.php?id=30390)**
+
+**Please turn in a single knitted PDF document containing your responses.**
+
+(If you have LaTeX installed, you can knit directly to PDF (preferred method). Otherwise, you can knit to HTML and "Print" the page to save it as a PDF.)
+
+</center>
+
+## Deliverables {-}
+
+Please turn in exercises from the following class days:
+
+- Estimating Causal Effects: Regression
+- Inverse Probability Weighting in Practice
