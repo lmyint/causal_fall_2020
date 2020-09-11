@@ -12,25 +12,25 @@ Videos/slides
 
 Checkpoint questions: [Link to Moodle checkpoint](https://moodle.macalester.edu/mod/quiz/view.php?id=27981)
 
-@. Suppose that the variables A, B, and C in a causal graph are connected as such: A -- B -- C without knowledge of the arrow directions. If we only know that A and C are marginally dependent, which of the following structures are possible?
+1. Suppose that the variables A, B, and C in a causal graph are connected as such: A -- B -- C without knowledge of the arrow directions. If we only know that A and C are marginally dependent, which of the following structures are possible?
     a. A --> B --> C
     b. A <-- B <-- C
     c. A <-- B --> C
     d. A --> B <-- C
 
-@. If we know that A and C are conditionally dependent given B, which of the following structures are possible?
+2. If we know that A and C are conditionally dependent given B, which of the following structures are possible?
     a. A --> B --> C
     b. A <-- B <-- C
     c. A <-- B --> C
     d. A --> B <-- C
 
-@. If we know that A and C are marginally dependent and that A and C are conditionally independent given B, which of the following structures are possible?
+3. If we know that A and C are marginally dependent and that A and C are conditionally independent given B, which of the following structures are possible?
     a. A --> B --> C
     b. A <-- B <-- C
     c. A <-- B --> C
     d. A --> B <-- C
 
-@. How do chains, forks, and colliders relate to the concepts of exchangeability and causal effects? Explain in a few sentences.
+4. How do chains, forks, and colliders relate to the concepts of exchangeability and causal effects? Explain in a few sentences.
 
 
 <br><br><br><br>

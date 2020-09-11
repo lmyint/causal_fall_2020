@@ -1,0 +1,120 @@
+```{r 07_setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, eval=FALSE, fig.align="center")
+```
+
+# Graphical Structure of Selection Bias
+
+## Pre-class work {-}
+
+Required reading
+
+- WHATIF: 8.1 - 8.3
+
+<br><br>
+
+
+## Learning Goals {-}
+
+- CNCP1: Explain how causal and noncausal paths relate to exchangeability and causal effects.
+- DSEP1: Apply d-separation to block noncausal paths in causal DAGs with and without unobserved variables.
+- DSEP2: Apply strategies to deal with exchangeability problems caused by unobserved variables.
+- DSEP3: Simulate data from a causal DAG under linear and logistic regression SEMs to check d-separation properties through regression modeling and visualization.
+- DSEP4: Explain how d-separation relates to conditional exchangeability.
+
+<center>
+<img src="images/course_flow3.svg" width="60%" height="60%">
+</center>
+
+<br><br><br><br>
+
+
+## Exercises {-}
+
+```{block2, type="solutions"}
+**Solutions to these exercises are available [on Moodle](https://moodle.macalester.edu/mod/folder/view.php?id=28904).**
+```
+
+```{block2, type="warmup"}
+**Navigate to [PollEverywhere](https://www.pollev.com/lesliemyint417) for some warm-up exercises.**
+```
+
+```{block2, type="warmup"}
+**Navigate to [DAGitty](http://www.dagitty.net/) and click the "Launch online" link.**
+```
+
+<br>
+
+### Exercise 1 {-}
+
+In epidemiology, a common study design is known as a **case-control study**, which are used to understand associations between diseases and risk factors. In these studies, we identify people with disease (cases) and without disease (controls) are collect information on risk factors/exposures of interest.
+
+A 1981 case-control study looked at the relationship between coffee drinking and pancreatic cancer. Cases were hospital patients with histologically confirmed pancreatic cancer. To select controls, researchers asked the physicians caring for the cases to refer patients without pancreatic cancer.
+
+Draw a causal graph to represent the situation and explain how selection bias could arise via noncausal path(s).
+
+
+<br><br>
+
+
+### Exercise 2 {-}
+
+For each of the causal graphs below, identify the set of variables needed to achieve conditional exchangeability of the treatment $A$ and outcome $Y$. Check your answers to one of the graphs using [DAGitty](http://www.dagitty.net/dags.html).
+
+<center>
+    ![](images/07_dag2.png)
+    ![](images/07_dag3.png)
+    ![](images/07_dag4.png)
+</center>
+
+
+<br><br>
+
+
+### Exercise 3 {-}
+
+In this exercise, we'll consider how causal graphs can inform study design.
+
+In the 1970s, researchers noticed a consistent association between estrogen use and endometrial cancer. Groups debated two hypotheses:
+
+1. Estrogens do cause cancer.
+2. Estrogens don't cause cancer but lead to uterine bleeding, leading to more frequent doctor visits, leading to increased diagnosis of existing cancer.
+
+The following study plan was proposed: restrict the study only to those with uterine bleeding and compare cancer rates in estrogen-users and non-users. In this way, all participants have the same chance of being diagnosed.
+
+The following causal graphs correspond to the two hypotheses:
+
+<center>
+![](images/estrogens_endometrial.png)
+</center>
+
+(The graphs don't show confounders of the estrogens-endometrial cancer relationship for compactness. We can assume that these have already been adjusted for.)
+
+#### Part a {-}
+
+Consider the study proposal above: restrict analysis to those with uterine bleeding.
+
+- Under the graphs for the two hypotheses, will estrogens and diagnosed cancer be associated?
+- Can this study proposal distinguish between the two hypotheses?
+
+#### Part b {-}
+
+Consider another study proposal: ensure that *everyone* is screened frequently, and we don't restrict our analysis to only those with uterine bleeding.
+
+- What arrow (in either DAG 1 or 2) can be removed as a result of this study design?
+- Can this study proposal distinguish between the two hypotheses?
+
+
+<br><br>
+
+
+```{block2, type="community"}
+What are you looking forward to this weekend?
+```
+
+
+<br><br>
+
+
+```{block2, type="exittix"}
+**Take a few minutes to reflect on today's ideas by filling out an [exit ticket](https://docs.google.com/forms/d/e/1FAIpQLScHlTYLjpItT3XjktsBtJl--CqQ86WnoQS_tWmj8KHoSEzgig/viewform?usp=sf_link).**
+```

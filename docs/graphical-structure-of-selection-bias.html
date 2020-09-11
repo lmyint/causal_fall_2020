@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Schedule | STAT 451: Causal Inference</title>
+  <title>Topic 7 Graphical Structure of Selection Bias | STAT 451: Causal Inference</title>
   <meta name="description" content="This is the class website for Causal Inference at Macalester College." />
   <meta name="generator" content="bookdown 0.20.6 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Schedule | STAT 451: Causal Inference" />
+  <meta property="og:title" content="Topic 7 Graphical Structure of Selection Bias | STAT 451: Causal Inference" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="lmyint/causal_fall_2020" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Schedule | STAT 451: Causal Inference" />
+  <meta name="twitter:title" content="Topic 7 Graphical Structure of Selection Bias | STAT 451: Causal Inference" />
   
   <meta name="twitter:description" content="This is the class website for Causal Inference at Macalester College." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="references.html"/>
-<link rel="next" href="review-and-motivation.html"/>
+<link rel="prev" href="graphical-structure-of-confounding.html"/>
+<link rel="next" href="homework-1.html"/>
 <script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -272,151 +272,105 @@ code span.wa { color: #ffff00; font-weight: bold; } /* Warning */
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="schedule" class="section level1 unnumbered">
-<h1>Schedule</h1>
-<p>The schedule below is a tentative outline of our plans for the module. If we need more time for digestion, there is flexibility in our plans to allow for that.</p>
-<p>Before each class period, please watch the indicated videos, complete required readings, and complete the associated Moodle checkpoint. Checkpoints are due at <strong>2pm CST</strong> on the indicated day.</p>
-<p>For the most part, readings listed here are suggestions. They refer to sections in the PRIMER and WHATIF books (see <a href="references.html">References</a>) and may be useful for alternate presentations of the concepts. When a reading is required, it will marked as <strong>(REQD)</strong>.</p>
+<div id="graphical-structure-of-selection-bias" class="section level1" number="7">
+<h1><span class="header-section-number">Topic 7</span> Graphical Structure of Selection Bias</h1>
+<div id="pre-class-work-5" class="section level2 unnumbered">
+<h2>Pre-class work</h2>
+<p>Required reading</p>
+<ul>
+<li>WHATIF: 8.1 - 8.3</li>
+</ul>
+<p><br><br></p>
+</div>
+<div id="learning-goals-6" class="section level2 unnumbered">
+<h2>Learning Goals</h2>
+<ul>
+<li>CNCP1: Explain how causal and noncausal paths relate to exchangeability and causal effects.</li>
+<li>DSEP1: Apply d-separation to block noncausal paths in causal DAGs with and without unobserved variables.</li>
+<li>DSEP2: Apply strategies to deal with exchangeability problems caused by unobserved variables.</li>
+<li>DSEP3: Simulate data from a causal DAG under linear and logistic regression SEMs to check d-separation properties through regression modeling and visualization.</li>
+<li>DSEP4: Explain how d-separation relates to conditional exchangeability.</li>
+</ul>
+<center>
+<img src="images/course_flow3.svg" width="60%" height="60%">
+</center>
+<p><br><br><br><br></p>
+</div>
+<div id="exercises-6" class="section level2 unnumbered">
+<h2>Exercises</h2>
+
+<div class="solutions">
+<strong>Solutions to these exercises are available <a href="https://moodle.macalester.edu/mod/folder/view.php?id=28904">on Moodle</a>.</strong>
+</div>
+
+<div class="warmup">
+<strong>Navigate to <a href="https://www.pollev.com/lesliemyint417">PollEverywhere</a> for some warm-up exercises.</strong>
+</div>
+
+<div class="warmup">
+<strong>Navigate to <a href="http://www.dagitty.net/">DAGitty</a> and click the “Launch online” link.</strong>
+</div>
 <p><br></p>
-<table class="tg">
-<thead>
-  <tr>
-    <th class="tg-0pky" colspan="6"><b>Week 1: Foundational Ideas (9/2 - 9/4)<b></th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-0pky"><b>Day(s)</b></td>
-    <td class="tg-0pky"><b>Topic</b></td>
-    <td class="tg-0pky"><b>Videos/Readings</b></td>
-    <td class="tg-0pky"><b>Slides</b></td>
-    <td class="tg-0pky"><b>Checkpoint</b></td>
-    <td class="tg-0pky"><b>Solutions</b></td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">9/2</td>
-    <td class="tg-0pky">Motivation and Review</td>
-    <td class="tg-0pky"></td>
-    <td class="tg-0pky"><a href="https://drive.google.com/file/d/15IPbRxW5dj1wI3_yeCz6LHCKo5ZMKWbo/view?usp=sharing" target="_blank">PDF</a></td>
-    <td class="tg-0pky"></td>
-    <td class="tg-0pky"><a href="https://moodle.macalester.edu/mod/folder/view.php?id=24166" target="_blank">link</a></td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">9/3</td>
-    <td class="tg-0pky">Exchangeability</td>
-    <td class="tg-0pky">
-      <a href="https://youtu.be/poSGgCFsHgU" target="_blank">Defining Causal Effects</a><br>
-      <a href="https://youtu.be/WILPl5dkMMQ" target="_blank">Exchangeability</a><br>
-      WHATIF: 2.1, 2.2, 3.1, 3.2
-    </td>
-    <td class="tg-0pky">
-      <a href="https://drive.google.com/file/d/1q8rrpDSz3TS2t_B6bNZyfOklVdOEtCXW/view?usp=sharing" target="_blank">PDF</a><br>
-      <a href="https://drive.google.com/file/d/1Tx3Q2khrHzbFWk4cuVFEI1AcStwVxouZ/view?usp=sharing" target="_blank">PDF</a>
-    </td>
-    <td class="tg-0pky"><a href="https://moodle.macalester.edu/mod/quiz/view.php?id=24220" target="_blank">link</a></td>
-    <td class="tg-0pky"><a href="https://moodle.macalester.edu/mod/folder/view.php?id=24167" target="_blank">link</a></td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">9/4</td>
-    <td class="tg-0pky">Study Designs</td>
-    <td class="tg-0pky">
-      <a href="https://youtu.be/vFnA9nLTmP0" target="_blank">Study Designs in Causal Inference</a><br>
-      WHATIF: 2.1, 2.2, 3.1, 3.2
-    </td>
-    <td class="tg-0pky">
-      <a href="https://drive.google.com/file/d/1MkvNy4aWZ9ueyNUVLiHWbrRbQ9xyFnTK/view?usp=sharing" target="_blank">PDF</a>
-    </td>
-    <td class="tg-0pky"><a href="https://moodle.macalester.edu/mod/quiz/view.php?id=24228" target="_blank">link</a></td>
-    <td class="tg-0pky"><a href="https://moodle.macalester.edu/mod/folder/view.php?id=24168" target="_blank">link</a></td>
-  </tr>
-  <tr>
-    <td class="hw" colspan="6">
-      <b><a href="homework-1.html">Homework 1</a> due Sunday, 9/6 at midnight CST<b>
-    </td>
-  </tr>
-</tbody>
-</table>
+<div id="exercise-1-5" class="section level3 unnumbered">
+<h3>Exercise 1</h3>
+<p>In epidemiology, a common study design is known as a <strong>case-control study</strong>, which are used to understand associations between diseases and risk factors. In these studies, we identify people with disease (cases) and without disease (controls) are collect information on risk factors/exposures of interest.</p>
+<p>A 1981 case-control study looked at the relationship between coffee drinking and pancreatic cancer. Cases were hospital patients with histologically confirmed pancreatic cancer. To select controls, researchers asked the physicians caring for the cases to refer patients without pancreatic cancer.</p>
+<p>Draw a causal graph to represent the situation and explain how selection bias could arise via noncausal path(s).</p>
+<p><br><br></p>
+</div>
+<div id="exercise-2-4" class="section level3 unnumbered">
+<h3>Exercise 2</h3>
+<p>For each of the causal graphs below, identify the set of variables needed to achieve conditional exchangeability of the treatment <span class="math inline">\(A\)</span> and outcome <span class="math inline">\(Y\)</span>. Check your answers to one of the graphs using <a href="http://www.dagitty.net/dags.html">DAGitty</a>.</p>
+<center>
+<img src="images/07_dag2.png" />
+<img src="images/07_dag3.png" />
+<img src="images/07_dag4.png" />
+</center>
+<p><br><br></p>
+</div>
+<div id="exercise-3-4" class="section level3 unnumbered">
+<h3>Exercise 3</h3>
+<p>In this exercise, we’ll consider how causal graphs can inform study design.</p>
+<p>In the 1970s, researchers noticed a consistent association between estrogen use and endometrial cancer. Groups debated two hypotheses:</p>
+<ol style="list-style-type: decimal">
+<li>Estrogens do cause cancer.</li>
+<li>Estrogens don’t cause cancer but lead to uterine bleeding, leading to more frequent doctor visits, leading to increased diagnosis of existing cancer.</li>
+</ol>
+<p>The following study plan was proposed: restrict the study only to those with uterine bleeding and compare cancer rates in estrogen-users and non-users. In this way, all participants have the same chance of being diagnosed.</p>
+<p>The following causal graphs correspond to the two hypotheses:</p>
+<center>
+<img src="images/estrogens_endometrial.png" />
+</center>
+<p>(The graphs don’t show confounders of the estrogens-endometrial cancer relationship for compactness. We can assume that these have already been adjusted for.)</p>
+<div id="part-a" class="section level4 unnumbered">
+<h4>Part a</h4>
+<p>Consider the study proposal above: restrict analysis to those with uterine bleeding.</p>
+<ul>
+<li>Under the graphs for the two hypotheses, will estrogens and diagnosed cancer be associated?</li>
+<li>Can this study proposal distinguish between the two hypotheses?</li>
+</ul>
+</div>
+<div id="part-b" class="section level4 unnumbered">
+<h4>Part b</h4>
+<p>Consider another study proposal: ensure that <em>everyone</em> is screened frequently, and we don’t restrict our analysis to only those with uterine bleeding.</p>
+<ul>
+<li>What arrow (in either DAG 1 or 2) can be removed as a result of this study design?</li>
+<li>Can this study proposal distinguish between the two hypotheses?</li>
+</ul>
+<p><br><br></p>
 
-<!-------------------------------- Week 2 -------------------------------->
-<table class="tg">
-<thead>
-  <tr>
-    <th class="tg-0pky" colspan="6"><b>Week 2: Causal Graphs (9/8 - 9/11)<b></th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-0pky"><b>Day(s)</b></td>
-    <td class="tg-0pky"><b>Topic</b></td>
-    <td class="tg-0pky"><b>Videos/Readings</b></td>
-    <td class="tg-0pky"><b>Slides</b></td>
-    <td class="tg-0pky"><b>Checkpoint</b></td>
-    <td class="tg-0pky"><b>Solutions</b></td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">9/8</td>
-    <td class="tg-0pky">Causal Graphs as Statistical Models</td>
-    <td class="tg-0pky">
-      <a href="https://youtu.be/vU7Vg6yaqmo" target="_blank">Introduction to Causal Graphs</a><br>
-      <a href="https://youtu.be/GlgQLt6TTZo" target="_blank">Causal Graphs as Statistical Models</a><br>
-      PRIMER: 1.4, 1.5
-    </td>
-    <td class="tg-0pky">
-      <a href="https://drive.google.com/file/d/1RowV6uLm2HH3oxZnt6XuiMla-8ZvwWug/view?usp=sharing" target="_blank">PDF</a><br>
-      <a href="https://drive.google.com/file/d/1BfJwctdZcuRm0wCOkrSxfHzZmSf7V4Bc/view?usp=sharing" target="_blank">PDF</a>
-    </td>
-    <td class="tg-0pky"><a href="https://moodle.macalester.edu/mod/quiz/view.php?id=24237" target="_blank">link</a></td>
-    <td class="tg-0pky"><a href="https://moodle.macalester.edu/mod/folder/view.php?id=28899" target="_blank">link</a></td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">9/9</td>
-    <td class="tg-0pky">Key Structures in Causal Graphs</td>
-    <td class="tg-0pky">
-      <a href="https://youtu.be/UA0vyBnzi9U" target="_blank">Key Structures in Causal Graphs</a><br>
-      PRIMER: 2.1 - 2.3<br>
-      WHATIF: 6.1 - 6.3, 6.5
-    </td>
-    <td class="tg-0pky">
-      <a href="https://drive.google.com/file/d/1aMWXmbqouuf_IdU9CeY2BfncihyY1AwS/view?usp=sharing" target="_blank">PDF</a>
-    </td>
-    <td class="tg-0pky"><a href="https://moodle.macalester.edu/mod/quiz/view.php?id=27981">link</a></td>
-    <td class="tg-0pky"><a href="https://moodle.macalester.edu/mod/folder/view.php?id=28902" target="_blank">link</a></td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">9/10</td>
-    <td class="tg-0pky">Graphical Structure of Confounding</td>
-    <td class="tg-0pky">
-      <a href="https://youtu.be/ShZP9SR2fbs" target="_blank">Causal and Noncausal Paths</a><br>
-      <a href="https://youtu.be/eYtSHAlbWYw" target="_blank">D-Separation</a><br>
-      PRIMER: 2.4<br>
-      WHATIF: 7.1 - 7.4, 7.6
-    </td>
-    <td class="tg-0pky">
-      <a href="https://drive.google.com/file/d/122mVJhksLwrEdX_Ofc-y0eheTA7urqhc/view?usp=sharing" target="_blank">PDF</a><br>
-      <a href="https://drive.google.com/file/d/1PDUrY56lcDvjUza-Zf4xEpYVQkCJ2IAs/view?usp=sharing" target="_blank">PDF</a><br>
-    </td>
-    <td class="tg-0pky"><a href="https://moodle.macalester.edu/mod/quiz/view.php?id=28001" target="_blank">link</a></td>
-    <td class="tg-0pky"><a href="https://moodle.macalester.edu/mod/folder/view.php?id=28903" target="_blank">link</a></td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">9/11</td>
-    <td class="tg-0pky">Graphical Structure of Selection Bias</td>
-    <td class="tg-0pky">
-      <b>(REQD) WHATIF: 8.1 - 8.3</b><br>
-      Optional: 8.4 - 8.6
-    </td>
-    <td class="tg-0pky"></td>
-    <td class="tg-0pky"></td>
-    <td class="tg-0pky"><a href="https://moodle.macalester.edu/mod/folder/view.php?id=28904" target="_blank">link</a></td>
-  </tr>
-  <tr>
-    <td class="hw" colspan="6">
-      <b><a href="homework-2.html">Homework 2</a> due Sunday, 9/13 at midnight CST<b>
-    </td>
-  </tr>
-</tbody>
-</table>
+<div class="community">
+What are you looking forward to this weekend?
+</div>
+<p><br><br></p>
 
+<div class="exittix">
+<strong>Take a few minutes to reflect on today’s ideas by filling out an <a href="https://docs.google.com/forms/d/e/1FAIpQLScHlTYLjpItT3XjktsBtJl--CqQ86WnoQS_tWmj8KHoSEzgig/viewform?usp=sf_link">exit ticket</a>.</strong>
+</div>
+
+</div>
+</div>
+</div>
 </div>
 
 
@@ -426,8 +380,8 @@ code span.wa { color: #ffff00; font-weight: bold; } /* Warning */
           </div>
         </div>
       </div>
-<a href="references.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="review-and-motivation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="graphical-structure-of-confounding.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="homework-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

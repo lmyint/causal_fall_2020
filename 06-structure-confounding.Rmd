@@ -13,9 +13,9 @@ Videos/slides
 
 Checkpoint questions: [Link to Moodle checkpoint](https://moodle.macalester.edu/mod/quiz/view.php?id=28001)
 
-@. What is the relationship between d-separation and conditional exchangeability? Explain in a few sentences.
+1. What is the relationship between d-separation and conditional exchangeability? Explain in a few sentences.
 
-@. Consider the causal graph below with treatment A, outcome Y, and other variables. Which of the following are causal paths?
+2. Consider the causal graph below with treatment A, outcome Y, and other variables. Which of the following are causal paths?
     a. A <-- C --> Y
     b. A --> Y
     c. A --> M --> Y
@@ -44,13 +44,13 @@ Y -> S
 plot(dag)
 ```
 
-@. Which of the following are noncausal paths?
+3. Which of the following are noncausal paths?
     a. A <-- C --> Y
     b. A --> Y
     c. A --> M --> Y
     d. A <-- U --> S <-- Y
 
-@. Which of the following conditioning sets Z would work to leave causal paths open and block the noncausal paths?
+4. Which of the following conditioning sets Z would work to leave causal paths open and block the noncausal paths?
     a. $Z = \{C, M, U, S\}$
     b. $Z = \{\}$ (the empty set (no variables))
     c. $Z = \{C\}$
@@ -70,6 +70,10 @@ plot(dag)
 - DSEP3: Simulate data from a causal DAG under linear and logistic regression SEMs to check d-separation properties through regression modeling and visualization.
 - DSEP4: Explain how d-separation relates to conditional exchangeability.
 
+<center>
+<img src="images/course_flow3.svg" width="60%" height="60%">
+</center>
+
 
 <br><br><br><br>
 
@@ -85,7 +89,6 @@ plot(dag)
 ```
 
 <br>
-
 
 ### Exercise 1 {-}
 

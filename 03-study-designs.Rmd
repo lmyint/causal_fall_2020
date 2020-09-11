@@ -12,28 +12,28 @@ Videos/slides
 
 Checkpoint questions: [Link to Moodle checkpoint](https://moodle.macalester.edu/mod/quiz/view.php?id=24228)
 
-@. We are analyzing survey data collected by the Minnesota Department of Health to understand the effect of vaping during adolescence on adulthood respiratory problems. What study design best describes this?
+1. We are analyzing survey data collected by the Minnesota Department of Health to understand the effect of vaping during adolescence on adulthood respiratory problems. What study design best describes this?
     a. Randomized experiment
     b. Instrumental variables design
     c. Regression discontinuity
     d. Interrupted time series
     e. General observational study
 
-@. A state program only has the budget to fund a social services program in the 10 poorest counties in the state. We want to study the effect of this program on county-level social and economic indicators. What study design best describes this?
+2. A state program only has the budget to fund a social services program in the 10 poorest counties in the state. We want to study the effect of this program on county-level social and economic indicators. What study design best describes this?
     a. Randomized experiment
     b. Instrumental variables design
     c. Regression discontinuity
     d. Interrupted time series
     e. General observational study
 
-@. A hospital randomly puts up flyers throughout public hallways reminding people to get their flu shot. We want to study the effect of actually taking this year's flu shot on risk of getting the flu. What study design best describes this?
+3. A hospital randomly puts up flyers throughout public hallways reminding people to get their flu shot. We want to study the effect of actually taking this year's flu shot on risk of getting the flu. What study design best describes this?
     a. Randomized experiment
     b. Instrumental variables design
     c. Regression discontinuity
     d. Interrupted time series
     e. General observational study
 
-@. In at most two sentences, describe a general strategy that quasi-experimental studies use to try to achieve conditional exchangeability.
+4. In at most two sentences, describe a general strategy that quasi-experimental studies use to try to achieve conditional exchangeability.
 
 
 <br><br><br><br>

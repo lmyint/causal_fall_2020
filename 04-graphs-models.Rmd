@@ -15,20 +15,20 @@ Videos/slides
 
 Checkpoint questions: [Link to Moodle checkpoint](https://moodle.macalester.edu/mod/quiz/view.php?id=24237)
 
-@. Which of the following graph properties characterize causal graphs?
+1. Which of the following graph properties characterize causal graphs?
     a. cyclic
     b. acyclic
     c. directed
     d. undirected
     e. complete
 
-@. For a directed graph with a node X: the parents of X are a subset of the ancestors of X.
+2. For a directed graph with a node X: the parents of X are a subset of the ancestors of X.
     a. TRUE
     b. FALSE
 
-@. Apply the product decomposition rule using the Causal Markov assumption to express the joint distribution of variables in this graph: X --> Y --> Z
+3. Apply the product decomposition rule using the Causal Markov assumption to express the joint distribution of variables in this graph: X --> Y --> Z
 
-@. Apply the product decomposition rule using the Causal Markov assumption to express the joint distribution of variables in this graph: Y <-- X --> Z
+4. Apply the product decomposition rule using the Causal Markov assumption to express the joint distribution of variables in this graph: Y <-- X --> Z
 
 
 <br><br><br><br>

@@ -14,26 +14,26 @@ Videos/slides
 
 Checkpoint questions: [Link to Moodle checkpoint](https://moodle.macalester.edu/mod/quiz/view.php?id=24220)
 
-@. Which of the following is an example of an example of an average causal effect? Select all that apply.
+1. Which of the following is an example of an example of an average causal effect? Select all that apply.
     a. $E[Y^{a=1}]$
     b. $E[Y^{a=0}]$
     c. $E[Y^{a=1}]/E[Y^{a=0}]$
     d. $Y^{a=1}-Y^{a=0}$
     e. $E[Y^{a=1}-Y^{a=0}]$
 
-@. We want to estimate the causal effect of a new medication (treatment group) on cholesterol levels as compared to the medication that is currently the standard of care (control group). (The potential outcomes represent potential cholesterol levels.) Fatty food consumption is likely a factor that would lead to lack of exchangeability of the treated and untreated if doctors use fatty food consumption in their choice of medication to prescribe. Increased fatty food consumption generally leads to higher cholesterol levels. Suppose that the new medication truly does lead to lower cholesterol levels than the standard of care. Which of the following are correct?
+2. We want to estimate the causal effect of a new medication (treatment group) on cholesterol levels as compared to the medication that is currently the standard of care (control group). (The potential outcomes represent potential cholesterol levels.) Fatty food consumption is likely a factor that would lead to lack of exchangeability of the treated and untreated if doctors use fatty food consumption in their choice of medication to prescribe. Increased fatty food consumption generally leads to higher cholesterol levels. Suppose that the new medication truly does lead to lower cholesterol levels than the standard of care. Which of the following are correct?
     a. If those prescribed the new medication have HIGHER fatty food consumption than those prescribed the standard of care, then the beneficial impact of the new drug will be overestimated when directly comparing the treatment to the control group.
     b. If those prescribed the new medication have HIGHER fatty food consumption than those prescribed the standard of care, then the beneficial impact of the new drug will be underestimated when directly comparing the treatment to the control group.
     c. If those prescribed the new medication have LOWER fatty food consumption than those prescribed the standard of care, then the beneficial impact of the new drug will be overestimated when directly comparing the treatment to the control group.
     d. If those prescribed the new medication have LOWER fatty food consumption than those prescribed the standard of care, then the beneficial impact of the new drug will be underestimated when directly comparing the treatment to the control group.
 
-@. Continuing the medication-cholesterol example, what are two factors (other than fatty food consumption) that could contribute to a lack of exchangeability of the treatment groups? Explain your reasoning.
+3. Continuing the medication-cholesterol example, what are two factors (other than fatty food consumption) that could contribute to a lack of exchangeability of the treatment groups? Explain your reasoning.
 
-@. Conditional exchangeability is marginal exchangeability within subsets of the data.
+4. Conditional exchangeability is marginal exchangeability within subsets of the data.
     a. TRUE
     b. FALSE
 
-@. Suppose that marginal exchangeability of the treated and untreated holds. Among the treated, we observe a mean outcome of 10. Among the untreated, we observe a mean outcome of 8. What can be said about $Y^{a=0}$ among the treated and about $Y^{a=1}$ among the untreated?
+5. Suppose that marginal exchangeability of the treated and untreated holds. Among the treated, we observe a mean outcome of 10. Among the untreated, we observe a mean outcome of 8. What can be said about $Y^{a=0}$ among the treated and about $Y^{a=1}$ among the untreated?
     a. We don't know anything about those quantities because they are unobserved.
     b. Among the treated, the mean $Y^{a=0}$ is 10. Among the untreated, the mean $Y^{a=1}$ is 8.
     c. Among the treated, the mean $Y^{a=0}$ is 8. Among the untreated, the mean $Y^{a=1}$ is 10.

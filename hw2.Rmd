@@ -36,6 +36,7 @@ The following learning objectives are covered in this assignment:
 - **`DSEP2`:** Apply strategies to deal with exchangeability problems caused by unobserved variables.
 - **`DSEP3`:** Simulate data from a causal DAG under linear and logistic regression SEMs to check d-separation properties through regression modeling and visualization.
 - **`DSEP4`:** Explain how d-separation relates to conditional exchangeability.
+- **`SENS1`:** Evaluate the sensitivity of findings to data quality and propose appropriate sensitivity analyses for a research investigation
 
 <br>
 
