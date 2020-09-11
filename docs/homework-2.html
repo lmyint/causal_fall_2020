@@ -31,6 +31,7 @@
   
 <link rel="prev" href="homework-1.html"/>
 
+<script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,41 +52,66 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #2a211c; color: #bdae9d; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #2a211c; color: #bdae9d; border-right: 1px solid #bdae9d; }
-td.sourceCode { padding-left: 5px; }
-pre, code { color: #bdae9d; background-color: #2a211c; }
-code > span.kw { color: #43a8ed; font-weight: bold; } /* Keyword */
-code > span.dt { text-decoration: underline; } /* DataType */
-code > span.dv { color: #44aa43; } /* DecVal */
-code > span.bn { color: #44aa43; } /* BaseN */
-code > span.fl { color: #44aa43; } /* Float */
-code > span.ch { color: #049b0a; } /* Char */
-code > span.st { color: #049b0a; } /* String */
-code > span.co { color: #0066ff; font-style: italic; } /* Comment */
-code > span.al { color: #ffff00; } /* Alert */
-code > span.fu { color: #ff9358; font-weight: bold; } /* Function */
-code > span.er { color: #ffff00; font-weight: bold; } /* Error */
-code > span.wa { color: #ffff00; font-weight: bold; } /* Warning */
-code > span.cn { } /* Constant */
-code > span.sc { color: #049b0a; } /* SpecialChar */
-code > span.vs { color: #049b0a; } /* VerbatimString */
-code > span.ss { color: #049b0a; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { } /* Variable */
-code > span.cf { color: #43a8ed; font-weight: bold; } /* ControlFlow */
-code > span.op { } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { font-weight: bold; } /* Preprocessor */
-code > span.at { } /* Attribute */
-code > span.do { color: #0066ff; font-style: italic; } /* Documentation */
-code > span.an { color: #0066ff; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.co { color: #0066ff; font-weight: bold; font-style: italic; } /* Comment */
-code > span.in { color: #0066ff; font-weight: bold; font-style: italic; } /* Information */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #2a211c;
+    color: #bdae9d;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #bdae9d;  padding-left: 4px; }
+div.sourceCode
+  { color: #bdae9d; background-color: #2a211c; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ffff00; } /* Alert */
+code span.an { color: #0066ff; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bn { color: #44aa43; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #43a8ed; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #049b0a; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #0066ff; font-weight: bold; font-style: italic; } /* Comment */
+code span.do { color: #0066ff; font-style: italic; } /* Documentation */
+code span.dt { text-decoration: underline; } /* DataType */
+code span.dv { color: #44aa43; } /* DecVal */
+code span.er { color: #ffff00; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #44aa43; } /* Float */
+code span.fu { color: #ff9358; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #0066ff; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #43a8ed; font-weight: bold; } /* Keyword */
+code span.op { } /* Operator */
+code span.pp { font-weight: bold; } /* Preprocessor */
+code span.sc { color: #049b0a; } /* SpecialChar */
+code span.ss { color: #049b0a; } /* SpecialString */
+code span.st { color: #049b0a; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #049b0a; } /* VerbatimString */
+code span.wa { color: #ffff00; font-weight: bold; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="custom_styles.css" type="text/css" />
@@ -105,37 +131,44 @@ code > span.in { color: #0066ff; font-weight: bold; font-style: italic; } /* Inf
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome!</a></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a><ul>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a>
+<ul>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html#required-references"><i class="fa fa-check"></i>Required references</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html#references-for-review"><i class="fa fa-check"></i>References for review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html#further-exploration"><i class="fa fa-check"></i>Further exploration</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="schedule.html"><a href="schedule.html"><i class="fa fa-check"></i>Schedule</a></li>
 <li class="part"><span><b>I Foundational Ideas</b></span></li>
-<li class="chapter" data-level="1" data-path="review-and-motivation.html"><a href="review-and-motivation.html"><i class="fa fa-check"></i><b>1</b> Review and Motivation</a><ul>
+<li class="chapter" data-level="1" data-path="review-and-motivation.html"><a href="review-and-motivation.html"><i class="fa fa-check"></i><b>1</b> Review and Motivation</a>
+<ul>
 <li class="chapter" data-level="" data-path="review-and-motivation.html"><a href="review-and-motivation.html#learning-goals"><i class="fa fa-check"></i>Learning Goals</a></li>
 <li class="chapter" data-level="" data-path="review-and-motivation.html"><a href="review-and-motivation.html#slides"><i class="fa fa-check"></i>Slides</a></li>
-<li class="chapter" data-level="" data-path="review-and-motivation.html"><a href="review-and-motivation.html#exercises"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="review-and-motivation.html"><a href="review-and-motivation.html#exercises"><i class="fa fa-check"></i>Exercises</a>
+<ul>
 <li class="chapter" data-level="" data-path="review-and-motivation.html"><a href="review-and-motivation.html#exercise-1-plots-and-confounders"><i class="fa fa-check"></i>Exercise 1: Plots and confounders</a></li>
 <li class="chapter" data-level="" data-path="review-and-motivation.html"><a href="review-and-motivation.html#exercise-2-implications-of-confounding"><i class="fa fa-check"></i>Exercise 2: Implications of confounding</a></li>
 <li class="chapter" data-level="" data-path="review-and-motivation.html"><a href="review-and-motivation.html#exercise-3-logistic-regression-models"><i class="fa fa-check"></i>Exercise 3: Logistic regression models</a></li>
 <li class="chapter" data-level="" data-path="review-and-motivation.html"><a href="review-and-motivation.html#exercise-4-warming-up-to-causal-ideas"><i class="fa fa-check"></i>Exercise 4: Warming up to causal ideas</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="exchangeability.html"><a href="exchangeability.html"><i class="fa fa-check"></i><b>2</b> Exchangeability</a><ul>
+<li class="chapter" data-level="2" data-path="exchangeability.html"><a href="exchangeability.html"><i class="fa fa-check"></i><b>2</b> Exchangeability</a>
+<ul>
 <li class="chapter" data-level="" data-path="exchangeability.html"><a href="exchangeability.html#pre-class-work"><i class="fa fa-check"></i>Pre-class work</a></li>
 <li class="chapter" data-level="" data-path="review-and-motivation.html"><a href="review-and-motivation.html#learning-goals"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li class="chapter" data-level="" data-path="review-and-motivation.html"><a href="review-and-motivation.html#exercises"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="review-and-motivation.html"><a href="review-and-motivation.html#exercises"><i class="fa fa-check"></i>Exercises</a>
+<ul>
 <li class="chapter" data-level="" data-path="exchangeability.html"><a href="exchangeability.html#exercise-1"><i class="fa fa-check"></i>Exercise 1</a></li>
 <li class="chapter" data-level="" data-path="exchangeability.html"><a href="exchangeability.html#exercise-2"><i class="fa fa-check"></i>Exercise 2</a></li>
 <li class="chapter" data-level="" data-path="exchangeability.html"><a href="exchangeability.html#exercise-3"><i class="fa fa-check"></i>Exercise 3</a></li>
 <li class="chapter" data-level="" data-path="exchangeability.html"><a href="exchangeability.html#exercise-4"><i class="fa fa-check"></i>Exercise 4</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="study-designs-overview.html"><a href="study-designs-overview.html"><i class="fa fa-check"></i><b>3</b> Study Designs Overview</a><ul>
+<li class="chapter" data-level="3" data-path="study-designs-overview.html"><a href="study-designs-overview.html"><i class="fa fa-check"></i><b>3</b> Study Designs Overview</a>
+<ul>
 <li class="chapter" data-level="" data-path="exchangeability.html"><a href="exchangeability.html#pre-class-work"><i class="fa fa-check"></i>Pre-class work</a></li>
 <li class="chapter" data-level="" data-path="review-and-motivation.html"><a href="review-and-motivation.html#learning-goals"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li class="chapter" data-level="" data-path="review-and-motivation.html"><a href="review-and-motivation.html#exercises"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="review-and-motivation.html"><a href="review-and-motivation.html#exercises"><i class="fa fa-check"></i>Exercises</a>
+<ul>
 <li class="chapter" data-level="" data-path="exchangeability.html"><a href="exchangeability.html#exercise-1"><i class="fa fa-check"></i>Exercise 1</a></li>
 <li class="chapter" data-level="" data-path="exchangeability.html"><a href="exchangeability.html#exercise-2"><i class="fa fa-check"></i>Exercise 2</a></li>
 <li class="chapter" data-level="" data-path="exchangeability.html"><a href="exchangeability.html#exercise-3"><i class="fa fa-check"></i>Exercise 3</a></li>
@@ -143,24 +176,29 @@ code > span.in { color: #0066ff; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II Causal Graphs</b></span></li>
-<li class="chapter" data-level="4" data-path="causal-graphs-as-statistical-models.html"><a href="causal-graphs-as-statistical-models.html"><i class="fa fa-check"></i><b>4</b> Causal Graphs as Statistical Models</a><ul>
+<li class="chapter" data-level="4" data-path="causal-graphs-as-statistical-models.html"><a href="causal-graphs-as-statistical-models.html"><i class="fa fa-check"></i><b>4</b> Causal Graphs as Statistical Models</a>
+<ul>
 <li class="chapter" data-level="" data-path="exchangeability.html"><a href="exchangeability.html#pre-class-work"><i class="fa fa-check"></i>Pre-class work</a></li>
 <li class="chapter" data-level="" data-path="review-and-motivation.html"><a href="review-and-motivation.html#learning-goals"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li class="chapter" data-level="" data-path="causal-graphs-as-statistical-models.html"><a href="causal-graphs-as-statistical-models.html#simulating-data-in-r"><i class="fa fa-check"></i>Simulating data in R</a><ul>
+<li class="chapter" data-level="" data-path="causal-graphs-as-statistical-models.html"><a href="causal-graphs-as-statistical-models.html#simulating-data-in-r"><i class="fa fa-check"></i>Simulating data in R</a>
+<ul>
 <li class="chapter" data-level="" data-path="causal-graphs-as-statistical-models.html"><a href="causal-graphs-as-statistical-models.html#why-simulate"><i class="fa fa-check"></i>Why simulate?</a></li>
 <li class="chapter" data-level="" data-path="causal-graphs-as-statistical-models.html"><a href="causal-graphs-as-statistical-models.html#simulation-functions-in-r"><i class="fa fa-check"></i>Simulation functions in R</a></li>
 <li class="chapter" data-level="" data-path="causal-graphs-as-statistical-models.html"><a href="causal-graphs-as-statistical-models.html#simulating-data-from-graphssems"><i class="fa fa-check"></i>Simulating data from graphs+SEMs</a></li>
 <li class="chapter" data-level="" data-path="causal-graphs-as-statistical-models.html"><a href="causal-graphs-as-statistical-models.html#reproducibility"><i class="fa fa-check"></i>Reproducibility</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="review-and-motivation.html"><a href="review-and-motivation.html#exercises"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="review-and-motivation.html"><a href="review-and-motivation.html#exercises"><i class="fa fa-check"></i>Exercises</a>
+<ul>
 <li class="chapter" data-level="" data-path="exchangeability.html"><a href="exchangeability.html#exercise-1"><i class="fa fa-check"></i>Exercise 1</a></li>
 <li class="chapter" data-level="" data-path="causal-graphs-as-statistical-models.html"><a href="causal-graphs-as-statistical-models.html#interrupted-times-series-in-the-news"><i class="fa fa-check"></i>Interrupted times series in the news</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="key-structures-in-causal-graphs.html"><a href="key-structures-in-causal-graphs.html"><i class="fa fa-check"></i><b>5</b> Key Structures in Causal Graphs</a><ul>
+<li class="chapter" data-level="5" data-path="key-structures-in-causal-graphs.html"><a href="key-structures-in-causal-graphs.html"><i class="fa fa-check"></i><b>5</b> Key Structures in Causal Graphs</a>
+<ul>
 <li class="chapter" data-level="" data-path="exchangeability.html"><a href="exchangeability.html#pre-class-work"><i class="fa fa-check"></i>Pre-class work</a></li>
 <li class="chapter" data-level="" data-path="review-and-motivation.html"><a href="review-and-motivation.html#learning-goals"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li class="chapter" data-level="" data-path="review-and-motivation.html"><a href="review-and-motivation.html#exercises"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="review-and-motivation.html"><a href="review-and-motivation.html#exercises"><i class="fa fa-check"></i>Exercises</a>
+<ul>
 <li class="chapter" data-level="" data-path="exchangeability.html"><a href="exchangeability.html#exercise-1"><i class="fa fa-check"></i>Exercise 1</a></li>
 <li class="chapter" data-level="" data-path="exchangeability.html"><a href="exchangeability.html#exercise-2"><i class="fa fa-check"></i>Exercise 2</a></li>
 <li class="chapter" data-level="" data-path="exchangeability.html"><a href="exchangeability.html#exercise-3"><i class="fa fa-check"></i>Exercise 3</a></li>
@@ -168,10 +206,12 @@ code > span.in { color: #0066ff; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="key-structures-in-causal-graphs.html"><a href="key-structures-in-causal-graphs.html#exercise-5"><i class="fa fa-check"></i>Exercise 5</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="graphical-structure-of-confounding.html"><a href="graphical-structure-of-confounding.html"><i class="fa fa-check"></i><b>6</b> Graphical Structure of Confounding</a><ul>
+<li class="chapter" data-level="6" data-path="graphical-structure-of-confounding.html"><a href="graphical-structure-of-confounding.html"><i class="fa fa-check"></i><b>6</b> Graphical Structure of Confounding</a>
+<ul>
 <li class="chapter" data-level="" data-path="exchangeability.html"><a href="exchangeability.html#pre-class-work"><i class="fa fa-check"></i>Pre-class work</a></li>
 <li class="chapter" data-level="" data-path="review-and-motivation.html"><a href="review-and-motivation.html#learning-goals"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li class="chapter" data-level="" data-path="review-and-motivation.html"><a href="review-and-motivation.html#exercises"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="review-and-motivation.html"><a href="review-and-motivation.html#exercises"><i class="fa fa-check"></i>Exercises</a>
+<ul>
 <li class="chapter" data-level="" data-path="exchangeability.html"><a href="exchangeability.html#exercise-1"><i class="fa fa-check"></i>Exercise 1</a></li>
 <li class="chapter" data-level="" data-path="exchangeability.html"><a href="exchangeability.html#exercise-2"><i class="fa fa-check"></i>Exercise 2</a></li>
 <li class="chapter" data-level="" data-path="exchangeability.html"><a href="exchangeability.html#exercise-3"><i class="fa fa-check"></i>Exercise 3</a></li>
@@ -180,14 +220,16 @@ code > span.in { color: #0066ff; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 </ul></li>
 <li class="part"><span><b>III Homework</b></span></li>
-<li class="chapter" data-level="" data-path="homework-1.html"><a href="homework-1.html"><i class="fa fa-check"></i>Homework 1</a><ul>
+<li class="chapter" data-level="" data-path="homework-1.html"><a href="homework-1.html"><i class="fa fa-check"></i>Homework 1</a>
+<ul>
 <li class="chapter" data-level="" data-path="exchangeability.html"><a href="exchangeability.html#exercise-1"><i class="fa fa-check"></i>Exercise 1</a></li>
 <li class="chapter" data-level="" data-path="exchangeability.html"><a href="exchangeability.html#exercise-2"><i class="fa fa-check"></i>Exercise 2</a></li>
 <li class="chapter" data-level="" data-path="exchangeability.html"><a href="exchangeability.html#exercise-3"><i class="fa fa-check"></i>Exercise 3</a></li>
 <li class="chapter" data-level="" data-path="exchangeability.html"><a href="exchangeability.html#exercise-4"><i class="fa fa-check"></i>Exercise 4</a></li>
 <li class="chapter" data-level="" data-path="key-structures-in-causal-graphs.html"><a href="key-structures-in-causal-graphs.html#exercise-5"><i class="fa fa-check"></i>Exercise 5</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="homework-2.html"><a href="homework-2.html"><i class="fa fa-check"></i>Homework 2</a><ul>
+<li class="chapter" data-level="" data-path="homework-2.html"><a href="homework-2.html"><i class="fa fa-check"></i>Homework 2</a>
+<ul>
 <li class="chapter" data-level="" data-path="homework-2.html"><a href="homework-2.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
 <li class="chapter" data-level="" data-path="exchangeability.html"><a href="exchangeability.html#exercise-1"><i class="fa fa-check"></i>Exercise 1</a></li>
 <li class="chapter" data-level="" data-path="exchangeability.html"><a href="exchangeability.html#exercise-2"><i class="fa fa-check"></i>Exercise 2</a></li>
@@ -224,7 +266,7 @@ code > span.in { color: #0066ff; font-weight: bold; font-style: italic; } /* Inf
 <center>
 <p><strong>Due Sunday, September 13 at midnight CST on <a href="https://moodle.macalester.edu/mod/assign/view.php?id=27999">Moodle</a></strong></p>
 <p><strong>Please turn in a single knitted PDF document containing your responses.</strong></p>
-<p>(If you have LaTeX installed, you can knit directly to PDF (preferred method). Otherwise, you can knit to HTML and &quot;Print&quot; the page to save it as a PDF.)</p>
+<p>(If you have LaTeX installed, you can knit directly to PDF (preferred method). Otherwise, you can knit to HTML and “Print” the page to save it as a PDF.)</p>
 <strong>A template that you can work from is available <a href="template_rmds/hw2.Rmd">here</a>. Please save this file as <code>hw2_LastName_FirstName.Rmd</code>.</strong>
 </center>
 <div id="introduction" class="section level2 unnumbered">
@@ -288,7 +330,7 @@ code > span.in { color: #0066ff; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="exercise-5" class="section level2 unnumbered">
 <h2>Exercise 5</h2>
-<p>Here, you'll check if the set <span class="math inline">\(Z\)</span> you identified in Exercise 4 works.</p>
+<p>Here, you’ll check if the set <span class="math inline">\(Z\)</span> you identified in Exercise 4 works.</p>
 <p>Simulate data from a causal graph that has the same structure as the graph in Exercise 4. All variables should be quantitative except for the outcome <span class="math inline">\(Y\)</span>, which should be binary. Display output from an appropriate check.</p>
 <p><br></p>
 </div>
@@ -418,7 +460,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))

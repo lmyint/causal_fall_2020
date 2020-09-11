@@ -230,7 +230,7 @@ Historically, people have tried to create definitions for confounders by listing
 
 > A confounder must:    
 > 1. Be associated with treatment and outcome    
-> 2. Not be a cause of treatment
+> 2. Not be caused by treatment
 
 Using the causal graph below, explain why this is not a good definition for a confounder.
 
