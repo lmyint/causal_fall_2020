@@ -13,9 +13,47 @@ knitr::opts_chunk$set(echo=TRUE, eval=FALSE)
 
 </center>
 
+<br>
+
 ## Deliverables {-}
 
-Please turn in exercises from the following class days:
+Please turn in exercises from the following class days (combining them into one document):
 
 - Estimating Causal Effects: Regression
 - Inverse Probability Weighting in Practice
+
+<br>
+
+## Primary objectives {-}
+
+The following learning objectives are the primary focus of this assignment and are already captured in the two sets of exercises above:
+
+- **`REGR1`:** Conduct and interpret results from an appropriate regression analysis to estimate causal effects and effect modification of causal effects.
+- **`IPTW1`:** Conduct and interpret results from an appropriate IPW analysis to estimate causal effects and effect modification of causal effects.
+- **`CNCP1`:** Explain how causal and noncausal paths relate to exchangeability and causal effects.
+- **`DSEP1`:** Apply d-separation to block noncausal paths in causal DAGs with and without unobserved variables.
+- **`DSEP2`:** Apply strategies to deal with exchangeability problems caused by unobserved variables.
+- **`DSEP4`:** Explain how d-separation relates to conditional exchangeability.
+
+<br>
+
+## Retrying previous objectives {-}
+
+In order to retry previous learning objectives (listed below), you must incorporate them into the writeup for this assignment. For example, if you would like to draw a connection to randomized experiments (`DESI1`) at some point in your writeup, include the following in your RMarkdown file:
+
+```
+> **Revisiting objective DESI1:** Enter your response here.
+```
+
+Do the same for any other objectives that you would like to revisit. You must limit these responses to 250 words, and these responses must flow smoothly within the write up. That is, please make clear how the objective is relevant to thoughts that were described immediately beforehand.
+
+**Previous objectives:**
+
+- **`EXCH1`:** Apply the concepts of marginal and conditional exchangeability to answer questions about (hypothetical) data on potential outcomes.
+- **`EXCH2`:** Give examples of when marginal and conditional exchangeability would and would not hold in various data contexts.
+- **`EXCH3`:** Explain why a direct comparison of the outcomes in the treated and untreated is misleading as an estimate of a causal effect.
+- **`DESI1`:** Explain how randomized experiments relate to exchangeability.
+- **`DESI2`:** Explain how quasi-experimental and general observational studies relate to exchangeability.
+- **`DESI3`:** Compare the strengths and weaknesses of different study designs for answering a research question.
+- **`PGRA1`:** Apply the Causal Markov assumption to express the joint distribution of data.
+- **`DSEP3`:** Simulate data from a causal DAG under linear and logistic regression SEMs to check d-separation properties through regression modeling and visualization.

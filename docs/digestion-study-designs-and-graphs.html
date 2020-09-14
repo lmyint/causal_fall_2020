@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Homework 3 | STAT 451: Causal Inference</title>
+  <title>Topic 8 Digestion: Study Designs and Graphs | STAT 451: Causal Inference</title>
   <meta name="description" content="This is the class website for Causal Inference at Macalester College." />
   <meta name="generator" content="bookdown 0.20.6 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Homework 3 | STAT 451: Causal Inference" />
+  <meta property="og:title" content="Topic 8 Digestion: Study Designs and Graphs | STAT 451: Causal Inference" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="lmyint/causal_fall_2020" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Homework 3 | STAT 451: Causal Inference" />
+  <meta name="twitter:title" content="Topic 8 Digestion: Study Designs and Graphs | STAT 451: Causal Inference" />
   
   <meta name="twitter:description" content="This is the class website for Causal Inference at Macalester College." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="homework-2.html"/>
-
+<link rel="prev" href="graphical-structure-of-selection-bias.html"/>
+<link rel="next" href="homework-1.html"/>
 <script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -284,62 +284,76 @@ code span.wa { color: #ffff00; font-weight: bold; } /* Warning */
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="homework-3" class="section level1 unnumbered">
-<h1>Homework 3</h1>
-<center>
-<p><strong>Due Sunday, September 20 at midnight CST on <a href="https://moodle.macalester.edu/mod/assign/view.php?id=30390">Moodle</a></strong></p>
-<p><strong>Please turn in a single knitted PDF document containing your responses.</strong></p>
-<p>(If you have LaTeX installed, you can knit directly to PDF (preferred method). Otherwise, you can knit to HTML and “Print” the page to save it as a PDF.)</p>
-</center>
-<p><br></p>
-<div id="deliverables" class="section level2 unnumbered">
-<h2>Deliverables</h2>
-<p>Please turn in exercises from the following class days (combining them into one document):</p>
+<div id="digestion-study-designs-and-graphs" class="section level1" number="8">
+<h1><span class="header-section-number">Topic 8</span> Digestion: Study Designs and Graphs</h1>
+<div id="goals" class="section level2 unnumbered">
+<h2>Goals</h2>
+<p>Today we’ll take time to synthesize ideas in contexts that you’ve identified as meaningful.</p>
 <ul>
-<li>Estimating Causal Effects: Regression</li>
-<li>Inverse Probability Weighting in Practice</li>
-</ul>
-<p><br></p>
-</div>
-<div id="primary-objectives" class="section level2 unnumbered">
-<h2>Primary objectives</h2>
-<p>The following learning objectives are the primary focus of this assignment and are already captured in the two sets of exercises above:</p>
-<ul>
-<li><strong><code>REGR1</code>:</strong> Conduct and interpret results from an appropriate regression analysis to estimate causal effects and effect modification of causal effects.</li>
-<li><strong><code>IPTW1</code>:</strong> Conduct and interpret results from an appropriate IPW analysis to estimate causal effects and effect modification of causal effects.</li>
-<li><strong><code>CNCP1</code>:</strong> Explain how causal and noncausal paths relate to exchangeability and causal effects.</li>
-<li><strong><code>DSEP1</code>:</strong> Apply d-separation to block noncausal paths in causal DAGs with and without unobserved variables.</li>
-<li><strong><code>DSEP2</code>:</strong> Apply strategies to deal with exchangeability problems caused by unobserved variables.</li>
-<li><strong><code>DSEP4</code>:</strong> Explain how d-separation relates to conditional exchangeability.</li>
-</ul>
-<p><br></p>
-</div>
-<div id="retrying-previous-objectives" class="section level2 unnumbered">
-<h2>Retrying previous objectives</h2>
-<p>In order to retry previous learning objectives (listed below), you must incorporate them into the writeup for this assignment. For example, if you would like to draw a connection to randomized experiments (<code>DESI1</code>) at some point in your writeup, include the following in your RMarkdown file:</p>
-<pre><code>&gt; **Revisiting objective DESI1:** Enter your response here.</code></pre>
-<p>Do the same for any other objectives that you would like to revisit. You must limit these responses to 250 words, and these responses must flow smoothly within the write up. That is, please make clear how the objective is relevant to thoughts that were described immediately beforehand.</p>
-<p><strong>Previous objectives:</strong></p>
-<ul>
-<li><strong><code>EXCH1</code>:</strong> Apply the concepts of marginal and conditional exchangeability to answer questions about (hypothetical) data on potential outcomes.</li>
-<li><strong><code>EXCH2</code>:</strong> Give examples of when marginal and conditional exchangeability would and would not hold in various data contexts.</li>
-<li><strong><code>EXCH3</code>:</strong> Explain why a direct comparison of the outcomes in the treated and untreated is misleading as an estimate of a causal effect.</li>
-<li><strong><code>DESI1</code>:</strong> Explain how randomized experiments relate to exchangeability.</li>
 <li><strong><code>DESI2</code>:</strong> Explain how quasi-experimental and general observational studies relate to exchangeability.</li>
 <li><strong><code>DESI3</code>:</strong> Compare the strengths and weaknesses of different study designs for answering a research question.</li>
-<li><strong><code>PGRA1</code>:</strong> Apply the Causal Markov assumption to express the joint distribution of data.</li>
-<li><strong><code>DSEP3</code>:</strong> Simulate data from a causal DAG under linear and logistic regression SEMs to check d-separation properties through regression modeling and visualization.</li>
 </ul>
+<center>
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+1/<br>Juneteenth is a good reason for a <a href="https://twitter.com/hashtag/causalinference?src=hash&amp;ref_src=twsrc%5Etfw">#causalinference</a> reminder: It ain't race but racism.<br><br>To change society, focus on well-defined interventions. <br><br>Studies of “Whites vs. Blacks” document the existence of serious problems, but don't propose solutions.<a href="https://t.co/uzzHYS8gdO">https://t.co/uzzHYS8gdO</a> <a href="https://t.co/cuiEYqrDGx">pic.twitter.com/cuiEYqrDGx</a>
+</p>
+— Miguel Hernán (<span class="citation">@_MiguelHernan</span>) <a href="https://twitter.com/_MiguelHernan/status/1273936972852191233?ref_src=twsrc%5Etfw">June 19, 2020</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</center>
+<p><br><br><br><br></p>
+</div>
+<div id="your-task" class="section level2 unnumbered">
+<h2>Your Task</h2>
+<p>Identify one context from the selection below that are of interest to the group. (These come from media items that you have shared on Slack. Also feel free to discuss something not listed below.)</p>
+<ul>
+<li><a href="https://twitter.com/Lizstuartdc/status/1302604052753244161">How are college towns affected by COVID-19?</a></li>
+<li><a href="http://www.law.harvard.edu/programs/olin_center/papers/pdf/Yang_919.pdf">What inequities are present in bail decisions?</a></li>
+<li><a href="https://www.nytimes.com/2020/09/13/us/oregon-wildfires-california-washington-map.html">What can we do to prevent wildfires?</a></li>
+<li><a href="https://www.bloomberg.com/news/articles/2020-09-13/the-year-unconventional-monetary-policy-turned-conventional">What financial policies can help businesses in pandemic times?</a></li>
+<li><a href="https://www.economist.com/finance-and-economics/2020/09/12/ports-are-highly-exposed-to-climate-change-and-often-ill-prepared">How does climate change affect port industries?</a></li>
+<li><a href="https://www.npr.org/sections/live-updates-protests-for-racial-justice/2020/06/26/884149659/minneapolis-council-moves-to-defund-police-establish-holistic-public-safety-forc">What are the consequences of reallocating funding for the police?</a></li>
+<li><a href="https://www.nbcnews.com/news/us-news/therapists-are-under-strain-covid-era-counseling-clients-trauma-they-n1230956">Who cares for our caregivers?</a></li>
+<li><a href="https://www.nber.org/papers/w8918.pdf">Do remedial programs help with student achievement?</a></li>
+</ul>
+<p><br></p>
+<p>Discuss the following with each other, and record your responses in a well-organized shared document:</p>
+<ul>
+<li>What treatment(s) might be of interest in this context? Is this treatment something that could realistically be intervened upon?</li>
+<li>What quasi-experimental study design do you think would be most ideal for studying the causal effect of the treatment?
+<ul>
+<li>Describe how you would implement the design.</li>
+<li>Use a causal graph to think through whether or not marginal or conditional exchangeability holds in your setting. Feel free to use <a href="http://www.dagitty.net/dags.html">DAGitty</a>. Record your conclusions.</li>
+</ul></li>
+<li>Do you think that a general observational study would be feasible/appropriate in this setting?</li>
+<li>Do you think an overall average causal effect or causal effects within subgroups would be more of interest? Does the answer to that depend on who is using the study results?</li>
+<li>Who might suffer based on the results of this causal analysis and the ways in which the results are communicated?</li>
+</ul>
+<p><br></p>
+<p>Share the document with me by Wednesday, September 16:</p>
+<ul>
+<li>If it is a Google Docs, add me so that I have commenting privileges.</li>
+<li>Otherwise, email me a copy.</li>
+</ul>
+<p><br><br></p>
+</div>
+<div id="grading" class="section level2 unnumbered">
+<h2>Grading</h2>
+<p>Everyone in the group will receive the same grade for the <strong>DESI2</strong> and <strong>DESI3</strong> objectives. This will count towards mastery requirements.</p>
 
 </div>
 </div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="homework-2.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="graphical-structure-of-selection-bias.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="homework-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

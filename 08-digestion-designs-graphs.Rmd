@@ -1,0 +1,64 @@
+```{r 08_setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, eval=FALSE, fig.align="center")
+```
+
+# Digestion: Study Designs and Graphs
+
+## Goals {-}
+
+Today we'll take time to synthesize ideas in contexts that you've identified as meaningful.
+
+- **`DESI2`:** Explain how quasi-experimental and general observational studies relate to exchangeability.
+- **`DESI3`:** Compare the strengths and weaknesses of different study designs for answering a research question.
+
+<center>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">1/<br>Juneteenth is a good reason for a <a href="https://twitter.com/hashtag/causalinference?src=hash&amp;ref_src=twsrc%5Etfw">#causalinference</a> reminder: It ain&#39;t race but racism.<br><br>To change society, focus on well-defined interventions. <br><br>Studies of &quot;Whites vs. Blacks&quot; document the existence of serious problems, but don&#39;t propose solutions.<a href="https://t.co/uzzHYS8gdO">https://t.co/uzzHYS8gdO</a> <a href="https://t.co/cuiEYqrDGx">pic.twitter.com/cuiEYqrDGx</a></p>&mdash; Miguel Hernán (@_MiguelHernan) <a href="https://twitter.com/_MiguelHernan/status/1273936972852191233?ref_src=twsrc%5Etfw">June 19, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</center>
+
+
+<br><br><br><br>
+
+
+## Your Task {-}
+
+Identify one context from the selection below that are of interest to the group. (These come from media items that you have shared on Slack. Also feel free to discuss something not listed below.)
+
+- [How are college towns affected by COVID-19?](https://twitter.com/Lizstuartdc/status/1302604052753244161)
+- [What inequities are present in bail decisions?](http://www.law.harvard.edu/programs/olin_center/papers/pdf/Yang_919.pdf)
+- [What can we do to prevent wildfires?](https://www.nytimes.com/2020/09/13/us/oregon-wildfires-california-washington-map.html)
+- [What financial policies can help businesses in pandemic times?](https://www.bloomberg.com/news/articles/2020-09-13/the-year-unconventional-monetary-policy-turned-conventional)
+- [How does climate change affect port industries?](https://www.economist.com/finance-and-economics/2020/09/12/ports-are-highly-exposed-to-climate-change-and-often-ill-prepared)
+- [What are the consequences of reallocating funding for the police?](https://www.npr.org/sections/live-updates-protests-for-racial-justice/2020/06/26/884149659/minneapolis-council-moves-to-defund-police-establish-holistic-public-safety-forc)
+- [Who cares for our caregivers?](https://www.nbcnews.com/news/us-news/therapists-are-under-strain-covid-era-counseling-clients-trauma-they-n1230956)
+- [Do remedial programs help with student achievement?](https://www.nber.org/papers/w8918.pdf)
+
+<br>
+
+Discuss the following with each other, and record your responses in a well-organized shared document:
+
+- What treatment(s) might be of interest in this context? Is this treatment something that could realistically be intervened upon?
+- What quasi-experimental study design do you think would be most ideal for studying the causal effect of the treatment?
+    - Describe how you would implement the design.
+    - Use a causal graph to think through whether or not marginal or conditional exchangeability holds in your setting. Feel free to use [DAGitty](http://www.dagitty.net/dags.html). Record your conclusions.
+- Do you think that a general observational study would be feasible/appropriate in this setting?
+- Do you think an overall average causal effect or causal effects within subgroups would be more of interest? Does the answer to that depend on who is using the study results?
+- Who might suffer based on the results of this causal analysis and the ways in which the results are communicated?
+
+<br>
+
+Share the document with me by Wednesday, September 16:
+
+- If it is a Google Docs, add me so that I have commenting privileges.
+- Otherwise, email me a copy.
+
+
+<br><br>
+
+
+## Grading {-}
+
+Everyone in the group will receive the same grade for the **DESI2** and **DESI3** objectives. This will count towards mastery requirements.
+
+
+
+
