@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Topic 3 Study Designs Overview | STAT 451: Causal Inference</title>
+  <title>Topic 9 The Smoking-Birth Weight Paradox | STAT 451: Causal Inference</title>
   <meta name="description" content="This is the class website for Causal Inference at Macalester College." />
   <meta name="generator" content="bookdown 0.20.6 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Topic 3 Study Designs Overview | STAT 451: Causal Inference" />
+  <meta property="og:title" content="Topic 9 The Smoking-Birth Weight Paradox | STAT 451: Causal Inference" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="lmyint/causal_fall_2020" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Topic 3 Study Designs Overview | STAT 451: Causal Inference" />
+  <meta name="twitter:title" content="Topic 9 The Smoking-Birth Weight Paradox | STAT 451: Causal Inference" />
   
   <meta name="twitter:description" content="This is the class website for Causal Inference at Macalester College." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="exchangeability.html"/>
-<link rel="next" href="causal-graphs-as-statistical-models.html"/>
+<link rel="prev" href="digestion-study-designs-and-graphs.html"/>
+<link rel="next" href="homework-1.html"/>
 <script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -305,138 +305,74 @@ code span.wa { color: #ffff00; font-weight: bold; } /* Warning */
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="study-designs-overview" class="section level1" number="3">
-<h1><span class="header-section-number">Topic 3</span> Study Designs Overview</h1>
-<div id="pre-class-work-1" class="section level2 unnumbered">
+<div id="the-smoking-birth-weight-paradox" class="section level1" number="9">
+<h1><span class="header-section-number">Topic 9</span> The Smoking-Birth Weight Paradox</h1>
+<div id="pre-class-work-6" class="section level2 unnumbered">
 <h2>Pre-class work</h2>
-<p>Videos/slides</p>
+<p>Readings</p>
 <ul>
-<li>Study Designs in Causal Inference: <a href="https://youtu.be/vFnA9nLTmP0">[video]</a>, <a href="https://drive.google.com/file/d/1MkvNy4aWZ9ueyNUVLiHWbrRbQ9xyFnTK/view?usp=sharing">[slides]</a></li>
+<li><a href="https://moodle.macalester.edu/mod/resource/view.php?id=30391">The Birth Weight “Paradox” Uncovered?</a></li>
 </ul>
-<p>Checkpoint questions: <a href="https://moodle.macalester.edu/mod/quiz/view.php?id=24228">Link to Moodle checkpoint</a></p>
-<ol style="list-style-type: decimal">
-<li>We are analyzing survey data collected by the Minnesota Department of Health to understand the effect of vaping during adolescence on adulthood respiratory problems. What study design best describes this?
-<ol style="list-style-type: lower-alpha">
-<li>Randomized experiment</li>
-<li>Instrumental variables design</li>
-<li>Regression discontinuity</li>
-<li>Interrupted time series</li>
-<li>General observational study</li>
-</ol></li>
-<li>A state program only has the budget to fund a social services program in the 10 poorest counties in the state. We want to study the effect of this program on county-level social and economic indicators. What study design best describes this?
-<ol style="list-style-type: lower-alpha">
-<li>Randomized experiment</li>
-<li>Instrumental variables design</li>
-<li>Regression discontinuity</li>
-<li>Interrupted time series</li>
-<li>General observational study</li>
-</ol></li>
-<li>A hospital randomly puts up flyers throughout public hallways reminding people to get their flu shot. We want to study the effect of actually taking this year’s flu shot on risk of getting the flu. What study design best describes this?
-<ol style="list-style-type: lower-alpha">
-<li>Randomized experiment</li>
-<li>Instrumental variables design</li>
-<li>Regression discontinuity</li>
-<li>Interrupted time series</li>
-<li>General observational study</li>
-</ol></li>
-<li>In at most two sentences, describe a general strategy that quasi-experimental studies use to try to achieve conditional exchangeability.</li>
-</ol>
+<p><a href="https://moodle.macalester.edu/mod/quiz/view.php?id=28002">Checkpoint</a></p>
 <p><br><br><br><br></p>
 </div>
-<div id="learning-goals-2" class="section level2 unnumbered">
+<div id="learning-goals-7" class="section level2 unnumbered">
 <h2>Learning Goals</h2>
 <ul>
-<li>DESI1: Explain how randomized experiments relate to exchangeability.</li>
-<li>DESI2: Explain how quasi-experimental and general observational studies relate to exchangeability.</li>
-<li>DESI3: Compare the strengths and weaknesses of different study designs for answering a research question.</li>
+<li><strong><code>CNCP1</code>:</strong> Explain how causal and noncausal paths relate to exchangeability and causal effects.</li>
+<li><strong><code>DSEP1</code>:</strong> Apply d-separation to block noncausal paths in causal DAGs with and without unobserved variables.</li>
+<li><strong><code>DSEP2</code>:</strong> Apply strategies to deal with exchangeability problems caused by unobserved variables.</li>
+<li><strong><code>DSEP4</code>:</strong> Explain how d-separation relates to conditional exchangeability.</li>
 </ul>
-<center>
-<img src="images/course_flow2.svg" width="60%" height="60%">
-</center>
 <p><br><br><br><br></p>
 </div>
-<div id="exercises-2" class="section level2 unnumbered">
-<h2>Exercises</h2>
-
-<div class="solutions">
-<strong>Solutions to these exercises are available <a href="https://moodle.macalester.edu/mod/folder/view.php?id=24168">on Moodle</a>.</strong>
-</div>
-
-<div class="warmup">
-<strong>Navigate to <a href="https://www.pollev.com/lesliemyint417">PollEverywhere</a> for some warm-up exercises.</strong>
-</div>
+<div id="background" class="section level2 unnumbered">
+<h2>Background</h2>
+<p>To facilitate our discussion, key pieces of information and terminology from the article are summarized below.</p>
+<p><strong>Crude mortality rate ratio</strong></p>
+<p><span class="math display">\[\frac{\hbox{Infant mortality rate for maternal smokers}}{\hbox{Infant mortality rate for maternal non-smokers}} = 1.55\]</span></p>
 <p><br></p>
-
-<div class="community">
-What’s one thing you’re looking forward to this long weekend?
+<p><strong>Adjusted mortality rate ratio</strong>: same ratio but arising from a regression model in which birth weight was held constant. This was 1.09.</p>
+<p><br></p>
+<p><strong>Stratum-specific mortality rate ratios</strong></p>
+<p>In low birth weight infants:</p>
+<p><span class="math display">\[\frac{\hbox{Infant mortality rate for maternal smokers}}{\hbox{Infant mortality rate for maternal non-smokers}} = 0.79\]</span></p>
+<p>In normal birth weight infants:</p>
+<p><span class="math display">\[\frac{\hbox{Infant mortality rate for maternal smokers}}{\hbox{Infant mortality rate for maternal non-smokers}} = 1.80\]</span></p>
+<p><br><br><br><br></p>
 </div>
-<div id="exercise-1-1" class="section level3 unnumbered">
-<h3>Exercise 1</h3>
-<p>In a randomized experiment, participants are randomly assigned to receive either a new medication (<span class="math inline">\(A = 1\)</span>) or the standard medication (<span class="math inline">\(A = 0\)</span>) for cholesterol control. (Randomization is performed overall for all participants - not within subgroups.) The average cholesterol level in the new medication group is 130 mg/dL, and the average cholesterol level in the standard medication group is 140 mg/dL. Information on individuals’ family history of heart disease is also collected (<span class="math inline">\(Z = 1\)</span> for a family history and <span class="math inline">\(Z = 0\)</span> for no family history).</p>
-<p>What can be said about the potential outcome data in the table below? What would be an estimate of the average causal effect <span class="math inline">\(E[Y^{a=1}-Y^{a=0}]\)</span>?</p>
-<table>
-<thead>
-<tr class="header">
-<th align="center"><span class="math inline">\(n\)</span></th>
-<th align="center"><span class="math inline">\(Z\)</span></th>
-<th align="center"><span class="math inline">\(A\)</span></th>
-<th align="center"><span class="math inline">\(Y^{a=1}\)</span></th>
-<th align="center"><span class="math inline">\(Y^{a=0}\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">50</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr class="even">
-<td align="center">50</td>
-<td align="center">1</td>
-<td align="center">0</td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr class="odd">
-<td align="center">50</td>
-<td align="center">0</td>
-<td align="center">1</td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr class="even">
-<td align="center">50</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-</tbody>
-</table>
-<p><br><br></p>
+<div id="discussion" class="section level2 unnumbered">
+<h2>Discussion</h2>
+<p>Discuss responses to the questions below with your group. You have the option of making a writeup of this discussion a component of your <a href="final-project.html">final project</a>. (But it doesn’t have to be. There will be several options for the project.)</p>
+<div id="main-questions" class="section level3 unnumbered">
+<h3>Main questions</h3>
+<ol style="list-style-type: decimal">
+<li><p>In all causal diagrams considered in this paper, no confounders of maternal smoking and mortality are shown. Given the intent of the paper, do you think this is a problem? Explain.</p></li>
+<li><p>Comment on the choice and sequencing of causal diagrams presented in the paper. If the authors were writing for people who are new to causal graphs, do you think that the authors effectively presented essential graph ideas?</p></li>
+<li><p>Figure 3.7 is the most realistic causal graph presented. Analyze this graph using d-separation to explain why</p></li>
+<li><p>We actually need to dig a little deeper to fully explain the paradox. The mere existence of an open noncausal does not fully explain it. We need to incorporate knowledge about the effect directions and relative effect magnitudes along key arrows.</p>
+<ul>
+<li>Low birth weight types A and B clearly have positive relationships with LBW. Clearly explain the nature of the conditional relationship that arises when conditioning on LBW.</li>
+<li>What is likely true about the relative magnitude of the Smoking –&gt; Mortality effect and the U –&gt; Mortality effect in order to explain the <em>paradoxical</em> association that infants of maternal smokers are specifically <em>protected</em> as compared to infants of maternal nonsmokers. Explain.</li>
+</ul></li>
+</ol>
+<p><br></p>
 </div>
-<div id="exercise-2-1" class="section level3 unnumbered">
-<h3>Exercise 2</h3>
-<p>A common use of regression discontinuity designs in policy research occurs when funding for a program is limited, and areas are ranked by need to determine whether they will receive the benefits of the program. Only areas with the greatest need receive program benefits.</p>
-<p>Explain how this type of design is attempting to create exchangeability. Do you think that this design is effective in that goal? Explain.</p>
-<p><br><br></p>
-</div>
-<div id="exercise-3-1" class="section level3 unnumbered">
-<h3>Exercise 3</h3>
-<p>Consider the use of an advertisement to promote a health product. The ultimate goal is to understand the causal effect of the product on an outcome. How might advertisements be released to capitalize on an instrumental variables design?</p>
-<p>Explain how this type of design is attempting to create exchangeability. Do you think that this design is effective in that goal? Explain.</p>
-<p><br><br></p>
-</div>
-<div id="exercise-4-1" class="section level3 unnumbered">
-<h3>Exercise 4</h3>
-<p>Of the three quasi-experimental study designs we’ve discussed (regression discontinuity, instrumental variables, and interrupted time series), which do you think is most effective in reaching exchangeability? Which do you think is least effective? Explain your thoughts.</p>
-<p><br><br></p>
-
-<div class="exittix">
-<strong>Take a few minutes to reflect on today’s ideas by filling out an <a href="https://docs.google.com/forms/d/e/1FAIpQLScHlTYLjpItT3XjktsBtJl--CqQ86WnoQS_tWmj8KHoSEzgig/viewform?usp=sf_link">exit ticket</a>.</strong>
-</div>
+<div id="digging-deeper" class="section level3 unnumbered">
+<h3>Digging deeper</h3>
+<ol style="list-style-type: decimal">
+<li><p>Explain the alcoholism-liver cancer example at the end of the paper.</p></li>
+<li><p>Could smoking protect against COVID-19 infection? Read this <a href="https://twitter.com/EpiEllie/status/1258607277357006849">Tweet thread</a>, and use d-separation ideas to explain the surprising finding discussed at the start of the thread.</p></li>
+</ol>
+<center>
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+There’s a new paper circulating today about “risk factors” for COVID19 which is getting misinterpreted in a pretty common way: applying conclusions about causation to results obtained via methods designed only for finding correlations.<br><br>It’s time for a <a href="https://twitter.com/hashtag/tweetorial?src=hash&amp;ref_src=twsrc%5Etfw">#tweetorial</a>! <a href="https://t.co/8rymWtGW9l">pic.twitter.com/8rymWtGW9l</a>
+</p>
+— Ellie Murray (<span class="citation">@EpiEllie</span>) <a href="https://twitter.com/EpiEllie/status/1258607277357006849?ref_src=twsrc%5Etfw">May 8, 2020</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</center>
 
 </div>
 </div>
@@ -449,8 +385,8 @@ What’s one thing you’re looking forward to this long weekend?
           </div>
         </div>
       </div>
-<a href="exchangeability.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="causal-graphs-as-statistical-models.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="digestion-study-designs-and-graphs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="homework-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

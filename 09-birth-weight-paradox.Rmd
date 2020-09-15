@@ -1,0 +1,87 @@
+```{r 09_setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, eval=FALSE, fig.align="center")
+```
+
+# The Smoking-Birth Weight Paradox
+
+## Pre-class work {-}
+
+Readings
+
+- [The Birth Weight "Paradox" Uncovered?](https://moodle.macalester.edu/mod/resource/view.php?id=30391)
+
+[Checkpoint](https://moodle.macalester.edu/mod/quiz/view.php?id=28002)
+
+
+<br><br><br><br>
+
+
+## Learning Goals {-}
+
+- **`CNCP1`:** Explain how causal and noncausal paths relate to exchangeability and causal effects.
+- **`DSEP1`:** Apply d-separation to block noncausal paths in causal DAGs with and without unobserved variables.
+- **`DSEP2`:** Apply strategies to deal with exchangeability problems caused by unobserved variables.
+- **`DSEP4`:** Explain how d-separation relates to conditional exchangeability.
+
+
+<br><br><br><br>
+
+
+## Background {-}
+
+To facilitate our discussion, key pieces of information and terminology from the article are summarized below.
+
+**Crude mortality rate ratio**
+
+$$\frac{\hbox{Infant mortality rate for maternal smokers}}{\hbox{Infant mortality rate for maternal non-smokers}} = 1.55$$
+
+<br>
+
+**Adjusted mortality rate ratio**: same ratio but arising from a regression model in which birth weight was held constant. This was 1.09.
+
+<br>
+
+**Stratum-specific mortality rate ratios**
+
+In low birth weight infants:
+
+$$\frac{\hbox{Infant mortality rate for maternal smokers}}{\hbox{Infant mortality rate for maternal non-smokers}} = 0.79$$
+
+In normal birth weight infants:
+
+$$\frac{\hbox{Infant mortality rate for maternal smokers}}{\hbox{Infant mortality rate for maternal non-smokers}} = 1.80$$
+
+
+<br><br><br><br>
+
+
+## Discussion {-}
+
+Discuss responses to the questions below with your group. You have the option of making a writeup of this discussion a component of your [final project](final-project.html). (But it doesn't have to be. There will be several options for the project.)
+
+### Main questions {-}
+
+1. In all causal diagrams considered in this paper, no confounders of maternal smoking and mortality are shown. Given the intent of the paper, do you think this is a problem? Explain.
+
+2. Comment on the choice and sequencing of causal diagrams presented in the paper. If the authors were writing for people who are new to causal graphs, do you think that the authors effectively presented essential graph ideas?
+
+3. Figure 3.7 is the most realistic causal graph presented. Analyze this graph using d-separation to explain why
+
+4. We actually need to dig a little deeper to fully explain the paradox. The mere existence of an open noncausal does not fully explain it. We need to incorporate knowledge about the effect directions and relative effect magnitudes along key arrows.
+    - Low birth weight types A and B clearly have positive relationships with LBW. Clearly explain the nature of the conditional relationship that arises when conditioning on LBW.
+    - What is likely true about the relative magnitude of the Smoking --> Mortality effect and the U --> Mortality effect in order to explain the *paradoxical* association that infants of maternal smokers are specifically *protected* as compared to infants of maternal nonsmokers. Explain.
+
+
+<br>
+
+
+### Digging deeper {-}
+
+1. Explain the alcoholism-liver cancer example at the end of the paper.
+
+2. Could smoking protect against COVID-19 infection? Read this [Tweet thread](https://twitter.com/EpiEllie/status/1258607277357006849), and use d-separation ideas to explain the surprising finding discussed at the start of the thread.
+
+<center>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">There’s a new paper circulating today about “risk factors” for COVID19 which is getting misinterpreted in a pretty common way: applying conclusions about causation to results obtained via methods designed only for finding correlations.<br><br>It’s time for a <a href="https://twitter.com/hashtag/tweetorial?src=hash&amp;ref_src=twsrc%5Etfw">#tweetorial</a>! <a href="https://t.co/8rymWtGW9l">pic.twitter.com/8rymWtGW9l</a></p>&mdash; Ellie Murray (@EpiEllie) <a href="https://twitter.com/EpiEllie/status/1258607277357006849?ref_src=twsrc%5Etfw">May 8, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</center>
+

@@ -42,7 +42,7 @@ The following learning objectives are the primary focus of this assignment and a
 In order to retry previous learning objectives (listed below), you must incorporate them into the writeup for this assignment. For example, if you would like to draw a connection to randomized experiments (`DESI1`) at some point in your writeup, include the following in your RMarkdown file:
 
 ```
-> **Revisiting objective DESI1:** Enter your response here.
+> **Revisiting objective DESI1:** Enter a response here that demonstrates that you show solid understanding of the DESI1 objective.
 ```
 
 Do the same for any other objectives that you would like to revisit. You must limit these responses to 250 words, and these responses must flow smoothly within the write up. That is, please make clear how the objective is relevant to thoughts that were described immediately beforehand.
