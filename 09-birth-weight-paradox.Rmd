@@ -65,7 +65,7 @@ Discuss responses to the questions below with your group. You have the option of
 
 2. Comment on the choice and sequencing of causal diagrams presented in the paper. If the authors were writing for people who are new to causal graphs, do you think that the authors effectively presented essential graph ideas?
 
-3. Figure 3.7 is the most realistic causal graph presented. Analyze this graph using d-separation to explain why
+3. Figure 3.7 is the most realistic causal graph presented. Analyze this graph using d-separation to explain why conditioning on low birth weight leads to problems.
 
 4. We actually need to dig a little deeper to fully explain the paradox. The mere existence of an open noncausal does not fully explain it. We need to incorporate knowledge about the effect directions and relative effect magnitudes along key arrows.
     - Low birth weight types A and B clearly have positive relationships with LBW. Clearly explain the nature of the conditional relationship that arises when conditioning on LBW.
