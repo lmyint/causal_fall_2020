@@ -71,6 +71,8 @@ Discuss responses to the questions below with your group. You have the option of
     - Low birth weight types A and B clearly have positive relationships with LBW. Clearly explain the nature of the conditional relationship that arises when conditioning on LBW.
     - What is likely true about the relative magnitude of the Smoking --> Mortality effect and the U --> Mortality effect in order to explain the *paradoxical* association that infants of maternal smokers are specifically *protected* as compared to infants of maternal nonsmokers. Explain.
 
+5. In our discussions so far, we've conditioned on `Low birth weight = Yes`. Do you think the paradox would hold if we condition on `Low birth weight = No`? Explain in terms of d-separation ideas.
+
 
 <br>
 
