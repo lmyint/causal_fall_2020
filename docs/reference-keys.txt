@@ -7,3 +7,4 @@ graphical-structure-of-confounding
 graphical-structure-of-selection-bias
 digestion-study-designs-and-graphs
 the-smoking-birth-weight-paradox
+applied-analysis-regression

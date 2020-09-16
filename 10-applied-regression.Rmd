@@ -1,0 +1,156 @@
+```{r 10_setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, eval=FALSE, fig.align="center")
+```
+
+# (PART) Estimation {-}
+
+# Applied Analysis: Regression
+
+## Pre-class work {-}
+
+Videos/slides
+
+- Asking Clear Questions and Building Graphs: [[video]](https://youtu.be/LmGcyJ19kvs), [[slides]](https://drive.google.com/file/d/1JWujrNc0GnAM75gcLejvRlalApJU5yTx/view?usp=sharing)
+- Estimating Causal Effects: Regression: [[video]](https://youtu.be/5XjvaM2LyOI), [[slides]](https://drive.google.com/file/d/1hixsXVnY4RFSgDfzxaG3O_ZsazGkkdSw/view?usp=sharing)
+
+[Checkpoint](https://moodle.macalester.edu/mod/quiz/view.php?id=30647)
+
+
+<br><br><br><br>
+
+
+## Learning Goals {-}
+
+- REGR1: Conduct and interpret results from an appropriate regression analysis to estimate causal effects and effect modification of causal effects.
+
+
+<center>
+<img src="images/course_flow4.svg" width="60%" height="60%">
+</center>
+
+```{block2, type="warmup"}
+**Navigate to [PollEverywhere](https://www.pollev.com/lesliemyint417) for some warm-up exercises.**
+```
+
+
+<br><br><br><br>
+
+## Context {-}
+
+Marijuana decriminalization is a major part of the dialogue on mass incarceration because marijuana-related offenses form a large part of drug offenses.
+
+<center>
+<a href="https://smile.amazon.com/New-Jim-Crow-Incarceration-Colorblindness-ebook/dp/B086CFB2NT"><img src="https://m.media-amazon.com/images/I/51hVN9LrJhL.jpg" width="50%" height="50%"></a>
+</center>
+
+In considering decriminalization, it is important to also think through other consequences of marijuana use. In this analysis, we will be interested in the following:
+
+<br>
+
+> **How does adolescent marijuana smoking affect the risk of adulthood cigarette smoking?**
+
+<br>
+
+We'll explore this question by looking at data from the Add Health study (https://cpc.unc.edu/projects/addhealth), a national survey of adolescent health. 
+
+The following variables are in the dataset:
+
+- `exposure`: Indicator for whether or not marijuana was smoked in adolescence. 1=yes, 0=no. (Treatment)
+- `smoke`: Indicator for whether the individual smoked in adulthood. 1=yes, 0=no. (Outcome)
+- `age`: Age at study entry
+- `male`: Indicator for whether the individual was male. 1=yes, 0=no.
+- `white`: Indicator for whether the individual was White. 1=yes, 0=no.
+- `susp`: Indicator for whether the individual was ever suspended from school. 1=yes, 0=no.
+- `mathG`: Math grade (1 to 4 corresponding respectively to A to D)
+- `readG`: Reading grade (1 to 4 corresponding respectively to A to D)
+- `parentED`: Parent education (1 to 5 corresponding respectively to less than high school, high school, vocational school, some college, and college graduate and beyond).
+- `housesmoke`: Indicator for the presence of a cigarette smoker in the individual's household. 1=yes, 0=no.
+
+Nonresponse bias is a ubiquitous source of concern for surveys. Add Health investigators studied determinants of nonresponse and found that living in a rural neighborhood and being white decreased chances of responding. They found that college education or higher in parents and parental involvement in school fundraising increased the chances of responding.
+
+(In case you're interested, their report on nonresponse is available [here](https://addhealth.cpc.unc.edu/wp-content/uploads/docs/user_guides/Predictors_of_Nonresponse_in_a_Longitudi.pdf).)
+
+
+<br><br>
+
+
+## Analysis {-}
+
+A template RMarkdown document that you can start from is available [here](template_rmds/10-applied-regression.Rmd).
+
+You can read in the dataset as below:
+
+```{r}
+addhealth <- readr::read_csv("https://www.dropbox.com/s/h09nq0nwgx8eioz/addhealth.csv?dl=1")
+```
+
+### Part 1: Causal graph construction {-}
+
+Construct an appropriate causal graph based on your contextual knowledge. Use [DAGitty](http://www.dagitty.net/dags.html) to collaborate with your group members. The graph should contain unmeasured variables and variables in the dataset (but not necessarily all of them).
+
+- Insert a picture of your final graph. You can insert images in Markdown with:
+    ```
+    ![](graph_filename.png)
+    ```
+
+- In at most 400 words, discuss the impact of unobserved variables (come up with at least one) and selection bias. Based on your graph, can you achieve conditional exchangeability in this analysis? If not, what variables would you like to have measured? Incorporate the concepts of causal and noncausal paths and d-separation in your discussion.
+
+
+Even if you don't believe conditional exchangeability holds, still proceed with the analysis. You will acknowledge limitations at the end of your write-up.
+
+
+<br><br>
+
+
+### Part 2: Exploratory analysis {-}
+
+Construct visualizations to inform the building of an appropriate model for estimating the following average causal effects:
+
+- Overall average causal effect
+- Average causal effects within subgroups defined by one variable of your choice
+
+Your visualizations should:
+
+- Explore nonlinearity if appropriate
+- Explore interactions between the treatment variable and two other variables (interactions between treatment and each of two other variables - not a 3-way interaction). Use this to inform your choice of subgroup variable in estimating subgroup-causal effects.
+
+In case it's relevant, the code below adds logistic regression smoothing lines to `ggplot2` figures:
+
+```{r}
+ggplot(data, aes(x = X, y = y)) +
+    geom_point() +
+    geom_smooth(se = FALSE, color = "blue") +
+    geom_smooth(formula = y~ns(x,2), method = "glm",
+        method.args = list(family="binomial"),
+        se = FALSE, color = "red"
+    )
+```
+
+
+<br><br>
+
+
+### Part 3: Modeling {-}
+
+- Fit a model to estimate the overall average causal effect.
+- Fit a model to estimate the subgroup average causal effects (for one subgroup variable).
+
+For both models, display the summarized output table and 95% confidence intervals for the coefficients.
+
+
+<br><br>
+
+
+### Part 4: Discussion {-}
+
+In this last part of the write-up, you'll interpret modeling results and discuss limitations. (Limit this part to 500 words.)
+
+- Interpret the coefficient(s) of causal interest on an appropriate scale for both models.
+
+- Include a warning for the reader about interpreting all coefficients causally, and provide a brief explanation.
+
+- Using both the confidence intervals and effect magnitudes, discuss the results of your analysis in a contextually meaningful way for potential consumers of your results. (Pick a reasonable target audience, and address your writing to those types of people.)
+
+- Discuss limitations of your analysis in terms of exchangeability and generalizability.
+
+
