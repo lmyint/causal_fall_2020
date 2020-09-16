@@ -7,7 +7,7 @@ knitr::opts_chunk$set(echo=TRUE, eval=FALSE)
 <center>
 **Due Sunday, September 20 at midnight CST on [Moodle](https://moodle.macalester.edu/mod/assign/view.php?id=30390)**
 
-**Please turn in two knitted PDF documents containing your responses to the two sets of exercises.**
+**Please turn in one knitted PDF document containing your write-up.**
 
 (If you have LaTeX installed, you can knit directly to PDF (preferred method). Otherwise, you can knit to HTML and "Print" the page to save it as a PDF.)
 
@@ -17,19 +17,15 @@ knitr::opts_chunk$set(echo=TRUE, eval=FALSE)
 
 ## Deliverables {-}
 
-Please turn in exercises from the following class days (combining them into one document):
-
-- Estimating Causal Effects: Regression
-- Inverse Probability Weighting in Practice
+Please turn in your write-up from the Topic 10: [Applied Analysis: Regression](applied-analysis-regression.html).
 
 <br>
 
 ## Primary objectives {-}
 
-The following learning objectives are the primary focus of this assignment and are already captured in the two sets of exercises above:
+The following learning objectives are the primary focus of this assignment and are already captured in the [Applied Analysis: Regression](applied-analysis-regression.html) activity:
 
 - **`REGR1`:** Conduct and interpret results from an appropriate regression analysis to estimate causal effects and effect modification of causal effects.
-- **`IPTW1`:** Conduct and interpret results from an appropriate IPW analysis to estimate causal effects and effect modification of causal effects.
 - **`CNCP1`:** Explain how causal and noncausal paths relate to exchangeability and causal effects.
 - **`DSEP1`:** Apply d-separation to block noncausal paths in causal DAGs with and without unobserved variables.
 - **`DSEP2`:** Apply strategies to deal with exchangeability problems caused by unobserved variables.

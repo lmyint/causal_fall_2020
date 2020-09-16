@@ -1,5 +1,4 @@
 bookdown::gitbook:
-  highlight: espresso
   css: custom_styles.css
   split_by: chapter
   config:

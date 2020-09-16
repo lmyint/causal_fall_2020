@@ -84,6 +84,8 @@ You can read in the dataset as below:
 addhealth <- readr::read_csv("https://www.dropbox.com/s/h09nq0nwgx8eioz/addhealth.csv?dl=1")
 ```
 
+> **Note that all variables are encoded as numeric. You may need to use `factor(variable)` when making certain visualizations.**
+
 ### Part 1: Causal graph construction {-}
 
 Construct an appropriate causal graph based on your contextual knowledge. Use [DAGitty](http://www.dagitty.net/dags.html) to collaborate with your group members. The graph should contain unmeasured variables and variables in the dataset (but not necessarily all of them).
