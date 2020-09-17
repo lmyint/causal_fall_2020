@@ -1,0 +1,57 @@
+```{r r_misc, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, eval=FALSE)
+```
+
+# (PART) Miscellaneous {-}
+
+# Additional R resources {-}
+
+[DAGitty](http://www.dagitty.net/dags.html) does not display noncausal paths, which can often be helpful for trying to *approximately* block noncausal paths in the presence of unmeasured variables.
+
+The code below shows a way to do this. For now, you have to define the DAG using a list of edges. (The example below shows the classic confounder triangle.)
+
+If you're feeling adventurous, learn about the [`dagitty`](https://cran.r-project.org/package=dagitty) R package to see if you can write a function that takes the "Model code" from the DAGitty web interface (right side of the window) to directly create the `igraph` object.
+
+```{r}
+library(igraph)
+
+# Create the edge list
+el <- rbind(
+    c("C", "A"),
+    c("A", "Y"),
+    c("C", "Y")
+)
+# Create the graph
+dag <- graph_from_edgelist(el, directed = TRUE)
+
+# Helper functions for displaying paths
+display_paths <- function(g, paths) {
+    adj <- as_adjacency_matrix(dag)
+    for (i in seq_along(paths)) {
+        path <- paths[[i]]
+        cat("Path ", i, ":   ", sep = "")
+        draw_edge(adj_mat = adj, path = path)
+    }
+}
+
+draw_edge <- function(adj_mat, path) {
+    path_ids <- as_ids(path)
+    arrow_vec <- rep("", length(path_ids))
+    for (i in seq_len(length(path_ids)-1)) {
+        node1 <- path_ids[i]
+        node2 <- path_ids[i+1]
+        if (adj_mat[node1,node2]==1) {
+            ## Arrow is 1 -> 2
+            arrow_vec[i] <- "->"
+        } else {
+            ## Arrow is 1 <- 2
+            arrow_vec[i] <- "<-"
+        }
+    }
+    path_string <- paste(path_ids, arrow_vec)
+    path_string <- paste(path_string, collapse = " ")
+    cat(path_string, "\n")
+}
+
+display_paths(dag, all_simple_paths(dag, from = "A", to = "Y", mode = "all"))
+```
