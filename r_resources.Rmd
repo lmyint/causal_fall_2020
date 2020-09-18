@@ -26,7 +26,7 @@ dag <- graph_from_edgelist(el, directed = TRUE)
 
 # Helper functions for displaying paths
 display_paths <- function(g, paths) {
-    adj <- as_adjacency_matrix(dag)
+    adj <- as_adjacency_matrix(g)
     for (i in seq_along(paths)) {
         path <- paths[[i]]
         cat("Path ", i, ":   ", sep = "")

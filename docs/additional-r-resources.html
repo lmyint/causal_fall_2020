@@ -340,7 +340,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb20-11"><a href="additional-r-resources.html#cb20-11" aria-hidden="true"></a></span>
 <span id="cb20-12"><a href="additional-r-resources.html#cb20-12" aria-hidden="true"></a><span class="co"># Helper functions for displaying paths</span></span>
 <span id="cb20-13"><a href="additional-r-resources.html#cb20-13" aria-hidden="true"></a>display_paths &lt;-<span class="st"> </span><span class="cf">function</span>(g, paths) {</span>
-<span id="cb20-14"><a href="additional-r-resources.html#cb20-14" aria-hidden="true"></a>    adj &lt;-<span class="st"> </span><span class="kw">as_adjacency_matrix</span>(dag)</span>
+<span id="cb20-14"><a href="additional-r-resources.html#cb20-14" aria-hidden="true"></a>    adj &lt;-<span class="st"> </span><span class="kw">as_adjacency_matrix</span>(g)</span>
 <span id="cb20-15"><a href="additional-r-resources.html#cb20-15" aria-hidden="true"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(paths)) {</span>
 <span id="cb20-16"><a href="additional-r-resources.html#cb20-16" aria-hidden="true"></a>        path &lt;-<span class="st"> </span>paths[[i]]</span>
 <span id="cb20-17"><a href="additional-r-resources.html#cb20-17" aria-hidden="true"></a>        <span class="kw">cat</span>(<span class="st">&quot;Path &quot;</span>, i, <span class="st">&quot;:   &quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)</span>
