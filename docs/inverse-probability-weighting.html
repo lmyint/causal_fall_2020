@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Topic 7 Graphical Structure of Selection Bias | STAT 451: Causal Inference</title>
+  <title>Topic 11 Inverse Probability Weighting | STAT 451: Causal Inference</title>
   <meta name="description" content="This is the class website for Causal Inference at Macalester College." />
   <meta name="generator" content="bookdown 0.20.6 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Topic 7 Graphical Structure of Selection Bias | STAT 451: Causal Inference" />
+  <meta property="og:title" content="Topic 11 Inverse Probability Weighting | STAT 451: Causal Inference" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="lmyint/causal_fall_2020" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Topic 7 Graphical Structure of Selection Bias | STAT 451: Causal Inference" />
+  <meta name="twitter:title" content="Topic 11 Inverse Probability Weighting | STAT 451: Causal Inference" />
   
   <meta name="twitter:description" content="This is the class website for Causal Inference at Macalester College." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="graphical-structure-of-confounding.html"/>
-<link rel="next" href="digestion-study-designs-and-graphs.html"/>
+<link rel="prev" href="applied-analysis-regression.html"/>
+<link rel="next" href="homework-1.html"/>
 <script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -335,96 +335,93 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="graphical-structure-of-selection-bias" class="section level1" number="7">
-<h1><span class="header-section-number">Topic 7</span> Graphical Structure of Selection Bias</h1>
-<div id="pre-class-work-5" class="section level2 unnumbered">
+<div id="inverse-probability-weighting" class="section level1" number="11">
+<h1><span class="header-section-number">Topic 11</span> Inverse Probability Weighting</h1>
+<div id="pre-class-work-8" class="section level2 unnumbered">
 <h2>Pre-class work</h2>
-<p>Required reading</p>
+<p>Videos/slides</p>
 <ul>
-<li>WHATIF: 8.1 - 8.3</li>
+<li>Estimating Causal Effects: Inverse Probability Weighting: <a href="https://youtu.be/PfLYPt9ur4g">[video]</a>, <a href="https://drive.google.com/file/d/1c99hoAOspc0S-SmB3DJjD2UO_-1YRtRX/view?usp=sharing">[slides]</a></li>
 </ul>
-<p><br><br></p>
+<p><a href="https://moodle.macalester.edu/mod/quiz/view.php?id=30648">Checkpoint</a></p>
+<p><br><br><br><br></p>
 </div>
-<div id="learning-goals-6" class="section level2 unnumbered">
+<div id="learning-goals-9" class="section level2 unnumbered">
 <h2>Learning Goals</h2>
 <ul>
-<li>CNCP1: Explain how causal and noncausal paths relate to exchangeability and causal effects.</li>
-<li>DSEP1: Apply d-separation to block noncausal paths in causal DAGs with and without unobserved variables.</li>
-<li>DSEP2: Apply strategies to deal with exchangeability problems caused by unobserved variables.</li>
-<li>DSEP3: Simulate data from a causal DAG under linear and logistic regression SEMs to check d-separation properties through regression modeling and visualization.</li>
-<li>DSEP4: Explain how d-separation relates to conditional exchangeability.</li>
+<li>Verify properties of inverse probability weighting for estimating average causal effects using simulation</li>
 </ul>
 <center>
-<img src="images/course_flow3.svg" width="60%" height="60%">
+<img src="images/course_flow4.svg" width="60%" height="60%">
 </center>
 <p><br><br><br><br></p>
 </div>
-<div id="exercises-6" class="section level2 unnumbered">
+<div id="exercises-7" class="section level2 unnumbered">
 <h2>Exercises</h2>
 
 <div class="solutions">
-<strong>Solutions to these exercises are available <a href="https://moodle.macalester.edu/mod/folder/view.php?id=28904">on Moodle</a>.</strong>
+<strong>Solutions to these exercises are available <a href="https://moodle.macalester.edu/mod/folder/view.php?id=32374">on Moodle</a>.</strong>
 </div>
 
 <div class="warmup">
 <strong>Navigate to <a href="https://www.pollev.com/lesliemyint417">PollEverywhere</a> for some warm-up exercises.</strong>
 </div>
-
-<div class="warmup">
-<strong>Navigate to <a href="http://www.dagitty.net/">DAGitty</a> and click the “Launch online” link.</strong>
-</div>
+<p><br><br></p>
+<p><strong>You can download a template RMarkdown file to start from <a href="template_rmds/11-ipw.Rmd">here</a>.</strong></p>
 <p><br></p>
-<div id="exercise-1-5" class="section level3 unnumbered">
-<h3>Exercise 1</h3>
-<p>In epidemiology, a common study design is known as a <strong>case-control study</strong>, which are used to understand associations between diseases and risk factors. In these studies, we identify people with disease (cases) and without disease (controls) are collect information on risk factors/exposures of interest.</p>
-<p>A 1981 case-control study looked at the relationship between coffee drinking and pancreatic cancer. Cases were hospital patients with histologically confirmed pancreatic cancer. To select controls, researchers asked the physicians caring for the cases to refer patients without pancreatic cancer.</p>
-<p>Draw a causal graph to represent the situation and explain how selection bias could arise via noncausal path(s).</p>
+<div id="exercise-1-simulate" class="section level3 unnumbered">
+<h3>Exercise 1: Simulate</h3>
+<p>Simulate data from the causal graph below where <span class="math inline">\(Z\)</span>, <span class="math inline">\(W\)</span>, and <span class="math inline">\(A\)</span> are binary, and <span class="math inline">\(Y\)</span> is quantitative. Use the model below for your structural equation for <span class="math inline">\(A\)</span>, and store your data in a dataset object called <code>sim_data</code>.</p>
+<p><span class="math display">\[
+\log(\mathrm{odds}(A = 1)) = -1 + 0.4 Z + 0.4 W + 0.9 Z*W
+\]</span></p>
+<p><img src="causal_manual_files/figure-html/11_ex1-1.png" width="1152" style="display: block; margin: auto;" /></p>
 <p><br><br></p>
 </div>
-<div id="exercise-2-4" class="section level3 unnumbered">
-<h3>Exercise 2</h3>
-<p>For each of the causal graphs below, identify the set of variables needed to achieve conditional exchangeability of the treatment <span class="math inline">\(A\)</span> and outcome <span class="math inline">\(Y\)</span>. Check your answers to one of the graphs using <a href="http://www.dagitty.net/dags.html">DAGitty</a>.</p>
-<center>
-<img src="images/07_dag2.png" />
-<img src="images/07_dag3.png" />
-<img src="images/07_dag4.png" />
-</center>
+<div id="exercise-2-intervene" class="section level3 unnumbered">
+<h3>Exercise 2: Intervene</h3>
+<p>Based on your SEM, what do you expect to be the average causal effect? Modify your simulation to simulate an intervention where all are treated and all are untreated to verify that this is the true average causal effect.</p>
 <p><br><br></p>
 </div>
-<div id="exercise-3-4" class="section level3 unnumbered">
-<h3>Exercise 3</h3>
-<p>In this exercise, we’ll consider how causal graphs can inform study design.</p>
-<p>In the 1970s, researchers noticed a consistent association between estrogen use and endometrial cancer. Groups debated two hypotheses:</p>
-<ol style="list-style-type: decimal">
-<li>Estrogens do cause cancer.</li>
-<li>Estrogens don’t cause cancer but lead to uterine bleeding, leading to more frequent doctor visits, leading to increased diagnosis of existing cancer.</li>
+<div id="exercise-3-inverse-probability-weighting" class="section level3 unnumbered">
+<h3>Exercise 3: Inverse probability weighting</h3>
+<p>Here, we’ll check the performance of inverse probability weighting for estimating the average causal effect.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>In practice, we don’t know the true SEM underlying the data, so we need to estimate the appropriate weights from the data. This starts from estimating the probability of receiving treatment conditional on appropriate variables. (This probability is called the <strong>propensity score</strong>.) Fit an appropriate propensity score model called <code>ps_mod</code>.</p></li>
+<li><p>The code below uses your fitted <code>ps_mod</code> to compute IP weights.</p>
+<ul>
+<li>Look up the <code>mutate()</code> and <code>case_when()</code> functions from <code>dplyr</code> by entering <code>?function_name</code> in the Console.</li>
+<li><code>predict(logistic_mod, newdata = data_to_make_predictions_for, type = "response")</code> is used to predict probabilities from a logistic regression model. (Without <code>type = "response"</code>, log-odds are computed.)</li>
+<li>Add comments to this code to document these different pieces, and check in with the instructor if you have questions.</li>
+</ul>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="inverse-probability-weighting.html#cb19-1" aria-hidden="true"></a>sim_data &lt;-<span class="st"> </span>sim_data <span class="op">%&gt;%</span></span>
+<span id="cb19-2"><a href="inverse-probability-weighting.html#cb19-2" aria-hidden="true"></a><span class="st">    </span><span class="kw">mutate</span>(</span>
+<span id="cb19-3"><a href="inverse-probability-weighting.html#cb19-3" aria-hidden="true"></a>        <span class="dt">ps =</span> <span class="kw">predict</span>(ps_mod, <span class="dt">newdata =</span> sim_data, <span class="dt">type =</span> <span class="st">&quot;response&quot;</span>),</span>
+<span id="cb19-4"><a href="inverse-probability-weighting.html#cb19-4" aria-hidden="true"></a>        <span class="dt">ip_weight =</span> <span class="kw">case_when</span>(</span>
+<span id="cb19-5"><a href="inverse-probability-weighting.html#cb19-5" aria-hidden="true"></a>            A<span class="op">==</span><span class="dv">1</span> <span class="op">~</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>ps,</span>
+<span id="cb19-6"><a href="inverse-probability-weighting.html#cb19-6" aria-hidden="true"></a>            A<span class="op">==</span><span class="dv">0</span> <span class="op">~</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span><span class="op">-</span>ps)</span>
+<span id="cb19-7"><a href="inverse-probability-weighting.html#cb19-7" aria-hidden="true"></a>        )</span>
+<span id="cb19-8"><a href="inverse-probability-weighting.html#cb19-8" aria-hidden="true"></a>    )</span></code></pre></div></li>
+<li><p>Fit an ordinary regression model <code>Y ~ A</code> that ignores the IP weights. Is the estimated ACE what you expected?</p></li>
+<li><p>Incorporate the IP weights into your analysis by modifying your model from part c as below. Is the estimated ACE what you expected?</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="inverse-probability-weighting.html#cb20-1" aria-hidden="true"></a><span class="kw">lm</span>(..., <span class="dt">data =</span> ..., <span class="dt">weights =</span> ip_weight)</span></code></pre></div></li>
 </ol>
-<p>The following study plan was proposed: restrict the study only to those with uterine bleeding and compare cancer rates in estrogen-users and non-users. In this way, all participants have the same chance of being diagnosed.</p>
-<p>The following causal graphs correspond to the two hypotheses:</p>
-<center>
-<img src="images/estrogens_endometrial.png" />
-</center>
-<p>(The graphs don’t show confounders of the estrogens-endometrial cancer relationship for compactness. We can assume that these have already been adjusted for.)</p>
-<div id="part-a" class="section level4 unnumbered">
-<h4>Part a</h4>
-<p>Consider the study proposal above: restrict analysis to those with uterine bleeding.</p>
-<ul>
-<li>Under the graphs for the two hypotheses, will estrogens and diagnosed cancer be associated?</li>
-<li>Can this study proposal distinguish between the two hypotheses?</li>
-</ul>
-</div>
-<div id="part-b" class="section level4 unnumbered">
-<h4>Part b</h4>
-<p>Consider another study proposal: ensure that <em>everyone</em> is screened frequently, and we don’t restrict our analysis to only those with uterine bleeding.</p>
-<ul>
-<li>What arrow (in either DAG 1 or 2) can be removed as a result of this study design?</li>
-<li>Can this study proposal distinguish between the two hypotheses?</li>
-</ul>
+<p><strong>Note:</strong> Using <code>weights = ...</code> in <code>glm(..., family = "binomial")</code> does not work exactly the way we want it to. (It works as we want for <code>lm()</code>.) Going forward, we will use a specialized package (the <code>survey</code> package) for dealing with weights.</p>
 <p><br><br></p>
-
-<div class="community">
-What are you looking forward to this weekend?
 </div>
+<div id="exercise-4-balance-checking" class="section level3 unnumbered">
+<h3>Exercise 4: Balance checking</h3>
+<ol style="list-style-type: lower-alpha">
+<li><p>What is the key differentiator between regression and inverse probability weighting?</p></li>
+<li><p>Let’s verify that unique property of IP weighting. Make plots to show the relationship between <span class="math inline">\(Z\)</span> and <span class="math inline">\(A\)</span> and between <span class="math inline">\(W\)</span> and <span class="math inline">\(A\)</span> in the original, unweighted data.</p></li>
+<li><p>Modify your plot to incorporate the IP weights by adding the following to <code>aes()</code>. What property of IP weighting does this show?</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="inverse-probability-weighting.html#cb21-1" aria-hidden="true"></a><span class="kw">aes</span>(..., <span class="dt">weight =</span> ip_weight)</span></code></pre></div></li>
+</ol>
+<p><br><br></p>
+</div>
+<div id="extra" class="section level3 unnumbered">
+<h3>Extra!</h3>
+<p>If you’ve taken Statistical Machine Learning, what connections can you make between ideas about predictive modeling and propensity score estimation? If you haven’t taken that course but are curious, feel free to ask the instructor!</p>
 <p><br><br></p>
 
 <div class="exittix">
@@ -434,14 +431,16 @@ What are you looking forward to this weekend?
 </div>
 </div>
 </div>
-</div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="graphical-structure-of-confounding.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="digestion-study-designs-and-graphs.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="applied-analysis-regression.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="homework-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
