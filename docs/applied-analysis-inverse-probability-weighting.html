@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Homework 2 | STAT 451: Causal Inference</title>
+  <title>Topic 12 Applied Analysis: Inverse Probability Weighting | STAT 451: Causal Inference</title>
   <meta name="description" content="This is the class website for Causal Inference at Macalester College." />
   <meta name="generator" content="bookdown 0.20.6 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Homework 2 | STAT 451: Causal Inference" />
+  <meta property="og:title" content="Topic 12 Applied Analysis: Inverse Probability Weighting | STAT 451: Causal Inference" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="lmyint/causal_fall_2020" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Homework 2 | STAT 451: Causal Inference" />
+  <meta name="twitter:title" content="Topic 12 Applied Analysis: Inverse Probability Weighting | STAT 451: Causal Inference" />
   
   <meta name="twitter:description" content="This is the class website for Causal Inference at Macalester College." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="homework-1.html"/>
-<link rel="next" href="homework-3.html"/>
+<link rel="prev" href="inverse-probability-weighting.html"/>
+<link rel="next" href="homework-1.html"/>
 <script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -352,152 +352,127 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="homework-2" class="section level1 unnumbered">
-<h1>Homework 2</h1>
+<div id="applied-analysis-inverse-probability-weighting" class="section level1" number="12">
+<h1><span class="header-section-number">Topic 12</span> Applied Analysis: Inverse Probability Weighting</h1>
+<div id="pre-class-work-9" class="section level2 unnumbered">
+<h2>Pre-class work</h2>
+<p>Required reading</p>
+<ul>
+<li>WHATIF: 12.1, 12.2, 12.4</li>
+</ul>
+<p><a href="https://moodle.macalester.edu/mod/quiz/view.php?id=31376">Checkpoint</a></p>
+<p><br><br><br><br></p>
+</div>
+<div id="learning-goals-10" class="section level2 unnumbered">
+<h2>Learning Goals</h2>
+<ul>
+<li><strong><code>IPTW1</code></strong>: Conduct and interpret results from an appropriate IPW analysis to estimate causal effects and effect modification of causal effects.</li>
+</ul>
 <center>
-<p><strong>Due Sunday, September 13 at midnight CST on <a href="https://moodle.macalester.edu/mod/assign/view.php?id=27999">Moodle</a></strong></p>
-<p><strong>Please turn in a single knitted PDF document containing your responses.</strong></p>
-<p>(If you have LaTeX installed, you can knit directly to PDF (preferred method). Otherwise, you can knit to HTML and “Print” the page to save it as a PDF.)</p>
-<strong>A template that you can work from is available <a href="template_rmds/hw2.Rmd">here</a>. Please save this file as <code>hw2_LastName_FirstName.Rmd</code>.</strong>
+<img src="images/course_flow4.svg" width="60%" height="60%">
 </center>
-<div id="introduction" class="section level2 unnumbered">
-<h2>Introduction</h2>
-<p>The context of the exercises in this assignment comes from the study <em>A Population-Based Study on Nighttime Road Traffic Noise and Insomnia</em> published in the journal <em>Sleep</em> in 2017.</p>
-<p>The article is freely available <a href="http://academic.oup.com/sleep/article/40/2/zsw055/2662183">here</a>. You will need to read parts of this article for this assignment.</p>
+
+<div class="warmup">
+<strong>Navigate to <a href="https://www.pollev.com/lesliemyint417">PollEverywhere</a> for some warm-up exercises.</strong>
+</div>
+<p><br><br><br><br></p>
+</div>
+<div id="analysis-1" class="section level2 unnumbered">
+<h2>Analysis</h2>
+<p><strong>You can download a template RMarkdown file to start from <a href="template_rmds/12-applied-ipw.Rmd">here</a>.</strong></p>
+<p>We’ll be looking at the dataset explored in our WHATIF book to answer the question:</p>
+<blockquote>
+<p><strong>How does smoking cessation affect weight gain?</strong></p>
+</blockquote>
+<p>The data are available in the <code>cidata</code> package. Install this package (you may need to install the <code>remotes</code> package first):</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="applied-analysis-inverse-probability-weighting.html#cb22-1" aria-hidden="true"></a>remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;malcolmbarrett/cidata&quot;</span>) </span></code></pre></div>
+<p>Our data come from the National Health and Nutrition Examination Survey Data I Epidemiologic Follow-up Study (NHEFS).</p>
+<p>We will use the <code>nhefs_complete</code> dataset which has removed cases with missing data for some key variables. More information is available via <code>?nhefs_complete</code>. The variable codebook is available as <code>nhefs_codebook</code>.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="applied-analysis-inverse-probability-weighting.html#cb23-1" aria-hidden="true"></a><span class="kw">library</span>(survey) <span class="co"># You may need to install the survey package</span></span>
+<span id="cb23-2"><a href="applied-analysis-inverse-probability-weighting.html#cb23-2" aria-hidden="true"></a><span class="kw">library</span>(dplyr)</span>
+<span id="cb23-3"><a href="applied-analysis-inverse-probability-weighting.html#cb23-3" aria-hidden="true"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb23-4"><a href="applied-analysis-inverse-probability-weighting.html#cb23-4" aria-hidden="true"></a><span class="kw">library</span>(cidata)</span>
+<span id="cb23-5"><a href="applied-analysis-inverse-probability-weighting.html#cb23-5" aria-hidden="true"></a></span>
+<span id="cb23-6"><a href="applied-analysis-inverse-probability-weighting.html#cb23-6" aria-hidden="true"></a><span class="kw">data</span>(nhefs_complete) <span class="co"># Load the data</span></span>
+<span id="cb23-7"><a href="applied-analysis-inverse-probability-weighting.html#cb23-7" aria-hidden="true"></a><span class="kw">View</span>(nhefs_codebook) <span class="co"># Look at the variable codebook</span></span></code></pre></div>
 <p><br></p>
-<p>The following learning objectives are covered in this assignment:</p>
+<div id="part-1-causal-graph-analysis" class="section level3 unnumbered">
+<h3>Part 1: Causal graph analysis</h3>
+<p>Use the causal graph below as a starting point for the analysis. The selection node <code>S</code> indicates those for whom we have complete data. The treatment variable is <code>qsmk</code>, and the outcome variable is <code>wt82_71</code>.</p>
 <ul>
-<li><strong><code>EXCH1</code>:</strong> Apply the concepts of marginal and conditional exchangeability to answer questions about (hypothetical) data on potential outcomes.</li>
-<li><strong><code>EXCH2</code>:</strong> Give examples of when marginal and conditional exchangeability would and would not hold in various data contexts.</li>
-<li><strong><code>EXCH3</code>:</strong> Explain why a direct comparison of the outcomes in the treated and untreated is misleading as an estimate of a causal effect.</li>
-<li><strong><code>DESI1</code>:</strong> Explain how randomized experiments relate to exchangeability.</li>
-<li><strong><code>DESI2</code>:</strong> Explain how quasi-experimental and general observational studies relate to exchangeability.</li>
-<li><strong><code>DESI3</code>:</strong> Compare the strengths and weaknesses of different study designs for answering a research question.</li>
-<li><strong><code>PGRA1</code>:</strong> Apply the Causal Markov assumption to express the joint distribution of data.</li>
-<li><strong><code>CNCP1</code>:</strong> Explain how causal and noncausal paths relate to exchangeability and causal effects.</li>
-<li><strong><code>DSEP1</code>:</strong> Apply d-separation to block noncausal paths in causal DAGs with and without unobserved variables.</li>
-<li><strong><code>DSEP2</code>:</strong> Apply strategies to deal with exchangeability problems caused by unobserved variables.</li>
-<li><strong><code>DSEP3</code>:</strong> Simulate data from a causal DAG under linear and logistic regression SEMs to check d-separation properties through regression modeling and visualization.</li>
-<li><strong><code>DSEP4</code>:</strong> Explain how d-separation relates to conditional exchangeability.</li>
-<li><strong><code>SENS1</code>:</strong> Evaluate the sensitivity of findings to data quality and propose appropriate sensitivity analyses for a research investigation</li>
+<li>If this is the true causal graph underlying the data, can we achieve conditional exchangeability? Show your work fully.</li>
+</ul>
+<p><img src="causal_manual_files/figure-html/12_dag-1.png" width="672" /></p>
+<p><br><br></p>
+</div>
+<div id="part-2-propensity-score-modeling" class="section level3 unnumbered">
+<h3>Part 2: Propensity score modeling</h3>
+<ul>
+<li><p>Based on your causal graph analysis, fit an appropriate propensity score model. Use visualizations to inform the construction of your model. Accompany each visualization with a brief description of what it helps you decide.</p></li>
+<li><p>Use your model to compute appropriate weights, and add these weights to the dataset.</p></li>
+<li><p>Use “before and after” visualizations to compare balance of key variables before and after weighting. Write a few sentences summarizing your conclusions from this stage.</p></li>
 </ul>
 <p><br></p>
-</div>
-<div id="exercise-1-7" class="section level2 unnumbered">
-<h2>Exercise 1</h2>
-<p>In judging the strength of evidence in research studies, it is important to critically evaluate the quality of data that the authors used.</p>
-<p>Read the <em>Noise Exposure Assessment</em> section of the paper. Briefly explain 2 concerns that you have about how the authors determined noise levels. (4 sentences max.)</p>
+<p>The code below adds logistic regression smoothing lines to <code>ggplot2</code> figures:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="applied-analysis-inverse-probability-weighting.html#cb24-1" aria-hidden="true"></a><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x =</span> X, <span class="dt">y =</span> y)) <span class="op">+</span></span>
+<span id="cb24-2"><a href="applied-analysis-inverse-probability-weighting.html#cb24-2" aria-hidden="true"></a><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
+<span id="cb24-3"><a href="applied-analysis-inverse-probability-weighting.html#cb24-3" aria-hidden="true"></a><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span></span>
+<span id="cb24-4"><a href="applied-analysis-inverse-probability-weighting.html#cb24-4" aria-hidden="true"></a><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">formula =</span> y<span class="op">~</span><span class="kw">ns</span>(x,<span class="dv">2</span>), <span class="dt">method =</span> <span class="st">&quot;glm&quot;</span>,</span>
+<span id="cb24-5"><a href="applied-analysis-inverse-probability-weighting.html#cb24-5" aria-hidden="true"></a>        <span class="dt">method.args =</span> <span class="kw">list</span>(<span class="dt">family=</span><span class="st">&quot;binomial&quot;</span>),</span>
+<span id="cb24-6"><a href="applied-analysis-inverse-probability-weighting.html#cb24-6" aria-hidden="true"></a>        <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span></span>
+<span id="cb24-7"><a href="applied-analysis-inverse-probability-weighting.html#cb24-7" aria-hidden="true"></a>    )</span></code></pre></div>
 <p><br></p>
+<p>The (incomplete) code below is useful for computing appropriate weights:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="applied-analysis-inverse-probability-weighting.html#cb25-1" aria-hidden="true"></a>your_data &lt;-<span class="st"> </span>your_data <span class="op">%&gt;%</span></span>
+<span id="cb25-2"><a href="applied-analysis-inverse-probability-weighting.html#cb25-2" aria-hidden="true"></a><span class="st">    </span><span class="kw">mutate</span>(</span>
+<span id="cb25-3"><a href="applied-analysis-inverse-probability-weighting.html#cb25-3" aria-hidden="true"></a>        <span class="dt">ps =</span> <span class="kw">predict</span>(ps_mod, <span class="dt">newdata =</span> your_data, <span class="dt">type =</span> <span class="st">&quot;response&quot;</span>),</span>
+<span id="cb25-4"><a href="applied-analysis-inverse-probability-weighting.html#cb25-4" aria-hidden="true"></a>        <span class="dt">ip_weight =</span> <span class="kw">case_when</span>(</span>
+<span id="cb25-5"><a href="applied-analysis-inverse-probability-weighting.html#cb25-5" aria-hidden="true"></a>            A<span class="op">==</span><span class="dv">1</span> <span class="op">~</span><span class="st"> </span>???,</span>
+<span id="cb25-6"><a href="applied-analysis-inverse-probability-weighting.html#cb25-6" aria-hidden="true"></a>            A<span class="op">==</span><span class="dv">0</span> <span class="op">~</span><span class="st"> </span>???</span>
+<span id="cb25-7"><a href="applied-analysis-inverse-probability-weighting.html#cb25-7" aria-hidden="true"></a>        )</span>
+<span id="cb25-8"><a href="applied-analysis-inverse-probability-weighting.html#cb25-8" aria-hidden="true"></a>    )</span></code></pre></div>
+<p><br></p>
+<p>You can incorporate weights into most <code>ggplot2</code> figures by adding <code>weight</code> to the <code>aes</code>thetics:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="applied-analysis-inverse-probability-weighting.html#cb26-1" aria-hidden="true"></a><span class="kw">aes</span>(..., <span class="dt">weight =</span> ip_weight)</span></code></pre></div>
+<p><br><br></p>
 </div>
-<div id="exercise-2-6" class="section level2 unnumbered">
-<h2>Exercise 2</h2>
-<p>Figure 1 shows (a simplified version of) the causal graph the authors used in their work. Write down the joint distribution of the data using the Causal Markov Assumption. Use the variable abbreviations below:</p>
+<div id="part-3-modeling-with-ip-weights" class="section level3 unnumbered">
+<h3>Part 3: Modeling with IP weights</h3>
+<p>Assuming that you have added the <code>ip_weight</code> variable to the <code>nhefs_complete</code> dataset, the code below fits the model</p>
+<p><span class="math display">\[
+E[Y^a] = \beta_0 + \beta_1a
+\]</span></p>
+<p>(As discussed in 12.4 of WHATIF, this model is called a <strong>marginal structural model (MSM)</strong>.)</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="applied-analysis-inverse-probability-weighting.html#cb27-1" aria-hidden="true"></a><span class="co"># Set up information about weights</span></span>
+<span id="cb27-2"><a href="applied-analysis-inverse-probability-weighting.html#cb27-2" aria-hidden="true"></a>design &lt;-<span class="st"> </span><span class="kw">svydesign</span>(<span class="dt">ids =</span> <span class="op">~</span><span class="dv">0</span>, <span class="dt">weights =</span> nhefs_complete<span class="op">$</span>ip_weight, <span class="dt">data =</span> nhefs_complete)</span>
+<span id="cb27-3"><a href="applied-analysis-inverse-probability-weighting.html#cb27-3" aria-hidden="true"></a></span>
+<span id="cb27-4"><a href="applied-analysis-inverse-probability-weighting.html#cb27-4" aria-hidden="true"></a>msm_fit &lt;-<span class="st"> </span><span class="kw">svyglm</span>(</span>
+<span id="cb27-5"><a href="applied-analysis-inverse-probability-weighting.html#cb27-5" aria-hidden="true"></a>    wt82_<span class="dv">71</span> <span class="op">~</span><span class="st"> </span>qsmk,</span>
+<span id="cb27-6"><a href="applied-analysis-inverse-probability-weighting.html#cb27-6" aria-hidden="true"></a>    <span class="dt">data =</span> data,</span>
+<span id="cb27-7"><a href="applied-analysis-inverse-probability-weighting.html#cb27-7" aria-hidden="true"></a>    <span class="dt">design =</span> design</span>
+<span id="cb27-8"><a href="applied-analysis-inverse-probability-weighting.html#cb27-8" aria-hidden="true"></a>)</span>
+<span id="cb27-9"><a href="applied-analysis-inverse-probability-weighting.html#cb27-9" aria-hidden="true"></a><span class="kw">summary</span>(msm_fit)</span>
+<span id="cb27-10"><a href="applied-analysis-inverse-probability-weighting.html#cb27-10" aria-hidden="true"></a><span class="kw">confint</span>(msm_fit)</span></code></pre></div>
 <ul>
-<li>D: Demography</li>
-<li>CD: Chronic diseases</li>
-<li>L: Lifestyle</li>
-<li>SES: Socioeconomic status</li>
-<li>NS: Noise sensitivity</li>
-<li>NA: Noise annoyance</li>
-<li>A: Road traffic noise</li>
-<li>Y: Sleep disturbances</li>
+<li><p>Fit a marginal structural model to estimate the overall average causal effect.</p></li>
+<li><p>Construct a visualization to explore if the causal effect of smoking cessation might differ by prior smoking intensity (<code>smokeintensity</code>). Briefly interpret your visualization.</p></li>
+<li><p>Fit a model to estimate how the average causal effect differs across smoking intensity. (Adapt the <code>svyglm()</code> formula in the same way you would for <code>lm()</code>.)</p></li>
+<li><p>Using both the confidence intervals and effect magnitudes, discuss the results of your analysis in a contextually meaningful way.</p></li>
 </ul>
-<p><br></p>
-</div>
-<div id="exercise-3-6" class="section level2 unnumbered">
-<h2>Exercise 3</h2>
-<ol style="list-style-type: lower-alpha">
-<li><p>In Figure 1, which parts of the graph generate causal effects of the treatment (road traffic noise) on the outcome (sleep disturbances)? State these explicitly. (No explanation required.)</p></li>
-<li><p>Are the observed outcomes across treatment levels a good representation of the missing potential outcomes? Which parts of the graph are relevant to look at to answer that question? (Describe this in general terms rather than stating all of them.) <strong>How</strong> do these parts of the graph create misleading associations? Explain in terms of relevant graph building block structures and exchangeability. (4 sentences max.)</p></li>
-</ol>
-<p><br></p>
-</div>
-<div id="exercise-4-5" class="section level2 unnumbered">
-<h2>Exercise 4</h2>
-<p>Consider a modified version of the Figure 1 graph shown below.</p>
-<p><img src="causal_manual_files/figure-html/hw2_ex4-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>How can you identify a set of variables <span class="math inline">\(Z\)</span> that will result in conditional exchangeability of the treatment groups? Briefly explain how your proposed process achieves this. (4 sentences max.)</p>
-<p>Identify one possible set <span class="math inline">\(Z\)</span>. Show your work.</p>
-<p><br></p>
-</div>
-<div id="exercise-5-3" class="section level2 unnumbered">
-<h2>Exercise 5</h2>
-<p>Here, you’ll check if the set <span class="math inline">\(Z\)</span> you identified in Exercise 4 works.</p>
-<p>Simulate data from a causal graph that has the same structure as the graph in Exercise 4. All variables should be quantitative except for the outcome <span class="math inline">\(Y\)</span>, which should be binary. Display output from an appropriate check.</p>
-<p><br></p>
-</div>
-<div id="exercise-6" class="section level2 unnumbered">
-<h2>Exercise 6</h2>
-<p>Continuing from the causal graph in Exercise 4, suppose that the household income and physical activity variables were unmeasured.</p>
-<p>Use two different strategies to try to regain conditional exchangeability (at least approximately). (4 sentences max.)</p>
-<p><br></p>
-</div>
-<div id="exercise-7" class="section level2 unnumbered">
-<h2>Exercise 7</h2>
-<p>What would the causal graph from Exercise 4 look like if this study had been a randomized experiment? You can draw the graph or explain how it would look different. Using this graph, make a connection between relevant graph concepts and marginal exchangeability. (4 sentences max.)</p>
-<p><br></p>
-</div>
-<div id="exercise-8" class="section level2 unnumbered">
-<h2>Exercise 8</h2>
-<p>Pick one quasi-experimental study design and explain in a few sentences how it could be applied in the setting of this sleep study. (4 sentences max.)</p>
-<p><br></p>
-</div>
-<div id="exercise-9" class="section level2 unnumbered">
-<h2>Exercise 9</h2>
-<p>(This exercise is not related to the sleep study.)</p>
-<p>Suppose that the treatment (<span class="math inline">\(A\)</span>) groups are exchangeable conditional on <span class="math inline">\(Z\)</span>. Given the table of information below, compute the following average causal effects (showing your work):</p>
-<ul>
-<li>Overall ACE: <span class="math inline">\(E[Y^{a=1} - Y^{a=0}]\)</span></li>
-<li>ACE within <span class="math inline">\(Z = A\)</span>: <span class="math inline">\(E[Y^{a=1} - Y^{a=0} \mid Z = A]\)</span></li>
-<li>ACE within <span class="math inline">\(Z = B\)</span>: <span class="math inline">\(E[Y^{a=1} - Y^{a=0} \mid Z = B]\)</span></li>
-</ul>
-<p>(<span class="math inline">\(Z\)</span> and <span class="math inline">\(A\)</span> are binary, and <span class="math inline">\(Y\)</span> is quantitative. <span class="math inline">\(n\)</span> indicates the sample size for the 4 groups.)</p>
-<table>
-<thead>
-<tr class="header">
-<th align="center"><span class="math inline">\(n\)</span></th>
-<th align="center"><span class="math inline">\(Z\)</span></th>
-<th align="center"><span class="math inline">\(A\)</span></th>
-<th align="center"><span class="math inline">\(E[Y\mid A, Z]\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">80</td>
-<td align="center">A</td>
-<td align="center">1</td>
-<td align="center">40</td>
-</tr>
-<tr class="even">
-<td align="center">20</td>
-<td align="center">A</td>
-<td align="center">0</td>
-<td align="center">20</td>
-</tr>
-<tr class="odd">
-<td align="center">20</td>
-<td align="center">B</td>
-<td align="center">1</td>
-<td align="center">30</td>
-</tr>
-<tr class="even">
-<td align="center">80</td>
-<td align="center">B</td>
-<td align="center">0</td>
-<td align="center">20</td>
-</tr>
-</tbody>
-</table>
 
 </div>
 </div>
+</div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="homework-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="homework-3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="inverse-probability-weighting.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="homework-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

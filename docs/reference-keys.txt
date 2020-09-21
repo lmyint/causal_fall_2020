@@ -9,3 +9,4 @@ digestion-study-designs-and-graphs
 the-smoking-birth-weight-paradox
 applied-analysis-regression
 inverse-probability-weighting
+applied-analysis-inverse-probability-weighting
