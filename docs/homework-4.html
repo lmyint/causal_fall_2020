@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Homework 3 | STAT 451: Causal Inference</title>
+  <title>Homework 4 | STAT 451: Causal Inference</title>
   <meta name="description" content="This is the class website for Causal Inference at Macalester College." />
   <meta name="generator" content="bookdown 0.20.6 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Homework 3 | STAT 451: Causal Inference" />
+  <meta property="og:title" content="Homework 4 | STAT 451: Causal Inference" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="lmyint/causal_fall_2020" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Homework 3 | STAT 451: Causal Inference" />
+  <meta name="twitter:title" content="Homework 4 | STAT 451: Causal Inference" />
   
   <meta name="twitter:description" content="This is the class website for Causal Inference at Macalester College." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="homework-2.html"/>
-<link rel="next" href="homework-4.html"/>
+<link rel="prev" href="homework-3.html"/>
+<link rel="next" href="final-project.html"/>
 <script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -341,37 +341,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="homework-3" class="section level1 unnumbered">
-<h1>Homework 3</h1>
+<div id="homework-4" class="section level1 unnumbered">
+<h1>Homework 4</h1>
 <center>
-<p><strong>Due Sunday, September 20 at midnight CST on <a href="https://moodle.macalester.edu/mod/assign/view.php?id=30390">Moodle</a></strong></p>
+<p><strong>Due Sunday, September 27 at midnight CST on <a href="https://moodle.macalester.edu/mod/assign/view.php?id=33038">Moodle</a></strong></p>
 <p><strong>Please turn in one knitted PDF document containing your write-up.</strong></p>
-<p>(If you have LaTeX installed, you can knit directly to PDF (preferred method). Otherwise, you can knit to HTML and “Print” the page to save it as a PDF.)</p>
+(If you have LaTeX installed, you can knit directly to PDF (preferred method). Otherwise, you can knit to HTML and “Print” the page to save it as a PDF.)
 </center>
 <p><br></p>
-<div id="deliverables" class="section level2 unnumbered">
+<div id="deliverables-1" class="section level2 unnumbered">
 <h2>Deliverables</h2>
-<p>Please turn in your write-up from the Topic 10: <a href="applied-analysis-regression.html">Applied Analysis: Regression</a>.</p>
-<p><br></p>
-</div>
-<div id="primary-objectives" class="section level2 unnumbered">
-<h2>Primary objectives</h2>
-<p>The following learning objectives are the primary focus of this assignment and are already captured in the <a href="applied-analysis-regression.html">Applied Analysis: Regression</a> activity:</p>
+<p>Your write-up from Topic 12: <a href="applied-analysis-inverse-probability-weighting.html">Applied Analysis: Inverse Probability Weighting</a> will form the core part of this assignment. Please add responses to the following to that writeup (all within the context of the smoking-weight gain study):</p>
 <ul>
-<li><strong><code>REGR1</code>:</strong> Conduct and interpret results from an appropriate regression analysis to estimate causal effects and effect modification of causal effects.</li>
-<li><strong><code>CNCP1</code>:</strong> Explain how causal and noncausal paths relate to exchangeability and causal effects.</li>
-<li><strong><code>DSEP1</code>:</strong> Apply d-separation to block noncausal paths in causal DAGs with and without unobserved variables.</li>
-<li><strong><code>DSEP2</code>:</strong> Apply strategies to deal with exchangeability problems caused by unobserved variables.</li>
-<li><strong><code>DSEP4</code>:</strong> Explain how d-separation relates to conditional exchangeability.</li>
+<li><p>Incorporate a sensitivity analysis for a single unmeasured confounder into your analysis. Display and discuss appropriate plots resulting from this analysis in a contextually meaningful way. (Limit 400 words.)</p></li>
+<li><p>Formulate a research question for in the context of the smoking-weight gain study that investigates a time-varying treatment. The “treatment” itself does not have to be smoking. Formulate a research question that would realistically be of interest in a public health setting. Indicate whether you are investigating static or dynamic treatment strategies. (Limit 300 words.)</p></li>
+<li><p>Draw and discuss a causal graph that illustrates how treatment-confounder feedback might be present. Explain why regression fails but inverse probability weighting is appropriate in this situation. Discuss causal/noncausal paths and d-separation in your response. (Limit 400 words)</p></li>
 </ul>
 <p><br></p>
 </div>
-<div id="retrying-previous-objectives" class="section level2 unnumbered">
-<h2>Retrying previous objectives</h2>
-<p>In order to retry previous learning objectives (listed below), you must incorporate them into the writeup for this assignment. For example, if you would like to draw a connection to randomized experiments (<code>DESI1</code>) at some point in your writeup, include the following in your RMarkdown file:</p>
+<div id="primary-objectives-1" class="section level2 unnumbered">
+<h2>Primary objectives</h2>
+<p>The following learning objectives are the primary focus of this assignment:</p>
+<ul>
+<li><strong><code>IPTW1</code></strong>: Conduct and interpret results from an appropriate IPW analysis to estimate causal effects and effect modification of causal effects.</li>
+<li><strong><code>TVTR1</code></strong>: Formulate research questions that can be answered in a time-varying treatment setting.</li>
+<li><strong><code>TVTR2</code></strong>: Explain why regression does not generally work in time-varying settings with treatment-confounder feedback using d-separation ideas.</li>
+<li><strong><code>CNCP1</code>:</strong> Explain how causal and noncausal paths relate to exchangeability and causal effects.</li>
+<li><strong><code>DSEP1</code>:</strong> Apply d-separation to block noncausal paths in causal DAGs with and without unobserved variables.</li>
+<li><strong><code>SENS1</code></strong>: Evaluate the sensitivity of findings to data quality and propose appropriate sensitivity analyses for a research investigation</li>
+<li><strong><code>SENS2</code></strong>: Conduct and communicate the results of a sensitivity analysis for unmeasured confounding.</li>
+</ul>
+<p><br></p>
+</div>
+<div id="revisiting-previous-objectives" class="section level2 unnumbered">
+<h2>Revisiting previous objectives</h2>
+<p>In order to revisit previous learning objectives (listed below), you must incorporate them into the writeup for this assignment. For example, if you would like to draw a connection to randomized experiments (<code>DESI1</code>) at some point in your writeup, include the following in your RMarkdown file:</p>
 <pre><code>&gt; **Revisiting objective DESI1:** Enter a response here that demonstrates that you show solid understanding of the DESI1 objective.</code></pre>
 <p>Do the same for any other objectives that you would like to revisit. You must limit these responses to 250 words, and these responses must flow smoothly within the write up. That is, please make clear how the objective is relevant to thoughts that were described immediately beforehand.</p>
-<p><strong>Previous objectives:</strong></p>
+<p><strong>You can revisit any of the following objectives (excludes <code>REGR1</code>).</strong></p>
 <ul>
 <li><strong><code>EXCH1</code>:</strong> Apply the concepts of marginal and conditional exchangeability to answer questions about (hypothetical) data on potential outcomes.</li>
 <li><strong><code>EXCH2</code>:</strong> Give examples of when marginal and conditional exchangeability would and would not hold in various data contexts.</li>
@@ -380,18 +387,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong><code>DESI2</code>:</strong> Explain how quasi-experimental and general observational studies relate to exchangeability.</li>
 <li><strong><code>DESI3</code>:</strong> Compare the strengths and weaknesses of different study designs for answering a research question.</li>
 <li><strong><code>PGRA1</code>:</strong> Apply the Causal Markov assumption to express the joint distribution of data.</li>
+<li><strong><code>DSEP2</code>:</strong> Apply strategies to deal with exchangeability problems caused by unobserved variables.</li>
 <li><strong><code>DSEP3</code>:</strong> Simulate data from a causal DAG under linear and logistic regression SEMs to check d-separation properties through regression modeling and visualization.</li>
+<li><strong><code>DSEP4</code>:</strong> Explain how d-separation relates to conditional exchangeability.</li>
 </ul>
 
 </div>
 </div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="homework-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="homework-4.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="homework-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="final-project.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

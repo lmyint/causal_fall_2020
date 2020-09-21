@@ -1,0 +1,70 @@
+```{r hw4_setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, eval=FALSE)
+```
+
+# Homework 4 {-}
+
+<center>
+**Due Sunday, September 27 at midnight CST on [Moodle](https://moodle.macalester.edu/mod/assign/view.php?id=33038)**
+
+**Please turn in one knitted PDF document containing your write-up.**
+
+(If you have LaTeX installed, you can knit directly to PDF (preferred method). Otherwise, you can knit to HTML and "Print" the page to save it as a PDF.)
+</center>
+
+
+<br>
+
+
+## Deliverables {-}
+
+Your write-up from Topic 12: [Applied Analysis: Inverse Probability Weighting](applied-analysis-inverse-probability-weighting.html) will form the core part of this assignment. Please add responses to the following to that writeup (all within the context of the smoking-weight gain study):
+
+- Incorporate a sensitivity analysis for a single unmeasured confounder into your analysis. Display and discuss appropriate plots resulting from this analysis in a contextually meaningful way. (Limit 400 words.)
+
+- Formulate a research question for in the context of the smoking-weight gain study that investigates a time-varying treatment. The "treatment" itself does not have to be smoking. Formulate a research question that would realistically be of interest in a public health setting. Indicate whether you are investigating static or dynamic treatment strategies. (Limit 300 words.)
+
+- Draw and discuss a causal graph that illustrates how treatment-confounder feedback might be present. Explain why regression fails but inverse probability weighting is appropriate in this situation. Discuss causal/noncausal paths and d-separation in your response. (Limit 400 words)
+
+
+<br>
+
+
+## Primary objectives {-}
+
+The following learning objectives are the primary focus of this assignment:
+
+- **`IPTW1`**: Conduct and interpret results from an appropriate IPW analysis to estimate causal effects and effect modification of causal effects.
+- **`TVTR1`**: Formulate research questions that can be answered in a time-varying treatment setting.
+- **`TVTR2`**: Explain why regression does not generally work in time-varying settings with treatment-confounder feedback using d-separation ideas.
+- **`CNCP1`:** Explain how causal and noncausal paths relate to exchangeability and causal effects.
+- **`DSEP1`:** Apply d-separation to block noncausal paths in causal DAGs with and without unobserved variables.
+- **`SENS1`**: Evaluate the sensitivity of findings to data quality and propose appropriate sensitivity analyses for a research investigation
+- **`SENS2`**: Conduct and communicate the results of a sensitivity analysis for unmeasured confounding.
+
+
+<br>
+
+
+## Revisiting previous objectives {-}
+
+In order to revisit previous learning objectives (listed below), you must incorporate them into the writeup for this assignment. For example, if you would like to draw a connection to randomized experiments (`DESI1`) at some point in your writeup, include the following in your RMarkdown file:
+
+```
+> **Revisiting objective DESI1:** Enter a response here that demonstrates that you show solid understanding of the DESI1 objective.
+```
+
+Do the same for any other objectives that you would like to revisit. You must limit these responses to 250 words, and these responses must flow smoothly within the write up. That is, please make clear how the objective is relevant to thoughts that were described immediately beforehand.
+
+**You can revisit any of the following objectives (excludes `REGR1`).**
+
+- **`EXCH1`:** Apply the concepts of marginal and conditional exchangeability to answer questions about (hypothetical) data on potential outcomes.
+- **`EXCH2`:** Give examples of when marginal and conditional exchangeability would and would not hold in various data contexts.
+- **`EXCH3`:** Explain why a direct comparison of the outcomes in the treated and untreated is misleading as an estimate of a causal effect.
+- **`DESI1`:** Explain how randomized experiments relate to exchangeability.
+- **`DESI2`:** Explain how quasi-experimental and general observational studies relate to exchangeability.
+- **`DESI3`:** Compare the strengths and weaknesses of different study designs for answering a research question.
+- **`PGRA1`:** Apply the Causal Markov assumption to express the joint distribution of data.
+- **`DSEP2`:** Apply strategies to deal with exchangeability problems caused by unobserved variables.
+- **`DSEP3`:** Simulate data from a causal DAG under linear and logistic regression SEMs to check d-separation properties through regression modeling and visualization.
+- **`DSEP4`:** Explain how d-separation relates to conditional exchangeability.
