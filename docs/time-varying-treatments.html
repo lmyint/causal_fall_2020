@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Topic 5 Key Structures in Causal Graphs | STAT 451: Causal Inference</title>
+  <title>Topic 13 Time-Varying Treatments | STAT 451: Causal Inference</title>
   <meta name="description" content="This is the class website for Causal Inference at Macalester College." />
   <meta name="generator" content="bookdown 0.20.6 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Topic 5 Key Structures in Causal Graphs | STAT 451: Causal Inference" />
+  <meta property="og:title" content="Topic 13 Time-Varying Treatments | STAT 451: Causal Inference" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="lmyint/causal_fall_2020" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Topic 5 Key Structures in Causal Graphs | STAT 451: Causal Inference" />
+  <meta name="twitter:title" content="Topic 13 Time-Varying Treatments | STAT 451: Causal Inference" />
   
   <meta name="twitter:description" content="This is the class website for Causal Inference at Macalester College." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="causal-graphs-as-statistical-models.html"/>
-<link rel="next" href="graphical-structure-of-confounding.html"/>
+<link rel="prev" href="applied-analysis-inverse-probability-weighting.html"/>
+<link rel="next" href="homework-1.html"/>
 <script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -362,131 +362,68 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="key-structures-in-causal-graphs" class="section level1" number="5">
-<h1><span class="header-section-number">Topic 5</span> Key Structures in Causal Graphs</h1>
-<div id="pre-class-work-3" class="section level2 unnumbered">
+<div id="time-varying-treatments" class="section level1" number="13">
+<h1><span class="header-section-number">Topic 13</span> Time-Varying Treatments</h1>
+<div id="pre-class-work-10" class="section level2 unnumbered">
 <h2>Pre-class work</h2>
-<p>Videos/slides</p>
+<p>Required reading</p>
 <ul>
-<li>Key Structures in Causal Graphs: <a href="https://youtu.be/UA0vyBnzi9U">[video]</a>, <a href="https://drive.google.com/file/d/1aMWXmbqouuf_IdU9CeY2BfncihyY1AwS/view?usp=sharing">[slides]</a></li>
+<li>WHATIF: 19.1 - 19.4</li>
 </ul>
-<p>Checkpoint questions: <a href="https://moodle.macalester.edu/mod/quiz/view.php?id=27981">Link to Moodle checkpoint</a></p>
-<ol style="list-style-type: decimal">
-<li>Suppose that the variables A, B, and C in a causal graph are connected as such: A – B – C without knowledge of the arrow directions. If we only know that A and C are marginally dependent, which of the following structures are possible?
-<ol style="list-style-type: lower-alpha">
-<li>A –&gt; B –&gt; C</li>
-<li>A &lt;– B &lt;– C</li>
-<li>A &lt;– B –&gt; C</li>
-<li>A –&gt; B &lt;– C</li>
-</ol></li>
-<li>If we know that A and C are conditionally dependent given B, which of the following structures are possible?
-<ol style="list-style-type: lower-alpha">
-<li>A –&gt; B –&gt; C</li>
-<li>A &lt;– B &lt;– C</li>
-<li>A &lt;– B –&gt; C</li>
-<li>A –&gt; B &lt;– C</li>
-</ol></li>
-<li>If we know that A and C are marginally dependent and that A and C are conditionally independent given B, which of the following structures are possible?
-<ol style="list-style-type: lower-alpha">
-<li>A –&gt; B –&gt; C</li>
-<li>A &lt;– B &lt;– C</li>
-<li>A &lt;– B –&gt; C</li>
-<li>A –&gt; B &lt;– C</li>
-</ol></li>
-<li>How do chains, forks, and colliders relate to the concepts of exchangeability and causal effects? Explain in a few sentences.</li>
-</ol>
+<p><a href="https://moodle.macalester.edu/mod/quiz/view.php?id=31376">Checkpoint</a></p>
 <p><br><br><br><br></p>
 </div>
-<div id="learning-goals-4" class="section level2 unnumbered">
+<div id="learning-goals-11" class="section level2 unnumbered">
 <h2>Learning Goals</h2>
 <ul>
-<li>DSEP3: Simulate data from causal graphs under linear and logistic regression structural equation models to check d-separation properties through regression modeling and visualization.</li>
+<li><strong><code>TVTR1</code></strong>: Formulate research questions that can be answered in a time-varying treatment setting</li>
+<li><strong><code>TVTR2</code></strong>: Explain why regression does not generally work in time-varying settings with treatment-confounder feedback using d-separation ideas</li>
 </ul>
 <center>
-<img src="images/course_flow3.svg" width="60%" height="60%">
+<img src="images/course_flow4.svg" width="60%" height="60%">
 </center>
 <p><br><br><br><br></p>
 </div>
-<div id="exercises-4" class="section level2 unnumbered">
+<div id="exercises-8" class="section level2 unnumbered">
 <h2>Exercises</h2>
 
 <div class="solutions">
-<strong>Solutions to these exercises are available <a href="https://moodle.macalester.edu/mod/folder/view.php?id=28902">on Moodle</a>.</strong>
+<strong>Solutions to these exercises are available <a href="https://moodle.macalester.edu/mod/folder/view.php?id=34207">on Moodle</a>.</strong>
 </div>
-
-<div class="warmup">
-<strong>Navigate to <a href="https://www.pollev.com/lesliemyint417">PollEverywhere</a> for some warm-up exercises.</strong>
-</div>
-<p><br><br></p>
-<p><strong>You can download a template RMarkdown file to start from <a href="template_rmds/05-graphs-key-structures.Rmd">here</a>.</strong></p>
-<p>In these exercises, you’ll be practicing simulating data from structural equation models and verifying marginal and conditional (in)dependence properties in DAG structures.</p>
-<ul>
-<li>Always use a regression model as a check.</li>
-<li>If the situation readily corresponds to a plot, also make a plot as a check.</li>
-</ul>
-<p><strong>Coding note:</strong> When you simulate binary variables and store them in a dataset, it is useful to store them explicitly as categorical as below. (This is most helpful for plotting.)</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="key-structures-in-causal-graphs.html#cb10-1" aria-hidden="true"></a><span class="co"># X is binary. Y and Z are quantitative.</span></span>
-<span id="cb10-2"><a href="key-structures-in-causal-graphs.html#cb10-2" aria-hidden="true"></a>sim_data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">X =</span> <span class="kw">factor</span>(X), Y, Z)</span></code></pre></div>
 <p><br></p>
-<div id="exercise-1-3" class="section level3 unnumbered">
+<div id="exercise-1-6" class="section level3 unnumbered">
 <h3>Exercise 1</h3>
-<p>Simulate a chain <code>X -&gt; Y -&gt; Z</code> where all three variables are quantitative. (Use a sample size of 10,000 and a significance level of 0.05 throughout these exercises.)</p>
-<p>Use appropriate check(s) to verify the conditional relation in this structure.</p>
-<p><br><br></p>
-</div>
-<div id="exercise-2-2" class="section level3 unnumbered">
-<h3>Exercise 2</h3>
-<p>Simulate a fork <code>X &lt;- Y -&gt; Z</code> where <code>X</code> and <code>Z</code> are quantitative, and <code>Y</code> is binary.</p>
-<p>Use appropriate check(s) to verify the conditional relation in this structure.</p>
-<p><br><br></p>
-</div>
-<div id="exercise-3-2" class="section level3 unnumbered">
-<h3>Exercise 3</h3>
-<p>Simulate a collider <code>X -&gt; Y &lt;- Z</code> where <code>Y</code> also has a child <code>A</code> (<code>Y -&gt; A</code>). Let all 4 variables be binary.</p>
-<p>Use appropriate check(s) to verify the marginal and conditional relations between <code>X</code> and <code>Z</code> in this structure.</p>
-<p><br><br></p>
-</div>
-<div id="exercise-4-2" class="section level3 unnumbered">
-<h3>Exercise 4</h3>
-<p>Can we extend building block thinking to longer, more complex structures? Let’s investigate here (conceptually, no simulation).</p>
-<ol style="list-style-type: lower-alpha">
-<li><p>Consider the longer structure <code>A &lt;- B &lt;- C -&gt; D</code>. What do you expect about marginal/conditional (in)dependence of <code>A</code> and <code>D</code>? Explain.</p></li>
-<li><p>Consider the longer structure <code>A -&gt; B &lt;- C &lt;- D -&gt; E</code>. What do you expect about marginal/conditional (in)dependence of <code>A</code> and <code>E</code>? Explain.</p></li>
-</ol>
-<p><br><br></p>
-</div>
-<div id="exercise-5" class="section level3 unnumbered">
-<h3>Exercise 5</h3>
-<p>Discuss the Tweet below with your group.</p>
-<ul>
-<li>What does Liz Stuart mean by a “stark effect”? What might the trends look like if the effect weren’t so stark?</li>
-<li>What is the treatment? What evidence does this analysis provide? Is it strong evidence? Do you have any concerns?</li>
-</ul>
 <center>
-<blockquote class="twitter-tweet">
-<p lang="en" dir="ltr">
-Wow this is a pretty compelling comparative interrupted time series graph. Don't usually see such a stark effect. <a href="https://t.co/VCPLwUrXby">https://t.co/VCPLwUrXby</a>
-</p>
-— Elizabeth Stuart (<span class="citation">@Lizstuartdc</span>) <a href="https://twitter.com/Lizstuartdc/status/1302604052753244161?ref_src=twsrc%5Etfw">September 6, 2020</a>
-</blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<img src="images/13_ex1.png" />
 </center>
+<p>Which of these graphs could represent a sequentially randomized experiment and why?</p>
+<p>(Graphs that could represent sequentially randomized experiments indicate the presence of <em>sequential</em> exchangeability.)</p>
 <p><br><br></p>
+</div>
+<div id="exercise-2-5" class="section level3 unnumbered">
+<h3>Exercise 2</h3>
+<p><strong>Treatment-confounder feedback</strong> is the situation where past treatment <span class="math inline">\(A_{t-1}\)</span> affects the value of future confounders <span class="math inline">\(L_{t}\)</span>.</p>
+<p>The graph below represents the fundamental part of Graph 2 from Exercise 1 that allows us to explore the impact of treatment-confounder feedback.</p>
+<p><img src="causal_manual_files/figure-html/13_ex1-1.png" width="1056" style="display: block; margin: auto;" /></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Using d-separation ideas, explain why a regression model of the form <span class="math inline">\(E[Y \mid A_0, A_1, L_1]\)</span> creates a problem for estimating the effect of a treatment strategy for <span class="math inline">\(A_0\)</span> and <span class="math inline">\(A_1\)</span>.</p></li>
+<li><p>How would you expect this graph to change under inverse probability weighting? Thus explain why IPW allows us to estimate the effect of a treatment strategy for <span class="math inline">\(A_0\)</span> and <span class="math inline">\(A_1\)</span>.</p></li>
+<li><p>More generally, treatment-confounder feedback has been used to describe not only direct connections between past treatment and future confounders, but also any open path between them. Expanding on the graph here, what other structures lead to problems for conditioning-based estimation methods?</p></li>
+</ol>
 
-<div class="exittix">
-<strong>Take a few minutes to reflect on today’s ideas by filling out an <a href="https://docs.google.com/forms/d/e/1FAIpQLScHlTYLjpItT3XjktsBtJl--CqQ86WnoQS_tWmj8KHoSEzgig/viewform?usp=sf_link">exit ticket</a>.</strong>
+</div>
+</div>
 </div>
 
-</div>
-</div>
-</div>
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="causal-graphs-as-statistical-models.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="graphical-structure-of-confounding.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="applied-analysis-inverse-probability-weighting.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="homework-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

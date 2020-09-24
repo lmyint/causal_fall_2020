@@ -10,3 +10,4 @@ the-smoking-birth-weight-paradox
 applied-analysis-regression
 inverse-probability-weighting
 applied-analysis-inverse-probability-weighting
+time-varying-treatments
