@@ -64,7 +64,7 @@ You can revisit any of the following objectives (excludes `REGR1`, `IPTW1`, `TVT
 
 If you revisit any of these objectives, you must do so using the graph below. If revisiting an objective requires context for exactly what these variables represent, feel free to pick a context that is suitable for you.
 
-```{r}
+```{r hw5_dag, eval=TRUE}
 library(dagitty)
 dag <- dagitty("dag {
 bb=\"0,0,1,1\"
