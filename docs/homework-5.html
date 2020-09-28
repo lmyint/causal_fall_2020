@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Topic 10 Applied Analysis: Regression | STAT 451: Causal Inference</title>
+  <title>Homework 5 | STAT 451: Causal Inference</title>
   <meta name="description" content="This is the class website for Causal Inference at Macalester College." />
   <meta name="generator" content="bookdown 0.20.6 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Topic 10 Applied Analysis: Regression | STAT 451: Causal Inference" />
+  <meta property="og:title" content="Homework 5 | STAT 451: Causal Inference" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="lmyint/causal_fall_2020" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Topic 10 Applied Analysis: Regression | STAT 451: Causal Inference" />
+  <meta name="twitter:title" content="Homework 5 | STAT 451: Causal Inference" />
   
   <meta name="twitter:description" content="This is the class website for Causal Inference at Macalester College." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="the-smoking-birth-weight-paradox.html"/>
-<link rel="next" href="inverse-probability-weighting.html"/>
+<link rel="prev" href="homework-4.html"/>
+<link rel="next" href="final-project.html"/>
 <script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -380,132 +380,87 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="applied-analysis-regression" class="section level1" number="10">
-<h1><span class="header-section-number">Topic 10</span> Applied Analysis: Regression</h1>
-<div id="pre-class-work-7" class="section level2 unnumbered">
-<h2>Pre-class work</h2>
-<p>Videos/slides</p>
-<ul>
-<li>Asking Clear Questions and Building Graphs: <a href="https://youtu.be/LmGcyJ19kvs">[video]</a>, <a href="https://drive.google.com/file/d/1JWujrNc0GnAM75gcLejvRlalApJU5yTx/view?usp=sharing">[slides]</a></li>
-<li>Estimating Causal Effects: Regression: <a href="https://youtu.be/5XjvaM2LyOI">[video]</a>, <a href="https://drive.google.com/file/d/1hixsXVnY4RFSgDfzxaG3O_ZsazGkkdSw/view?usp=sharing">[slides]</a></li>
-</ul>
-<p><a href="https://moodle.macalester.edu/mod/quiz/view.php?id=30647">Checkpoint</a></p>
-<p><br><br><br><br></p>
-</div>
-<div id="learning-goals-8" class="section level2 unnumbered">
-<h2>Learning Goals</h2>
-<ul>
-<li>REGR1: Conduct and interpret results from an appropriate regression analysis to estimate causal effects and effect modification of causal effects.</li>
-</ul>
+<div id="homework-5" class="section level1 unnumbered">
+<h1>Homework 5</h1>
 <center>
-<img src="images/course_flow4.svg" width="60%" height="60%">
+<p><strong>Due Sunday, October 4 at midnight CST on <a href="https://moodle.macalester.edu/mod/assign/view.php?id=34829">Moodle</a></strong></p>
+<p><strong>Please turn in two PDF documents from class exercises.</strong></p>
+(If you have LaTeX installed, you can knit directly to PDF (preferred method). Otherwise, you can knit to HTML and “Print” the page to save it as a PDF.)
 </center>
-
-<div class="warmup">
-<strong>Navigate to <a href="https://www.pollev.com/lesliemyint417">PollEverywhere</a> for some warm-up exercises.</strong>
-</div>
-<p><br><br><br><br></p>
-</div>
-<div id="context" class="section level2 unnumbered">
-<h2>Context</h2>
-<p>Marijuana decriminalization is a major part of the dialogue on mass incarceration because marijuana-related offenses form a large part of drug offenses.</p>
-<center>
-<a href="https://smile.amazon.com/New-Jim-Crow-Incarceration-Colorblindness-ebook/dp/B086CFB2NT"><img src="https://m.media-amazon.com/images/I/51hVN9LrJhL.jpg" width="50%" height="50%"></a>
-</center>
-<p>In considering decriminalization, it is important to also think through other consequences of marijuana use. In this analysis, we will be interested in the following:</p>
 <p><br></p>
-<blockquote>
-<p><strong>How does adolescent marijuana smoking affect the risk of adulthood cigarette smoking?</strong></p>
-</blockquote>
+<div id="deliverables-2" class="section level2 unnumbered">
+<h2>Deliverables</h2>
+<p>Please turn in exercises from the following class days:</p>
+<ul>
+<li>Topic 14: Sensitivity Analyses for Unmeasured Variables</li>
+<li>Topic 15: Causal Discovery</li>
+</ul>
+<p>This should be a total of two PDF documents.</p>
 <p><br></p>
-<p>We’ll explore this question by looking at data from the Add Health study (<a href="https://cpc.unc.edu/projects/addhealth" class="uri">https://cpc.unc.edu/projects/addhealth</a>), a national survey of adolescent health.</p>
-<p>The following variables are in the dataset:</p>
-<ul>
-<li><code>exposure</code>: Indicator for whether or not marijuana was smoked in adolescence. 1=yes, 0=no. (Treatment)</li>
-<li><code>smoke</code>: Indicator for whether the individual smoked in adulthood. 1=yes, 0=no. (Outcome)</li>
-<li><code>age</code>: Age at study entry</li>
-<li><code>male</code>: Indicator for whether the individual was male. 1=yes, 0=no.</li>
-<li><code>white</code>: Indicator for whether the individual was White. 1=yes, 0=no.</li>
-<li><code>susp</code>: Indicator for whether the individual was ever suspended from school. 1=yes, 0=no.</li>
-<li><code>mathG</code>: Math grade (1 to 4 corresponding respectively to A to D)</li>
-<li><code>readG</code>: Reading grade (1 to 4 corresponding respectively to A to D)</li>
-<li><code>parentED</code>: Parent education (1 to 5 corresponding respectively to less than high school, high school, vocational school, some college, and college graduate and beyond).</li>
-<li><code>housesmoke</code>: Indicator for the presence of a cigarette smoker in the individual’s household. 1=yes, 0=no.</li>
-</ul>
-<p>Nonresponse bias is a ubiquitous source of concern for surveys. Add Health investigators studied determinants of nonresponse and found that living in a rural neighborhood and being white decreased chances of responding. They found that college education or higher in parents and parental involvement in school fundraising increased the chances of responding.</p>
-<p>(In case you’re interested, their report on nonresponse is available <a href="https://addhealth.cpc.unc.edu/wp-content/uploads/docs/user_guides/Predictors_of_Nonresponse_in_a_Longitudi.pdf">here</a>.)</p>
-<p><br><br></p>
 </div>
-<div id="analysis" class="section level2 unnumbered">
-<h2>Analysis</h2>
-<p>A template RMarkdown document that you can start from is available <a href="template_rmds/10-applied-regression.Rmd">here</a>.</p>
-<p>You can read in the dataset as below:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="applied-analysis-regression.html#cb17-1" aria-hidden="true"></a>addhealth &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&quot;https://www.dropbox.com/s/h09nq0nwgx8eioz/addhealth.csv?dl=1&quot;</span>)</span></code></pre></div>
-<blockquote>
-<p><strong>Note that all variables are encoded as numeric. You may need to use <code>factor(variable)</code> when making certain visualizations.</strong></p>
-</blockquote>
-<div id="part-1-causal-graph-construction" class="section level3 unnumbered">
-<h3>Part 1: Causal graph construction</h3>
-<p>Construct an appropriate causal graph based on your contextual knowledge. Use <a href="http://www.dagitty.net/dags.html">DAGitty</a> to collaborate with your group members. The graph should contain unmeasured variables and variables in the dataset (but not necessarily all of them).</p>
+<div id="primary-objectives-2" class="section level2 unnumbered">
+<h2>Primary objectives</h2>
+<p>The following learning objectives are the primary focus of this assignment:</p>
 <ul>
-<li><p>Insert a picture of your final graph. You can insert images in Markdown with:
-<code>![](graph_filename.png)</code></p></li>
-<li><p>In at most 400 words, discuss the impact of unobserved variables (come up with at least one) and selection bias. Based on your graph, can you achieve conditional exchangeability in this analysis? If not, what variables would you like to have measured? Incorporate the concepts of causal and noncausal paths and d-separation in your discussion.</p></li>
+<li><strong><code>SENS1</code></strong>: Evaluate the sensitivity of findings to data quality and propose appropriate sensitivity analyses for a research investigation</li>
+<li><strong><code>SENS2</code></strong>: Conduct and communicate the results of a sensitivity analysis for unmeasured confounding.</li>
+<li><strong><code>DISC1</code></strong>: Manually conduct causal discovery using regression models.</li>
+<li><strong><code>DISC2</code></strong>: Use output from causal discovery to enhance a causal analysis.</li>
 </ul>
-<p>Even if you don’t believe conditional exchangeability holds, still proceed with the analysis. You will acknowledge limitations at the end of your write-up.</p>
-<p><br><br></p>
+<p><br></p>
 </div>
-<div id="part-2-exploratory-analysis" class="section level3 unnumbered">
-<h3>Part 2: Exploratory analysis</h3>
-<p>Construct visualizations to inform the building of an appropriate model for estimating the following average causal effects:</p>
+<div id="revisiting-previous-objectives-1" class="section level2 unnumbered">
+<h2>Revisiting previous objectives</h2>
+<p>You can revisit any of the following objectives (excludes <code>REGR1</code>, <code>IPTW1</code>, <code>TVTR1</code>, and <code>TVTR2</code>).</p>
 <ul>
-<li>Overall average causal effect</li>
-<li>Average causal effects within subgroups defined by one variable of your choice</li>
+<li><strong><code>EXCH1</code>:</strong> Apply the concepts of marginal and conditional exchangeability to answer questions about (hypothetical) data on potential outcomes.</li>
+<li><strong><code>EXCH2</code>:</strong> Give examples of when marginal and conditional exchangeability would and would not hold in various data contexts.</li>
+<li><strong><code>EXCH3</code>:</strong> Explain why a direct comparison of the outcomes in the treated and untreated is misleading as an estimate of a causal effect.</li>
+<li><strong><code>DESI1</code>:</strong> Explain how randomized experiments relate to exchangeability.</li>
+<li><strong><code>DESI2</code>:</strong> Explain how quasi-experimental and general observational studies relate to exchangeability.</li>
+<li><strong><code>DESI3</code>:</strong> Compare the strengths and weaknesses of different study designs for answering a research question.</li>
+<li><strong><code>PGRA1</code>:</strong> Apply the Causal Markov assumption to express the joint distribution of data.</li>
+<li><strong><code>CNCP1</code>:</strong> Explain how causal and noncausal paths relate to exchangeability and causal effects.</li>
+<li><strong><code>DSEP1</code>:</strong> Apply d-separation to block noncausal paths in causal DAGs with and without unobserved variables.</li>
+<li><strong><code>DSEP2</code>:</strong> Apply strategies to deal with exchangeability problems caused by unobserved variables.</li>
+<li><strong><code>DSEP3</code>:</strong> Simulate data from a causal DAG under linear and logistic regression SEMs to check d-separation properties through regression modeling and visualization.</li>
+<li><strong><code>DSEP4</code>:</strong> Explain how d-separation relates to conditional exchangeability.</li>
+<li><strong><code>TVTR1</code></strong>: Formulate research questions that can be answered in a time-varying treatment setting.</li>
+<li><strong><code>TVTR2</code></strong>: Explain why regression does not generally work in time-varying settings with treatment-confounder feedback using d-separation ideas.</li>
 </ul>
-<p>Your visualizations should:</p>
-<ul>
-<li>Explore nonlinearity if appropriate</li>
-<li>Explore interactions between the treatment variable and two other variables (interactions between treatment and each of two other variables - not a 3-way interaction). Use this to inform your choice of subgroup variable in estimating subgroup-causal effects.</li>
-</ul>
-<p>In case it’s relevant, the code below adds logistic regression smoothing lines to <code>ggplot2</code> figures:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="applied-analysis-regression.html#cb18-1" aria-hidden="true"></a><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x =</span> X, <span class="dt">y =</span> y)) <span class="op">+</span></span>
-<span id="cb18-2"><a href="applied-analysis-regression.html#cb18-2" aria-hidden="true"></a><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
-<span id="cb18-3"><a href="applied-analysis-regression.html#cb18-3" aria-hidden="true"></a><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span></span>
-<span id="cb18-4"><a href="applied-analysis-regression.html#cb18-4" aria-hidden="true"></a><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">formula =</span> y<span class="op">~</span><span class="kw">ns</span>(x,<span class="dv">2</span>), <span class="dt">method =</span> <span class="st">&quot;glm&quot;</span>,</span>
-<span id="cb18-5"><a href="applied-analysis-regression.html#cb18-5" aria-hidden="true"></a>        <span class="dt">method.args =</span> <span class="kw">list</span>(<span class="dt">family=</span><span class="st">&quot;binomial&quot;</span>),</span>
-<span id="cb18-6"><a href="applied-analysis-regression.html#cb18-6" aria-hidden="true"></a>        <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span></span>
-<span id="cb18-7"><a href="applied-analysis-regression.html#cb18-7" aria-hidden="true"></a>    )</span></code></pre></div>
-<p><br><br></p>
-</div>
-<div id="part-3-modeling" class="section level3 unnumbered">
-<h3>Part 3: Modeling</h3>
-<ul>
-<li>Fit a model to estimate the overall average causal effect.</li>
-<li>Fit a model to estimate the subgroup average causal effects (for one subgroup variable).</li>
-</ul>
-<p>For both models, display the summarized output table and 95% confidence intervals for the coefficients.</p>
-<p><br><br></p>
-</div>
-<div id="part-4-discussion" class="section level3 unnumbered">
-<h3>Part 4: Discussion</h3>
-<p>In this last part of the write-up, you’ll interpret modeling results and discuss limitations. (Limit this part to 500 words.)</p>
-<ul>
-<li><p>Interpret the coefficient(s) of causal interest on an appropriate scale for both models.</p></li>
-<li><p>Include a warning for the reader about interpreting all coefficients causally, and provide a brief explanation.</p></li>
-<li><p>Using both the confidence intervals and effect magnitudes, discuss the results of your analysis in a contextually meaningful way for potential consumers of your results. (Pick a reasonable target audience, and address your writing to those types of people.)</p></li>
-<li><p>Discuss limitations of your analysis in terms of exchangeability and generalizability.</p></li>
-</ul>
+<p><br></p>
+<p>If you revisit any of these objectives, you must do so using the graph below. If revisiting an objective requires context for exactly what these variables represent, feel free to pick a context that is suitable for you.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="homework-5.html#cb32-1" aria-hidden="true"></a><span class="kw">library</span>(dagitty)</span>
+<span id="cb32-2"><a href="homework-5.html#cb32-2" aria-hidden="true"></a>dag &lt;-<span class="st"> </span><span class="kw">dagitty</span>(<span class="st">&quot;dag {</span></span>
+<span id="cb32-3"><a href="homework-5.html#cb32-3" aria-hidden="true"></a><span class="st">bb=</span><span class="ch">\&quot;</span><span class="st">0,0,1,1</span><span class="ch">\&quot;</span></span>
+<span id="cb32-4"><a href="homework-5.html#cb32-4" aria-hidden="true"></a><span class="st">A [exposure,pos=</span><span class="ch">\&quot;</span><span class="st">0.400,0.350</span><span class="ch">\&quot;</span><span class="st">]</span></span>
+<span id="cb32-5"><a href="homework-5.html#cb32-5" aria-hidden="true"></a><span class="st">L [pos=</span><span class="ch">\&quot;</span><span class="st">0.200,0.350</span><span class="ch">\&quot;</span><span class="st">]</span></span>
+<span id="cb32-6"><a href="homework-5.html#cb32-6" aria-hidden="true"></a><span class="st">U1 [latent,pos=</span><span class="ch">\&quot;</span><span class="st">0.100,0.200</span><span class="ch">\&quot;</span><span class="st">]</span></span>
+<span id="cb32-7"><a href="homework-5.html#cb32-7" aria-hidden="true"></a><span class="st">U2 [latent,pos=</span><span class="ch">\&quot;</span><span class="st">0.100,0.500</span><span class="ch">\&quot;</span><span class="st">]</span></span>
+<span id="cb32-8"><a href="homework-5.html#cb32-8" aria-hidden="true"></a><span class="st">Y [outcome,pos=</span><span class="ch">\&quot;</span><span class="st">0.600,0.350</span><span class="ch">\&quot;</span><span class="st">]</span></span>
+<span id="cb32-9"><a href="homework-5.html#cb32-9" aria-hidden="true"></a><span class="st">A -&gt; Y</span></span>
+<span id="cb32-10"><a href="homework-5.html#cb32-10" aria-hidden="true"></a><span class="st">L -&gt; A</span></span>
+<span id="cb32-11"><a href="homework-5.html#cb32-11" aria-hidden="true"></a><span class="st">U1 -&gt; L</span></span>
+<span id="cb32-12"><a href="homework-5.html#cb32-12" aria-hidden="true"></a><span class="st">U1 -&gt; Y</span></span>
+<span id="cb32-13"><a href="homework-5.html#cb32-13" aria-hidden="true"></a><span class="st">U2 -&gt; A</span></span>
+<span id="cb32-14"><a href="homework-5.html#cb32-14" aria-hidden="true"></a><span class="st">U2 -&gt; L</span></span>
+<span id="cb32-15"><a href="homework-5.html#cb32-15" aria-hidden="true"></a><span class="st">}</span></span>
+<span id="cb32-16"><a href="homework-5.html#cb32-16" aria-hidden="true"></a><span class="st">&quot;</span>)</span>
+<span id="cb32-17"><a href="homework-5.html#cb32-17" aria-hidden="true"></a></span>
+<span id="cb32-18"><a href="homework-5.html#cb32-18" aria-hidden="true"></a><span class="kw">plot</span>(dag)</span></code></pre></div>
 
 </div>
 </div>
-</div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="the-smoking-birth-weight-paradox.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="inverse-probability-weighting.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="homework-4.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="final-project.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

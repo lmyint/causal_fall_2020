@@ -11,3 +11,4 @@ applied-analysis-regression
 inverse-probability-weighting
 applied-analysis-inverse-probability-weighting
 time-varying-treatments
+sensitivity-analyses-for-unmeasured-variables

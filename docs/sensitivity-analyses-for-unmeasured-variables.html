@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Topic 10 Applied Analysis: Regression | STAT 451: Causal Inference</title>
+  <title>Topic 14 Sensitivity Analyses for Unmeasured Variables | STAT 451: Causal Inference</title>
   <meta name="description" content="This is the class website for Causal Inference at Macalester College." />
   <meta name="generator" content="bookdown 0.20.6 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Topic 10 Applied Analysis: Regression | STAT 451: Causal Inference" />
+  <meta property="og:title" content="Topic 14 Sensitivity Analyses for Unmeasured Variables | STAT 451: Causal Inference" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="lmyint/causal_fall_2020" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Topic 10 Applied Analysis: Regression | STAT 451: Causal Inference" />
+  <meta name="twitter:title" content="Topic 14 Sensitivity Analyses for Unmeasured Variables | STAT 451: Causal Inference" />
   
   <meta name="twitter:description" content="This is the class website for Causal Inference at Macalester College." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="the-smoking-birth-weight-paradox.html"/>
-<link rel="next" href="inverse-probability-weighting.html"/>
+<link rel="prev" href="time-varying-treatments.html"/>
+<link rel="next" href="homework-1.html"/>
 <script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -380,132 +380,191 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="applied-analysis-regression" class="section level1" number="10">
-<h1><span class="header-section-number">Topic 10</span> Applied Analysis: Regression</h1>
-<div id="pre-class-work-7" class="section level2 unnumbered">
+<div id="sensitivity-analyses-for-unmeasured-variables" class="section level1" number="14">
+<h1><span class="header-section-number">Topic 14</span> Sensitivity Analyses for Unmeasured Variables</h1>
+<div id="pre-class-work-11" class="section level2 unnumbered">
 <h2>Pre-class work</h2>
 <p>Videos/slides</p>
 <ul>
-<li>Asking Clear Questions and Building Graphs: <a href="https://youtu.be/LmGcyJ19kvs">[video]</a>, <a href="https://drive.google.com/file/d/1JWujrNc0GnAM75gcLejvRlalApJU5yTx/view?usp=sharing">[slides]</a></li>
-<li>Estimating Causal Effects: Regression: <a href="https://youtu.be/5XjvaM2LyOI">[video]</a>, <a href="https://drive.google.com/file/d/1hixsXVnY4RFSgDfzxaG3O_ZsazGkkdSw/view?usp=sharing">[slides]</a></li>
+<li>Sensitivity Analyses for Unmeasured Variables: <a href="https://youtu.be/21Y7V99LfG8">[video]</a>, <a href="https://drive.google.com/file/d/1JH8B9_io4NEHdGdTrB-SZG1BrzD-XKGu/view?usp=sharing">[slides]</a></li>
 </ul>
-<p><a href="https://moodle.macalester.edu/mod/quiz/view.php?id=30647">Checkpoint</a></p>
+<p><a href="https://moodle.macalester.edu/mod/quiz/view.php?id=32050">Checkpoint</a></p>
 <p><br><br><br><br></p>
 </div>
-<div id="learning-goals-8" class="section level2 unnumbered">
+<div id="learning-goals-12" class="section level2 unnumbered">
 <h2>Learning Goals</h2>
 <ul>
-<li>REGR1: Conduct and interpret results from an appropriate regression analysis to estimate causal effects and effect modification of causal effects.</li>
+<li><strong><code>SENS1</code></strong>: Evaluate the sensitivity of findings to data quality and propose appropriate sensitivity analyses for a research investigation.</li>
+<li><strong><code>SENS2</code></strong>: Conduct and communicate the results of a sensitivity analysis for unmeasured confounding.</li>
 </ul>
 <center>
-<img src="images/course_flow4.svg" width="60%" height="60%">
+<img src="images/course_flow5.svg" width="60%" height="60%">
 </center>
-
-<div class="warmup">
-<strong>Navigate to <a href="https://www.pollev.com/lesliemyint417">PollEverywhere</a> for some warm-up exercises.</strong>
-</div>
 <p><br><br><br><br></p>
 </div>
-<div id="context" class="section level2 unnumbered">
-<h2>Context</h2>
-<p>Marijuana decriminalization is a major part of the dialogue on mass incarceration because marijuana-related offenses form a large part of drug offenses.</p>
-<center>
-<a href="https://smile.amazon.com/New-Jim-Crow-Incarceration-Colorblindness-ebook/dp/B086CFB2NT"><img src="https://m.media-amazon.com/images/I/51hVN9LrJhL.jpg" width="50%" height="50%"></a>
-</center>
-<p>In considering decriminalization, it is important to also think through other consequences of marijuana use. In this analysis, we will be interested in the following:</p>
+<div id="background-1" class="section level2 unnumbered">
+<h2>Background</h2>
+<p>We will be implementing the approach for a sensitivity analysis proposed in the research article <a href="https://www.tandfonline.com/doi/suppl/10.1080/19345747.2015.1078862">Assessing Sensitivity to Unmeasured Confounding Using a Simulated Potential Confounder</a> by Carnegie, Harada, and Hill.</p>
+<p>It looks like their package treatSens <a href="https://cran.r-project.org/package=treatSens">was taken off CRAN</a> and is <a href="https://github.com/vdorie/treatSens">undergoing revisions</a>. We will implement their approach for a sensitivity analysis for the particular case of quantitative treatment, outcome, and unmeasured confounder.</p>
+<p><br><br></p>
+<p>Summary of approach:</p>
+<ul>
+<li><p>Identify set of variables <span class="math inline">\(Z\)</span> that results in conditional exchangeability of the treatment groups.</p></li>
+<li><p>Express the joint distribution of the data as below, with the assumption that <span class="math inline">\(U\)</span> and <span class="math inline">\(Z\)</span> are independent.</p></li>
+</ul>
+<p><span class="math display">\[
+\begin{align*}
+P(Y, A, U \mid Z) &amp;= P_1(Y \mid A, U, Z) P_2(A \mid U, Z) P_3(U \mid Z)
+&amp;= P_1(Y \mid A, U, Z) P_2(A \mid U, Z) P_3(U)
+\end{align*}
+\]</span></p>
+<ul>
+<li>Express these components of the joint distribution as structural equations:</li>
+</ul>
+<p><span class="math display">\[
+Y \sim N(\beta_0 + \beta_1 A + \beta_2 Z + \beta_3 U, \sigma_Y^2)
+\]</span>
+<span class="math display">\[
+A \sim N(\alpha_0 + \alpha_1 Z + \alpha_2 U, \sigma_A^2)
+\]</span>
+<span class="math display">\[
+U \sim N(0, \sigma_U^2)
+\]</span></p>
+<ul>
+<li>Using probability theory, we can rewrite the joint distribution to express <span class="math inline">\(U\)</span> as a function of <span class="math inline">\(A\)</span> and <span class="math inline">\(Y\)</span> (see paper).
+<ul>
+<li>These formulas require the residuals and estimated standard deviation of residuals from the following models:
+<ul>
+<li><code>Y ~ A+Z</code></li>
+<li><code>A ~ Z</code></li>
+</ul></li>
+<li><strong>Key idea:</strong> We can use observed data simulate <span class="math inline">\(U\)</span> such that it is consistent with the above structural equations.</li>
+</ul></li>
+<li><strong>Sensitivity parameters:</strong> <span class="math inline">\(\beta_3\)</span> and <span class="math inline">\(\alpha_2\)</span>. In our code below, we will call these <code>assoc_Y</code> and <code>assoc_A</code> respectively.</li>
+</ul>
+<p><br><br></p>
+</div>
+<div id="exercises-9" class="section level2 unnumbered">
+<h2>Exercises</h2>
+<p><strong>You can download a template RMarkdown file to start from <a href="template_rmds/14-sensitivity-unmeasured.Rmd">here</a>.</strong></p>
 <p><br></p>
-<blockquote>
-<p><strong>How does adolescent marijuana smoking affect the risk of adulthood cigarette smoking?</strong></p>
-</blockquote>
-<p><br></p>
-<p>We’ll explore this question by looking at data from the Add Health study (<a href="https://cpc.unc.edu/projects/addhealth" class="uri">https://cpc.unc.edu/projects/addhealth</a>), a national survey of adolescent health.</p>
-<p>The following variables are in the dataset:</p>
-<ul>
-<li><code>exposure</code>: Indicator for whether or not marijuana was smoked in adolescence. 1=yes, 0=no. (Treatment)</li>
-<li><code>smoke</code>: Indicator for whether the individual smoked in adulthood. 1=yes, 0=no. (Outcome)</li>
-<li><code>age</code>: Age at study entry</li>
-<li><code>male</code>: Indicator for whether the individual was male. 1=yes, 0=no.</li>
-<li><code>white</code>: Indicator for whether the individual was White. 1=yes, 0=no.</li>
-<li><code>susp</code>: Indicator for whether the individual was ever suspended from school. 1=yes, 0=no.</li>
-<li><code>mathG</code>: Math grade (1 to 4 corresponding respectively to A to D)</li>
-<li><code>readG</code>: Reading grade (1 to 4 corresponding respectively to A to D)</li>
-<li><code>parentED</code>: Parent education (1 to 5 corresponding respectively to less than high school, high school, vocational school, some college, and college graduate and beyond).</li>
-<li><code>housesmoke</code>: Indicator for the presence of a cigarette smoker in the individual’s household. 1=yes, 0=no.</li>
-</ul>
-<p>Nonresponse bias is a ubiquitous source of concern for surveys. Add Health investigators studied determinants of nonresponse and found that living in a rural neighborhood and being white decreased chances of responding. They found that college education or higher in parents and parental involvement in school fundraising increased the chances of responding.</p>
-<p>(In case you’re interested, their report on nonresponse is available <a href="https://addhealth.cpc.unc.edu/wp-content/uploads/docs/user_guides/Predictors_of_Nonresponse_in_a_Longitudi.pdf">here</a>.)</p>
-<p><br><br></p>
+<div id="warm-up" class="section level3 unnumbered">
+<h3>Warm-up</h3>
+<p>Work to understand what the code below is doing. Clarify with the instructor as needed. You will be adapting this code to implement a sensitivity analysis in the context of the smoking-weight gain study that we’ve explored previously.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-1" aria-hidden="true"></a><span class="kw">library</span>(dplyr)</span>
+<span id="cb28-2"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-2" aria-hidden="true"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb28-3"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-3" aria-hidden="true"></a></span>
+<span id="cb28-4"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-4" aria-hidden="true"></a>sensitivity_analysis &lt;-<span class="st"> </span><span class="cf">function</span>(.data, model_A, model_Y, assoc_A, assoc_Y) {</span>
+<span id="cb28-5"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-5" aria-hidden="true"></a>    n &lt;-<span class="st"> </span><span class="kw">nrow</span>(.data)</span>
+<span id="cb28-6"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-6" aria-hidden="true"></a></span>
+<span id="cb28-7"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-7" aria-hidden="true"></a>    <span class="co"># Obtain residuals with residuals()</span></span>
+<span id="cb28-8"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-8" aria-hidden="true"></a>    <span class="co"># Obtain residual variances with sigma()</span></span>
+<span id="cb28-9"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-9" aria-hidden="true"></a>    res_A &lt;-<span class="st"> </span><span class="kw">residuals</span>(model_A)</span>
+<span id="cb28-10"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-10" aria-hidden="true"></a>    res_var_A &lt;-<span class="st"> </span><span class="kw">sigma</span>(model_A)<span class="op">^</span><span class="dv">2</span></span>
+<span id="cb28-11"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-11" aria-hidden="true"></a>    res_Y &lt;-<span class="st"> </span><span class="kw">residuals</span>(model_Y)</span>
+<span id="cb28-12"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-12" aria-hidden="true"></a>    res_var_Y &lt;-<span class="st"> </span><span class="kw">sigma</span>(model_Y)<span class="op">^</span><span class="dv">2</span></span>
+<span id="cb28-13"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-13" aria-hidden="true"></a></span>
+<span id="cb28-14"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-14" aria-hidden="true"></a>    <span class="co"># Compute the mean and variance of U given A and Y</span></span>
+<span id="cb28-15"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-15" aria-hidden="true"></a>    mean_U_term1 &lt;-<span class="st"> </span>(assoc_A<span class="op">/</span>res_var_A)<span class="op">*</span>res_A</span>
+<span id="cb28-16"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-16" aria-hidden="true"></a>    mean_U_term2 &lt;-<span class="st"> </span>(((res_var_A <span class="op">-</span><span class="st"> </span>assoc_A<span class="op">^</span><span class="dv">2</span>)<span class="op">*</span>assoc_Y)<span class="op">/</span>(res_var_A<span class="op">*</span>res_var_Y))<span class="op">*</span>res_Y</span>
+<span id="cb28-17"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-17" aria-hidden="true"></a>    mean_U &lt;-<span class="st"> </span>mean_U_term1 <span class="op">+</span><span class="st"> </span>mean_U_term2</span>
+<span id="cb28-18"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-18" aria-hidden="true"></a></span>
+<span id="cb28-19"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-19" aria-hidden="true"></a>    var_U_term1 &lt;-<span class="st"> </span>(res_var_A <span class="op">-</span><span class="st"> </span>assoc_A<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>(res_var_A<span class="op">*</span>res_var_Y)</span>
+<span id="cb28-20"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-20" aria-hidden="true"></a>    var_U_term2 &lt;-<span class="st"> </span>res_var_Y <span class="op">-</span><span class="st"> </span>assoc_Y<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>((assoc_A<span class="op">*</span>assoc_Y)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>res_var_A</span>
+<span id="cb28-21"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-21" aria-hidden="true"></a>    var_U &lt;-<span class="st"> </span>var_U_term1<span class="op">*</span>var_U_term2</span>
+<span id="cb28-22"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-22" aria-hidden="true"></a></span>
+<span id="cb28-23"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-23" aria-hidden="true"></a>    <span class="co"># Simulate U and add it to the data</span></span>
+<span id="cb28-24"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-24" aria-hidden="true"></a>    U &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dt">mean =</span> mean_U, <span class="dt">sd =</span> <span class="kw">sqrt</span>(var_U))</span>
+<span id="cb28-25"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-25" aria-hidden="true"></a>    .data<span class="op">$</span>U &lt;-<span class="st"> </span>U</span>
+<span id="cb28-26"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-26" aria-hidden="true"></a></span>
+<span id="cb28-27"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-27" aria-hidden="true"></a>    <span class="co">########################################################################</span></span>
+<span id="cb28-28"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-28" aria-hidden="true"></a>    <span class="co"># The part below is the only part you need to change to implement</span></span>
+<span id="cb28-29"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-29" aria-hidden="true"></a>    <span class="co"># the sensitivity analysis in a new context.</span></span>
+<span id="cb28-30"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-30" aria-hidden="true"></a></span>
+<span id="cb28-31"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-31" aria-hidden="true"></a>    <span class="co"># Refit model to estimate the causal effect </span></span>
+<span id="cb28-32"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-32" aria-hidden="true"></a>    updated_model &lt;-<span class="st"> </span><span class="kw">lm</span>(Y <span class="op">~</span><span class="st"> </span>A<span class="op">+</span>C<span class="op">+</span>U, <span class="dt">data =</span> .data)</span>
+<span id="cb28-33"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-33" aria-hidden="true"></a>    <span class="co"># The names of the coefficients and confidence interval output rows</span></span>
+<span id="cb28-34"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-34" aria-hidden="true"></a>    <span class="co"># are called &quot;A&quot; for the treatment variable A.</span></span>
+<span id="cb28-35"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-35" aria-hidden="true"></a>    <span class="co"># This will change in a new dataset.</span></span>
+<span id="cb28-36"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-36" aria-hidden="true"></a>    <span class="kw">list</span>(<span class="kw">c</span>(</span>
+<span id="cb28-37"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-37" aria-hidden="true"></a>        <span class="dt">estimate =</span> <span class="kw">unname</span>(<span class="kw">coefficients</span>(updated_model)[<span class="st">&quot;A&quot;</span>]), </span>
+<span id="cb28-38"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-38" aria-hidden="true"></a>        <span class="dt">ci_95_lower =</span> <span class="kw">confint</span>(updated_model)[<span class="st">&quot;A&quot;</span>,<span class="dv">1</span>],</span>
+<span id="cb28-39"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-39" aria-hidden="true"></a>        <span class="dt">ci_95_upper =</span> <span class="kw">confint</span>(updated_model)[<span class="st">&quot;A&quot;</span>,<span class="dv">2</span>]</span>
+<span id="cb28-40"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-40" aria-hidden="true"></a>    ))</span>
+<span id="cb28-41"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-41" aria-hidden="true"></a>}</span>
+<span id="cb28-42"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-42" aria-hidden="true"></a></span>
+<span id="cb28-43"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-43" aria-hidden="true"></a><span class="co"># Set up simulated example data</span></span>
+<span id="cb28-44"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-44" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">451</span>)</span>
+<span id="cb28-45"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-45" aria-hidden="true"></a>n &lt;-<span class="st"> </span><span class="dv">10000</span></span>
+<span id="cb28-46"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-46" aria-hidden="true"></a>U &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dv">10</span>, <span class="dv">1</span>)</span>
+<span id="cb28-47"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-47" aria-hidden="true"></a>C &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dv">10</span>, <span class="dv">1</span>)</span>
+<span id="cb28-48"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-48" aria-hidden="true"></a>A &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dv">2</span><span class="op">+</span>C<span class="op">+</span>U, <span class="dv">2</span>)</span>
+<span id="cb28-49"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-49" aria-hidden="true"></a>Y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dv">10</span> <span class="op">+</span><span class="st"> </span>A <span class="op">+</span><span class="st"> </span>C <span class="op">+</span><span class="st"> </span>U, <span class="dv">10</span>)</span>
+<span id="cb28-50"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-50" aria-hidden="true"></a></span>
+<span id="cb28-51"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-51" aria-hidden="true"></a>sim_data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(U, C, A, Y)</span>
+<span id="cb28-52"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-52" aria-hidden="true"></a></span>
+<span id="cb28-53"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-53" aria-hidden="true"></a><span class="co"># Begin the sensitivity analysis</span></span>
+<span id="cb28-54"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-54" aria-hidden="true"></a></span>
+<span id="cb28-55"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-55" aria-hidden="true"></a><span class="co"># Fit required models for the sensitivity analysis</span></span>
+<span id="cb28-56"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-56" aria-hidden="true"></a>mod_A &lt;-<span class="st"> </span><span class="kw">lm</span>(A <span class="op">~</span><span class="st"> </span>C, <span class="dt">data =</span> sim_data)</span>
+<span id="cb28-57"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-57" aria-hidden="true"></a>mod_Y &lt;-<span class="st"> </span><span class="kw">lm</span>(Y <span class="op">~</span><span class="st"> </span>A<span class="op">+</span>C, <span class="dt">data =</span> sim_data)</span>
+<span id="cb28-58"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-58" aria-hidden="true"></a></span>
+<span id="cb28-59"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-59" aria-hidden="true"></a><span class="co"># Set up degree of association between U and A and between U and Y</span></span>
+<span id="cb28-60"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-60" aria-hidden="true"></a><span class="co"># The U-&gt;A associations have some constraints: we set up values </span></span>
+<span id="cb28-61"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-61" aria-hidden="true"></a><span class="co"># for the U-&gt;A associations that are at most equal to the</span></span>
+<span id="cb28-62"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-62" aria-hidden="true"></a><span class="co"># standard deviation of the residuals from the model for A.</span></span>
+<span id="cb28-63"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-63" aria-hidden="true"></a>U_A_assocs &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="fl">0.01</span>, <span class="dt">to =</span> <span class="kw">sigma</span>(mod_A), <span class="dt">length.out =</span> <span class="dv">10</span>)</span>
+<span id="cb28-64"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-64" aria-hidden="true"></a>U_Y_assocs &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="fl">0.5</span>, <span class="dt">to =</span> <span class="dv">5</span>, <span class="dt">by =</span> <span class="fl">0.5</span>)</span>
+<span id="cb28-65"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-65" aria-hidden="true"></a></span>
+<span id="cb28-66"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-66" aria-hidden="true"></a><span class="co"># Form all combinations of the U-&gt;A and U-&gt;Y sensitivity parameters</span></span>
+<span id="cb28-67"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-67" aria-hidden="true"></a>sens_data &lt;-<span class="st"> </span><span class="kw">expand.grid</span>(<span class="dt">U_A =</span> U_A_assocs, <span class="dt">U_Y =</span> U_Y_assocs)</span>
+<span id="cb28-68"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-68" aria-hidden="true"></a></span>
+<span id="cb28-69"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-69" aria-hidden="true"></a><span class="co"># Run sensitivity analysis</span></span>
+<span id="cb28-70"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-70" aria-hidden="true"></a>sens_data &lt;-<span class="st"> </span>sens_data <span class="op">%&gt;%</span></span>
+<span id="cb28-71"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-71" aria-hidden="true"></a><span class="st">    </span><span class="kw">group_by</span>(U_A, U_Y) <span class="op">%&gt;%</span></span>
+<span id="cb28-72"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-72" aria-hidden="true"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">sens =</span> <span class="kw">sensitivity_analysis</span>(sim_data, mod_A, mod_Y, U_A, U_Y))</span>
+<span id="cb28-73"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-73" aria-hidden="true"></a><span class="co"># Collect sensitivity analysis results in a data.frame</span></span>
+<span id="cb28-74"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-74" aria-hidden="true"></a>sens_data &lt;-<span class="st"> </span><span class="kw">bind_cols</span>(sens_data[,<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>], <span class="kw">bind_rows</span>(sens_data<span class="op">$</span>sens))</span>
+<span id="cb28-75"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-75" aria-hidden="true"></a></span>
+<span id="cb28-76"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-76" aria-hidden="true"></a></span>
+<span id="cb28-77"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-77" aria-hidden="true"></a><span class="co"># Plot results</span></span>
+<span id="cb28-78"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-78" aria-hidden="true"></a>prepender &lt;-<span class="st"> </span><span class="cf">function</span>(string, <span class="dt">prefix =</span> <span class="st">&quot;U -&gt; Y strength:&quot;</span>) <span class="kw">paste</span>(prefix, string)</span>
+<span id="cb28-79"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-79" aria-hidden="true"></a></span>
+<span id="cb28-80"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-80" aria-hidden="true"></a><span class="kw">ggplot</span>(sens_data, <span class="kw">aes</span>(<span class="dt">x =</span> U_A, <span class="dt">y =</span> estimate)) <span class="op">+</span></span>
+<span id="cb28-81"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-81" aria-hidden="true"></a><span class="st">    </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> ci_<span class="dv">95</span>_lower, <span class="dt">ymax =</span> ci_<span class="dv">95</span>_upper), <span class="dt">fill =</span> <span class="st">&quot;grey70&quot;</span>) <span class="op">+</span></span>
+<span id="cb28-82"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-82" aria-hidden="true"></a><span class="st">    </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
+<span id="cb28-83"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-83" aria-hidden="true"></a><span class="st">    </span><span class="kw">geom_hline</span>(<span class="kw">aes</span>(<span class="dt">yintercept =</span> <span class="kw">coefficients</span>(mod_Y)[<span class="st">&quot;A&quot;</span>]), <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">lty =</span> <span class="st">&quot;dashed&quot;</span>) <span class="op">+</span></span>
+<span id="cb28-84"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-84" aria-hidden="true"></a><span class="st">    </span><span class="kw">geom_hline</span>(<span class="kw">aes</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>), <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span></span>
+<span id="cb28-85"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-85" aria-hidden="true"></a><span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>U_Y, <span class="dt">labeller =</span> <span class="kw">as_labeller</span>(prepender)) <span class="op">+</span></span>
+<span id="cb28-86"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb28-86" aria-hidden="true"></a><span class="st">    </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Strength of U -&gt; A association&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;ACE and 95% CI&quot;</span>)</span></code></pre></div>
 </div>
-<div id="analysis" class="section level2 unnumbered">
-<h2>Analysis</h2>
-<p>A template RMarkdown document that you can start from is available <a href="template_rmds/10-applied-regression.Rmd">here</a>.</p>
-<p>You can read in the dataset as below:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="applied-analysis-regression.html#cb17-1" aria-hidden="true"></a>addhealth &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&quot;https://www.dropbox.com/s/h09nq0nwgx8eioz/addhealth.csv?dl=1&quot;</span>)</span></code></pre></div>
-<blockquote>
-<p><strong>Note that all variables are encoded as numeric. You may need to use <code>factor(variable)</code> when making certain visualizations.</strong></p>
-</blockquote>
-<div id="part-1-causal-graph-construction" class="section level3 unnumbered">
-<h3>Part 1: Causal graph construction</h3>
-<p>Construct an appropriate causal graph based on your contextual knowledge. Use <a href="http://www.dagitty.net/dags.html">DAGitty</a> to collaborate with your group members. The graph should contain unmeasured variables and variables in the dataset (but not necessarily all of them).</p>
+<div id="main-exercise" class="section level3 unnumbered">
+<h3>Main exercise</h3>
+<p>Here, we will adapt the code above to implement a sensitivity analysis for unmeasured confounding for the smoking-weight gain study.</p>
 <ul>
-<li><p>Insert a picture of your final graph. You can insert images in Markdown with:
-<code>![](graph_filename.png)</code></p></li>
-<li><p>In at most 400 words, discuss the impact of unobserved variables (come up with at least one) and selection bias. Based on your graph, can you achieve conditional exchangeability in this analysis? If not, what variables would you like to have measured? Incorporate the concepts of causal and noncausal paths and d-separation in your discussion.</p></li>
+<li>The treatment variable is <code>smkintensity82_71</code> the change in number of cigarettes smoked per day from 1971 to 1982.</li>
+<li>Assume that a graphical analysis has led to the conclusion that conditional exchangeability holds given <code>smokeyrs</code>, <code>age</code>, and <code>asthma</code>.</li>
+<li>Display graphical output from the sensitivity analysis and write a brief discussion of conclusions you can make from the sensitivity analysis (no more than 400 words).</li>
 </ul>
-<p>Even if you don’t believe conditional exchangeability holds, still proceed with the analysis. You will acknowledge limitations at the end of your write-up.</p>
-<p><br><br></p>
-</div>
-<div id="part-2-exploratory-analysis" class="section level3 unnumbered">
-<h3>Part 2: Exploratory analysis</h3>
-<p>Construct visualizations to inform the building of an appropriate model for estimating the following average causal effects:</p>
-<ul>
-<li>Overall average causal effect</li>
-<li>Average causal effects within subgroups defined by one variable of your choice</li>
-</ul>
-<p>Your visualizations should:</p>
-<ul>
-<li>Explore nonlinearity if appropriate</li>
-<li>Explore interactions between the treatment variable and two other variables (interactions between treatment and each of two other variables - not a 3-way interaction). Use this to inform your choice of subgroup variable in estimating subgroup-causal effects.</li>
-</ul>
-<p>In case it’s relevant, the code below adds logistic regression smoothing lines to <code>ggplot2</code> figures:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="applied-analysis-regression.html#cb18-1" aria-hidden="true"></a><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x =</span> X, <span class="dt">y =</span> y)) <span class="op">+</span></span>
-<span id="cb18-2"><a href="applied-analysis-regression.html#cb18-2" aria-hidden="true"></a><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
-<span id="cb18-3"><a href="applied-analysis-regression.html#cb18-3" aria-hidden="true"></a><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span></span>
-<span id="cb18-4"><a href="applied-analysis-regression.html#cb18-4" aria-hidden="true"></a><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">formula =</span> y<span class="op">~</span><span class="kw">ns</span>(x,<span class="dv">2</span>), <span class="dt">method =</span> <span class="st">&quot;glm&quot;</span>,</span>
-<span id="cb18-5"><a href="applied-analysis-regression.html#cb18-5" aria-hidden="true"></a>        <span class="dt">method.args =</span> <span class="kw">list</span>(<span class="dt">family=</span><span class="st">&quot;binomial&quot;</span>),</span>
-<span id="cb18-6"><a href="applied-analysis-regression.html#cb18-6" aria-hidden="true"></a>        <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span></span>
-<span id="cb18-7"><a href="applied-analysis-regression.html#cb18-7" aria-hidden="true"></a>    )</span></code></pre></div>
-<p><br><br></p>
-</div>
-<div id="part-3-modeling" class="section level3 unnumbered">
-<h3>Part 3: Modeling</h3>
-<ul>
-<li>Fit a model to estimate the overall average causal effect.</li>
-<li>Fit a model to estimate the subgroup average causal effects (for one subgroup variable).</li>
-</ul>
-<p>For both models, display the summarized output table and 95% confidence intervals for the coefficients.</p>
-<p><br><br></p>
-</div>
-<div id="part-4-discussion" class="section level3 unnumbered">
-<h3>Part 4: Discussion</h3>
-<p>In this last part of the write-up, you’ll interpret modeling results and discuss limitations. (Limit this part to 500 words.)</p>
-<ul>
-<li><p>Interpret the coefficient(s) of causal interest on an appropriate scale for both models.</p></li>
-<li><p>Include a warning for the reader about interpreting all coefficients causally, and provide a brief explanation.</p></li>
-<li><p>Using both the confidence intervals and effect magnitudes, discuss the results of your analysis in a contextually meaningful way for potential consumers of your results. (Pick a reasonable target audience, and address your writing to those types of people.)</p></li>
-<li><p>Discuss limitations of your analysis in terms of exchangeability and generalizability.</p></li>
-</ul>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb29-1" aria-hidden="true"></a><span class="co"># Load data</span></span>
+<span id="cb29-2"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb29-2" aria-hidden="true"></a><span class="kw">library</span>(cidata)</span>
+<span id="cb29-3"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb29-3" aria-hidden="true"></a><span class="kw">data</span>(nhefs_complete)</span>
+<span id="cb29-4"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb29-4" aria-hidden="true"></a><span class="co"># View the data codebook</span></span>
+<span id="cb29-5"><a href="sensitivity-analyses-for-unmeasured-variables.html#cb29-5" aria-hidden="true"></a><span class="kw">View</span>(nhefs_codebook)</span></code></pre></div>
 
 </div>
 </div>
 </div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="the-smoking-birth-weight-paradox.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="inverse-probability-weighting.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="time-varying-treatments.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="homework-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

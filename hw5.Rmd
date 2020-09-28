@@ -1,0 +1,87 @@
+```{r hw5_setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, eval=FALSE)
+```
+
+# Homework 5 {-}
+
+<center>
+**Due Sunday, October 4 at midnight CST on [Moodle](https://moodle.macalester.edu/mod/assign/view.php?id=34829)**
+
+**Please turn in two PDF documents from class exercises.**
+
+(If you have LaTeX installed, you can knit directly to PDF (preferred method). Otherwise, you can knit to HTML and "Print" the page to save it as a PDF.)
+</center>
+
+
+<br>
+
+
+## Deliverables {-}
+
+Please turn in exercises from the following class days:
+
+- Topic 14: Sensitivity Analyses for Unmeasured Variables
+- Topic 15: Causal Discovery
+
+This should be a total of two PDF documents.
+
+<br>
+
+
+## Primary objectives {-}
+
+The following learning objectives are the primary focus of this assignment:
+
+- **`SENS1`**: Evaluate the sensitivity of findings to data quality and propose appropriate sensitivity analyses for a research investigation
+- **`SENS2`**: Conduct and communicate the results of a sensitivity analysis for unmeasured confounding.
+- **`DISC1`**: Manually conduct causal discovery using regression models.
+- **`DISC2`**: Use output from causal discovery to enhance a causal analysis.
+
+
+<br>
+
+
+## Revisiting previous objectives {-}
+
+You can revisit any of the following objectives (excludes `REGR1`, `IPTW1`, `TVTR1`, and `TVTR2`).
+
+- **`EXCH1`:** Apply the concepts of marginal and conditional exchangeability to answer questions about (hypothetical) data on potential outcomes.
+- **`EXCH2`:** Give examples of when marginal and conditional exchangeability would and would not hold in various data contexts.
+- **`EXCH3`:** Explain why a direct comparison of the outcomes in the treated and untreated is misleading as an estimate of a causal effect.
+- **`DESI1`:** Explain how randomized experiments relate to exchangeability.
+- **`DESI2`:** Explain how quasi-experimental and general observational studies relate to exchangeability.
+- **`DESI3`:** Compare the strengths and weaknesses of different study designs for answering a research question.
+- **`PGRA1`:** Apply the Causal Markov assumption to express the joint distribution of data.
+- **`CNCP1`:** Explain how causal and noncausal paths relate to exchangeability and causal effects.
+- **`DSEP1`:** Apply d-separation to block noncausal paths in causal DAGs with and without unobserved variables.
+- **`DSEP2`:** Apply strategies to deal with exchangeability problems caused by unobserved variables.
+- **`DSEP3`:** Simulate data from a causal DAG under linear and logistic regression SEMs to check d-separation properties through regression modeling and visualization.
+- **`DSEP4`:** Explain how d-separation relates to conditional exchangeability.
+- **`TVTR1`**: Formulate research questions that can be answered in a time-varying treatment setting.
+- **`TVTR2`**: Explain why regression does not generally work in time-varying settings with treatment-confounder feedback using d-separation ideas.
+
+<br>
+
+If you revisit any of these objectives, you must do so using the graph below. If revisiting an objective requires context for exactly what these variables represent, feel free to pick a context that is suitable for you.
+
+```{r}
+library(dagitty)
+dag <- dagitty("dag {
+bb=\"0,0,1,1\"
+A [exposure,pos=\"0.400,0.350\"]
+L [pos=\"0.200,0.350\"]
+U1 [latent,pos=\"0.100,0.200\"]
+U2 [latent,pos=\"0.100,0.500\"]
+Y [outcome,pos=\"0.600,0.350\"]
+A -> Y
+L -> A
+U1 -> L
+U1 -> Y
+U2 -> A
+U2 -> L
+}
+")
+
+plot(dag)
+```
+

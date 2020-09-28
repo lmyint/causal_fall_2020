@@ -1,0 +1,193 @@
+```{r 14_setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, eval=FALSE, fig.align="center")
+```
+
+# (PART) Sensitivity Analyses {-}
+
+# Sensitivity Analyses for Unmeasured Variables
+
+## Pre-class work {-}
+
+Videos/slides
+
+- Sensitivity Analyses for Unmeasured Variables: [[video]](https://youtu.be/21Y7V99LfG8), [[slides]](https://drive.google.com/file/d/1JH8B9_io4NEHdGdTrB-SZG1BrzD-XKGu/view?usp=sharing)
+
+[Checkpoint](https://moodle.macalester.edu/mod/quiz/view.php?id=32050)
+
+
+<br><br><br><br>
+
+
+## Learning Goals {-}
+
+- **`SENS1`**: Evaluate the sensitivity of findings to data quality and propose appropriate sensitivity analyses for a research investigation.
+- **`SENS2`**: Conduct and communicate the results of a sensitivity analysis for unmeasured confounding.
+
+<center>
+<img src="images/course_flow5.svg" width="60%" height="60%">
+</center>
+
+
+<br><br><br><br>
+
+
+## Background {-}
+
+We will be implementing the approach for a sensitivity analysis proposed in the research article [Assessing Sensitivity to Unmeasured Confounding Using a Simulated Potential Confounder](https://www.tandfonline.com/doi/suppl/10.1080/19345747.2015.1078862) by Carnegie, Harada, and Hill.
+
+It looks like their package treatSens [was taken off CRAN](https://cran.r-project.org/package=treatSens) and is [undergoing revisions](https://github.com/vdorie/treatSens). We will implement their approach for a sensitivity analysis for the particular case of quantitative treatment, outcome, and unmeasured confounder.
+
+<br><br>
+
+Summary of approach:
+
+- Identify set of variables $Z$ that results in conditional exchangeability of the treatment groups.
+
+- Express the joint distribution of the data as below, with the assumption that $U$ and $Z$ are independent.
+
+$$
+\begin{align*}
+P(Y, A, U \mid Z) &= P_1(Y \mid A, U, Z) P_2(A \mid U, Z) P_3(U \mid Z)
+&= P_1(Y \mid A, U, Z) P_2(A \mid U, Z) P_3(U)
+\end{align*}
+$$
+
+- Express these components of the joint distribution as structural equations:
+
+$$
+Y \sim N(\beta_0 + \beta_1 A + \beta_2 Z + \beta_3 U, \sigma_Y^2)
+$$
+$$
+A \sim N(\alpha_0 + \alpha_1 Z + \alpha_2 U, \sigma_A^2)
+$$
+$$
+U \sim N(0, \sigma_U^2)
+$$
+
+
+- Using probability theory, we can rewrite the joint distribution to express $U$ as a function of $A$ and $Y$ (see paper).
+    - These formulas require the residuals and estimated standard deviation of residuals from the following models:
+        - `Y ~ A+Z`
+        - `A ~ Z`
+    - **Key idea:** We can use observed data simulate $U$ such that it is consistent with the above structural equations.
+
+- **Sensitivity parameters:** $\beta_3$ and $\alpha_2$. In our code below, we will call these `assoc_Y` and `assoc_A` respectively.
+
+
+<br><br>
+
+
+## Exercises {-}
+
+**You can download a template RMarkdown file to start from [here](template_rmds/14-sensitivity-unmeasured.Rmd).**
+
+<br>
+
+### Warm-up {-}
+
+Work to understand what the code below is doing. Clarify with the instructor as needed. You will be adapting this code to implement a sensitivity analysis in the context of the smoking-weight gain study that we've explored previously.
+
+```{r}
+library(dplyr)
+library(ggplot2)
+
+sensitivity_analysis <- function(.data, model_A, model_Y, assoc_A, assoc_Y) {
+    n <- nrow(.data)
+
+    # Obtain residuals with residuals()
+    # Obtain residual variances with sigma()
+    res_A <- residuals(model_A)
+    res_var_A <- sigma(model_A)^2
+    res_Y <- residuals(model_Y)
+    res_var_Y <- sigma(model_Y)^2
+
+    # Compute the mean and variance of U given A and Y
+    mean_U_term1 <- (assoc_A/res_var_A)*res_A
+    mean_U_term2 <- (((res_var_A - assoc_A^2)*assoc_Y)/(res_var_A*res_var_Y))*res_Y
+    mean_U <- mean_U_term1 + mean_U_term2
+
+    var_U_term1 <- (res_var_A - assoc_A^2)/(res_var_A*res_var_Y)
+    var_U_term2 <- res_var_Y - assoc_Y^2 + ((assoc_A*assoc_Y)^2)/res_var_A
+    var_U <- var_U_term1*var_U_term2
+
+    # Simulate U and add it to the data
+    U <- rnorm(n, mean = mean_U, sd = sqrt(var_U))
+    .data$U <- U
+
+    ########################################################################
+    # The part below is the only part you need to change to implement
+    # the sensitivity analysis in a new context.
+
+    # Refit model to estimate the causal effect 
+    updated_model <- lm(Y ~ A+C+U, data = .data)
+    # The names of the coefficients and confidence interval output rows
+    # are called "A" for the treatment variable A.
+    # This will change in a new dataset.
+    list(c(
+        estimate = unname(coefficients(updated_model)["A"]), 
+        ci_95_lower = confint(updated_model)["A",1],
+        ci_95_upper = confint(updated_model)["A",2]
+    ))
+}
+
+# Set up simulated example data
+set.seed(451)
+n <- 10000
+U <- rnorm(n, 10, 1)
+C <- rnorm(n, 10, 1)
+A <- rnorm(n, 2+C+U, 2)
+Y <- rnorm(n, 10 + A + C + U, 10)
+
+sim_data <- data.frame(U, C, A, Y)
+
+# Begin the sensitivity analysis
+
+# Fit required models for the sensitivity analysis
+mod_A <- lm(A ~ C, data = sim_data)
+mod_Y <- lm(Y ~ A+C, data = sim_data)
+
+# Set up degree of association between U and A and between U and Y
+# The U->A associations have some constraints: we set up values 
+# for the U->A associations that are at most equal to the
+# standard deviation of the residuals from the model for A.
+U_A_assocs <- seq(from = 0.01, to = sigma(mod_A), length.out = 10)
+U_Y_assocs <- seq(from = 0.5, to = 5, by = 0.5)
+
+# Form all combinations of the U->A and U->Y sensitivity parameters
+sens_data <- expand.grid(U_A = U_A_assocs, U_Y = U_Y_assocs)
+
+# Run sensitivity analysis
+sens_data <- sens_data %>%
+    group_by(U_A, U_Y) %>%
+    mutate(sens = sensitivity_analysis(sim_data, mod_A, mod_Y, U_A, U_Y))
+# Collect sensitivity analysis results in a data.frame
+sens_data <- bind_cols(sens_data[,1:2], bind_rows(sens_data$sens))
+
+
+# Plot results
+prepender <- function(string, prefix = "U -> Y strength:") paste(prefix, string)
+
+ggplot(sens_data, aes(x = U_A, y = estimate)) +
+    geom_ribbon(aes(ymin = ci_95_lower, ymax = ci_95_upper), fill = "grey70") +
+    geom_line() +
+    geom_hline(aes(yintercept = coefficients(mod_Y)["A"]), color = "blue", lty = "dashed") +
+    geom_hline(aes(yintercept = 0), color = "black") +
+    facet_wrap(~U_Y, labeller = as_labeller(prepender)) +
+    labs(x = "Strength of U -> A association", y = "ACE and 95% CI")
+```
+
+### Main exercise {-}
+
+Here, we will adapt the code above to implement a sensitivity analysis for unmeasured confounding for the smoking-weight gain study.
+
+- The treatment variable is `smkintensity82_71` the change in number of cigarettes smoked per day from 1971 to 1982.
+- Assume that a graphical analysis has led to the conclusion that conditional exchangeability holds given `smokeyrs`, `age`, and `asthma`.
+- Display graphical output from the sensitivity analysis and write a brief discussion of conclusions you can make from the sensitivity analysis (no more than 400 words).
+
+```{r}
+# Load data
+library(cidata)
+data(nhefs_complete)
+# View the data codebook
+View(nhefs_codebook)
+```
