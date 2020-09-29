@@ -128,7 +128,7 @@ disc_data <- readr::read_csv("https://www.dropbox.com/s/moj3k3fed7puicr/discover
 
 ### Exercise 7 {-}
 
-Although you may not choose to do a data analysis for the final project, write a short plan for a set of sensitivity analyses you could conduct to enrich your causal analysis. What sensitivity analyses would you conduct, and how would you present and communicate the results?
+Clearly describe how causal discovery could be used as a sensitivity analysis for a regression or IP weighting analysis for estimating causal effects.
 
 
 
