@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Topic 8 Digestion: Study Designs and Graphs | STAT 451: Causal Inference</title>
+  <title>Topic 15 Causal Discovery | STAT 451: Causal Inference</title>
   <meta name="description" content="This is the class website for Causal Inference at Macalester College." />
   <meta name="generator" content="bookdown 0.20.6 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Topic 8 Digestion: Study Designs and Graphs | STAT 451: Causal Inference" />
+  <meta property="og:title" content="Topic 15 Causal Discovery | STAT 451: Causal Inference" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="lmyint/causal_fall_2020" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Topic 8 Digestion: Study Designs and Graphs | STAT 451: Causal Inference" />
+  <meta name="twitter:title" content="Topic 15 Causal Discovery | STAT 451: Causal Inference" />
   
   <meta name="twitter:description" content="This is the class website for Causal Inference at Macalester College." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="graphical-structure-of-selection-bias.html"/>
-<link rel="next" href="the-smoking-birth-weight-paradox.html"/>
+<link rel="prev" href="sensitivity-analyses-for-unmeasured-variables.html"/>
+<link rel="next" href="homework-1.html"/>
 <script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -394,73 +394,105 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="digestion-study-designs-and-graphs" class="section level1" number="8">
-<h1><span class="header-section-number">Topic 8</span> Digestion: Study Designs and Graphs</h1>
-<div id="goals" class="section level2 unnumbered">
-<h2>Goals</h2>
-<p>Today we’ll take time to synthesize ideas in contexts that you’ve identified as meaningful.</p>
+<div id="causal-discovery" class="section level1" number="15">
+<h1><span class="header-section-number">Topic 15</span> Causal Discovery</h1>
+<div id="pre-class-work-12" class="section level2 unnumbered">
+<h2>Pre-class work</h2>
+<p>Videos/slides</p>
 <ul>
-<li><strong><code>DESI2</code>:</strong> Explain how quasi-experimental and general observational studies relate to exchangeability.</li>
-<li><strong><code>DESI3</code>:</strong> Compare the strengths and weaknesses of different study designs for answering a research question.</li>
+<li>Causal Discovery: <a href="https://youtu.be/buPv9AsyGZY">[video]</a>, <a href="https://drive.google.com/file/d/1hMlOH66vA1t9x7YLEm1DPJV5WJ-5FKmM/view?usp=sharing">[slides]</a></li>
+</ul>
+<p><a href="https://moodle.macalester.edu/mod/quiz/view.php?id=33010">Checkpoint</a></p>
+<p><br><br><br><br></p>
+</div>
+<div id="learning-goals-13" class="section level2 unnumbered">
+<h2>Learning Goals</h2>
+<ul>
+<li><strong><code>DISC1</code></strong>: Demonstrate conceptual understanding of causal discovery by reasoning about outputs of the process and by manually conducting it using regression models.</li>
+<li><strong><code>DISC2</code></strong>: Use output from causal discovery to enhance a causal analysis as part of a sensitivity analysis.</li>
 </ul>
 <center>
-<blockquote class="twitter-tweet">
-<p lang="en" dir="ltr">
-1/<br>Juneteenth is a good reason for a <a href="https://twitter.com/hashtag/causalinference?src=hash&amp;ref_src=twsrc%5Etfw">#causalinference</a> reminder: It ain't race but racism.<br><br>To change society, focus on well-defined interventions. <br><br>Studies of “Whites vs. Blacks” document the existence of serious problems, but don't propose solutions.<a href="https://t.co/uzzHYS8gdO">https://t.co/uzzHYS8gdO</a> <a href="https://t.co/cuiEYqrDGx">pic.twitter.com/cuiEYqrDGx</a>
-</p>
-— Miguel Hernán (<span class="citation">@_MiguelHernan</span>) <a href="https://twitter.com/_MiguelHernan/status/1273936972852191233?ref_src=twsrc%5Etfw">June 19, 2020</a>
-</blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<img src="images/course_flow5.svg" width="60%" height="60%">
 </center>
 <p><br><br><br><br></p>
 </div>
-<div id="your-task" class="section level2 unnumbered">
-<h2>Your Task</h2>
-<p>Identify one context from the selection below that are of interest to the group. (These come from media items that you have shared on Slack. Also feel free to discuss something not listed below.)</p>
-<ul>
-<li><a href="https://twitter.com/Lizstuartdc/status/1302604052753244161">How are college towns affected by COVID-19?</a></li>
-<li><a href="http://www.law.harvard.edu/programs/olin_center/papers/pdf/Yang_919.pdf">What inequities are present in bail decisions?</a></li>
-<li><a href="https://www.nytimes.com/2020/09/13/us/oregon-wildfires-california-washington-map.html">What can we do to prevent wildfires?</a></li>
-<li><a href="https://www.bloomberg.com/news/articles/2020-09-13/the-year-unconventional-monetary-policy-turned-conventional">What financial policies can help businesses in pandemic times?</a></li>
-<li><a href="https://www.economist.com/finance-and-economics/2020/09/12/ports-are-highly-exposed-to-climate-change-and-often-ill-prepared">How does climate change affect port industries?</a></li>
-<li><a href="https://www.npr.org/sections/live-updates-protests-for-racial-justice/2020/06/26/884149659/minneapolis-council-moves-to-defund-police-establish-holistic-public-safety-forc">What are the consequences of reallocating funding for the police?</a></li>
-<li><a href="https://www.nbcnews.com/news/us-news/therapists-are-under-strain-covid-era-counseling-clients-trauma-they-n1230956">Who cares for our caregivers?</a></li>
-<li><a href="https://www.nber.org/papers/w8918.pdf">Do remedial programs help with student achievement?</a></li>
-</ul>
+<div id="exercises-10" class="section level2 unnumbered">
+<h2>Exercises</h2>
+<p><strong>You can download a template RMarkdown file to start from <a href="template_rmds/15-causal-discovery.Rmd">here</a>.</strong></p>
 <p><br></p>
-<p>Discuss the following with each other, and record your responses in a well-organized shared document:</p>
+<div id="exercise-1-7" class="section level3 unnumbered">
+<h3>Exercise 1</h3>
+<p>There are two genes (Gene A and Gene B) that produce Protein X. Gene A is the primary producer. Whenever Gene A is functional, Gene B is inactive and produces nothing. However, if Gene A loses function, Gene B becomes active and produces Protein X in Gene A’s place in exactly the same amounts.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Draw the DAG implied by this expert knowledge.</p></li>
+<li><p>We can view Gene A as a binary variable with values “functional” and “non-functional”. Will Gene A and Protein X be marginally independent or marginally dependent in the data? Explain.</p></li>
+<li><p>Discuss your answers to (a) and (b) in the context of a relevant concept.</p></li>
+</ol>
+<p><br><br></p>
+</div>
+<div id="exercise-2-6" class="section level3 unnumbered">
+<h3>Exercise 2</h3>
+<p>In this exercise, we’ll think about the conditional independence test and the role of the hypothesis testing significance level as a tuning parameter.</p>
+<p>As the significance level is lowered to 0, what would you expect to happen to the graph skeleton learned by causal discovery algorithms? As the significance level is increased to 1? Explain.</p>
+<p><br><br></p>
+</div>
+<div id="exercise-3-5" class="section level3 unnumbered">
+<h3>Exercise 3</h3>
+<p>Consider data that truly come from a chain <code>X -&gt; Y -&gt; Z</code>. What pattern would a causal discovery algorithm report?</p>
+<p>It is possible to supply causal discovery algorithms with prior knowledge - for example, specific edges that are required to be present. If you could supply prior knowledge to the algorithm on only one edge that is required to be present, what edge (if any) would allow the entire structure to be learned? Explain briefly.</p>
+<p><br><br></p>
+</div>
+<div id="exercise-4-4" class="section level3 unnumbered">
+<h3>Exercise 4</h3>
+<p>Consider data that truly come from a fork <code>X &lt;- Y -&gt; Z</code>. What pattern would a causal discovery algorithm report?</p>
+<p>If you could supply prior knowledge to the algorithm on only one edge that is required to be present, what edge (if any) would allow the entire structure to be learned? Explain briefly.</p>
+<p><br><br></p>
+</div>
+<div id="exercise-5-2" class="section level3 unnumbered">
+<h3>Exercise 5</h3>
+<p>We have learned the following structure from the skeleton building phase.</p>
+<p><img src="causal_manual_files/figure-html/15_dag-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>We have the following results from conditional independence tests (<span class="math inline">\(H_0\)</span> indicates conditional independence, significance level = 0.01):</p>
 <ul>
-<li>What treatment(s) might be of interest in this context? Is this treatment something that could realistically be intervened upon?</li>
-<li>What quasi-experimental study design do you think would be most ideal for studying the causal effect of the treatment?
+<li><span class="math inline">\(X \perp\!\!\!\perp Z \mid Y\)</span>? p-value = 0.001</li>
+<li><span class="math inline">\(X \perp\!\!\!\perp W \mid Y\)</span>? p-value = 0.1</li>
+<li><span class="math inline">\(Y \perp\!\!\!\perp V \mid W\)</span>? p-value = 0.1</li>
+<li><span class="math inline">\(U \perp\!\!\!\perp W \mid V\)</span>? p-value = 0.1</li>
+</ul>
+<p>What pattern would a causal discovery algorithm report? Show your work.</p>
+<p><br><br></p>
+</div>
+<div id="exercise-6" class="section level3 unnumbered">
+<h3>Exercise 6</h3>
+<p>We have measured 3 variables <span class="math inline">\(X\)</span>, <span class="math inline">\(Y\)</span>, and <span class="math inline">\(Z\)</span> (all quantitative). You can read in the data below.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="causal-discovery.html#cb30-1" aria-hidden="true"></a>disc_data &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&quot;https://www.dropbox.com/s/moj3k3fed7puicr/discovery_data.csv?dl=1&quot;</span>)</span></code></pre></div>
 <ul>
-<li>Describe how you would implement the design.</li>
-<li>Use a causal graph to think through whether or not marginal or conditional exchangeability holds in your setting. Feel free to use <a href="http://www.dagitty.net/dags.html">DAGitty</a>. Record your conclusions.</li>
+<li>Step through the causal discovery process, using regression models as your conditional independence test. Use a type 1 error rate (significance level) of <span class="math inline">\(\alpha=0.01\)</span>. Show all work. This involves:
+<ul>
+<li>Showing model output.</li>
+<li>Writing a sentence using numbers from the output at each step to show the decisions made by the algorithm.</li>
 </ul></li>
-<li>Do you think that a general observational study would be feasible/appropriate in this setting?</li>
-<li>Do you think an overall average causal effect or causal effects within subgroups would be more of interest? Does the answer to that depend on who is using the study results?</li>
-<li>Who might suffer based on the results of this causal analysis and the ways in which the results are communicated?</li>
-</ul>
-<p><br></p>
-<p>Share the document with me by Wednesday, September 16:</p>
-<ul>
-<li>If it is a Google Docs, add me so that I have commenting privileges.</li>
-<li>Otherwise, email me a copy.</li>
+<li>Report the final output that the discovery algorithm would give.</li>
 </ul>
 <p><br><br></p>
 </div>
-<div id="grading" class="section level2 unnumbered">
-<h2>Grading</h2>
-<p>Everyone in the group will receive the same grade for the <strong>DESI2</strong> and <strong>DESI3</strong> objectives. This will count towards mastery requirements.</p>
+<div id="exercise-7" class="section level3 unnumbered">
+<h3>Exercise 7</h3>
+<p>Although you may not choose to do a data analysis for the final project, write a short plan for a set of sensitivity analyses you could conduct to enrich your causal analysis. What sensitivity analyses would you conduct, and how would you present and communicate the results?</p>
 
 </div>
 </div>
+</div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="graphical-structure-of-selection-bias.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="the-smoking-birth-weight-paradox.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="sensitivity-analyses-for-unmeasured-variables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="homework-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

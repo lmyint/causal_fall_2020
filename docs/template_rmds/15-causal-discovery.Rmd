@@ -1,0 +1,109 @@
+---
+title: "Causal Discovery"
+author: "Your Name"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+# Exercise 1
+
+There are two genes (Gene A and Gene B) that produce Protein X. Gene A is the primary producer. Whenever Gene A is functional, Gene B is inactive and produces nothing. However, if Gene A loses function, Gene B becomes active and produces Protein X in Gene A's place in exactly the same amounts.
+
+a. Draw the DAG implied by this expert knowledge.
+
+b. We can view Gene A as a binary variable with values "functional" and "non-functional". Will Gene A and Protein X be marginally independent or marginally dependent in the data? Explain.
+
+c. Discuss your answers to (a) and (b) in the context of a relevant concept.
+
+
+<br><br>
+
+
+# Exercise 2
+
+In this exercise, we'll think about the conditional independence test and the role of the hypothesis testing significance level as a tuning parameter.
+
+As the significance level is lowered to 0, what would you expect to happen to the graph skeleton learned by causal discovery algorithms? As the significance level is increased to 1? Explain.
+
+
+<br><br>
+
+
+# Exercise 3
+
+Consider data that truly come from a chain `X -> Y -> Z`. What pattern would a causal discovery algorithm report?
+
+It is possible to supply causal discovery algorithms with prior knowledge - for example, specific edges that are required to be present. If you could supply prior knowledge to the algorithm on only one edge that is required to be present, what edge (if any) would allow the entire structure to be learned? Explain briefly.
+
+
+<br><br>
+
+
+# Exercise 4
+
+Consider data that truly come from a fork `X <- Y -> Z`. What pattern would a causal discovery algorithm report?
+
+If you could supply prior knowledge to the algorithm on only one edge that is required to be present, what edge (if any) would allow the entire structure to be learned? Explain briefly.
+
+
+<br><br>
+
+
+# Exercise 5
+
+We have learned the following structure from the skeleton building phase.
+
+```{r 15_dag, echo=FALSE, eval=TRUE, fig.align="center"}
+plot(1, type = "n", bty = "n", xaxt = "n", yaxt = "n", xlab = "", ylab = "", xlim = c(0,1), ylim = c(0,1))
+text("X", x = 0.2, y = 0.6)
+text("Y", x = 0.4, y = 0.6)
+text("Z", x = 0.6, y = 0.6)
+text("U", x = 0.1, y = 0.3)
+text("V", x = 0.3, y = 0.3)
+text("W", x = 0.5, y = 0.3)
+segments(x0 = c(0.25,0.45), y0 = c(0.6,0.6), x1 = c(0.35,0.55), y1 = c(0.6,0.6))
+segments(x0 = c(0.15,0.35), y0 = c(0.3,0.3), x1 = c(0.25,0.45), y1 = c(0.3,0.3))
+segments(x0 = 0.4, y0 = 0.55, x1 = 0.5, y1 = 0.35)
+```
+
+We have the following results from conditional independence tests ($H_0$ indicates conditional independence, significance level = 0.01):
+
+- $X \perp\!\!\!\perp Z \mid Y$? p-value = 0.001
+- $X \perp\!\!\!\perp W \mid Y$? p-value = 0.1
+- $Y \perp\!\!\!\perp V \mid W$? p-value = 0.1
+- $U \perp\!\!\!\perp W \mid V$? p-value = 0.1
+
+What pattern would a causal discovery algorithm report? Show your work.
+
+
+<br><br>
+
+
+# Exercise 6
+
+We have measured 3 variables $X$, $Y$, and $Z$ (all quantitative). You can read in the data below.
+
+```{r}
+disc_data <- readr::read_csv("https://www.dropbox.com/s/moj3k3fed7puicr/discovery_data.csv?dl=1")
+```
+
+- Step through the causal discovery process, using regression models as your conditional independence test. Use a type 1 error rate (significance level) of $\alpha=0.01$. Show all work. This involves:
+    - Showing model output.
+    - Writing a sentence using numbers from the output at each step to show the decisions made by the algorithm.
+- Report the final output that the discovery algorithm would give.
+
+
+<br><br>
+
+
+### Exercise 7 {-}
+
+Although you may not choose to do a data analysis for the final project, write a short plan for a set of sensitivity analyses you could conduct to enrich your causal analysis. What sensitivity analyses would you conduct, and how would you present and communicate the results?
+
+
+
+
+
+

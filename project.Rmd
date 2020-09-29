@@ -15,24 +15,39 @@ Grading scale:
 - Meets Expectations
 - Excellent
 
-<center>
-**This page is still under construction!**
-</center>
 
 <br><br>
+
+
+## Deliverables {-}
+
+For all projects below, the only deliverable is a "digital artifact" that could be used for the digital capstone showcase. A digital artifact can take any of the following forms:
+
+- A video presentation
+- A podcast-style recording
+- A set of blog posts
+
+Work with Leslie to determine the most suitable form for your digital artifact, depending on the option you pick.
+
+**In order to earn an Excellent, your artifact must be presented in a way that is clear and engaging for a student who has only completed STAT 155.**
+
+
+<br><br>
+
 
 ## Option 1: Data analysis {-}
 
 **Collaboration:** Groups of up to 3. Individual work is fine.
 
-With larger groups, the number of major components required to earn an Excellent will increase.
+Perform a causal analysis on a dataset of your choice. To earn an Excellent, the analysis must contain one major component per team member.
 
-Options for major components
+Options for major components:
 
-- Complete regression analysis for causal effect estimation with a sensitivity analysis for unmeasured confounding
-- Complete inverse probability weighting analysis for causal effect estimation with a sensitivity analysis for unmeasured confounding
-- Causal discovery as a sensitivity analysis
-- Complete mediation analysis for causal effect estimation with a sensitivity analysis for unmeasured confounding
+- Regression analysis for causal effect estimation with a sensitivity analysis for unmeasured confounding
+- Inverse probability weighting analysis for causal effect estimation with a sensitivity analysis for unmeasured confounding
+- Causal discovery as a sensitivity analysis (Information on the `pcalg` R package for causal discovery will be added to our website's appendix.)
+- Mediation analysis for causal effect estimation
+- Instrumental variables analysis
 
 <br>
 
@@ -40,33 +55,20 @@ Options for major components
 
 **Collaboration:** Individual only.
 
-Choose __ (number TBD) of the following topics to fully explain through blog posts. One post per topic.
+Write two blog posts explaining causal inference ideas to a general audience. The first post should address one of the three topics below.
 
 - Estrogens and uterine cancer example of selection bias: see [Graphical Structure of Selection Bias], Exercise 3.
 - The smoking-birth weight paradox
-- More to come!
+- Pick any media item that has interested you. Write a reaction to it / an analysis of it from a causal inference perspective.
+    - If you're looking to explore some media, the [Casual Inference podcast](https://casualinfer.libsyn.com/) is a fun one!
+
+The second post should be a "tour of causal inference" and lead the reader through all topics covered in our course in a cohesive story.
 
 <br>
 
-## Option 3: Create a lesson {-}
+## Option 3: Learn an advanced topic {-}
 
-**Collaboration:** TBD
-
-Create a lesson plan for one of our course topics. This lesson plan will include
-
-<br>
-
-## Option 4: Literature critique {-}
-
-**Collaboration:** TBD, probably individual
-
-Write a thorough critique of a research article that uses causal inference methods.
-
-<br>
-
-## Option 5: Learn an advanced topic {-}
-
-**Collaboration:** TBD
+**Collaboration:** Groups of up to 3. Individual work is fine.
 
 Dig deeper into course topics or learn a new topic. Examples could include:
 
@@ -77,6 +79,6 @@ Dig deeper into course topics or learn a new topic. Examples could include:
 
 <br>
 
-## Option 6: Other {-}
+## Option 4: Other {-}
 
 If none of these options piques your interest, I'm happy to discuss alternatives with you.

@@ -34,8 +34,8 @@ The following learning objectives are the primary focus of this assignment:
 
 - **`SENS1`**: Evaluate the sensitivity of findings to data quality and propose appropriate sensitivity analyses for a research investigation
 - **`SENS2`**: Conduct and communicate the results of a sensitivity analysis for unmeasured confounding.
-- **`DISC1`**: Manually conduct causal discovery using regression models.
-- **`DISC2`**: Use output from causal discovery to enhance a causal analysis.
+- **`DISC1`**: Demonstrate conceptual understanding of causal discovery by reasoning about outputs of the process and by manually conducting it using regression models.
+- **`DISC2`**: Use output from causal discovery to enhance a causal analysis as part of a sensitivity analysis.
 
 
 <br>
