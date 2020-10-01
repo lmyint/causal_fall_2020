@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Topic 13 Time-Varying Treatments | STAT 451: Causal Inference</title>
+  <title>Topic 16 Graphical Structure of Mediation | STAT 451: Causal Inference</title>
   <meta name="description" content="This is the class website for Causal Inference at Macalester College." />
   <meta name="generator" content="bookdown 0.20.6 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Topic 13 Time-Varying Treatments | STAT 451: Causal Inference" />
+  <meta property="og:title" content="Topic 16 Graphical Structure of Mediation | STAT 451: Causal Inference" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="lmyint/causal_fall_2020" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Topic 13 Time-Varying Treatments | STAT 451: Causal Inference" />
+  <meta name="twitter:title" content="Topic 16 Graphical Structure of Mediation | STAT 451: Causal Inference" />
   
   <meta name="twitter:description" content="This is the class website for Causal Inference at Macalester College." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="applied-analysis-inverse-probability-weighting.html"/>
-<link rel="next" href="sensitivity-analyses-for-unmeasured-variables.html"/>
+<link rel="prev" href="causal-discovery.html"/>
+<link rel="next" href="homework-1.html"/>
 <script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -407,54 +407,98 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="time-varying-treatments" class="section level1" number="13">
-<h1><span class="header-section-number">Topic 13</span> Time-Varying Treatments</h1>
-<div id="pre-class-work-10" class="section level2 unnumbered">
+<div id="graphical-structure-of-mediation" class="section level1" number="16">
+<h1><span class="header-section-number">Topic 16</span> Graphical Structure of Mediation</h1>
+<div id="pre-class-work-13" class="section level2 unnumbered">
 <h2>Pre-class work</h2>
-<p>Required reading</p>
+<p>Videos/slides</p>
 <ul>
-<li>WHATIF: 19.1 - 19.4</li>
+<li>Mediation Analysis: <a href="https://youtu.be/wTZ-5zBmwRo">[video]</a>, <a href="https://drive.google.com/file/d/1xp5usL2pDE8q649z3MoRj1qMh4s5fb8i/view?usp=sharing">[slides]</a></li>
 </ul>
-<p><a href="https://moodle.macalester.edu/mod/quiz/view.php?id=31376">Checkpoint</a></p>
+<p><a href="https://moodle.macalester.edu/mod/quiz/view.php?id=34662">Checkpoint</a></p>
 <p><br><br><br><br></p>
 </div>
-<div id="learning-goals-11" class="section level2 unnumbered">
+<div id="learning-goals-14" class="section level2 unnumbered">
 <h2>Learning Goals</h2>
 <ul>
-<li><strong><code>TVTR1</code></strong>: Formulate research questions that can be answered in a time-varying treatment setting</li>
-<li><strong><code>TVTR2</code></strong>: Explain why regression does not generally work in time-varying settings with treatment-confounder feedback using d-separation ideas</li>
+<li>Relate d-separation ideas to exchangeability conditions for mediation</li>
+<li>MEDI1: Formulate research questions that can be answered via mediation analysis</li>
 </ul>
 <center>
-<img src="images/course_flow4.svg" width="60%" height="60%">
+<img src="images/course_flow6.svg" width="60%" height="60%">
 </center>
 <p><br><br><br><br></p>
 </div>
-<div id="exercises-8" class="section level2 unnumbered">
+<div id="exercises-11" class="section level2 unnumbered">
 <h2>Exercises</h2>
-
-<div class="solutions">
-<strong>Solutions to these exercises are available <a href="https://moodle.macalester.edu/mod/folder/view.php?id=34207">on Moodle</a>.</strong>
-</div>
+<div id="background-2" class="section level3 unnumbered">
+<h3>Background</h3>
+<p>Consider the following causal diagram representing variables important in mediation analysis:</p>
+<p><img src="images/10_mediation_dag.png" /></p>
+<p>Let <span class="math inline">\(C = \{C_1, C_2, C_3\}\)</span>. When trying to estimate mediation effects (CDE, NDEs, NIEs), the following 4 exchangeability assumptions are necessary:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(Y^{am} \perp\!\!\!\perp A \mid C\)</span></li>
+<li><span class="math inline">\(Y^{am} \perp\!\!\!\perp M \mid A, C\)</span></li>
+<li><span class="math inline">\(M^{a} \perp\!\!\!\perp A \mid C\)</span></li>
+<li><span class="math inline">\(Y^{am} \perp\!\!\!\perp M^{a*} \mid C\)</span></li>
+</ol>
 <p><br></p>
-<div id="exercise-1-6" class="section level3 unnumbered">
-<h3>Exercise 1</h3>
-<center>
-<img src="images/13_ex1.png" />
-</center>
-<p>Which of these graphs could represent a sequentially randomized experiment and why?</p>
-<p>(Graphs that could represent sequentially randomized experiments indicate the presence of <em>sequential</em> exchangeability.)</p>
+<p>These 4 exchangeability assumptions can be expressed as the following 4 graphical assumptions:</p>
+<ol style="list-style-type: decimal">
+<li>No unmeasured confounders of the treatment-outcome relationship (<span class="math inline">\(A\)</span> and <span class="math inline">\(Y\)</span>).</li>
+<li>No unmeasured confounders of the mediator-outcome relationship (<span class="math inline">\(M\)</span> and <span class="math inline">\(Y\)</span>).</li>
+<li>No unmeasured confounders of the treatment-mediator relationship (<span class="math inline">\(A\)</span> and <span class="math inline">\(M\)</span>).</li>
+<li>No confounder of the mediator-outcome relationship is affected by treatment (arrows from <span class="math inline">\(A\)</span> to <span class="math inline">\(C_2\)</span>).</li>
+</ol>
+<p>When these 4 assumptions hold, the CDE, NDEs, and NIEs can be estimated from data, and we can use models such as the regression models below to estimate them. (<span class="math inline">\(C = \{C_1, C_2, C_3\}\)</span>)</p>
+<p><span class="math display">\[ E[Y\mid A, M, C] = \theta_0 + \theta_1 A + \theta_2 M + \theta_3 AM + \mathbf{\theta_4&#39;C} \]</span>
+<span class="math display">\[ E[M\mid A, C] = \beta_0 + \beta_1 A + \mathbf{\beta_2&#39;C} \]</span></p>
 <p><br><br></p>
 </div>
-<div id="exercise-2-5" class="section level3 unnumbered">
+<div id="exercise-1-8" class="section level3 unnumbered">
+<h3>Exercise 1</h3>
+<p>Assumptions 1 and 2 are needed in order to estimate the controlled direct effect (CDE).</p>
+<p>Using d-separation ideas, argue why Assumptions 1 and 2 must hold but why it is not necessary for Assumptions 3 and 4 to hold. Use the paths below from <span class="math inline">\(A\)</span> to <span class="math inline">\(Y\)</span> in your arguments.</p>
+<p>(<strong>Note:</strong> All 4 assumptions must hold to estimate the natural direct and indirect effects. If you finish early, feel free to tackle exploring this graphically by looking at the <span class="math inline">\(M\)</span> to <span class="math inline">\(Y\)</span> and <span class="math inline">\(A\)</span> to <span class="math inline">\(M\)</span> paths below.)</p>
+<pre><code>## Path 1:   A &lt;- C1 -&gt; Y  
+## Path 2:   A -&gt; Y  
+## Path 3:   A &lt;- C3 -&gt; M -&gt; Y  
+## Path 4:   A &lt;- C3 -&gt; M &lt;- C2 -&gt; Y  
+## Path 5:   A -&gt; M -&gt; Y  
+## Path 6:   A -&gt; M &lt;- C2 -&gt; Y  
+## Path 7:   A -&gt; C2 -&gt; Y  
+## Path 8:   A -&gt; C2 -&gt; M -&gt; Y</code></pre>
+<pre><code>## Path 1:   A &lt;- C1 -&gt; Y &lt;- M  
+## Path 2:   A &lt;- C1 -&gt; Y &lt;- C2 -&gt; M  
+## Path 3:   A -&gt; Y &lt;- M  
+## Path 4:   A -&gt; Y &lt;- C2 -&gt; M  
+## Path 5:   A &lt;- C3 -&gt; M  
+## Path 6:   A -&gt; M  
+## Path 7:   A -&gt; C2 -&gt; Y &lt;- M  
+## Path 8:   A -&gt; C2 -&gt; M</code></pre>
+<pre><code>## Path 1:   M &lt;- A &lt;- C1 -&gt; Y  
+## Path 2:   M &lt;- A -&gt; Y  
+## Path 3:   M &lt;- A -&gt; C2 -&gt; Y  
+## Path 4:   M -&gt; Y  
+## Path 5:   M &lt;- C3 -&gt; A &lt;- C1 -&gt; Y  
+## Path 6:   M &lt;- C3 -&gt; A -&gt; Y  
+## Path 7:   M &lt;- C3 -&gt; A -&gt; C2 -&gt; Y  
+## Path 8:   M &lt;- C2 &lt;- A &lt;- C1 -&gt; Y  
+## Path 9:   M &lt;- C2 &lt;- A -&gt; Y  
+## Path 10:   M &lt;- C2 -&gt; Y</code></pre>
+<p><br><br></p>
+</div>
+<div id="exercise-2-7" class="section level3 unnumbered">
 <h3>Exercise 2</h3>
-<p><strong>Treatment-confounder feedback</strong> is the situation where past treatment <span class="math inline">\(A_{t-1}\)</span> affects the value of future confounders <span class="math inline">\(L_{t}\)</span>.</p>
-<p>The graph below represents the fundamental part of Graph 2 from Exercise 1 that allows us to explore the impact of treatment-confounder feedback.</p>
-<p><img src="causal_manual_files/figure-html/13_ex1-1.png" width="1056" style="display: block; margin: auto;" /></p>
-<ol style="list-style-type: lower-alpha">
-<li><p>Using d-separation ideas, explain why a regression model of the form <span class="math inline">\(E[Y \mid A_0, A_1, L_1]\)</span> creates a problem for estimating the effect of a treatment strategy for <span class="math inline">\(A_0\)</span> and <span class="math inline">\(A_1\)</span>.</p></li>
-<li><p>How would you expect this graph to change under inverse probability weighting? Thus explain why IPW allows us to estimate the effect of a treatment strategy for <span class="math inline">\(A_0\)</span> and <span class="math inline">\(A_1\)</span>.</p></li>
-<li><p>More generally, treatment-confounder feedback has been used to describe not only direct connections between past treatment and future confounders, but also any open path between them. Expanding on the graph here, what other structures lead to problems for conditioning-based estimation methods?</p></li>
-</ol>
+<p>Under the exchangeability assumptions discussed above, we can use models such as the regression models below to estimate the CDE, NDE, and NIE. (<span class="math inline">\(C = \{C_1, C_2, C_3\}\)</span>, and <span class="math inline">\(\theta_4, \beta_2\)</span> are vectors of coefficients.) In particular, these models can be used as structural models to simulate the different potential outcomes needed to</p>
+<p><span class="math display">\[ E[Y\mid A, M, C] = \theta_0 + \theta_1 A + \theta_2 M + \theta_3 AM + \theta_4&#39;C \]</span>
+<span class="math display">\[ E[M\mid A, C] = \beta_0 + \beta_1 A + \beta_2&#39;C \]</span></p>
+<p>Given these models, derive expressions for <span class="math inline">\(CDE(m)\)</span> and <span class="math inline">\(NDE(0)\)</span>.</p>
+<p><br><br></p>
+</div>
+<div id="exercise-3-6" class="section level3 unnumbered">
+<h3>Exercise 3</h3>
+<p>Suppose that we were interested in the effect of a new funding model for police departments on crime rates. What causal questions related to mediation might arise? What effects might be most of interest and why?</p>
 
 </div>
 </div>
@@ -467,8 +511,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="applied-analysis-inverse-probability-weighting.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="sensitivity-analyses-for-unmeasured-variables.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="causal-discovery.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="homework-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

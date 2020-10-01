@@ -13,3 +13,4 @@ applied-analysis-inverse-probability-weighting
 time-varying-treatments
 sensitivity-analyses-for-unmeasured-variables
 causal-discovery
+graphical-structure-of-mediation
