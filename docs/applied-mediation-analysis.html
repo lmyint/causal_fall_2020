@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Topic 8 Digestion: Study Designs and Graphs | STAT 451: Causal Inference</title>
+  <title>Topic 17 Applied Mediation Analysis | STAT 451: Causal Inference</title>
   <meta name="description" content="This is the class website for Causal Inference at Macalester College." />
   <meta name="generator" content="bookdown 0.20.6 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Topic 8 Digestion: Study Designs and Graphs | STAT 451: Causal Inference" />
+  <meta property="og:title" content="Topic 17 Applied Mediation Analysis | STAT 451: Causal Inference" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="lmyint/causal_fall_2020" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Topic 8 Digestion: Study Designs and Graphs | STAT 451: Causal Inference" />
+  <meta name="twitter:title" content="Topic 17 Applied Mediation Analysis | STAT 451: Causal Inference" />
   
   <meta name="twitter:description" content="This is the class website for Causal Inference at Macalester College." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="graphical-structure-of-selection-bias.html"/>
-<link rel="next" href="the-smoking-birth-weight-paradox.html"/>
+<link rel="prev" href="graphical-structure-of-mediation.html"/>
+<link rel="next" href="homework-1.html"/>
 <script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -417,73 +417,90 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="digestion-study-designs-and-graphs" class="section level1" number="8">
-<h1><span class="header-section-number">Topic 8</span> Digestion: Study Designs and Graphs</h1>
-<div id="goals" class="section level2 unnumbered">
-<h2>Goals</h2>
-<p>Today we’ll take time to synthesize ideas in contexts that you’ve identified as meaningful.</p>
+<div id="applied-mediation-analysis" class="section level1" number="17">
+<h1><span class="header-section-number">Topic 17</span> Applied Mediation Analysis</h1>
+<div id="pre-class-work-14" class="section level2 unnumbered">
+<h2>Pre-class work</h2>
+<p>Reading</p>
 <ul>
-<li><strong><code>DESI2</code>:</strong> Explain how quasi-experimental and general observational studies relate to exchangeability.</li>
-<li><strong><code>DESI3</code>:</strong> Compare the strengths and weaknesses of different study designs for answering a research question.</li>
+<li><a href="https://www.vox.com/2014/12/1/7311417/race-law-controls">How racial discrimination in law enforcement actually works</a></li>
+</ul>
+<p><br><br><br><br></p>
+</div>
+<div id="learning-goals-15" class="section level2 unnumbered">
+<h2>Learning Goals</h2>
+<ul>
+<li>MEDI1: Formulate research questions that can be answered via mediation analysis</li>
+<li>MEDI2: Conduct and interpret results from a mediation analysis</li>
 </ul>
 <center>
-<blockquote class="twitter-tweet">
-<p lang="en" dir="ltr">
-1/<br>Juneteenth is a good reason for a <a href="https://twitter.com/hashtag/causalinference?src=hash&amp;ref_src=twsrc%5Etfw">#causalinference</a> reminder: It ain't race but racism.<br><br>To change society, focus on well-defined interventions. <br><br>Studies of “Whites vs. Blacks” document the existence of serious problems, but don't propose solutions.<a href="https://t.co/uzzHYS8gdO">https://t.co/uzzHYS8gdO</a> <a href="https://t.co/cuiEYqrDGx">pic.twitter.com/cuiEYqrDGx</a>
-</p>
-— Miguel Hernán (<span class="citation">@_MiguelHernan</span>) <a href="https://twitter.com/_MiguelHernan/status/1273936972852191233?ref_src=twsrc%5Etfw">June 19, 2020</a>
-</blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<img src="images/course_flow6.svg" width="60%" height="60%">
 </center>
 <p><br><br><br><br></p>
 </div>
-<div id="your-task" class="section level2 unnumbered">
-<h2>Your Task</h2>
-<p>Identify one context from the selection below that are of interest to the group. (These come from media items that you have shared on Slack. Also feel free to discuss something not listed below.)</p>
-<ul>
-<li><a href="https://twitter.com/Lizstuartdc/status/1302604052753244161">How are college towns affected by COVID-19?</a></li>
-<li><a href="http://www.law.harvard.edu/programs/olin_center/papers/pdf/Yang_919.pdf">What inequities are present in bail decisions?</a></li>
-<li><a href="https://www.nytimes.com/2020/09/13/us/oregon-wildfires-california-washington-map.html">What can we do to prevent wildfires?</a></li>
-<li><a href="https://www.bloomberg.com/news/articles/2020-09-13/the-year-unconventional-monetary-policy-turned-conventional">What financial policies can help businesses in pandemic times?</a></li>
-<li><a href="https://www.economist.com/finance-and-economics/2020/09/12/ports-are-highly-exposed-to-climate-change-and-often-ill-prepared">How does climate change affect port industries?</a></li>
-<li><a href="https://www.npr.org/sections/live-updates-protests-for-racial-justice/2020/06/26/884149659/minneapolis-council-moves-to-defund-police-establish-holistic-public-safety-forc">What are the consequences of reallocating funding for the police?</a></li>
-<li><a href="https://www.nbcnews.com/news/us-news/therapists-are-under-strain-covid-era-counseling-clients-trauma-they-n1230956">Who cares for our caregivers?</a></li>
-<li><a href="https://www.nber.org/papers/w8918.pdf">Do remedial programs help with student achievement?</a></li>
-</ul>
-<p><br></p>
-<p>Discuss the following with each other, and record your responses in a well-organized shared document:</p>
-<ul>
-<li>What treatment(s) might be of interest in this context? Is this treatment something that could realistically be intervened upon?</li>
-<li>What quasi-experimental study design do you think would be most ideal for studying the causal effect of the treatment?
-<ul>
-<li>Describe how you would implement the design.</li>
-<li>Use a causal graph to think through whether or not marginal or conditional exchangeability holds in your setting. Feel free to use <a href="http://www.dagitty.net/dags.html">DAGitty</a>. Record your conclusions.</li>
-</ul></li>
-<li>Do you think that a general observational study would be feasible/appropriate in this setting?</li>
-<li>Do you think an overall average causal effect or causal effects within subgroups would be more of interest? Does the answer to that depend on who is using the study results?</li>
-<li>Who might suffer based on the results of this causal analysis and the ways in which the results are communicated?</li>
-</ul>
-<p><br></p>
-<p>Share the document with me by Wednesday, September 16:</p>
-<ul>
-<li>If it is a Google Docs, add me so that I have commenting privileges.</li>
-<li>Otherwise, email me a copy.</li>
-</ul>
+<div id="assignment" class="section level2 unnumbered">
+<h2>Assignment</h2>
+<p><strong>A template RMarkdown document that you can start from is available <a href="template_rmds/17-applied-mediation.Rmd">here</a>.</strong></p>
+<div id="pre-class-reading" class="section level3 unnumbered">
+<h3>Pre-class reading</h3>
+<p>Write a short response to the article, <a href="https://www.vox.com/2014/12/1/7311417/race-law-controls">How racial discrimination in law enforcement actually works</a>. Use quotes from the article to discuss connections to mediation ideas and other concepts from our course. (Limit 500 words.)</p>
+<p>Thoughtful responses will earn 2 M grades to apply to any objective of your choosing. (You can’t use this to skip parts of Homework 5 or 6 though.)</p>
 <p><br><br></p>
 </div>
-<div id="grading" class="section level2 unnumbered">
-<h2>Grading</h2>
-<p>Everyone in the group will receive the same grade for the <strong>DESI2</strong> and <strong>DESI3</strong> objectives. This will count towards mastery requirements.</p>
+<div id="applied-mediation-analysis-1" class="section level3 unnumbered">
+<h3>Applied mediation analysis</h3>
+<p>The New York Times recently <a href="https://www.nytimes.com/2020/09/29/business/economy/pandemic-women-tenure.html">featured</a> research by a group who studied the effect of tenure-clock stopping policies on promotion and job security-related outcomes.</p>
+<p>We’ll be looking at data from the study <a href="https://www.aeaweb.org/articles?id=10.1257/aer.20160613">Equal but Inequitable: Who Benefits from Gender-Neutral Tenure Clock Stopping Policies?</a> by Antecol, Bedard, and Stearns.</p>
+<p>You’ll need to install the <code>mediation</code> package before getting started.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="applied-mediation-analysis.html#cb34-1" aria-hidden="true"></a><span class="kw">install.packages</span>(<span class="st">&quot;mediation&quot;</span>)</span></code></pre></div>
+<p>The data and data information are available <a href="https://moodle.macalester.edu/mod/folder/view.php?id=36923">on Moodle</a> (<code>aer_primarysample.csv</code> and <code>ReadMe.pdf</code>).</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="applied-mediation-analysis.html#cb35-1" aria-hidden="true"></a><span class="kw">library</span>(dplyr)</span>
+<span id="cb35-2"><a href="applied-mediation-analysis.html#cb35-2" aria-hidden="true"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb35-3"><a href="applied-mediation-analysis.html#cb35-3" aria-hidden="true"></a><span class="kw">library</span>(splines)</span>
+<span id="cb35-4"><a href="applied-mediation-analysis.html#cb35-4" aria-hidden="true"></a><span class="kw">library</span>(mediation)</span>
+<span id="cb35-5"><a href="applied-mediation-analysis.html#cb35-5" aria-hidden="true"></a></span>
+<span id="cb35-6"><a href="applied-mediation-analysis.html#cb35-6" aria-hidden="true"></a>tenure &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&quot;aer_primarysample.csv&quot;</span>)</span></code></pre></div>
+<p><br></p>
+<blockquote>
+<p><strong>Context:</strong> Tenure clock-stopping policies broadly relate to delaying the timeline for tenure review due to life events. Often this is related to becoming a parent. The COVID pandemic has also generated discussions about clock-stopping policies for both its standalone impacts on faculty and its intersectional effects with other factors like parenthood. Clock-stopping policies are intended to affect scholarly output which in turn affects ultimate awarding of tenure.</p>
+</blockquote>
+<blockquote>
+<p><strong>Broad question:</strong> How do gender-neutral clock stopping policies affect the ultimate awarding of tenure, and how influential are publications in top journals in this process?</p>
+</blockquote>
+<p>Information on variables starts at the bottom of Page 1 of <code>ReadMe.pdf</code> (“The independent variables of interest are…”). We will focus on the following variables:</p>
+<ul>
+<li><code>gncs</code>: a gender-neutral clock-stopping policy is in place (treatment)</li>
+<li><code>top_pubs5</code>: cumulative number of peer-reviewed publications in top-5 journals by year 5 since PhD completion (mediator)</li>
+<li><code>tenure_policy_school</code>: indicator for getting tenure at the university with the clock-stopping policy</li>
+</ul>
+<p><strong>Your task:</strong></p>
+<ul>
+<li><p>The authors assume that the variables <code>female + phd_rank + post_doc + ug_students + grad_students + faculty + full_av_salary + assist_av_salary + revenue + female_ratio + full_ratio</code> are enough to meet the exchangeability conditions discussed yesterday. Do you agree? Explain. State your final conditional exchangeability set.</p></li>
+<li><p>Use visualizations to build appropriate models for the mediator and for the outcome. Focus on correctly capturing nonlinearity rather than interactions. Call the mediator model <code>med_mod</code> and the outcome model <code>out_mod</code>.</p></li>
+<li><p>Use the <code>mediate()</code> function as demonstrated below to estimate the natural direct and indirect effects. (In the output, <code>ACME</code> stands for the indirect effect and <code>ADE</code> stands for the direct effect.)</p></li>
+</ul>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="applied-mediation-analysis.html#cb36-1" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">451</span>)</span>
+<span id="cb36-2"><a href="applied-mediation-analysis.html#cb36-2" aria-hidden="true"></a>mediate_out &lt;-<span class="st"> </span><span class="kw">mediate</span>(med_mod, out_mod, <span class="dt">treat =</span> <span class="st">&quot;gncs&quot;</span>, <span class="dt">mediator =</span> <span class="st">&quot;top_pubs5&quot;</span>, <span class="dt">robustSE =</span> <span class="ot">TRUE</span>, <span class="dt">sims =</span> <span class="dv">1000</span>)</span>
+<span id="cb36-3"><a href="applied-mediation-analysis.html#cb36-3" aria-hidden="true"></a></span>
+<span id="cb36-4"><a href="applied-mediation-analysis.html#cb36-4" aria-hidden="true"></a><span class="kw">summary</span>(mediate_out)</span></code></pre></div>
+<ul>
+<li><p>Decide whether NIE(0) or NIE(1) is more of interest to you and explain in a few sentences.</p></li>
+<li><p>Interpret the chosen NIE, the corresponding NDE, the total effect, and the proportion mediated quantity contextually.</p></li>
+</ul>
 
 </div>
 </div>
+</div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="graphical-structure-of-selection-bias.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="the-smoking-birth-weight-paradox.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="graphical-structure-of-mediation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="homework-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -336,6 +336,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="graphical-structure-of-mediation.html"><a href="graphical-structure-of-mediation.html#exercise-3-6"><i class="fa fa-check"></i>Exercise 3</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="17" data-path="applied-mediation-analysis.html"><a href="applied-mediation-analysis.html"><i class="fa fa-check"></i><b>17</b> Applied Mediation Analysis</a>
+<ul>
+<li class="chapter" data-level="" data-path="applied-mediation-analysis.html"><a href="applied-mediation-analysis.html#pre-class-work-14"><i class="fa fa-check"></i>Pre-class work</a></li>
+<li class="chapter" data-level="" data-path="applied-mediation-analysis.html"><a href="applied-mediation-analysis.html#learning-goals-15"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="applied-mediation-analysis.html"><a href="applied-mediation-analysis.html#assignment"><i class="fa fa-check"></i>Assignment</a>
+<ul>
+<li class="chapter" data-level="" data-path="applied-mediation-analysis.html"><a href="applied-mediation-analysis.html#pre-class-reading"><i class="fa fa-check"></i>Pre-class reading</a></li>
+<li class="chapter" data-level="" data-path="applied-mediation-analysis.html"><a href="applied-mediation-analysis.html#applied-mediation-analysis-1"><i class="fa fa-check"></i>Applied mediation analysis</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>VI Homework</b></span></li>
 <li class="chapter" data-level="" data-path="homework-1.html"><a href="homework-1.html"><i class="fa fa-check"></i>Homework 1</a>
 <ul>
@@ -457,24 +467,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p><br></p>
 <p>If you revisit any of these objectives, you must do so using the graph below. If revisiting an objective requires context for exactly what these variables represent, feel free to pick a context that is suitable for you.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="homework-5.html#cb36-1" aria-hidden="true"></a><span class="kw">library</span>(dagitty)</span>
-<span id="cb36-2"><a href="homework-5.html#cb36-2" aria-hidden="true"></a>dag &lt;-<span class="st"> </span><span class="kw">dagitty</span>(<span class="st">&quot;dag {</span></span>
-<span id="cb36-3"><a href="homework-5.html#cb36-3" aria-hidden="true"></a><span class="st">bb=</span><span class="ch">\&quot;</span><span class="st">0,0,1,1</span><span class="ch">\&quot;</span></span>
-<span id="cb36-4"><a href="homework-5.html#cb36-4" aria-hidden="true"></a><span class="st">A [exposure,pos=</span><span class="ch">\&quot;</span><span class="st">0.400,0.350</span><span class="ch">\&quot;</span><span class="st">]</span></span>
-<span id="cb36-5"><a href="homework-5.html#cb36-5" aria-hidden="true"></a><span class="st">L [pos=</span><span class="ch">\&quot;</span><span class="st">0.200,0.350</span><span class="ch">\&quot;</span><span class="st">]</span></span>
-<span id="cb36-6"><a href="homework-5.html#cb36-6" aria-hidden="true"></a><span class="st">U1 [latent,pos=</span><span class="ch">\&quot;</span><span class="st">0.100,0.200</span><span class="ch">\&quot;</span><span class="st">]</span></span>
-<span id="cb36-7"><a href="homework-5.html#cb36-7" aria-hidden="true"></a><span class="st">U2 [latent,pos=</span><span class="ch">\&quot;</span><span class="st">0.100,0.500</span><span class="ch">\&quot;</span><span class="st">]</span></span>
-<span id="cb36-8"><a href="homework-5.html#cb36-8" aria-hidden="true"></a><span class="st">Y [outcome,pos=</span><span class="ch">\&quot;</span><span class="st">0.600,0.350</span><span class="ch">\&quot;</span><span class="st">]</span></span>
-<span id="cb36-9"><a href="homework-5.html#cb36-9" aria-hidden="true"></a><span class="st">A -&gt; Y</span></span>
-<span id="cb36-10"><a href="homework-5.html#cb36-10" aria-hidden="true"></a><span class="st">L -&gt; A</span></span>
-<span id="cb36-11"><a href="homework-5.html#cb36-11" aria-hidden="true"></a><span class="st">U1 -&gt; L</span></span>
-<span id="cb36-12"><a href="homework-5.html#cb36-12" aria-hidden="true"></a><span class="st">U1 -&gt; Y</span></span>
-<span id="cb36-13"><a href="homework-5.html#cb36-13" aria-hidden="true"></a><span class="st">U2 -&gt; A</span></span>
-<span id="cb36-14"><a href="homework-5.html#cb36-14" aria-hidden="true"></a><span class="st">U2 -&gt; L</span></span>
-<span id="cb36-15"><a href="homework-5.html#cb36-15" aria-hidden="true"></a><span class="st">}</span></span>
-<span id="cb36-16"><a href="homework-5.html#cb36-16" aria-hidden="true"></a><span class="st">&quot;</span>)</span>
-<span id="cb36-17"><a href="homework-5.html#cb36-17" aria-hidden="true"></a></span>
-<span id="cb36-18"><a href="homework-5.html#cb36-18" aria-hidden="true"></a><span class="kw">plot</span>(dag)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="homework-5.html#cb39-1" aria-hidden="true"></a><span class="kw">library</span>(dagitty)</span>
+<span id="cb39-2"><a href="homework-5.html#cb39-2" aria-hidden="true"></a>dag &lt;-<span class="st"> </span><span class="kw">dagitty</span>(<span class="st">&quot;dag {</span></span>
+<span id="cb39-3"><a href="homework-5.html#cb39-3" aria-hidden="true"></a><span class="st">bb=</span><span class="ch">\&quot;</span><span class="st">0,0,1,1</span><span class="ch">\&quot;</span></span>
+<span id="cb39-4"><a href="homework-5.html#cb39-4" aria-hidden="true"></a><span class="st">A [exposure,pos=</span><span class="ch">\&quot;</span><span class="st">0.400,0.350</span><span class="ch">\&quot;</span><span class="st">]</span></span>
+<span id="cb39-5"><a href="homework-5.html#cb39-5" aria-hidden="true"></a><span class="st">L [pos=</span><span class="ch">\&quot;</span><span class="st">0.200,0.350</span><span class="ch">\&quot;</span><span class="st">]</span></span>
+<span id="cb39-6"><a href="homework-5.html#cb39-6" aria-hidden="true"></a><span class="st">U1 [latent,pos=</span><span class="ch">\&quot;</span><span class="st">0.100,0.200</span><span class="ch">\&quot;</span><span class="st">]</span></span>
+<span id="cb39-7"><a href="homework-5.html#cb39-7" aria-hidden="true"></a><span class="st">U2 [latent,pos=</span><span class="ch">\&quot;</span><span class="st">0.100,0.500</span><span class="ch">\&quot;</span><span class="st">]</span></span>
+<span id="cb39-8"><a href="homework-5.html#cb39-8" aria-hidden="true"></a><span class="st">Y [outcome,pos=</span><span class="ch">\&quot;</span><span class="st">0.600,0.350</span><span class="ch">\&quot;</span><span class="st">]</span></span>
+<span id="cb39-9"><a href="homework-5.html#cb39-9" aria-hidden="true"></a><span class="st">A -&gt; Y</span></span>
+<span id="cb39-10"><a href="homework-5.html#cb39-10" aria-hidden="true"></a><span class="st">L -&gt; A</span></span>
+<span id="cb39-11"><a href="homework-5.html#cb39-11" aria-hidden="true"></a><span class="st">U1 -&gt; L</span></span>
+<span id="cb39-12"><a href="homework-5.html#cb39-12" aria-hidden="true"></a><span class="st">U1 -&gt; Y</span></span>
+<span id="cb39-13"><a href="homework-5.html#cb39-13" aria-hidden="true"></a><span class="st">U2 -&gt; A</span></span>
+<span id="cb39-14"><a href="homework-5.html#cb39-14" aria-hidden="true"></a><span class="st">U2 -&gt; L</span></span>
+<span id="cb39-15"><a href="homework-5.html#cb39-15" aria-hidden="true"></a><span class="st">}</span></span>
+<span id="cb39-16"><a href="homework-5.html#cb39-16" aria-hidden="true"></a><span class="st">&quot;</span>)</span>
+<span id="cb39-17"><a href="homework-5.html#cb39-17" aria-hidden="true"></a></span>
+<span id="cb39-18"><a href="homework-5.html#cb39-18" aria-hidden="true"></a><span class="kw">plot</span>(dag)</span></code></pre></div>
 <p><img src="causal_manual_files/figure-html/hw5_dag-1.png" width="672" /></p>
 
 </div>

@@ -336,6 +336,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="graphical-structure-of-mediation.html"><a href="graphical-structure-of-mediation.html#exercise-3-6"><i class="fa fa-check"></i>Exercise 3</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="17" data-path="applied-mediation-analysis.html"><a href="applied-mediation-analysis.html"><i class="fa fa-check"></i><b>17</b> Applied Mediation Analysis</a>
+<ul>
+<li class="chapter" data-level="" data-path="applied-mediation-analysis.html"><a href="applied-mediation-analysis.html#pre-class-work-14"><i class="fa fa-check"></i>Pre-class work</a></li>
+<li class="chapter" data-level="" data-path="applied-mediation-analysis.html"><a href="applied-mediation-analysis.html#learning-goals-15"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="applied-mediation-analysis.html"><a href="applied-mediation-analysis.html#assignment"><i class="fa fa-check"></i>Assignment</a>
+<ul>
+<li class="chapter" data-level="" data-path="applied-mediation-analysis.html"><a href="applied-mediation-analysis.html#pre-class-reading"><i class="fa fa-check"></i>Pre-class reading</a></li>
+<li class="chapter" data-level="" data-path="applied-mediation-analysis.html"><a href="applied-mediation-analysis.html#applied-mediation-analysis-1"><i class="fa fa-check"></i>Applied mediation analysis</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>VI Homework</b></span></li>
 <li class="chapter" data-level="" data-path="homework-1.html"><a href="homework-1.html"><i class="fa fa-check"></i>Homework 1</a>
 <ul>
@@ -412,47 +422,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><a href="http://www.dagitty.net/dags.html">DAGitty</a> does not display noncausal paths, which can often be helpful for trying to <em>approximately</em> block noncausal paths in the presence of unmeasured variables.</p>
 <p>The code below shows a way to do this. For now, you have to define the DAG using a list of edges. (The example below shows the classic confounder triangle.)</p>
 <p>If you’re feeling adventurous, learn about the <a href="https://cran.r-project.org/package=dagitty"><code>dagitty</code></a> R package to see if you can write a function that takes the “Model code” from the DAGitty web interface (right side of the window) to directly create the <code>igraph</code> object.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="additional-r-resources.html#cb37-1" aria-hidden="true"></a><span class="kw">library</span>(igraph)</span>
-<span id="cb37-2"><a href="additional-r-resources.html#cb37-2" aria-hidden="true"></a></span>
-<span id="cb37-3"><a href="additional-r-resources.html#cb37-3" aria-hidden="true"></a><span class="co"># Create the edge list</span></span>
-<span id="cb37-4"><a href="additional-r-resources.html#cb37-4" aria-hidden="true"></a>el &lt;-<span class="st"> </span><span class="kw">rbind</span>(</span>
-<span id="cb37-5"><a href="additional-r-resources.html#cb37-5" aria-hidden="true"></a>    <span class="kw">c</span>(<span class="st">&quot;C&quot;</span>, <span class="st">&quot;A&quot;</span>),</span>
-<span id="cb37-6"><a href="additional-r-resources.html#cb37-6" aria-hidden="true"></a>    <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;Y&quot;</span>),</span>
-<span id="cb37-7"><a href="additional-r-resources.html#cb37-7" aria-hidden="true"></a>    <span class="kw">c</span>(<span class="st">&quot;C&quot;</span>, <span class="st">&quot;Y&quot;</span>)</span>
-<span id="cb37-8"><a href="additional-r-resources.html#cb37-8" aria-hidden="true"></a>)</span>
-<span id="cb37-9"><a href="additional-r-resources.html#cb37-9" aria-hidden="true"></a><span class="co"># Create the graph</span></span>
-<span id="cb37-10"><a href="additional-r-resources.html#cb37-10" aria-hidden="true"></a>dag &lt;-<span class="st"> </span><span class="kw">graph_from_edgelist</span>(el, <span class="dt">directed =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb37-11"><a href="additional-r-resources.html#cb37-11" aria-hidden="true"></a></span>
-<span id="cb37-12"><a href="additional-r-resources.html#cb37-12" aria-hidden="true"></a><span class="co"># Helper functions for displaying paths</span></span>
-<span id="cb37-13"><a href="additional-r-resources.html#cb37-13" aria-hidden="true"></a>display_paths &lt;-<span class="st"> </span><span class="cf">function</span>(g, paths) {</span>
-<span id="cb37-14"><a href="additional-r-resources.html#cb37-14" aria-hidden="true"></a>    adj &lt;-<span class="st"> </span><span class="kw">as_adjacency_matrix</span>(g)</span>
-<span id="cb37-15"><a href="additional-r-resources.html#cb37-15" aria-hidden="true"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(paths)) {</span>
-<span id="cb37-16"><a href="additional-r-resources.html#cb37-16" aria-hidden="true"></a>        path &lt;-<span class="st"> </span>paths[[i]]</span>
-<span id="cb37-17"><a href="additional-r-resources.html#cb37-17" aria-hidden="true"></a>        <span class="kw">cat</span>(<span class="st">&quot;Path &quot;</span>, i, <span class="st">&quot;:   &quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb37-18"><a href="additional-r-resources.html#cb37-18" aria-hidden="true"></a>        <span class="kw">draw_edge</span>(<span class="dt">adj_mat =</span> adj, <span class="dt">path =</span> path)</span>
-<span id="cb37-19"><a href="additional-r-resources.html#cb37-19" aria-hidden="true"></a>    }</span>
-<span id="cb37-20"><a href="additional-r-resources.html#cb37-20" aria-hidden="true"></a>}</span>
-<span id="cb37-21"><a href="additional-r-resources.html#cb37-21" aria-hidden="true"></a></span>
-<span id="cb37-22"><a href="additional-r-resources.html#cb37-22" aria-hidden="true"></a>draw_edge &lt;-<span class="st"> </span><span class="cf">function</span>(adj_mat, path) {</span>
-<span id="cb37-23"><a href="additional-r-resources.html#cb37-23" aria-hidden="true"></a>    path_ids &lt;-<span class="st"> </span><span class="kw">as_ids</span>(path)</span>
-<span id="cb37-24"><a href="additional-r-resources.html#cb37-24" aria-hidden="true"></a>    arrow_vec &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="st">&quot;&quot;</span>, <span class="kw">length</span>(path_ids))</span>
-<span id="cb37-25"><a href="additional-r-resources.html#cb37-25" aria-hidden="true"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_len</span>(<span class="kw">length</span>(path_ids)<span class="op">-</span><span class="dv">1</span>)) {</span>
-<span id="cb37-26"><a href="additional-r-resources.html#cb37-26" aria-hidden="true"></a>        node1 &lt;-<span class="st"> </span>path_ids[i]</span>
-<span id="cb37-27"><a href="additional-r-resources.html#cb37-27" aria-hidden="true"></a>        node2 &lt;-<span class="st"> </span>path_ids[i<span class="op">+</span><span class="dv">1</span>]</span>
-<span id="cb37-28"><a href="additional-r-resources.html#cb37-28" aria-hidden="true"></a>        <span class="cf">if</span> (adj_mat[node1,node2]<span class="op">==</span><span class="dv">1</span>) {</span>
-<span id="cb37-29"><a href="additional-r-resources.html#cb37-29" aria-hidden="true"></a>            <span class="co">## Arrow is 1 -&gt; 2</span></span>
-<span id="cb37-30"><a href="additional-r-resources.html#cb37-30" aria-hidden="true"></a>            arrow_vec[i] &lt;-<span class="st"> &quot;-&gt;&quot;</span></span>
-<span id="cb37-31"><a href="additional-r-resources.html#cb37-31" aria-hidden="true"></a>        } <span class="cf">else</span> {</span>
-<span id="cb37-32"><a href="additional-r-resources.html#cb37-32" aria-hidden="true"></a>            <span class="co">## Arrow is 1 &lt;- 2</span></span>
-<span id="cb37-33"><a href="additional-r-resources.html#cb37-33" aria-hidden="true"></a>            arrow_vec[i] &lt;-<span class="st"> &quot;&lt;-&quot;</span></span>
-<span id="cb37-34"><a href="additional-r-resources.html#cb37-34" aria-hidden="true"></a>        }</span>
-<span id="cb37-35"><a href="additional-r-resources.html#cb37-35" aria-hidden="true"></a>    }</span>
-<span id="cb37-36"><a href="additional-r-resources.html#cb37-36" aria-hidden="true"></a>    path_string &lt;-<span class="st"> </span><span class="kw">paste</span>(path_ids, arrow_vec)</span>
-<span id="cb37-37"><a href="additional-r-resources.html#cb37-37" aria-hidden="true"></a>    path_string &lt;-<span class="st"> </span><span class="kw">paste</span>(path_string, <span class="dt">collapse =</span> <span class="st">&quot; &quot;</span>)</span>
-<span id="cb37-38"><a href="additional-r-resources.html#cb37-38" aria-hidden="true"></a>    <span class="kw">cat</span>(path_string, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb37-39"><a href="additional-r-resources.html#cb37-39" aria-hidden="true"></a>}</span>
-<span id="cb37-40"><a href="additional-r-resources.html#cb37-40" aria-hidden="true"></a></span>
-<span id="cb37-41"><a href="additional-r-resources.html#cb37-41" aria-hidden="true"></a><span class="kw">display_paths</span>(dag, <span class="kw">all_simple_paths</span>(dag, <span class="dt">from =</span> <span class="st">&quot;A&quot;</span>, <span class="dt">to =</span> <span class="st">&quot;Y&quot;</span>, <span class="dt">mode =</span> <span class="st">&quot;all&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="additional-r-resources.html#cb40-1" aria-hidden="true"></a><span class="kw">library</span>(igraph)</span>
+<span id="cb40-2"><a href="additional-r-resources.html#cb40-2" aria-hidden="true"></a></span>
+<span id="cb40-3"><a href="additional-r-resources.html#cb40-3" aria-hidden="true"></a><span class="co"># Create the edge list</span></span>
+<span id="cb40-4"><a href="additional-r-resources.html#cb40-4" aria-hidden="true"></a>el &lt;-<span class="st"> </span><span class="kw">rbind</span>(</span>
+<span id="cb40-5"><a href="additional-r-resources.html#cb40-5" aria-hidden="true"></a>    <span class="kw">c</span>(<span class="st">&quot;C&quot;</span>, <span class="st">&quot;A&quot;</span>),</span>
+<span id="cb40-6"><a href="additional-r-resources.html#cb40-6" aria-hidden="true"></a>    <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;Y&quot;</span>),</span>
+<span id="cb40-7"><a href="additional-r-resources.html#cb40-7" aria-hidden="true"></a>    <span class="kw">c</span>(<span class="st">&quot;C&quot;</span>, <span class="st">&quot;Y&quot;</span>)</span>
+<span id="cb40-8"><a href="additional-r-resources.html#cb40-8" aria-hidden="true"></a>)</span>
+<span id="cb40-9"><a href="additional-r-resources.html#cb40-9" aria-hidden="true"></a><span class="co"># Create the graph</span></span>
+<span id="cb40-10"><a href="additional-r-resources.html#cb40-10" aria-hidden="true"></a>dag &lt;-<span class="st"> </span><span class="kw">graph_from_edgelist</span>(el, <span class="dt">directed =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb40-11"><a href="additional-r-resources.html#cb40-11" aria-hidden="true"></a></span>
+<span id="cb40-12"><a href="additional-r-resources.html#cb40-12" aria-hidden="true"></a><span class="co"># Helper functions for displaying paths</span></span>
+<span id="cb40-13"><a href="additional-r-resources.html#cb40-13" aria-hidden="true"></a>display_paths &lt;-<span class="st"> </span><span class="cf">function</span>(g, paths) {</span>
+<span id="cb40-14"><a href="additional-r-resources.html#cb40-14" aria-hidden="true"></a>    adj &lt;-<span class="st"> </span><span class="kw">as_adjacency_matrix</span>(g)</span>
+<span id="cb40-15"><a href="additional-r-resources.html#cb40-15" aria-hidden="true"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(paths)) {</span>
+<span id="cb40-16"><a href="additional-r-resources.html#cb40-16" aria-hidden="true"></a>        path &lt;-<span class="st"> </span>paths[[i]]</span>
+<span id="cb40-17"><a href="additional-r-resources.html#cb40-17" aria-hidden="true"></a>        <span class="kw">cat</span>(<span class="st">&quot;Path &quot;</span>, i, <span class="st">&quot;:   &quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb40-18"><a href="additional-r-resources.html#cb40-18" aria-hidden="true"></a>        <span class="kw">draw_edge</span>(<span class="dt">adj_mat =</span> adj, <span class="dt">path =</span> path)</span>
+<span id="cb40-19"><a href="additional-r-resources.html#cb40-19" aria-hidden="true"></a>    }</span>
+<span id="cb40-20"><a href="additional-r-resources.html#cb40-20" aria-hidden="true"></a>}</span>
+<span id="cb40-21"><a href="additional-r-resources.html#cb40-21" aria-hidden="true"></a></span>
+<span id="cb40-22"><a href="additional-r-resources.html#cb40-22" aria-hidden="true"></a>draw_edge &lt;-<span class="st"> </span><span class="cf">function</span>(adj_mat, path) {</span>
+<span id="cb40-23"><a href="additional-r-resources.html#cb40-23" aria-hidden="true"></a>    path_ids &lt;-<span class="st"> </span><span class="kw">as_ids</span>(path)</span>
+<span id="cb40-24"><a href="additional-r-resources.html#cb40-24" aria-hidden="true"></a>    arrow_vec &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="st">&quot;&quot;</span>, <span class="kw">length</span>(path_ids))</span>
+<span id="cb40-25"><a href="additional-r-resources.html#cb40-25" aria-hidden="true"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_len</span>(<span class="kw">length</span>(path_ids)<span class="op">-</span><span class="dv">1</span>)) {</span>
+<span id="cb40-26"><a href="additional-r-resources.html#cb40-26" aria-hidden="true"></a>        node1 &lt;-<span class="st"> </span>path_ids[i]</span>
+<span id="cb40-27"><a href="additional-r-resources.html#cb40-27" aria-hidden="true"></a>        node2 &lt;-<span class="st"> </span>path_ids[i<span class="op">+</span><span class="dv">1</span>]</span>
+<span id="cb40-28"><a href="additional-r-resources.html#cb40-28" aria-hidden="true"></a>        <span class="cf">if</span> (adj_mat[node1,node2]<span class="op">==</span><span class="dv">1</span>) {</span>
+<span id="cb40-29"><a href="additional-r-resources.html#cb40-29" aria-hidden="true"></a>            <span class="co">## Arrow is 1 -&gt; 2</span></span>
+<span id="cb40-30"><a href="additional-r-resources.html#cb40-30" aria-hidden="true"></a>            arrow_vec[i] &lt;-<span class="st"> &quot;-&gt;&quot;</span></span>
+<span id="cb40-31"><a href="additional-r-resources.html#cb40-31" aria-hidden="true"></a>        } <span class="cf">else</span> {</span>
+<span id="cb40-32"><a href="additional-r-resources.html#cb40-32" aria-hidden="true"></a>            <span class="co">## Arrow is 1 &lt;- 2</span></span>
+<span id="cb40-33"><a href="additional-r-resources.html#cb40-33" aria-hidden="true"></a>            arrow_vec[i] &lt;-<span class="st"> &quot;&lt;-&quot;</span></span>
+<span id="cb40-34"><a href="additional-r-resources.html#cb40-34" aria-hidden="true"></a>        }</span>
+<span id="cb40-35"><a href="additional-r-resources.html#cb40-35" aria-hidden="true"></a>    }</span>
+<span id="cb40-36"><a href="additional-r-resources.html#cb40-36" aria-hidden="true"></a>    path_string &lt;-<span class="st"> </span><span class="kw">paste</span>(path_ids, arrow_vec)</span>
+<span id="cb40-37"><a href="additional-r-resources.html#cb40-37" aria-hidden="true"></a>    path_string &lt;-<span class="st"> </span><span class="kw">paste</span>(path_string, <span class="dt">collapse =</span> <span class="st">&quot; &quot;</span>)</span>
+<span id="cb40-38"><a href="additional-r-resources.html#cb40-38" aria-hidden="true"></a>    <span class="kw">cat</span>(path_string, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb40-39"><a href="additional-r-resources.html#cb40-39" aria-hidden="true"></a>}</span>
+<span id="cb40-40"><a href="additional-r-resources.html#cb40-40" aria-hidden="true"></a></span>
+<span id="cb40-41"><a href="additional-r-resources.html#cb40-41" aria-hidden="true"></a><span class="kw">display_paths</span>(dag, <span class="kw">all_simple_paths</span>(dag, <span class="dt">from =</span> <span class="st">&quot;A&quot;</span>, <span class="dt">to =</span> <span class="st">&quot;Y&quot;</span>, <span class="dt">mode =</span> <span class="st">&quot;all&quot;</span>))</span></code></pre></div>
 
 </div>
             </section>

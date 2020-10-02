@@ -1,0 +1,75 @@
+---
+title: "Applied Mediation Analysis"
+author: "Your Name"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+# Pre-class reading
+
+Write a short response to the article, [How racial discrimination in law enforcement actually works](https://www.vox.com/2014/12/1/7311417/race-law-controls). Use quotes from the article to discuss connections to mediation ideas and other concepts from our course. (Limit 500 words.)
+
+Thoughtful responses will earn 2 M grades to apply to any objective of your choosing. (You can't use this to skip parts of Homework 5 or 6 though.)
+
+
+<br><br>
+
+
+# Applied mediation analysis
+
+The New York Times recently [featured](https://www.nytimes.com/2020/09/29/business/economy/pandemic-women-tenure.html) research by a group who studied the effect of tenure-clock stopping policies on promotion and job security-related outcomes.
+
+We'll be looking at data from the study [Equal but Inequitable: Who Benefits from Gender-Neutral Tenure Clock Stopping Policies?](https://www.aeaweb.org/articles?id=10.1257/aer.20160613) by Antecol, Bedard, and Stearns.
+
+You'll need to install the `mediation` package before getting started.
+
+```{r}
+install.packages("mediation")
+```
+
+The data and data information are available [on Moodle](https://moodle.macalester.edu/mod/folder/view.php?id=36923) (`aer_primarysample.csv` and `ReadMe.pdf`).
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(splines)
+library(mediation)
+
+tenure <- readr::read_csv("aer_primarysample.csv")
+```
+
+<br>
+
+
+> **Context:** Tenure clock-stopping policies broadly relate to delaying the timeline for tenure review due to life events. Often this is related to becoming a parent. The COVID pandemic has also generated discussions about clock-stopping policies for both its standalone impacts on faculty and its intersectional effects with other factors like parenthood. Clock-stopping policies are intended to affect scholarly output which in turn affects ultimate awarding of tenure.
+
+> **Broad question:** How do gender-neutral clock stopping policies affect the ultimate awarding of tenure, and how influential are publications in top journals in this process?
+
+Information on variables starts at the bottom of Page 1 of `ReadMe.pdf` ("The independent variables of interest are..."). We will focus on the following variables:
+
+- `gncs`: a gender-neutral clock-stopping policy is in place (treatment)
+- `top_pubs5`: cumulative number of peer-reviewed publications in top-5 journals by year 5 since PhD completion (mediator)
+- `tenure_policy_school`: indicator for getting tenure at the university with the clock-stopping policy
+
+
+**Your task:**
+
+- The authors assume that the variables `female + phd_rank + post_doc + ug_students + grad_students + faculty + full_av_salary + assist_av_salary + revenue + female_ratio + full_ratio` are enough to meet the exchangeability conditions discussed yesterday. Do you agree? Explain. State your final conditional exchangeability set.
+
+- Use visualizations to build appropriate models for the mediator and for the outcome. Focus on correctly capturing nonlinearity rather than interactions. Call the mediator model `med_mod` and the outcome model `out_mod`.
+
+- Use the `mediate()` function as demonstrated below to estimate the natural direct and indirect effects. (In the output, `ACME` stands for the indirect effect and `ADE` stands for the direct effect.)
+
+```{r}
+set.seed(451)
+mediate_out <- mediate(med_mod, out_mod, treat = "gncs", mediator = "top_pubs5", robustSE = TRUE, sims = 1000)
+
+summary(mediate_out)
+```
+
+- Decide whether NIE(0) or NIE(1) is more of interest to you and explain in a few sentences.
+
+- Interpret the chosen NIE, the corresponding NDE, the total effect, and the proportion mediated quantity contextually.
+
