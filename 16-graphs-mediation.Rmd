@@ -33,6 +33,10 @@ Videos/slides
 
 ## Exercises {-}
 
+```{block2, type="solutions"}
+**Solutions to these exercises are available [on Moodle](https://moodle.macalester.edu/mod/folder/view.php?id=36620).**
+```
+
 ### Background {-}
 
 Consider the following causal diagram representing variables important in mediation analysis:
@@ -130,7 +134,7 @@ display_paths(dag, all_simple_paths(dag, from = "M", to = "Y", mode = "all"))
 
 ### Exercise 2 {-}
 
-Under the exchangeability assumptions discussed above, we can use models such as the regression models below to estimate the CDE, NDE, and NIE. ($C = \{C_1, C_2, C_3\}$, and $\theta_4, \beta_2$ are vectors of coefficients.) In particular, these models can be used as structural models to simulate the different potential outcomes needed to 
+Under the exchangeability assumptions discussed above, we can use models such as the regression models below to estimate the CDE, NDE, and NIE. ($C = \{C_1, C_2, C_3\}$, and $\theta_4, \beta_2$ are vectors of coefficients.) In particular, these models can be used as structural models to simulate the different potential outcomes needed to estimate these effects.
 
 $$ E[Y\mid A, M, C] = \theta_0 + \theta_1 A + \theta_2 M + \theta_3 AM + \theta_4'C $$
 $$ E[M\mid A, C] = \beta_0 + \beta_1 A + \beta_2'C $$
