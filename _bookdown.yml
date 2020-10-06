@@ -1,6 +1,6 @@
 book_filename: "causal_manual"
 output_dir: docs
-rmd_files: ["index.Rmd", "references.Rmd", "schedule.Rmd", "01-motivation-review.Rmd", "02-exchangeability.Rmd", "03-study-designs.Rmd", "04-graphs-models.Rmd", "05-graphs-key-structures.Rmd", "06-structure-confounding.Rmd", "07-structure-selection-bias.Rmd", "08-digestion-designs-graphs.Rmd", "09-birth-weight-paradox.Rmd", "10-applied-regression.Rmd", "11-ipw.Rmd", "12-applied-ipw.Rmd", "13-time-varying-treatments.Rmd", "14-sensitivity-unmeasured.Rmd", "15-causal-discovery.Rmd", "16-graphs-mediation.Rmd", "17-applied-mediation.Rmd", "hw1.Rmd", "hw2.Rmd", "hw3.Rmd", "hw4.Rmd", "hw5.Rmd", "hw6.Rmd", "project.Rmd", "appendix_r_resources.Rmd", "appendix_causal_discovery.Rmd"]
+rmd_files: ["index.Rmd", "references.Rmd", "schedule.Rmd", "01-motivation-review.Rmd", "02-exchangeability.Rmd", "03-study-designs.Rmd", "04-graphs-models.Rmd", "05-graphs-key-structures.Rmd", "06-structure-confounding.Rmd", "07-structure-selection-bias.Rmd", "08-digestion-designs-graphs.Rmd", "09-birth-weight-paradox.Rmd", "10-applied-regression.Rmd", "11-ipw.Rmd", "12-applied-ipw.Rmd", "13-time-varying-treatments.Rmd", "14-sensitivity-unmeasured.Rmd", "15-causal-discovery.Rmd", "16-graphs-mediation.Rmd", "17-applied-mediation.Rmd", "18-iv.Rmd", "hw1.Rmd", "hw2.Rmd", "hw3.Rmd", "hw4.Rmd", "hw5.Rmd", "hw6.Rmd", "project.Rmd", "appendix_r_resources.Rmd", "appendix_causal_discovery.Rmd"]
 language:
   ui:
     chapter_name: "Topic "

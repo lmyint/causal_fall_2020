@@ -15,3 +15,4 @@ sensitivity-analyses-for-unmeasured-variables
 causal-discovery
 graphical-structure-of-mediation
 applied-mediation-analysis
+instrumental-variables-analysis
