@@ -32,6 +32,7 @@ This should be a total of two PDF documents.
 
 The following learning objectives are the primary focus of this assignment:
 
+- **`DSEP1`:** Apply d-separation to block noncausal paths in causal DAGs with and without unobserved variables.
 - **`MEDI1`:** Formulate research questions that can be answered via mediation analysis
 - **`MEDI2`:** Conduct and interpret results from a mediation analysis
 - **`IVAR1`:** Design and evaluate an instrumental variables study in light of the instrumental variables assumptions.
@@ -57,7 +58,6 @@ You can revisit any of the following objectives (excludes `REGR1`, `IPTW1`) by i
 - **`DESI3`:** Compare the strengths and weaknesses of different study designs for answering a research question.
 - **`PGRA1`:** Apply the Causal Markov assumption to express the joint distribution of data.
 - **`CNCP1`:** Explain how causal and noncausal paths relate to exchangeability and causal effects.
-- **`DSEP1`:** Apply d-separation to block noncausal paths in causal DAGs with and without unobserved variables.
 - **`DSEP2`:** Apply strategies to deal with exchangeability problems caused by unobserved variables.
 - **`DSEP3`:** Simulate data from a causal DAG under linear and logistic regression SEMs to check d-separation properties through regression modeling and visualization.
 - **`DSEP4`:** Explain how d-separation relates to conditional exchangeability.
