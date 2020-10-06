@@ -1,8 +1,8 @@
-```{r r_misc, include=FALSE}
+```{r appendix_r_misc, include=FALSE}
 knitr::opts_chunk$set(echo=TRUE, eval=FALSE)
 ```
 
-# (PART) Miscellaneous {-}
+# (PART) Appendix {-}
 
 # Additional R resources {-}
 

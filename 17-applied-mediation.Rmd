@@ -82,7 +82,7 @@ Information on variables starts at the bottom of Page 1 of `ReadMe.pdf` ("The in
 
 - The authors assume that the variables `female + phd_rank + post_doc + ug_students + grad_students + faculty + full_av_salary + assist_av_salary + revenue + female_ratio + full_ratio` are enough to meet the exchangeability conditions discussed yesterday. Do you agree? Explain. State your final conditional exchangeability set.
 
-- Use visualizations to build appropriate models for the mediator and for the outcome. Focus on correctly capturing nonlinearity rather than interactions. Call the mediator model `med_mod` and the outcome model `out_mod`.
+- Use visualizations to build appropriate models for the mediator and for the outcome. Focus on correctly capturing nonlinearity rather than interactions. Just make 3 plots for each model. Call the mediator model `med_mod` and the outcome model `out_mod`.
 
 - Use the `mediate()` function as demonstrated below to estimate the natural direct and indirect effects. (In the output, `ACME` stands for the indirect effect and `ADE` stands for the direct effect.)
 
