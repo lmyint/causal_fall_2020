@@ -95,4 +95,4 @@ summary(mediate_out)
 
 - Decide whether NIE(0) or NIE(1) is more of interest to you and explain in a few sentences.
 
-- Interpret the chosen NIE, the corresponding NDE, the total effect, and the proportion mediated quantity contextually.
+- Interpret the chosen NIE, the corresponding NDE, the total effect, and the proportion mediated quantity contextually. (For a binary outcome, the effects in the output represent changes (differences) in the probability of $Y = 1$.)
