@@ -37,6 +37,42 @@ Work with Leslie to determine the most suitable form for your digital artifact, 
 <br><br>
 
 
+## Timeline {-}
+
+You/your group will check in with me in-person over Zoom 3 times over the course of the last 2 weeks of class. **In order to earn a passing grade, you must meet requirements at all deadlines.**
+
+- **Deadline 1:** Choose your final project option, topic, and group by Friday, October 9 at midnight CST (or the corresponding time on Saturday, October 10 if you are in a later time zone). This will not be an in-person check-in, but please submit your responses [on Moodle](https://moodle.macalester.edu/mod/feedback/view.php?id=39190).
+
+<br>
+
+- **Deadline 2:** Monday, October 12 or Tuesday, October 13. Schedule a discussion time with me on [Google Calendar](https://calendar.google.com/calendar/selfsched?sstoken=UUFBWjVpaTNFb2JUfGRlZmF1bHR8ODFhZGU4ZWQ5MjJkOWY2M2Q4YjZhNTgwN2IyMmFlM2Y).
+    - Data analysis option: Come prepared to talk about your causal graph, your analysis plan, and exploratory visualizations that you have made.
+    - Blog post option: Write 500 words for each post and share with me 24 hours before our meeting so that I can give feedback and discuss with you.
+    - Advanced topic option: Come prepared to tell me a bit about what you've learned on your topic. If you were giving a 15 minute presentation on the topic, this should be about the amount of content you would cover in the first 5 minutes.
+
+<br>
+
+- **Deadline 3:** Thursday, October 15 or Friday, October 16. Schedule a discussion time with me on [Google Calendar](https://calendar.google.com/calendar/selfsched?sstoken=UUFBWjVpaTNFb2JUfGRlZmF1bHR8ODFhZGU4ZWQ5MjJkOWY2M2Q4YjZhNTgwN2IyMmFlM2Y).
+    - Data analysis option: Come prepared to tell me about the models you've fit and your interpretations. Share a draft of your artifact so far with me 24 hours in advance.
+    - Blog post option: Complete full drafts of both posts and share with me 24 hours before our meeting so that I can give feedback and discuss with you.
+    - Advanced topic option: Come prepared to tell me more about new material that is the equivalent of the second 5 minutes of a 15 minute presentation. Share a draft of your artifact so far with me 24 hours in advance.
+
+<br>
+
+- **Deadline 4:** Monday, October 19 or Tuesday, October 20. Schedule a discussion time with me on [Google Calendar](https://calendar.google.com/calendar/selfsched?sstoken=UUFBWjVpaTNFb2JUfGRlZmF1bHR8ODFhZGU4ZWQ5MjJkOWY2M2Q4YjZhNTgwN2IyMmFlM2Y).
+    - Data analysis option: Come prepared to discuss final points of feedback from the previous meeting (deadline 3). Finalize your artifact draft, and share with me 24 hours in advance.
+    - Blog post option: Act on feedback from the previous meeting (deadline 3), and share with me 24 hours before our meeting.
+    - Advanced topic option: Come prepared to tell me more about new material that is the equivalent of the last 5 minutes of a 15 minute presentation. Finalize your artifact draft, and share with me 24 hours in advance.
+
+<br>
+
+- **Final deadline:** Friday, October 23. By midnight CST, submit the final version of your digital artifact [on Moodle](https://moodle.macalester.edu/mod/assign/view.php?id=39212).
+    - We will not have a showcase/presentation day in class, but instead, I look forward to seeing you showcase your work for the department at either of our two departmental capstone unveiling days! (One will be at the end of Module 2 and the other at the end of Module 4.)
+
+
+<br><br>
+
+
 ## Option 1: Data analysis {-}
 
 **Collaboration:** Groups of up to 3. Individual work is fine.
@@ -58,7 +94,9 @@ Resources for finding data:
 - [Inter-university Consortium for Political and Social Research (ICPSR)](https://www.icpsr.umich.edu/)
 - [IPUMS](https://ipums.org/)
 
-<br>
+
+<br><br>
+
 
 ## Option 2: Blog posts {-}
 
@@ -73,7 +111,9 @@ Write two blog posts explaining causal inference ideas to a general audience. Th
 
 The second post should be a "tour of causal inference" and lead the reader through all topics covered in our course in a cohesive story.
 
-<br>
+
+<br><br>
+
 
 ## Option 3: Learn an advanced topic {-}
 
@@ -86,7 +126,9 @@ Dig deeper into course topics or learn a new topic. Examples could include:
 - Details of methods for time-varying treatments
 - Specialized considerations for particular study designs
 
-<br>
+
+<br><br>
+
 
 ## Option 4: Other {-}
 
