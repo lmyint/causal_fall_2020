@@ -441,6 +441,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="causal-discovery-with-pcalg" class="section level1 unnumbered">
 <h1>Causal Discovery with <code>pcalg</code></h1>
 <p>The <a href="https://cran.r-project.org/package=pcalg"><code>pcalg</code> package</a> (pronounced “PC alg”, short for “PC algorithm”) allows us to perform casual discovery in R. The cornerstone causal discovery algorithm that we learned was the SGS algorithm. The PC algorithm (also named after its authors) uses the same ideas as SGS but performs the conditional independence tests in a better order for faster computation.</p>
+<p>The <code>pcalg</code> package depends on the <a href="https://www.bioconductor.org/packages/graph/"><code>graph</code></a>, <a href="https://bioconductor.org/packages/RBGL/"><code>RBGL</code></a>, and <a href="https://www.bioconductor.org/packages/Rgraphviz/"><code>Rgraphviz</code></a> pacakges which are available through the Bioconductor repository rather than CRAN (<code>install.packages()</code> won’t work for those two.) Visit the Bioconductor pages for these packages for the installation commands.</p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="causal-discovery-with-pcalg.html#cb43-1" aria-hidden="true"></a><span class="kw">library</span>(dplyr)</span>
 <span id="cb43-2"><a href="causal-discovery-with-pcalg.html#cb43-2" aria-hidden="true"></a><span class="kw">library</span>(pcalg)</span></code></pre></div>
 <pre><code>## 
