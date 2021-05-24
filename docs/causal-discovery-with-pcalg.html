@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Causal Discovery with pcalg | STAT 451: Causal Inference</title>
   <meta name="description" content="This is the class website for Causal Inference at Macalester College." />
-  <meta name="generator" content="bookdown 0.20.6 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21.6 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Causal Discovery with pcalg | STAT 451: Causal Inference" />
   <meta property="og:type" content="book" />
@@ -31,7 +31,7 @@
   
 <link rel="prev" href="additional-r-resources.html"/>
 
-<script src="libs/header-attrs-2.4/header-attrs.js"></script>
+<script src="libs/header-attrs-2.6.4/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -49,6 +49,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -114,6 +116,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="custom_styles.css" type="text/css" />
 </head>
@@ -450,19 +453,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ##     randomDAG</code></pre>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="causal-discovery-with-pcalg.html#cb46-1" aria-hidden="true"></a>tenure &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&quot;../../data/aer_primarysample.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## Parsed with column specification:
+<pre><code>## 
+## ── Column specification ───────────────────────────────────────────────────────────────────────────────────────────
 ## cols(
 ##   .default = col_double()
-## )</code></pre>
-<pre><code>## See spec(...) for full column specifications.</code></pre>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="causal-discovery-with-pcalg.html#cb49-1" aria-hidden="true"></a>tenure &lt;-<span class="st"> </span>tenure <span class="op">%&gt;%</span></span>
-<span id="cb49-2"><a href="causal-discovery-with-pcalg.html#cb49-2" aria-hidden="true"></a><span class="st">    </span><span class="kw">select</span>(gncs, top_pubs5, tenure_policy_school, female, phd_rank, post_doc, ug_students, grad_students, faculty, full_av_salary, assist_av_salary, revenue, female_ratio, full_ratio)</span></code></pre></div>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="causal-discovery-with-pcalg.html#cb50-1" aria-hidden="true"></a>suff_stat &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">C =</span> <span class="kw">cor</span>(tenure), <span class="dt">n =</span> <span class="kw">nrow</span>(tenure))</span>
-<span id="cb50-2"><a href="causal-discovery-with-pcalg.html#cb50-2" aria-hidden="true"></a>pc_tenure &lt;-<span class="st"> </span><span class="kw">pc</span>(suff_stat, <span class="dt">indepTest =</span> gaussCItest, <span class="dt">labels =</span> <span class="kw">colnames</span>(tenure), <span class="dt">alpha =</span> <span class="fl">0.01</span>, <span class="dt">skel.method =</span> <span class="st">&quot;stable.fast&quot;</span>)</span>
-<span id="cb50-3"><a href="causal-discovery-with-pcalg.html#cb50-3" aria-hidden="true"></a></span>
-<span id="cb50-4"><a href="causal-discovery-with-pcalg.html#cb50-4" aria-hidden="true"></a><span class="kw">plot</span>(pc_tenure, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+## )
+## ℹ Use `spec()` for the full column specifications.</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="causal-discovery-with-pcalg.html#cb48-1" aria-hidden="true"></a>tenure &lt;-<span class="st"> </span>tenure <span class="op">%&gt;%</span></span>
+<span id="cb48-2"><a href="causal-discovery-with-pcalg.html#cb48-2" aria-hidden="true"></a><span class="st">    </span><span class="kw">select</span>(gncs, top_pubs5, tenure_policy_school, female, phd_rank, post_doc, ug_students, grad_students, faculty, full_av_salary, assist_av_salary, revenue, female_ratio, full_ratio)</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="causal-discovery-with-pcalg.html#cb49-1" aria-hidden="true"></a>suff_stat &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">C =</span> <span class="kw">cor</span>(tenure), <span class="dt">n =</span> <span class="kw">nrow</span>(tenure))</span>
+<span id="cb49-2"><a href="causal-discovery-with-pcalg.html#cb49-2" aria-hidden="true"></a>pc_tenure &lt;-<span class="st"> </span><span class="kw">pc</span>(suff_stat, <span class="dt">indepTest =</span> gaussCItest, <span class="dt">labels =</span> <span class="kw">colnames</span>(tenure), <span class="dt">alpha =</span> <span class="fl">0.01</span>, <span class="dt">skel.method =</span> <span class="st">&quot;stable.fast&quot;</span>)</span>
+<span id="cb49-3"><a href="causal-discovery-with-pcalg.html#cb49-3" aria-hidden="true"></a></span>
+<span id="cb49-4"><a href="causal-discovery-with-pcalg.html#cb49-4" aria-hidden="true"></a><span class="kw">plot</span>(pc_tenure, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
 <pre><code>## Loading required namespace: Rgraphviz</code></pre>
 <p><img src="causal_manual_files/figure-html/unnamed-chunk-65-1.png" width="672" /></p>
+<!-- Also show code for mixed data, categorical data  -->
 
 </div>
             </section>

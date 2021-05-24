@@ -24,3 +24,5 @@ pc_tenure <- pc(suff_stat, indepTest = gaussCItest, labels = colnames(tenure), a
 
 plot(pc_tenure, main = "")
 ```
+
+<!-- Also show code for mixed data, categorical data  -->
